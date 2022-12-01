@@ -1,10 +1,19 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+// import { Navigate, Route, Routes } from 'react-router-dom';
+// import { lazy } from 'react';
+import Balance from './Balance/Balance';
 
 export const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<>Hello wallet</>} />
+      <Route
+        path="/"
+        element={
+          <>
+            <Balance />
+          </>
+        }
+      />
 
       {/* <Route path="/" element={<DashboardPage />}>
         <Route index element={<Navigate to="/home" />} />
