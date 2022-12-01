@@ -12,6 +12,8 @@ const theme = {
     inActiveIconColor: '#6E78E8',
     firstCircleColorBg: '#C5BAFF',
     secondaryCircleColorBg: '#FFD8D0',
+    primaryBg: '#E7EAF2',
+    secondaryBg: '#ffffff',
   },
 };
 
