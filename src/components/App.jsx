@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Container from './Container/Container';
 import Balance from './Balance/Balance';
 import Loader from './Loader/Loader';
+import Header from './Header/Header'
 
 export const App = () => {
   return (
@@ -13,6 +14,7 @@ export const App = () => {
           path="/"
           element={
             <>
+              <Header />
               <Balance />
               <Loader />
             </>
