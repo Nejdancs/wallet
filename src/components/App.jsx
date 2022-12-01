@@ -1,11 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
-// import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
-// import { lazy } from 'react';
+import { lazy } from 'react';
 import Container from './Container/Container';
 import Balance from './Balance/Balance';
 import Currency from './Currency/Currency';
-// import Loader from './Loader/Loader';
+import Loader from './Loader/Loader';
+import Header from './Header/Header';
 
 export const App = () => {
   return (
@@ -17,6 +17,7 @@ export const App = () => {
             path="/"
             element={
               <>
+                <Header />
                 <Balance />
                 <Currency />
                 {/* <Loader /> */}
