@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const signUp = createAsyncThunk();
 
-const signIn = createAsyncThunk();
+const logIn = createAsyncThunk();
 
 const logOut = createAsyncThunk();
 
@@ -11,7 +11,7 @@ const fetchCurrentUser = createAsyncThunk();
 
 const operations = {
   signUp,
-  signIn,
+  logIn,
   logOut,
   fetchCurrentUser,
 };
