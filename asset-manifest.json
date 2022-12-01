@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/wallet/static/css/main.b9941ff0.css",
-    "main.js": "/wallet/static/js/main.b59ddc47.js",
+    "main.js": "/wallet/static/js/main.021705ad.js",
     "static/media/Circe-Regular.eot": "/wallet/static/media/Circe-Regular.13bbfad0e7f851273f3c.eot",
     "static/media/Circe-Regular.ttf": "/wallet/static/media/Circe-Regular.814e4dd4329ffdb6c9ed.ttf",
     "static/media/Circe-Bold.eot": "/wallet/static/media/Circe-Bold.23b8280ab15052d5ba11.eot",
     "static/media/Circe-Bold.ttf": "/wallet/static/media/Circe-Bold.63396ee791f60623acbf.ttf",
+    "static/media/Rectangle.png.png": "/wallet/static/media/Rectangle.png.5d783f4af49a617aafab.png",
     "static/media/Circe-Bold.woff": "/wallet/static/media/Circe-Bold.fca9743700608e1abf6a.woff",
     "static/media/Circe-Regular.woff": "/wallet/static/media/Circe-Regular.a5168fcec068fa77220a.woff",
     "static/media/Poppins-Regular.eot": "/wallet/static/media/Poppins-Regular.7cd84eb61ac1ed7b13e6.eot",
@@ -22,10 +23,10 @@
     "index.html": "/wallet/index.html",
     "static/media/exit.svg": "/wallet/static/media/exit.dcd3363176363020f7b35195714fb1e2.svg",
     "main.b9941ff0.css.map": "/wallet/static/css/main.b9941ff0.css.map",
-    "main.b59ddc47.js.map": "/wallet/static/js/main.b59ddc47.js.map"
+    "main.021705ad.js.map": "/wallet/static/js/main.021705ad.js.map"
   },
   "entrypoints": [
     "static/css/main.b9941ff0.css",
-    "static/js/main.b59ddc47.js"
+    "static/js/main.021705ad.js"
   ]
 }
