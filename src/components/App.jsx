@@ -1,27 +1,31 @@
 import { Route, Routes } from 'react-router-dom';
 // import { Navigate, Route, Routes } from 'react-router-dom';
+import { GlobalStyle } from './GlobalStyle';
 // import { lazy } from 'react';
 import Container from './Container/Container';
 import Balance from './Balance/Balance';
-import Loader from './Loader/Loader';
-import Header from './Header/Header'
+import Currency from './Currency/Currency';
+// import Loader from './Loader/Loader';
 
 export const App = () => {
   return (
-    <Container>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Header />
-              <Balance />
-              <Loader />
-            </>
-          }
-        />
+    <>
+      <GlobalStyle />
+      <Container>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Balance />
+                <Currency />
+                {/* <Loader /> */}
+              </>
+            }
+          />
 
-        {/* <Route path="/" element={<DashboardPage />}>
+
+          {/* <Route path="/" element={<DashboardPage />}>
         <Route index element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomeTab />} />
         <Route path="/diagram" element={<DiagramTab />} />
@@ -32,7 +36,8 @@ export const App = () => {
       <Route path="/signin" element={<SignIn />} />
 
       <Route path="*" element={<Navigate to="/" />} /> */}
-      </Routes>
-    </Container>
+        </Routes>
+      </Container>
+    </>
   );
 };
