@@ -67,7 +67,6 @@ export const CurrencyWrapper = styled.div`
 `;
 
 export const HeaderText = styled.p`
-  font-family: 'Circe';
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -77,7 +76,6 @@ export const HeaderText = styled.p`
 `;
 
 export const CurrencyInfoText = styled.p`
-  font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

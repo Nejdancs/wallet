@@ -10,9 +10,12 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body {
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'Circe', sans-serif;
     background-color: #fff;
     color: #010101;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   img {
     display: block;

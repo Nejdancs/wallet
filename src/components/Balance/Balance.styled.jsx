@@ -8,7 +8,7 @@ export const BalanceWrapper = styled.div`
   padding-top: 8px;
   padding-left: 32px;
   padding-bottom: 11px;
-  border: 1px solid tomato;
+  border: 1px solid black;
   border-radius: 30px;
   background-color: ${props => props.theme.colors.secondaryTextColor};
 
@@ -18,7 +18,7 @@ export const BalanceWrapper = styled.div`
     margin-left: 0;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     width: 395px;
   }
 `;
