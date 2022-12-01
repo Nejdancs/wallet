@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 // import { Navigate, Route, Routes } from 'react-router-dom';
 // import { lazy } from 'react';
 import Balance from './Balance/Balance';
-import Header from 'components/Header'
 
 export const App = () => {
   return (
@@ -11,7 +10,6 @@ export const App = () => {
         path="/"
         element={
           <>
-            <Header />
             <Balance />
           </>
         }
