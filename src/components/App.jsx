@@ -6,6 +6,7 @@ import Balance from './Balance/Balance';
 import Currency from './Currency/Currency';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
+import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 
 export const App = () => {
   return (
@@ -17,9 +18,7 @@ export const App = () => {
             path="/"
             element={
               <>
-                <Header />
-                <Balance />
-                <Currency />
+                <DashboardPage />
                 {/* <Loader /> */}
               </>
             }

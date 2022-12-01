@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from '../../components/header/header';
+import Header from 'components/Header/Header';
 import Media from 'react-media';
-import Balance from '../balance/balance';
-import Navigation from '../navigation/navigation';
-import Currency from 'components/Currency';
+import Balance from 'components/Balance/Balance';
+// import Navigation from '../navigation/navigation';
+import Currency from 'components/Currency/Currency';
 import { Suspense } from 'react';
-import bigImg from '../../images/Rectangle.png';
+import bigImg from 'images/Rectangle.png.png';
 import { Routes, Route } from 'react-router';
 
 import {
@@ -16,7 +16,7 @@ import {
   TabletWrapper,
   DesktopWrapper,
   Separator,
-} from './dashboardPage.styled';
+} from './DashboardPages.styled';
 
 export function DashboardPage() {
   return (
@@ -36,7 +36,7 @@ export function DashboardPage() {
                 {matches.small && (
                   <Container>
                     <ContainerDashboard>
-                      <Navigation />
+                      {/* <Navigation /> */}
                       <Routes>
                         <Route path="/home" element={<Balance />} />
                       </Routes>
@@ -50,7 +50,7 @@ export function DashboardPage() {
                   <Container>
                     <ContainerDashboard>
                       <TabletWrapper>
-                        <Navigation />
+                        {/* <Navigation /> */}
                         <Balance />
                       </TabletWrapper>
                       <Currency />
@@ -66,7 +66,7 @@ export function DashboardPage() {
                   <Container>
                     <ContainerDashboard>
                       <DesktopWrapper>
-                        <Navigation />
+                        {/* <Navigation /> */}
                         <Balance />
                         <Currency />
                       </DesktopWrapper>
