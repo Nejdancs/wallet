@@ -9,7 +9,7 @@ export const Button = styled.button`
   display: inline-block;
   color: ${props => props.theme.colors.secondaryTextColor};
   cursor: pointer;
-  font-family: ${props => props.theme.fontFamily.circe};
+  font-family: inherit;
   text-decoration: none;
   font-size: 18px;
   line-height: 27px;
