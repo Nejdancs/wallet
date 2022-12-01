@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from 'images/logo.svg';
+import Logo from 'components/Logo/Logo';
 import exit from 'images/exit.svg';
 import {
   AppHeader,
@@ -22,10 +22,7 @@ const Header = () => {
   return (
     <AppHeader>
       <HeaderWrapper>
-        <LogoWrapper>
-          <LogoImg src={logo} />
-          <LogoText>Wallet</LogoText>
-        </LogoWrapper>
+        <Logo />
         <HeaderNav>
           <HeaderNavItem>Name</HeaderNavItem>
           <HeaderNavItem>
