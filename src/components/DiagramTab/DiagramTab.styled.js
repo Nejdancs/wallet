@@ -40,6 +40,8 @@ export const Input = styled(Field)`
   border-radius: 30px;
   gap: 20px;
 `;
+
+// Table
 export const TableHeader = styled.div`
   height: 50px;
   display: flex;
@@ -55,3 +57,28 @@ export const TableHeaderItem = styled.div`
   /* display: flex;
   justify-content: space-between; */
 `;
+export const Transaction = styled.div`
+  height: 54px;
+  padding: 15px 20px;
+  display: flex;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.13;
+  align-items: center;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+`;
+
+export const IconCol = styled.span`
+  height: 24px;
+  width: 24px;
+  margin-right: 16px;
+  background-color: aliceblue;
+  border-radius: 2px;
+`;
+
+export const ItemCategory = styled.span`
+  margin-right: auto;
+`;
+
+export const ItemAmount = styled.span``;

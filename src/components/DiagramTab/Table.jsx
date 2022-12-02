@@ -1,13 +1,20 @@
 import React from 'react';
-import { TableHeader, TableHeaderItem } from './DiagramTab.styled';
+import {
+  TableHeader,
+  TableHeaderItem,
+  Transaction,
+  IconCol,
+  ItemCategory,
+  ItemAmount,
+} from './DiagramTab.styled';
 
 const Table = ({ incomingData }) => {
   const cardsMarkup = incomingData.map(trans => (
-    <div>
-      <span>col</span>
-      <span>{trans.category}</span>
-      <span>{trans.amount}</span>
-    </div>
+    <Transaction>
+      <IconCol />
+      <ItemCategory>{trans.category}</ItemCategory>
+      <ItemAmount>{trans.amount}</ItemAmount>
+    </Transaction>
   ));
   return (
     <div>
