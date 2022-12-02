@@ -1,10 +1,12 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
+import DiagramTab from './DiagramTab/DiagramTab';
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<>Hello wallet</>} />
+      <Route path="/chart" element={<DiagramTab />} />
 
       {/* <Route path="/" element={<DashboardPage />}>
         <Route index element={<Navigate to="/home" />} />
