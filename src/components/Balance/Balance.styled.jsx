@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import device from 'assets/breakpoints/device';
 
 export const BalanceWrapper = styled.div`
   width: 280px;
@@ -8,24 +9,21 @@ export const BalanceWrapper = styled.div`
   padding-top: 8px;
   padding-left: 32px;
   padding-bottom: 11px;
-  border: 1px solid black;
   border-radius: 30px;
   background-color: ${props => props.theme.colors.secondaryTextColor};
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 336px;
     padding-left: 40px;
     margin-left: 0;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 395px;
   }
 `;
 
 export const BalanceTitle = styled.p`
-  margin: 0;
-  padding: 0;
   margin-bottom: 12px;
   color: #a6a6a6;
   text-transform: uppercase;
@@ -34,8 +32,6 @@ export const BalanceTitle = styled.p`
 `;
 
 export const BalanceValue = styled.p`
-  margin: 0;
-  padding: 0;
   color: ${props => props.theme.colors.primaryTextColor};
   font-family: ${props => props.theme.fontFamily.poppins};
   font-size: 30px;
