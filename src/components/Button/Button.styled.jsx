@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import device from 'assets/breakpoints/device';
 
 export const Button = styled.button`
   padding: 13px 55px;
@@ -22,5 +23,7 @@ export const Button = styled.button`
   :hover,
   :focus {
     transform: scale(1.03);
+  }
+  @media ${device.mobile} {
   }
 `;
