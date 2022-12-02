@@ -7,36 +7,39 @@ import Currency from './Currency/Currency';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
+import Media from 'react-media';
+import HomeTab from './HomeTab/HomeTab';
 
 export const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Container>
-        <Routes>
+      <Routes>
+        <Route path="/" element={<DashboardPage />}>
+          <Route index element={<Navigate to="/home" />} />
+          <Route path="home" element={<HomeTab />} />
+          <Route path="diagram" element={<>DiagramTab</>} />
           <Route
-            path="/"
+            path="currency"
             element={
-              <>
-                <DashboardPage />
-                {/* <Loader /> */}
-              </>
+              <Media
+                queries={{
+                  small: '(max-width: 767px)',
+                }}
+              >
+                {matches =>
+                  matches.small ? <Currency /> : <Navigate to="/home" />
+                }
+              </Media>
             }
           />
+        </Route>
 
-          {/* <Route path="/" element={<DashboardPage />}>
-        <Route index element={<Navigate to="/home" />} />
-        <Route path="/home" element={<HomeTab />} />
-        <Route path="/diagram" element={<DiagramTab />} />
-        <Route path="/currency" element={<Currency />} />
-      </Route>
+        {/* <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} /> */}
 
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/login" element={<LogIn />} />
-
-      <Route path="*" element={<Navigate to="/" />} /> */}
-        </Routes>
-      </Container>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </>
   );
 };

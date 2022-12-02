@@ -1,17 +1,15 @@
 import styled from 'styled-components';
-import theme from '../../theme/theme';
-
-const color = theme.colors;
+import device from 'assets/breakpoints/device';
 
 export const AppHeader = styled.header`
   display: flex;
   height: 60px;
   justify-content: center;
   align-items: center;
-  background-color: ${color.secondaryBg};
+  background-color: ${props => props.theme.colors.secondaryBg};
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     height: 80px;
   }
 `;
@@ -30,7 +28,7 @@ export const HeaderNav = styled.ul`
   list-style: none;
   align-items: center;
   margin-right: 20px;
-  @media screen and (min-width: 480px) {
+  @media ${device.tablet} {
     margin-right: 30px;
   }
 `;
@@ -49,7 +47,7 @@ export const HeaderNavItem = styled.li`
   &:not(:last-child) {
     margin-right: 8px;
   }
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     padding-top: 5px;
     height: 30px;
     &:not(:last-child) {
@@ -68,7 +66,7 @@ export const NavImage = styled.img`
   width: 18px;
   height: 18px;
   margin-right: 8px;
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     margin-top: 3px;
   }
 `;
@@ -84,7 +82,7 @@ export const ExitText = styled.p`
   clip: rect(0 0 0 0);
   overflow: hidden;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     margin-top: 3px;
     position: static;
     width: 34px;
@@ -97,10 +95,10 @@ export const ButtonLogout = styled.button`
   display: flex;
   border: none;
   color: #bdbdbd;
-  background-color: ${color.secondaryBg};
+  background-color: ${props => props.theme.colors.secondaryBg};
   &:hover,
   &:focus {
     cursor: pointer;
-    color: ${color.accentPrimary};
+    color: ${props => props.theme.colors.accentPrimary};
   }
 `;
