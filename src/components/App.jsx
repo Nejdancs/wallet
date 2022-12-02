@@ -8,6 +8,7 @@ import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 import Media from 'react-media';
+import HomeTab from './HomeTab/HomeTab';
 
 export const App = () => {
   return (
@@ -16,7 +17,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<DashboardPage />}>
           <Route index element={<Navigate to="/home" />} />
-          <Route path="home" element={<>HomeTab</>} />
+          <Route path="home" element={<HomeTab />} />
           <Route path="diagram" element={<>DiagramTab</>} />
           <Route
             path="currency"
