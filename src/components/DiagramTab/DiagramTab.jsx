@@ -22,7 +22,10 @@ const DiagramTab = () => {
       <Title>Statistics</Title>
       <Chart balance={26500} incomingData={incomingData} />
       <FormFilter />
-      <Table incomingData={incomingData} />
+      <Table
+        incomingData={incomingData}
+        totals={{ expenses: 22549.24, income: 27350.0 }}
+      />
     </section>
   );
 };

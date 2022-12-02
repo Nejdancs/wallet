@@ -82,3 +82,22 @@ export const ItemCategory = styled.span`
 `;
 
 export const ItemAmount = styled.span``;
+
+export const Totals = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+`;
+
+export const TotalCategory = styled.span``;
+
+export const TotalAmountExp = styled.span`
+  color: ${theme.colors.expenseColor};
+`;
+export const TotalAmountInc = styled.span`
+  color: ${theme.colors.accentPrimary};
+`;

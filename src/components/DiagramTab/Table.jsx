@@ -6,23 +6,34 @@ import {
   IconCol,
   ItemCategory,
   ItemAmount,
+  Totals,
+  TotalCategory,
+  TotalAmountExp,
+  TotalAmountInc,
 } from './DiagramTab.styled';
 
-const Table = ({ incomingData }) => {
-  const cardsMarkup = incomingData.map(trans => (
-    <Transaction>
-      <IconCol />
-      <ItemCategory>{trans.category}</ItemCategory>
-      <ItemAmount>{trans.amount}</ItemAmount>
-    </Transaction>
-  ));
+const Table = ({ incomingData, totals }) => {
   return (
     <div>
       <TableHeader>
         <TableHeaderItem>Category</TableHeaderItem>
         <TableHeaderItem>Sum</TableHeaderItem>
       </TableHeader>
-      {cardsMarkup}
+      {incomingData.map(trans => (
+        <Transaction>
+          <IconCol />
+          <ItemCategory>{trans.category}</ItemCategory>
+          <ItemAmount>{trans.amount}</ItemAmount>
+        </Transaction>
+      ))}
+      <Totals>
+        <TotalCategory>Expenses:</TotalCategory>
+        <TotalAmountExp>{totals.expenses}</TotalAmountExp>
+      </Totals>
+      <Totals>
+        <TotalCategory>Income:</TotalCategory>
+        <TotalAmountInc>{totals.income}</TotalAmountInc>
+      </Totals>
     </div>
   );
 };
