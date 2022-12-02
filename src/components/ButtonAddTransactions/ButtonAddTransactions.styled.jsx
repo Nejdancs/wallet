@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
+export const IconButton = styled.svg`
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+
+  color: white;
+
+  margin: auto;
+`;
+
 export const Button = styled.button`
   cursor: pointer;
   position: fixed;
@@ -25,23 +35,12 @@ export const Button = styled.button`
     background-color: rgb(25, 142, 116);
   }
 
+  &:hover ${IconButton}, &:focus ${IconButton} {
+    color: #ff6b08;
+  }
+
   @media ${device.desktop} {
     right: 40px;
     bottom: 40px;
   }
-`;
-
-export const IconButton = styled.svg`
-  display: inline-flex;
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-
-  color: white;
-
-  &:hover,
-  &:focus {
-    color: #ff6b08;
-  }
-  margin: auto;
 `;

@@ -1,11 +1,11 @@
-import buttonAddTransactions from 'images/buttonAddTransactions.svg';
+import sprite from 'images/sprite.svg';
 import { Button, IconButton } from './ButtonAddTransactions.styled';
 
 const ButtonAddTransactions = () => {
   return (
     <Button type="button">
       <IconButton>
-        <use href={buttonAddTransactions}></use>
+        <use href={sprite + '#buttonAddTransactions'} />
       </IconButton>
     </Button>
   );
