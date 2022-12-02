@@ -13,7 +13,7 @@ export const CurrencyListHeader = styled.div`
   @media (min-width: 768px) {
     padding: 12px 12px 12px 20px;
   }
-  @media (min-width: 1279px) {
+  @media (min-width: 1280px) {
     height: 60px;
     padding: 16px 64px 16px 44px;
   }
@@ -35,7 +35,7 @@ export const CurrencyList = styled.ul`
     height: 132px;
     padding: 16px 20px 20px 20px;
   }
-  @media (min-width: 1279px) {
+  @media (min-width: 1280px) {
     height: 287px;
     padding: 20px 61px 20px 58px;
   }
@@ -49,7 +49,7 @@ export const CurrensyItems = styled.li`
     margin-bottom: 12px;
   }
 
-  @media (min-width: 1279px) {
+  @media (min-width: 1280px) {
     &:not(:last-child) {
       margin-bottom: 24px;
     }
@@ -61,7 +61,7 @@ export const CurrencyWrapper = styled.div`
   @media (min-width: 768px) {
     width: 336px;
   }
-  @media (min-width: 1279px) {
+  @media (min-width: 1280px) {
     width: 393px;
   }
 `;
@@ -86,6 +86,6 @@ export const CurrencyInfoText = styled.p`
   @media (min-width: 768px) {
   }
 
-  @media (min-width: 1279px) {
+  @media (min-width: 1280px) {
   }
 `;
