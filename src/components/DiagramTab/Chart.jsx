@@ -6,19 +6,7 @@ import { ChartContainer, DoughnutBalance } from './DiagramTab.styled.js';
 
 ChartJS.register(ArcElement, Tooltip);
 
-const Chart = ({ balance }) => {
-  const incomingData = [
-    { category: 'Basic expenses', amount: 11000 },
-    { category: 'Car', amount: 800 },
-    { category: 'Products', amount: 5600 },
-    { category: 'Self care', amount: 2513 },
-    { category: 'Child care', amount: 9645 },
-    { category: 'Household', amount: 6561 },
-    { category: 'Education', amount: 455 },
-    { category: 'Leisure', amount: 1000 },
-    { category: 'Other expenses', amount: 4548 },
-  ];
-
+const Chart = ({ balance, incomingData }) => {
   const data = {
     labels: incomingData.map(trans => trans.category),
     datasets: [
