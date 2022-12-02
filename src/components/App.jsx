@@ -9,6 +9,7 @@ import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 import Media from 'react-media';
 import HomeTab from './HomeTab/HomeTab';
+import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
 
 export const App = () => {
   return (
@@ -40,6 +41,7 @@ export const App = () => {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <ButtonAddTransactions />
     </>
   );
 };
