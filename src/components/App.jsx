@@ -6,7 +6,6 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<>Hello wallet</>} />
-      <Route path="/chart" element={<DiagramTab />} />
 
       {/* <Route path="/" element={<DashboardPage />}>
         <Route index element={<Navigate to="/home" />} />
