@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import device from 'assets/breakpoints/device';
 
 export const WrapperContainer = styled.div`
   max-width: 100%;
@@ -6,17 +7,17 @@ export const WrapperContainer = styled.div`
   padding: 0 20px;
   margin: 0 auto;
 
-  @media screen and (min-width: 320px) {
-    width: 320px;
+  @media ${device.mobile} {
+    width: 480px;
     margin: 0 auto;
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 768px;
     padding: 0 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 1280px;
     padding: 0 16px;
   }
