@@ -7,6 +7,7 @@ import Currency from './Currency/Currency';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 
 const DiagramTab = lazy(() => import('./DiagramTab/DiagramTab'));
 
@@ -17,7 +18,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<DashboardPage />}>
           <Route index element={<Navigate to="/home" />} />
-          <Route path="home" element={<HomeTab />} />
+          {/* <Route path="home" element={<HomeTab />} /> */}
           <Route path="diagram" element={<DiagramTab />} />
           <Route
             path="currency"
@@ -30,12 +31,11 @@ export const App = () => {
           />
         </Route>
 
-        {/* <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LogIn />} /> */}
+        {/* <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/login" element={<LoginPage />} />
 
-      <Route path="*" element={<Navigate to="/" />} /> */}
-        </Routes>
-      </Container>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </>
   );
 };

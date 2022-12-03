@@ -4,14 +4,19 @@ import device from 'assets/breakpoints/device';
 export const Button = styled.button`
   border-radius: 20px;
   margin: 0 auto 20px;
-  border: 1px ${props => props.theme.colors.accentPrimary};
-  background-color: ${props => props.theme.colors.accentPrimary};
+  border: 1px
+    ${props =>
+      props.theme.colors.accentPrimary || props.theme.colors.accentSecondary};
+  background-color: ${props =>
+    props.theme.colors.accentPrimary || props.theme.colors.secondaryBg};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
-  display: inline-block;
+  display: block;
   width: 280px;
   height: 50px;
-  color: ${props => props.theme.colors.secondaryTextColor};
+  color: ${props =>
+    props.theme.colors.secondaryTextColor ||
+    props.theme.colors.accentSecondary};
   cursor: pointer;
 
   font-family: inherit;
