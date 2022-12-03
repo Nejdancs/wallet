@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from './Chart';
+import Chart from './Chart/Chart';
 import FormFilter from './FormFilter';
 import Table from './Table';
 import { Section, Title, Column } from './DiagramTab.styled';
