@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from 'components/Logo/Logo';
 import exit from 'images/exit.svg';
 import {
@@ -13,8 +13,10 @@ import {
   ExitText,
   ButtonLogout,
 } from './Header.styled';
+import ModalLogout from 'components/ModalLogout';
 
 const Header = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   const TestClick = event => {
     event.preventDefault();
   };
@@ -26,11 +28,16 @@ const Header = () => {
         <HeaderNav>
           <HeaderNavItem>Name</HeaderNavItem>
           <HeaderNavItem>
-            <ButtonLogout onClick={TestClick}>
+            <ButtonLogout
+              onClick={() => {
+                setModalOpen(true);
+              }}
+            >
               <NavImage src={exit} />
               <ExitText>Exit</ExitText>
             </ButtonLogout>
           </HeaderNavItem>
+          {modalOpen && <ModalLogout setModalOpen={setModalOpen} />}
         </HeaderNav>
       </HeaderWrapper>
     </AppHeader>
