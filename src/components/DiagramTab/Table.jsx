@@ -19,7 +19,9 @@ const Table = ({ incomingData, totals }) => {
   for (let i = 0; i < incomingData.length; i += 1) {
     transactions.push(
       <Transaction key={incomingData[i]._id}>
-        <IconCol color={theme.doughnutColors[i]} />
+        <IconCol
+          color={theme.doughnutColors[i] ?? theme.doughnutColors[i - 38]}
+        />
         <ItemCategory>{incomingData[i].category}</ItemCategory>
         <ItemAmount>{numberSpace(incomingData[i].amount)}</ItemAmount>
       </Transaction>
