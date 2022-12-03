@@ -8,7 +8,7 @@ import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 import Media from 'react-media';
-import HomeTab from './HomeTab/HomeTab';
+import HomeTab from './HomeTab/MobileTab/MobileTab';
 import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
 
 const DiagramTab = lazy(() => import('./DiagramTab/DiagramTab'));
