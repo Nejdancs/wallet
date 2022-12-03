@@ -7,6 +7,7 @@ import Currency from './Currency/Currency';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 import Media from 'react-media';
 import HomeTab from './HomeTab/MobileTab/MobileTab';
 import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
@@ -20,26 +21,21 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<DashboardPage />}>
           <Route index element={<Navigate to="/home" />} />
-          <Route path="home" element={<HomeTab />} />
+          {/* <Route path="home" element={<HomeTab />} /> */}
           <Route path="diagram" element={<DiagramTab />} />
           <Route
             path="currency"
             element={
-              <Media
-                queries={{
-                  small: '(max-width: 767px)',
-                }}
-              >
-                {matches =>
-                  matches.small ? <Currency /> : <Navigate to="/home" />
-                }
-              </Media>
+              <>
+                <DashboardPage />
+                {/* <Loader /> */}
+              </>
             }
           />
         </Route>
 
-        {/* <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LogIn />} /> */}
+        {/* <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/login" element={<LoginPage />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
