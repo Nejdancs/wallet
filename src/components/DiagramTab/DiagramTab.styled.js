@@ -102,7 +102,7 @@ export const IconCol = styled.span`
   height: 24px;
   width: 24px;
   margin-right: 16px;
-  background-color: aliceblue;
+  background-color: ${props => (props.color ? props.color : 'grey')};
   border-radius: 2px;
 `;
 
