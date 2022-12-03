@@ -6,6 +6,7 @@ import Balance from './Balance/Balance';
 import Currency from './Currency/Currency';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
+import LoginPage from 'pages/LoginPage/LoginPage';
 
 export const App = () => {
   return (
@@ -17,7 +18,7 @@ export const App = () => {
             path="/"
             element={
               <>
-                <DashboardPage />
+                {/* <DashboardPage /> */}
                 {/* <Loader /> */}
               </>
             }
@@ -34,8 +35,8 @@ export const App = () => {
       <Route path="/login" element={<LogIn />} />
 
       <Route path="*" element={<Navigate to="/" />} /> */}
-          <Route path="/signup" element={<LoginPage />} />
-          {/* <Route path="/signin" element={<SignIn />} /> */}
+          <Route path="/signin" element={<LoginPage />} />
+          {/* <Route path="/signup" element={<SignIn />} /> */}
         </Routes>
       </Container>
     </>
