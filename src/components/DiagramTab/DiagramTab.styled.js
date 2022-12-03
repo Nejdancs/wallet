@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import theme from 'theme/theme';
 import { Field, Form } from 'formik';
+import arrowDown from '../../images/arrow-down.png';
 
 //Title
 export const Title = styled.h1`
@@ -15,7 +16,6 @@ export const Title = styled.h1`
 export const ChartContainer = styled.div`
   position: relative;
   margin-bottom: 32px;
-
   /* width: 280px; */
   /* height: 280px; */
 `;
@@ -32,8 +32,6 @@ export const DoughnutBalance = styled.p`
 
 //FormFilter
 export const FormEl = styled(Form)`
-  position: relative;
-
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -41,9 +39,9 @@ export const FormEl = styled(Form)`
 `;
 
 export const Input = styled(Field)`
-  position: relative;
   width: 100%;
   height: 50px;
+  padding: 12px 20px;
   border: 1px solid ${theme.colors.primaryTextColor};
   border-radius: 30px;
   background-color: transparent;
@@ -55,19 +53,20 @@ export const Input = styled(Field)`
 export const InpWrapper = styled.div`
   position: relative;
   &::after {
-    content: '55';
+    content: '';
     z-index: 2;
-    /* border-left: 1px solid #e9e9e9; */
     position: absolute;
     display: block;
-    /* right: 0; */
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 21px;
     width: 18px;
     height: 9px;
-    background-image: url(../../images.arrow-down.png);
+    /* background-color: blue; */
+    background: url(${arrowDown});
     background-repeat: no-repeat;
-    /* top: 0%; */
-    background-position-y: center;
-    background-position-x: center;
+    background-position: center;
+    background-size: cover;
   }
 `;
 

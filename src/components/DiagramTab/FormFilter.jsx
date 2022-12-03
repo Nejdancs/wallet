@@ -9,6 +9,7 @@ const FormFilter = () => {
         <FormEl>
           <InpWrapper>
             <Input as="select" name="month">
+              <option disabled>Month</option>
               <option value="01">January</option>
               <option value="02">February</option>
               <option value="03">March</option>
@@ -25,6 +26,7 @@ const FormFilter = () => {
           </InpWrapper>
           <InpWrapper>
             <Input as="select" name="year">
+              <option disabled>Year</option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
               <option value="2023">2023</option>

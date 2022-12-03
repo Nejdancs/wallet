@@ -11,6 +11,7 @@ import {
   TotalAmountExp,
   TotalAmountInc,
 } from './DiagramTab.styled';
+import { numberSpace } from 'helpers';
 
 const Table = ({ incomingData, totals }) => {
   return (
@@ -20,19 +21,19 @@ const Table = ({ incomingData, totals }) => {
         <TableHeaderItem>Sum</TableHeaderItem>
       </TableHeader>
       {incomingData.map(trans => (
-        <Transaction>
+        <Transaction key={trans._id}>
           <IconCol />
           <ItemCategory>{trans.category}</ItemCategory>
-          <ItemAmount>{trans.amount}</ItemAmount>
+          <ItemAmount>{numberSpace(trans.amount)}</ItemAmount>
         </Transaction>
       ))}
       <Totals>
         <TotalCategory>Expenses:</TotalCategory>
-        <TotalAmountExp>{totals.expenses}</TotalAmountExp>
+        <TotalAmountExp>{numberSpace(totals.expenses)}</TotalAmountExp>
       </Totals>
       <Totals>
         <TotalCategory>Income:</TotalCategory>
-        <TotalAmountInc>{totals.income}</TotalAmountInc>
+        <TotalAmountInc>{numberSpace(totals.income)}</TotalAmountInc>
       </Totals>
     </div>
   );
