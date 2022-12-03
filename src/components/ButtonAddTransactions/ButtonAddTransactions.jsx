@@ -6,7 +6,8 @@ const ButtonAddTransactions = ({ setModalOpen }) => {
   // const dispatch = useDispatch();
 
   return (
-    <Button type="button" onClick={setModalOpen(true)}>
+    // <Button type="button" onClick={setModalOpen(true)}>
+    <Button type="button" onClick={() => {}}>
       <IconButton>
         <use href={sprite + '#buttonAddTransactions'} />
       </IconButton>
