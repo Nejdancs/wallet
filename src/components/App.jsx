@@ -9,6 +9,9 @@ import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 import Media from 'react-media';
 import HomeTab from './HomeTab/MobileTab/MobileTab';
+import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
+
+const DiagramTab = lazy(() => import('./DiagramTab/DiagramTab'));
 
 export const App = () => {
   return (
@@ -18,7 +21,7 @@ export const App = () => {
         <Route path="/" element={<DashboardPage />}>
           <Route index element={<Navigate to="/home" />} />
           <Route path="home" element={<HomeTab />} />
-          <Route path="diagram" element={<>DiagramTab</>} />
+          <Route path="diagram" element={<DiagramTab />} />
           <Route
             path="currency"
             element={
@@ -40,6 +43,7 @@ export const App = () => {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <ButtonAddTransactions />
     </>
   );
 };
