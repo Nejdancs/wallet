@@ -27,8 +27,8 @@ export function DashboardPage() {
         <Section bigImg={bigImg}>
           <Container>
             <ContainerDashboard>
-              <Navigation />
-              <Balance />
+              {/* <Navigation />
+              <Balance /> */}
 
               <Media
                 queries={{

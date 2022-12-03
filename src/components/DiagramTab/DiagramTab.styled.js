@@ -2,6 +2,32 @@ import styled from 'styled-components';
 import theme from 'theme/theme';
 import { Field, Form } from 'formik';
 import arrowDown from '../../images/arrow-down.png';
+import device from 'assets/breakpoints/device';
+
+export const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media ${device.tablet} {
+    min-width: 692px;
+    flex-direction: row;
+    gap: 32px;
+  }
+  @media ${device.desktop} {
+    min-width: 715px;
+  }
+`;
+
+export const Column = styled.div`
+  &:nth-child(1) {
+    @media ${device.tablet} {
+      flex-basis: 50%;
+    }
+    @media ${device.desktop} {
+      flex-basis: 40%;
+    }
+  }
+`;
 
 //Title
 export const Title = styled.h1`
@@ -10,14 +36,25 @@ export const Title = styled.h1`
   font-weight: 400;
   font-size: 30px;
   line-height: 1.5;
+
+  @media ${device.desktop} {
+    margin-left: 15px;
+  }
 `;
 
 // Chart
 export const ChartContainer = styled.div`
   position: relative;
   margin-bottom: 32px;
-  /* width: 280px; */
-  /* height: 280px; */
+
+  /* @media ${device.tablet} {
+    width: 336px;
+    height: 336px;
+  }
+  @media ${device.desktop} {
+    width: 288px;
+    height: 288px;
+  } */
 `;
 export const DoughnutBalance = styled.p`
   position: absolute;

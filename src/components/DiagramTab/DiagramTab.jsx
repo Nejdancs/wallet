@@ -2,7 +2,7 @@ import React from 'react';
 import Chart from './Chart';
 import FormFilter from './FormFilter';
 import Table from './Table';
-import { Title } from './DiagramTab.styled';
+import { Section, Title, Column } from './DiagramTab.styled';
 
 const DiagramTab = () => {
   const incomingData = [
@@ -18,15 +18,19 @@ const DiagramTab = () => {
   ];
 
   return (
-    <section>
-      <Title>Statistics</Title>
-      <Chart balance={26500} incomingData={incomingData} />
-      <FormFilter />
-      <Table
-        incomingData={incomingData}
-        totals={{ expenses: 22549.24, income: 27350.0 }}
-      />
-    </section>
+    <Section>
+      <Column>
+        <Title>Statistics</Title>
+        <Chart balance={26500} incomingData={incomingData} />
+      </Column>
+      <Column>
+        <FormFilter />
+        <Table
+          incomingData={incomingData}
+          totals={{ expenses: 22549.24, income: 27350.0 }}
+        />
+      </Column>
+    </Section>
   );
 };
 export default DiagramTab;
