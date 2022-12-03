@@ -8,6 +8,9 @@ import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
+import Media from 'react-media';
+import HomeTab from './HomeTab/MobileTab/MobileTab';
+import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
 
 const DiagramTab = lazy(() => import('./DiagramTab/DiagramTab'));
 
@@ -36,6 +39,7 @@ export const App = () => {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <ButtonAddTransactions />
     </>
   );
 };
