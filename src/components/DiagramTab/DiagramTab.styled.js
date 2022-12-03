@@ -32,6 +32,8 @@ export const DoughnutBalance = styled.p`
 
 //FormFilter
 export const FormEl = styled(Form)`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -39,11 +41,34 @@ export const FormEl = styled(Form)`
 `;
 
 export const Input = styled(Field)`
+  position: relative;
+  width: 100%;
   height: 50px;
   border: 1px solid ${theme.colors.primaryTextColor};
   border-radius: 30px;
   background-color: transparent;
   gap: 20px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+`;
+
+export const InpWrapper = styled.div`
+  position: relative;
+  &::after {
+    content: '55';
+    z-index: 2;
+    /* border-left: 1px solid #e9e9e9; */
+    position: absolute;
+    display: block;
+    /* right: 0; */
+    width: 18px;
+    height: 9px;
+    background-image: url(../../images.arrow-down.png);
+    background-repeat: no-repeat;
+    /* top: 0%; */
+    background-position-y: center;
+    background-position-x: center;
+  }
 `;
 
 // Table
