@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
-import { FormEl, Select, InpWrapper } from './DiagramTab.styled.js';
+import { FormEl, Select, InpWrapper } from './FormFilter.styled';
 
 const FormFilter = props => {
   // const [month, setMonth] = useState('month');

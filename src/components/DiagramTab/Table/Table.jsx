@@ -10,7 +10,7 @@ import {
   TotalCategory,
   TotalAmountExp,
   TotalAmountInc,
-} from './DiagramTab.styled';
+} from './Table.styled';
 import { numberSpace } from 'helpers';
 import theme from 'theme/theme';
 

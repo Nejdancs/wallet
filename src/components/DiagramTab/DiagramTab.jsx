@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from './Chart/Chart';
-import FormFilter from './FormFilter';
-import Table from './Table';
+import FormFilter from './FormFilter/FormFilter';
+import Table from './Table/Table';
 import { Section, Title, Column } from './DiagramTab.styled';
 
 const DiagramTab = () => {
