@@ -38,7 +38,7 @@ export const FormEl = styled(Form)`
   gap: 20px;
 `;
 
-export const Input = styled(Field)`
+export const Select = styled.select`
   width: 100%;
   height: 50px;
   padding: 12px 20px;

@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
-import { FormEl, Input, InpWrapper } from './DiagramTab.styled.js';
+import { FormEl, Select, InpWrapper } from './DiagramTab.styled.js';
 
-const FormFilter = () => {
+const FormFilter = props => {
+  // const [month, setMonth] = useState('month');
+  // const [year, setYear] = useState('year');
+
   return (
     <div>
-      <Formik initialValues={{ month: '03', year: '2022' }} onSubmit={() => {}}>
+      <Formik
+        initialValues={{
+          month: 'month',
+          year: 'year',
+        }}
+        onSubmit={() => {}}
+      >
         <FormEl>
           <InpWrapper>
-            <Input as="select" name="month">
-              <option disabled>Month</option>
+            <Field as={Select} name="month">
+              <option value="month" disabled={true}>
+                Month
+              </option>
               <option value="01">January</option>
               <option value="02">February</option>
               <option value="03">March</option>
@@ -22,11 +33,13 @@ const FormFilter = () => {
               <option value="10">October</option>
               <option value="11">November</option>
               <option value="12">December</option>
-            </Input>
+            </Field>
           </InpWrapper>
           <InpWrapper>
-            <Input as="select" name="year">
-              <option disabled>Year</option>
+            <Field as={Select} name="year">
+              <option value="year" disabled={true}>
+                Year
+              </option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
               <option value="2023">2023</option>
@@ -37,7 +50,7 @@ const FormFilter = () => {
               <option value="2028">2028</option>
               <option value="2029">2029</option>
               <option value="2030">2030</option>
-            </Input>
+            </Field>
           </InpWrapper>
         </FormEl>
       </Formik>
