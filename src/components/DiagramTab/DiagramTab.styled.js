@@ -4,28 +4,30 @@ import { Field, Form } from 'formik';
 import arrowDown from '../../images/arrow-down.png';
 import device from 'assets/breakpoints/device';
 
-export const Section = styled.div`
+export const Section = styled.section`
   display: flex;
   flex-direction: column;
 
   @media ${device.tablet} {
-    min-width: 692px;
     flex-direction: row;
     gap: 32px;
   }
   @media ${device.desktop} {
-    min-width: 715px;
+    flex-basis: 715px;
   }
 `;
 
 export const Column = styled.div`
   &:nth-child(1) {
     @media ${device.tablet} {
-      flex-basis: 50%;
+      flex-basis: 45%;
     }
     @media ${device.desktop} {
-      flex-basis: 40%;
+      flex-basis: 35%;
     }
+  }
+  &:nth-child(2) {
+    flex-grow: 1;
   }
 `;
 
@@ -46,15 +48,6 @@ export const Title = styled.h1`
 export const ChartContainer = styled.div`
   position: relative;
   margin-bottom: 32px;
-
-  /* @media ${device.tablet} {
-    width: 336px;
-    height: 336px;
-  }
-  @media ${device.desktop} {
-    width: 288px;
-    height: 288px;
-  } */
 `;
 export const DoughnutBalance = styled.p`
   position: absolute;
@@ -73,22 +66,19 @@ export const FormEl = styled(Form)`
   flex-direction: column;
   margin-bottom: 20px;
   gap: 20px;
-`;
 
-export const Select = styled.select`
-  width: 100%;
-  height: 50px;
-  padding: 12px 20px;
-  border: 1px solid ${theme.colors.primaryTextColor};
-  border-radius: 30px;
-  background-color: transparent;
-  gap: 20px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
 `;
 
 export const InpWrapper = styled.div`
   position: relative;
+
+  @media ${device.tablet} {
+    flex-basis: 50%;
+  }
+
   &::after {
     content: '';
     z-index: 2;
@@ -105,6 +95,19 @@ export const InpWrapper = styled.div`
     background-position: center;
     background-size: cover;
   }
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  border: 1px solid ${theme.colors.primaryTextColor};
+  border-radius: 30px;
+  background-color: transparent;
+  /* gap: 20px; */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  display: block;
 `;
 
 // Table
