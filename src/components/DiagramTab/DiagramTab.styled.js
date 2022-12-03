@@ -4,6 +4,7 @@ import { Field, Form } from 'formik';
 
 //Title
 export const Title = styled.h1`
+  margin-bottom: 8px;
   font-family: ${theme.fontFamily.poppins};
   font-weight: 400;
   font-size: 30px;
@@ -13,6 +14,8 @@ export const Title = styled.h1`
 // Chart
 export const ChartContainer = styled.div`
   position: relative;
+  margin-bottom: 32px;
+
   /* width: 280px; */
   /* height: 280px; */
 `;
@@ -31,6 +34,7 @@ export const DoughnutBalance = styled.p`
 export const FormEl = styled(Form)`
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
   gap: 20px;
 `;
 
@@ -38,6 +42,7 @@ export const Input = styled(Field)`
   height: 50px;
   border: 1px solid ${theme.colors.primaryTextColor};
   border-radius: 30px;
+  background-color: transparent;
   gap: 20px;
 `;
 
