@@ -1,8 +1,9 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import theme from '../../theme/theme';
-import { ChartContainer, DoughnutBalance } from './DiagramTab.styled.js';
+import theme from '../../../theme/theme';
+import { ChartContainer, DoughnutBalance } from './Chart.styled';
+import { numberSpace } from 'helpers';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -25,7 +26,7 @@ const Chart = ({ balance, incomingData }) => {
     <ChartContainer>
       <Doughnut data={data} options={options} />
       <DoughnutBalance>
-        {'\u20B4'} {balance}
+        {'\u20B4'} {numberSpace(balance)}
       </DoughnutBalance>
     </ChartContainer>
   );
