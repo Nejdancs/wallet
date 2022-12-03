@@ -6,7 +6,7 @@ export const IconButton = styled.svg`
   width: 20px;
   height: 20px;
 
-  color: white;
+  color: ${props => props.theme.colors.secondaryTextColor};
 
   margin: auto;
 `;
@@ -15,6 +15,7 @@ export const Button = styled.button`
   cursor: pointer;
   position: fixed;
   right: 20px;
+  bottom: 20px;
   top: 90vh;
   width: 44px;
   height: 44px;
@@ -32,12 +33,12 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background-color: rgb(25, 142, 116);
+    background-color: rgb(7, 126, 100);
   }
 
-  &:hover ${IconButton}, &:focus ${IconButton} {
+  /* &:hover ${IconButton}, &:focus ${IconButton} {
     color: #ff6b08;
-  }
+  } */
 
   @media ${device.desktop} {
     right: 40px;
