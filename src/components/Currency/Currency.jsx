@@ -11,29 +11,42 @@ import {
 
 function Currency() {
   const [currency, setCurrency] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [datasTime, setDatasTime] = useState('');
+
+  async function readFromLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('currencyData'));
+    if (data && data.length === 3) {
+      setTimeout(() => {
+        setCurrency(data);
+      }, 1000);
+    } else {
+      const interval = setInterval(() => {
+        fetchCurrency();
+        const data = JSON.parse(localStorage.getItem('currencyData'));
+        if (data) {
+          clearInterval(interval);
+
+          setCurrency(data);
+
+          setTimeout(() => {
+            localStorage.removeItem('currencyData');
+          }, 600000);
+        }
+      }, 7000);
+    }
+  }
 
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        // setLoading(true);
-        const data = await fetchCurrency();
-        const slicedData = data.slice(0, 3);
-        console.log(slicedData);
-        setCurrency([...slicedData]);
+    readFromLocalStorage();
+    const interval = setInterval(() => {
+      readFromLocalStorage();
+      // fetchCurrency();
+      // const data = JSON.parse(localStorage.getItem('currencyData'));
+      // setCurrency(data);
+    }, 1200000);
 
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    const id = setInterval(() => {
-      // console.log('new request');
-      fetch();
-    }, 5000);
-
-    return () => clearInterval(id);
+    return () => clearInterval(interval);
   }, []);
 
   return (

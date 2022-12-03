@@ -6,37 +6,32 @@ import Balance from './Balance/Balance';
 import Currency from './Currency/Currency';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
-import LoginPage from 'pages/LoginPage/LoginPage';
+import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 
 export const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Container>
-        <Routes>
+      <Routes>
+        <Route path="/" element={<DashboardPage />}>
+          <Route index element={<Navigate to="/home" />} />
+          <Route path="home" element={<HomeTab />} />
+          <Route path="diagram" element={<>DiagramTab</>} />
           <Route
-            path="/"
+            path="currency"
             element={
               <>
-                {/* <DashboardPage /> */}
+                <DashboardPage />
                 {/* <Loader /> */}
               </>
             }
           />
+        </Route>
 
-          {/* <Route path="/" element={<DashboardPage />}>
-        <Route index element={<Navigate to="/home" />} />
-        <Route path="/home" element={<HomeTab />} />
-        <Route path="/diagram" element={<DiagramTab />} />
-        <Route path="/currency" element={<Currency />} />
-      </Route>
-
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/login" element={<LogIn />} />
+        {/* <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} /> */}
 
       <Route path="*" element={<Navigate to="/" />} /> */}
-          <Route path="/signin" element={<LoginPage />} />
-          {/* <Route path="/signup" element={<SignIn />} /> */}
         </Routes>
       </Container>
     </>

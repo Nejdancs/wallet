@@ -8,6 +8,7 @@ import Currency from 'components/Currency/Currency';
 import { Suspense } from 'react';
 import bigImg from 'images/Rectangle.png.png';
 import { Routes, Route } from 'react-router';
+import Navigation from 'components/Navigation/Navigation';
 
 import {
   Section,
@@ -24,7 +25,25 @@ export function DashboardPage() {
       <Header />
       <main>
         <Section bigImg={bigImg}>
-          <Media
+          <Container>
+            <ContainerDashboard>
+              <Navigation />
+              <Balance />
+
+              <Media
+                queries={{
+                  tablet: '(min-width: 768px)',
+                }}
+              >
+                {matches => matches.tablet && <Currency />}
+              </Media>
+
+              <Suspense fallback={null}>
+                <Outlet />
+              </Suspense>
+            </ContainerDashboard>
+          </Container>
+          {/* <Media
             queries={{
               small: '(max-width: 767px)',
               medium: '(min-width: 768px) and (max-width: 1279px)',
@@ -34,23 +53,13 @@ export function DashboardPage() {
             {matches => (
               <Fragment>
                 {matches.small && (
-                  <Container>
-                    <ContainerDashboard>
-                      {/* <Navigation /> */}
-                      <Routes>
-                        <Route path="/home" element={<Balance />} />
-                      </Routes>
-                      <Suspense fallback={null}>
-                        <Outlet />
-                      </Suspense>
-                    </ContainerDashboard>
-                  </Container>
+                  
                 )}
                 {matches.medium && (
                   <Container>
                     <ContainerDashboard>
                       <TabletWrapper>
-                        {/* <Navigation /> */}
+                        <Navigation />
                         <Balance />
                       </TabletWrapper>
                       <Currency />
@@ -66,7 +75,7 @@ export function DashboardPage() {
                   <Container>
                     <ContainerDashboard>
                       <DesktopWrapper>
-                        {/* <Navigation /> */}
+                        <Navigation />
                         <Balance />
                         <Currency />
                       </DesktopWrapper>
@@ -81,7 +90,7 @@ export function DashboardPage() {
                 )}
               </Fragment>
             )}
-          </Media>
+          </Media> */}
         </Section>
       </main>
     </>
