@@ -9,7 +9,8 @@ import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 import Media from 'react-media';
 import HomeTab from './HomeTab/HomeTab';
-import DiagramTab from './DiagramTab/DiagramTab';
+
+const DiagramTab = lazy(() => import('./DiagramTab/DiagramTab'));
 
 export const App = () => {
   return (
