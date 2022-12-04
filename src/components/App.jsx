@@ -8,6 +8,7 @@ import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
+import RegisterPage from 'pages/RegistrationPage/RegistrationPage';
 import Media from 'react-media';
 import HomeTab from './HomeTab/MobileTab/MobileTab';
 import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
@@ -39,7 +40,7 @@ export const App = () => {
           />
         </Route>
 
-        {/* <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/signup" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="*" element={<Navigate to="/" />} />

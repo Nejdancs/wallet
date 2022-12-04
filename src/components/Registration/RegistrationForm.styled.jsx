@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 import { Form, Field } from 'formik';
-import { ReactComponent as startLogo } from '../../images/start-logo.svg';
+import { ReactComponent as name } from '../../images/name.svg';
 import { ReactComponent as email } from '../../images/email.svg';
 import { ReactComponent as password } from '../../images/password.svg';
 
@@ -10,7 +10,7 @@ export const FormContainer = styled.div`
   height: 100vh;
   padding: 0 20px;
   margin: 0 auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
   @media ${device.mobile} {
     width: 480px;
@@ -47,6 +47,13 @@ export const IconPassword = styled(password)`
 `;
 
 export const IconMail = styled(email)`
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  fill: #e0e0e0;
+`;
+
+export const IconName = styled(name)`
   position: absolute;
   left: 10px;
   top: 4px;

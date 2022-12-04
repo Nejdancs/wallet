@@ -1,9 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
-import * as yup from 'yup';
-
+import { useNavigate } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 import {
   FormContainer,
   FormApp,
@@ -13,15 +12,13 @@ import {
   ErrorText,
   IconMail,
   IconPassword,
-  LogoM,
-} from './LoginForm.styled';
-// import { Button } from 'components/Button/Button.styled';
+  IconName,
+} from './RegistrationForm.styled';
+
 import Button from 'components/Button/Button';
-import { useNavigate } from 'react-router-dom';
+
 import Logo from 'components/Logo/Logo';
 import regEx from 'assets/regEx/regEx';
-
-// import Logo from 'components/Logo/Logo';
 
 const onValidate = yup.object().shape({
   email: yup
@@ -38,7 +35,7 @@ const onValidate = yup.object().shape({
     .required(),
 });
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const history = useHistory();
@@ -80,16 +77,36 @@ const LoginForm = () => {
               render={msg => <ErrorText>{msg}</ErrorText>}
             />
           </FormLabel>
+          <FormLabel>
+            <FormField
+              type="password"
+              name="password"
+              placeholder="Confirm password"
+            />
+            <IconPassword />
+            <ErrorMessage
+              name="password"
+              render={msg => <ErrorText>{msg}</ErrorText>}
+            />
+          </FormLabel>
+          <FormLabel>
+            <FormField type="name" name="name" placeholder="First name" />
+            <IconName />
+            <ErrorMessage
+              name="name"
+              render={msg => <ErrorText>{msg}</ErrorText>}
+            />
+          </FormLabel>
           <Button main type="submit">
-            Log In
+            Register
           </Button>
           <Button
             type="button"
             onClick={() => {
-              navigate('/home');
+              navigate('/login');
             }}
           >
-            Register
+            Log In
           </Button>
         </FormApp>
       </Formik>
@@ -97,4 +114,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

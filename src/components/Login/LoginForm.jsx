@@ -86,7 +86,7 @@ const LoginForm = () => {
           <Button
             type="button"
             onClick={() => {
-              navigate('/home');
+              navigate('/signup');
             }}
           >
             Register
