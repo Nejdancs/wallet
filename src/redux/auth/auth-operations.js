@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = '...';
+import { toast } from 'react-toastify';
+axios.defaults.baseURL = 'https://wallet-api-nnb3.onrender.com';
 
 const token = {
   set(token) {
@@ -14,30 +14,33 @@ const token = {
 
 const signUp = createAsyncThunk('auth/register', async credentials => {
   try {
-    const { data } = await axios.post('/users/signup', credentials);
+    const { data } = await axios.post('api/auth/signup', credentials);
     token.set(data.token);
+    toast.success(
+      'Your registration has been successfully completed. You have just been sent an email containing membership activation instructions'
+    );
     return data;
   } catch (error) {
-    console.log(error.message);
+    toast.error('Something went wrong! Please, try again');
   }
 });
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
-    const { data } = await axios.post('/users/login', credentials);
+    const { data } = await axios.post('api/auth/login', credentials);
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log(error.message);
+    toast.error('Something went wrong! Please, try again');
   }
 });
 
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('api/users/logout');
     token.unset();
   } catch (error) {
-    console.log(error.message);
+    toast.error('Something went wrong! Please, try again');
   }
 });
 
@@ -53,7 +56,7 @@ const fetchCurrentUser = createAsyncThunk(
 
     token.set(persistedToken);
     try {
-      const { data } = await axios.get('/users/current');
+      const { data } = await axios.get('api/users/current');
       return data;
     } catch (error) {}
   }

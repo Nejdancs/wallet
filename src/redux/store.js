@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
 import {
   persistStore,
   FLUSH,
@@ -9,17 +8,22 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { persistedAuthReducer } from './persist/persist-reducer';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
   reducer: {
-    // reducers
+    auth: persistedAuthReducer,
+    //
   },
+
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    // tApi.middleware,
   ],
 });
 
