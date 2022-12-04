@@ -6,21 +6,23 @@ import { ReactComponent as email } from '../../images/email.svg';
 import { ReactComponent as password } from '../../images/password.svg';
 
 export const FormContainer = styled.div`
-  min-width: 320px;
-  max-width: 480px;
   width: 100%;
+  height: 100vh;
   padding: 0 20px;
   margin: 0 auto;
   border: 1px solid black;
 
+  @media ${device.mobile} {
+    width: 480px;
+    height: auto;
+    border-radius: 20px;
+  }
+
   @media ${device.tablet} {
-    max-width: none;
     width: 533px;
 
     padding: 40px 58.5px 62px 65px;
     background-color: ${props => props.theme.colors.secondaryBg};
-
-    border-radius: 20px;
   }
 `;
 export const FormApp = styled(Form)`
@@ -37,6 +39,20 @@ export const FormLabel = styled.label`
   position: relative;
 `;
 
+export const IconPassword = styled(password)`
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  fill: #e0e0e0;
+`;
+
+export const IconMail = styled(email)`
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  fill: #e0e0e0;
+`;
+
 export const FormField = styled(Field)`
   border: none;
   border-bottom: 1px solid #e0e0e0;
@@ -44,6 +60,16 @@ export const FormField = styled(Field)`
   outline: none;
   padding-left: 54.5px;
   width: 100%;
+  color: #000000;
+
+  &:-webkit-autofill {
+    box-shadow: inset 0 0 0 100px #ffffff;
+    -webkit-text-fill-color: #000000;
+  }
+
+  &:focus + ${IconPassword}, &:focus + ${IconMail} {
+    fill: ${p => p.theme.colors.accentPrimary};
+  }
   ::placeholder {
     color: #e0e0e0;
   }
@@ -58,23 +84,8 @@ export const LogoContainer = styled.div`
   margin-bottom: 60px;
 `;
 
-export const LogoM = styled(startLogo)`
-  background-color: transparent;
-`;
-
 export const ErrorText = styled.p`
   font-weight: 200;
   font-size: 13px;
   color: red;
-`;
-
-export const IconMail = styled(email)`
-  position: absolute;
-  left: 10px;
-  top: 4px;
-`;
-export const IconPassword = styled(password)`
-  position: absolute;
-  left: 10px;
-  top: 4px;
 `;

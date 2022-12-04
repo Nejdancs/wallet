@@ -15,22 +15,38 @@ import {
   IconPassword,
   LogoM,
 } from './LoginForm.styled';
-import { Button } from 'components/Button/Button.styled';
+// import { Button } from 'components/Button/Button.styled';
+import Button from 'components/Button/Button';
+import { useNavigate } from 'react-router-dom';
+import Logo from 'components/Logo/Logo';
+import regEx from 'assets/regEx/regEx';
+
 // import Logo from 'components/Logo/Logo';
 
 const onValidate = yup.object().shape({
-  email: yup.string().min(2).required(),
-  password: yup.string().length(7).required(),
+  email: yup
+    .string()
+    .min(2)
+    .matches(regEx.email, 'type valid email')
+    .required(),
+  password: yup
+    .string()
+    .min(6, 'must min length 6')
+    .max(12, 'must max length 12')
+    .matches(regEx.password, 'bykBa i cufra')
+
+    .required(),
 });
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // const history = useHistory();
 
   const onSubmit = (values, onSubmitProps) => {
-    dispatch(values);
-    onSubmitProps.setSubmitting(false);
-    onSubmitProps.resetForm();
+    // dispatch(values);
+    // onSubmitProps.setSubmitting(false);
+    // onSubmitProps.resetForm();
   };
 
   const onRegBtn = () => {
@@ -46,9 +62,8 @@ const LoginForm = () => {
       >
         <FormApp>
           <LogoContainer>
-            <LogoM />
+            <Logo />
           </LogoContainer>
-
           <FormLabel>
             <FormField type="email" name="email" placeholder="E-mail" />
             <IconMail />
@@ -57,7 +72,6 @@ const LoginForm = () => {
               render={msg => <ErrorText>{msg}</ErrorText>}
             />
           </FormLabel>
-
           <FormLabel>
             <FormField type="password" name="password" placeholder="Password" />
             <IconPassword />
@@ -66,10 +80,15 @@ const LoginForm = () => {
               render={msg => <ErrorText>{msg}</ErrorText>}
             />
           </FormLabel>
-          <Button type="submit" onSubmit={onSubmit}>
+          <Button main type="submit">
             Log In
           </Button>
-          <Button type="button" typeButton="secondary" onClick={onRegBtn}>
+          <Button
+            type="button"
+            onClick={() => {
+              navigate('/home');
+            }}
+          >
             Register
           </Button>
         </FormApp>

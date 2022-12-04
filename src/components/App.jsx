@@ -21,15 +21,20 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<DashboardPage />}>
           <Route index element={<Navigate to="/home" />} />
-          {/* <Route path="home" element={<HomeTab />} /> */}
+          <Route path="home" element={<HomeTab />} />
           <Route path="diagram" element={<DiagramTab />} />
           <Route
             path="currency"
             element={
-              <>
-                <DashboardPage />
-                {/* <Loader /> */}
-              </>
+              <Media
+                queries={{
+                  small: '(max-width: 767px)',
+                }}
+              >
+                {matches =>
+                  matches.small ? <Currency /> : <Navigate to="/home" />
+                }
+              </Media>
             }
           />
         </Route>
@@ -39,7 +44,7 @@ export const App = () => {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <ButtonAddTransactions />
+      {/* <ButtonAddTransactions /> */}
     </>
   );
 };

@@ -1,22 +1,21 @@
 import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   border-radius: 20px;
   margin: 0 auto 20px;
-  border: 1px
-    ${props =>
-      props.theme.colors.accentPrimary || props.theme.colors.accentSecondary};
-  background-color: ${props =>
-    props.theme.colors.accentPrimary || props.theme.colors.secondaryBg};
+  border: 1px solid
+    ${({ main, theme }) =>
+      main ? theme.colors.accentPrimary : theme.colors.accentSecondary};
+  background-color: ${({ main, theme }) =>
+    main ? theme.colors.accentPrimary : theme.colors.secondaryBg};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   display: block;
   width: 280px;
   height: 50px;
-  color: ${props =>
-    props.theme.colors.secondaryTextColor ||
-    props.theme.colors.accentSecondary};
+  color: ${({ main, theme }) =>
+    main ? theme.colors.secondaryTextColor : theme.colors.accentSecondary};
   cursor: pointer;
 
   font-family: inherit;

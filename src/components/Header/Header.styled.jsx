@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
+export const WrapperLogo = styled.div`
+  margin-left: 20px;
+  margin-right: auto;
+
+  @media screen and (min-width: 480px) {
+    margin-left: 30px;
+  }
+`;
+
 export const AppHeader = styled.header`
   display: flex;
   height: 60px;
