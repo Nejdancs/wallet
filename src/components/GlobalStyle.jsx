@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
   }
   img {
     display: block;
@@ -44,4 +45,10 @@ export const GlobalStyle = createGlobalStyle`
 address {
   font-style: normal;
 }
+
+
+::selection {
+    background-color: #5cebdf;
+}
+
 `;
