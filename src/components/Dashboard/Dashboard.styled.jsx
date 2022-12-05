@@ -14,16 +14,17 @@ export const DashboardContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
+
   @media ${device.tablet} {
     display: flex;
     gap: 32px;
-    padding-top: 32px;
-    padding-bottom: 32px;
+    padding: 32px 0 20px;
   }
   @media ${device.desktop} {
     display: block;
-    padding-top: 40px;
-    padding-right: 138px;
+    padding: 40px 69px 0 0;
+    /* height: 100vh; */
 
     &::after {
       content: '';

@@ -1,30 +1,37 @@
-import React, { useMemo } from "react";
-import Media from "react-media";
-import { useSortBy, useTable } from "react-table";
-import { TAB_COLUMNS } from "./TabColumns";
-import { nanoid } from "nanoid";
+import React, { useMemo } from 'react';
+import Media from 'react-media';
+import { useSortBy, useTable } from 'react-table';
+import { TAB_COLUMNS } from './TabColumns';
+import { nanoid } from 'nanoid';
 
-import BtnAddTransaction from "../ButtonAddTransactions/ButtonAddTransactions"
-import { testData } from "./testData"
-import MobileTab from "./MobileTab/MobileTab"
-import NoTransactions from "./NoTransactions/NoTransactions"
+import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
+import { testData } from './testData';
+import MobileTab from './MobileTab/MobileTab';
+import NoTransactions from './NoTransactions/NoTransactions';
 
-import { HomeTabContainer, HomeTable, HomeTabHeader, ColumnHeader, HomeTr, HomeTabColumn } from "./HomeTab.styled"
+import {
+  HomeTabContainer,
+  HomeTable,
+  HomeTabHeader,
+  ColumnHeader,
+  HomeTr,
+  HomeTabColumn,
+} from './HomeTab.styled';
 
 const HomeTab = () => {
-    const columns = useMemo(() => TAB_COLUMNS, []);
-    const data = testData;
+  const columns = useMemo(() => TAB_COLUMNS, []);
+  const data = testData;
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, } = useTable(
-        { columns, data, }, useSortBy);
-    
-    return (
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data }, useSortBy);
+
+  return (
     <>
       {data.length > 0 ? (
         <>
           <Media
             queries={{
-              mobile: "(min-width: 768px)",
+              mobile: '(min-width: 768px)',
             }}
           >
             {({ mobile }) => (
@@ -34,14 +41,14 @@ const HomeTab = () => {
                 ) : (
                   <HomeTable {...getTableProps()}>
                     <HomeTabHeader>
-                      {headerGroups.map((headerGroup) => (
+                      {headerGroups.map(headerGroup => (
                         <tr
                           key={() => {
                             nanoid();
                           }}
                           {...headerGroup.getHeaderGroupProps()}
                         >
-                          {headerGroup.headers.map((column) => (
+                          {headerGroup.headers.map(column => (
                             <ColumnHeader
                               key={() => {
                                 nanoid();
@@ -50,7 +57,7 @@ const HomeTab = () => {
                                 column.getSortByToggleProps()
                               )}
                             >
-                              {column.render("Header")}
+                              {column.render('Header')}
                             </ColumnHeader>
                           ))}
                         </tr>
@@ -58,7 +65,7 @@ const HomeTab = () => {
                     </HomeTabHeader>
 
                     <tbody {...getTableBodyProps()}>
-                      {rows.map((row) => {
+                      {rows.map(row => {
                         prepareRow(row);
                         return (
                           <HomeTr
@@ -67,7 +74,7 @@ const HomeTab = () => {
                             }}
                             {...row.getRowProps()}
                           >
-                            {row.cells.map((cell) => {
+                            {row.cells.map(cell => {
                               return (
                                 <HomeTabColumn
                                   key={() => {
@@ -75,7 +82,7 @@ const HomeTab = () => {
                                   }}
                                   {...cell.getCellProps()}
                                 >
-                                  {cell.render("Cell")}
+                                  {cell.render('Cell')}
                                 </HomeTabColumn>
                               );
                             })}

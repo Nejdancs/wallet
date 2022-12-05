@@ -15,19 +15,20 @@ export function DashboardPage() {
     <>
       <Container>
         <Header />
-        <main>
-          <Section mediumImg={mediumImg} bigImg={bigImg}>
-            <Container>
-              <ContainerDashboard>
-                <Dashboard />
-                <Suspense fallback={null}>
-                  <Outlet />
-                </Suspense>
-              </ContainerDashboard>
-            </Container>
-          </Section>
-        </main>
       </Container>
+      <main>
+        <Section mediumImg={mediumImg} bigImg={bigImg}>
+          <Container>
+            <ContainerDashboard>
+              <Dashboard />
+
+              <Suspense fallback={null}>
+                <Outlet />
+              </Suspense>
+            </ContainerDashboard>
+          </Container>
+        </Section>
+      </main>
     </>
   );
 }

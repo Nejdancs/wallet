@@ -14,7 +14,7 @@ import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegistrationPage/RegistrationPage';
 import Media from 'react-media';
-import HomeTab from './HomeTab/MobileTab/MobileTab';
+import HomeTab from './HomeTab/HomeTab';
 import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
 
 const DiagramTab = lazy(() => import('./DiagramTab/DiagramTab'));
