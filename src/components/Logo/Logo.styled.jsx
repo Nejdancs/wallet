@@ -4,11 +4,6 @@ export const LogoWrapper = styled.div`
   width: 120px;
   height: 30px;
   display: flex;
-  margin-left: 20px;
-  margin-right: auto;
-  @media screen and (min-width: 480px) {
-    margin-left: 30px;
-  }
   @media screen and (min-width: 768px) {
     width: 181px;
     height: 40px;
