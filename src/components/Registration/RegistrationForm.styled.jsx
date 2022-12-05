@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
-import { Form, Field } from 'formik';
+import { Field } from 'formik';
 import { ReactComponent as name } from '../../images/name.svg';
 import { ReactComponent as email } from '../../images/email.svg';
 import { ReactComponent as password } from '../../images/password.svg';
@@ -25,7 +25,7 @@ export const FormContainer = styled.div`
     background-color: ${props => props.theme.colors.secondaryBg};
   }
 `;
-export const FormApp = styled(Form)`
+export const Form = styled.form`
   font-family: inherit;
   font-style: normal;
   font-weight: 400;
@@ -74,7 +74,7 @@ export const FormField = styled(Field)`
     -webkit-text-fill-color: #000000;
   }
 
-  &:focus + ${IconPassword}, &:focus + ${IconMail} {
+  &:focus + ${IconPassword}, &:focus + ${IconMail}, &:focus + ${IconName} {
     fill: ${p => p.theme.colors.accentPrimary};
   }
   ::placeholder {
@@ -92,7 +92,9 @@ export const LogoContainer = styled.div`
 `;
 
 export const ErrorText = styled.p`
-  font-weight: 200;
-  font-size: 13px;
-  color: red;
+  position: absolute;
+  top: 38px;
+  left: 5px;
+  font-size: 12px;
+  color: rgb(240, 0, 0);
 `;
