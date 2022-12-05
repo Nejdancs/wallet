@@ -1,8 +1,8 @@
 import persistReducer from 'redux-persist/es/persistReducer';
 import authReducer from '../auth/auth-slice';
-import { persistAuthConfig } from './persistConfig';
+import { authPersistConfig } from './persist-config';
 
 export const persistedAuthReducer = persistReducer(
-  persistAuthConfig,
+  authPersistConfig,
   authReducer
 );

@@ -1,5 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { GlobalStyle } from './GlobalStyle';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { lazy } from 'react';
 import Container from './Container/Container';
 import Balance from './Balance/Balance';
@@ -14,10 +18,23 @@ import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions
 
 const DiagramTab = lazy(() => import('./DiagramTab/DiagramTab'));
 
+// const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
+
+// const LoginPage = lazy(() => import('./pages/LoginPage'));
+
+// const DashboardPage = lazy(() => import('pages/DashboardPage'));
+
 export const App = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchCurrentUser());
+  // }, [dispatch]);
+
   return (
     <>
       <GlobalStyle />
+      <ToastContainer autoClose={5000} pauseOnHover theme="colored" />
       <Routes>
         <Route path="/" element={<DashboardPage />}>
           <Route index element={<Navigate to="/home" />} />
