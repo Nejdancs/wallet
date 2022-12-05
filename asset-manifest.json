@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/wallet/static/css/main.5d7033b1.css",
-    "main.js": "/wallet/static/js/main.161fa5b9.js",
+    "main.js": "/wallet/static/js/main.95c65cc9.js",
     "static/js/660.a0a20970.chunk.js": "/wallet/static/js/660.a0a20970.chunk.js",
     "static/js/623.4ee24276.chunk.js": "/wallet/static/js/623.4ee24276.chunk.js",
     "static/media/Circe-Regular.eot": "/wallet/static/media/Circe-Regular.13bbfad0e7f851273f3c.eot",
     "static/media/Circe-Regular.ttf": "/wallet/static/media/Circe-Regular.814e4dd4329ffdb6c9ed.ttf",
     "static/media/Circe-Bold.eot": "/wallet/static/media/Circe-Bold.23b8280ab15052d5ba11.eot",
     "static/media/Circe-Bold.ttf": "/wallet/static/media/Circe-Bold.63396ee791f60623acbf.ttf",
+    "static/media/rectangleDesk.png": "/wallet/static/media/rectangleDesk.5567ee844d84b1c5cf41.png",
     "static/media/Rectangle.png.png": "/wallet/static/media/Rectangle.png.5d783f4af49a617aafab.png",
     "static/media/Circe-Bold.woff": "/wallet/static/media/Circe-Bold.fca9743700608e1abf6a.woff",
     "static/media/Circe-Regular.woff": "/wallet/static/media/Circe-Regular.a5168fcec068fa77220a.woff",
@@ -30,12 +31,12 @@
     "static/media/email.svg": "/wallet/static/media/email.c954a7c00a2097732d0816dada955443.svg",
     "static/media/close.svg": "/wallet/static/media/close.4ca60f1813426122dabf98a3268fb691.svg",
     "main.5d7033b1.css.map": "/wallet/static/css/main.5d7033b1.css.map",
-    "main.161fa5b9.js.map": "/wallet/static/js/main.161fa5b9.js.map",
+    "main.95c65cc9.js.map": "/wallet/static/js/main.95c65cc9.js.map",
     "660.a0a20970.chunk.js.map": "/wallet/static/js/660.a0a20970.chunk.js.map",
     "623.4ee24276.chunk.js.map": "/wallet/static/js/623.4ee24276.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5d7033b1.css",
-    "static/js/main.161fa5b9.js"
+    "static/js/main.95c65cc9.js"
   ]
 }
