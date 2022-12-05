@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wallet/static/css/main.5d7033b1.css",
-    "main.js": "/wallet/static/js/main.95c65cc9.js",
+    "main.js": "/wallet/static/js/main.e254d81c.js",
     "static/js/660.a0a20970.chunk.js": "/wallet/static/js/660.a0a20970.chunk.js",
     "static/js/623.4ee24276.chunk.js": "/wallet/static/js/623.4ee24276.chunk.js",
     "static/media/Circe-Regular.eot": "/wallet/static/media/Circe-Regular.13bbfad0e7f851273f3c.eot",
@@ -22,21 +22,21 @@
     "static/media/Poppins-Bold.woff": "/wallet/static/media/Poppins-Bold.c4e77e991e26d17e68c5.woff",
     "static/media/Poppins-Regular.woff2": "/wallet/static/media/Poppins-Regular.5a6c15af2151cfa27e76.woff2",
     "static/media/Poppins-Bold.woff2": "/wallet/static/media/Poppins-Bold.b138d0279be06a607215.woff2",
-    "static/media/start-logo.svg": "/wallet/static/media/start-logo.85b113bd6ea207f2151e55747371dad1.svg",
     "static/media/logo.svg": "/wallet/static/media/logo.e39ac8ed765331a9db0fb9d6b7c54715.svg",
     "index.html": "/wallet/index.html",
     "static/media/exit.svg": "/wallet/static/media/exit.dcd3363176363020f7b35195714fb1e2.svg",
     "static/media/password.svg": "/wallet/static/media/password.a913718873c8901d6e6aa2ed605c1cf9.svg",
     "static/media/sprite.svg": "/wallet/static/media/sprite.36160b1eb9f16f7a63cb4ef831739adf.svg",
+    "static/media/name.svg": "/wallet/static/media/name.95278c6c89713843aec972d24fd8915e.svg",
     "static/media/email.svg": "/wallet/static/media/email.c954a7c00a2097732d0816dada955443.svg",
     "static/media/close.svg": "/wallet/static/media/close.4ca60f1813426122dabf98a3268fb691.svg",
     "main.5d7033b1.css.map": "/wallet/static/css/main.5d7033b1.css.map",
-    "main.95c65cc9.js.map": "/wallet/static/js/main.95c65cc9.js.map",
+    "main.e254d81c.js.map": "/wallet/static/js/main.e254d81c.js.map",
     "660.a0a20970.chunk.js.map": "/wallet/static/js/660.a0a20970.chunk.js.map",
     "623.4ee24276.chunk.js.map": "/wallet/static/js/623.4ee24276.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5d7033b1.css",
-    "static/js/main.95c65cc9.js"
+    "static/js/main.e254d81c.js"
   ]
 }
