@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from 'components/Logo/Logo';
+// import Logo from 'components/Logo/Logo';
 import exit from 'images/exit.svg';
 import {
   AppHeader,
@@ -12,8 +12,10 @@ import {
   NavImage,
   ExitText,
   ButtonLogout,
+  WrapperLogo,
 } from './Header.styled';
 import ModalLogout from 'components/ModalLogout';
+import Logo from 'components/Logo/Logo';
 
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,7 +26,10 @@ const Header = () => {
   return (
     <AppHeader>
       <HeaderWrapper>
-        <Logo />
+        <WrapperLogo>
+          <Logo />
+        </WrapperLogo>
+
         <HeaderNav>
           <HeaderNavItem>Name</HeaderNavItem>
           <HeaderNavItem>

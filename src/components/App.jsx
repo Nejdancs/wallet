@@ -11,8 +11,12 @@ import Currency from './Currency/Currency';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 import Media from 'react-media';
-import HomeTab from './HomeTab/HomeTab';
+import HomeTab from './HomeTab/MobileTab/MobileTab';
+import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
+
+const DiagramTab = lazy(() => import('./DiagramTab/DiagramTab'));
 
 // const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 
@@ -35,7 +39,7 @@ export const App = () => {
         <Route path="/" element={<DashboardPage />}>
           <Route index element={<Navigate to="/home" />} />
           <Route path="home" element={<HomeTab />} />
-          <Route path="diagram" element={<>DiagramTab</>} />
+          <Route path="diagram" element={<DiagramTab />} />
           <Route
             path="currency"
             element={
@@ -52,11 +56,12 @@ export const App = () => {
           />
         </Route>
 
-        {/* <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LogIn />} /> */}
+        {/* <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/login" element={<LoginPage />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      {/* <ButtonAddTransactions /> */}
     </>
   );
 };
