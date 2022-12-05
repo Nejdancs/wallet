@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/wallet/static/css/main.b9941ff0.css",
-    "main.js": "/wallet/static/js/main.e6093b30.js",
-    "static/js/660.92fee593.chunk.js": "/wallet/static/js/660.92fee593.chunk.js",
-    "static/js/77.ea8f38e8.chunk.js": "/wallet/static/js/77.ea8f38e8.chunk.js",
+    "main.css": "/wallet/static/css/main.5d7033b1.css",
+    "main.js": "/wallet/static/js/main.161fa5b9.js",
+    "static/js/660.a0a20970.chunk.js": "/wallet/static/js/660.a0a20970.chunk.js",
+    "static/js/623.4ee24276.chunk.js": "/wallet/static/js/623.4ee24276.chunk.js",
     "static/media/Circe-Regular.eot": "/wallet/static/media/Circe-Regular.13bbfad0e7f851273f3c.eot",
     "static/media/Circe-Regular.ttf": "/wallet/static/media/Circe-Regular.814e4dd4329ffdb6c9ed.ttf",
     "static/media/Circe-Bold.eot": "/wallet/static/media/Circe-Bold.23b8280ab15052d5ba11.eot",
@@ -29,13 +29,13 @@
     "static/media/sprite.svg": "/wallet/static/media/sprite.36160b1eb9f16f7a63cb4ef831739adf.svg",
     "static/media/email.svg": "/wallet/static/media/email.c954a7c00a2097732d0816dada955443.svg",
     "static/media/close.svg": "/wallet/static/media/close.4ca60f1813426122dabf98a3268fb691.svg",
-    "main.b9941ff0.css.map": "/wallet/static/css/main.b9941ff0.css.map",
-    "main.e6093b30.js.map": "/wallet/static/js/main.e6093b30.js.map",
-    "660.92fee593.chunk.js.map": "/wallet/static/js/660.92fee593.chunk.js.map",
-    "77.ea8f38e8.chunk.js.map": "/wallet/static/js/77.ea8f38e8.chunk.js.map"
+    "main.5d7033b1.css.map": "/wallet/static/css/main.5d7033b1.css.map",
+    "main.161fa5b9.js.map": "/wallet/static/js/main.161fa5b9.js.map",
+    "660.a0a20970.chunk.js.map": "/wallet/static/js/660.a0a20970.chunk.js.map",
+    "623.4ee24276.chunk.js.map": "/wallet/static/js/623.4ee24276.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9941ff0.css",
-    "static/js/main.e6093b30.js"
+    "static/css/main.5d7033b1.css",
+    "static/js/main.161fa5b9.js"
   ]
 }
