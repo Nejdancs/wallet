@@ -1,5 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import { useDispatch } from 'react-redux';
+import authOperations from 'redux/auth/auth-operations';
 
 import {
   ModalContainer,
@@ -16,6 +18,12 @@ import close from 'images/close.svg';
 
 const ModalLogout = ({ setModalOpen }) => {
   const modalRoot = document.querySelector('#modal-root');
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(authOperations.logOut());
+    setModalOpen(false);
+  };
 
   const handleKeyDown = useCallback(
     e => {
@@ -53,10 +61,15 @@ const ModalLogout = ({ setModalOpen }) => {
           </CloseBtn>
           <Text> Ви впевнені, що хочете вийти?</Text>
           <BtnContainer>
-            <ConfirmBtn type="button" onClick={() => {}}>
+            <ConfirmBtn type="button" onClick={handleClick}>
               Так
             </ConfirmBtn>
-            <CancelBtn type="button" onClick={() => {}}>
+            <CancelBtn
+              type="button"
+              onClick={() => {
+                setModalOpen(false);
+              }}
+            >
               Ні
             </CancelBtn>
           </BtnContainer>

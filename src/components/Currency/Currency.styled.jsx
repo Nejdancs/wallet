@@ -58,6 +58,8 @@ export const CurrensyItems = styled.li`
 
 export const CurrencyWrapper = styled.div`
   width: 280px;
+  margin: 0 auto;
+
   @media (min-width: 768px) {
     width: 336px;
   }

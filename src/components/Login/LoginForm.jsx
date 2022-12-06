@@ -1,27 +1,20 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
-
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import {
   FormContainer,
-  FormApp,
   FormField,
   FormLabel,
   LogoContainer,
   ErrorText,
   IconMail,
   IconPassword,
-  LogoM,
 } from './LoginForm.styled';
-// import { Button } from 'components/Button/Button.styled';
 import Button from 'components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import Logo from 'components/Logo/Logo';
 import regEx from 'assets/regEx/regEx';
-
-// import Logo from 'components/Logo/Logo';
 
 const onValidate = yup.object().shape({
   email: yup
@@ -41,7 +34,7 @@ const onValidate = yup.object().shape({
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const history = useHistory();
+  const [password, setPassword] = useState('');
 
   const onSubmit = (values, onSubmitProps) => {
     // dispatch(values);
@@ -49,49 +42,67 @@ const LoginForm = () => {
     // onSubmitProps.resetForm();
   };
 
-  const onRegBtn = () => {
-    // history.push('/signup');
-  };
+  const onRegBtn = () => {};
 
   return (
     <FormContainer>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{
+          email: '',
+          password: '',
+          confirmPassword: '',
+          firstname: '',
+        }}
         validationSchema={onValidate}
         onSubmit={onSubmit}
       >
-        <FormApp>
-          <LogoContainer>
-            <Logo />
-          </LogoContainer>
-          <FormLabel>
-            <FormField type="email" name="email" placeholder="E-mail" />
-            <IconMail />
-            <ErrorMessage
-              name="email"
-              render={msg => <ErrorText>{msg}</ErrorText>}
-            />
-          </FormLabel>
-          <FormLabel>
-            <FormField type="password" name="password" placeholder="Password" />
-            <IconPassword />
-            <ErrorMessage
-              name="password"
-              render={msg => <ErrorText>{msg}</ErrorText>}
-            />
-          </FormLabel>
-          <Button main type="submit">
-            Log In
-          </Button>
-          <Button
-            type="button"
-            onClick={() => {
-              navigate('/home');
-            }}
-          >
-            Register
-          </Button>
-        </FormApp>
+        {({ handleSubmit, handleChange, values }) => (
+          <Form onSubmit={handleSubmit}>
+            <LogoContainer>
+              <Logo />
+            </LogoContainer>
+            <FormLabel>
+              <FormField
+                type="email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                placeholder="E-mail"
+              />
+              <IconMail />
+              <ErrorMessage
+                name="email"
+                render={msg => <ErrorText>{msg}</ErrorText>}
+              />
+            </FormLabel>
+            <FormLabel>
+              <FormField
+                type="password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+                placeholder="Password"
+                onInput={evt => setPassword(evt.target.value)}
+              />
+              <IconPassword />
+              <ErrorMessage
+                name="password"
+                render={msg => <ErrorText>{msg}</ErrorText>}
+              />
+            </FormLabel>
+            <Button main type="submit">
+              Log In
+            </Button>
+            <Button
+              type="button"
+              onClick={() => {
+                navigate('/signup');
+              }}
+            >
+              Register
+            </Button>
+          </Form>
+        )}
       </Formik>
     </FormContainer>
   );

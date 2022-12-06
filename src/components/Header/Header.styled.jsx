@@ -2,12 +2,7 @@ import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
 export const WrapperLogo = styled.div`
-  margin-left: 20px;
   margin-right: auto;
-
-  @media screen and (min-width: 480px) {
-    margin-left: 30px;
-  }
 `;
 
 export const AppHeader = styled.header`
@@ -16,8 +11,6 @@ export const AppHeader = styled.header`
   justify-content: center;
   align-items: center;
   background-color: ${props => props.theme.colors.secondaryBg};
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   @media ${device.tablet} {
     height: 80px;
   }
@@ -36,10 +29,6 @@ export const HeaderNav = styled.ul`
   padding: 0px;
   list-style: none;
   align-items: center;
-  margin-right: 20px;
-  @media ${device.tablet} {
-    margin-right: 30px;
-  }
 `;
 
 export const HeaderNavItem = styled.li`

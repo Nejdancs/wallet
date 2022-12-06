@@ -33,5 +33,6 @@ export const StyledButton = styled.button`
   }
   @media ${device.mobile} {
     padding: 13px 65px;
+    width: 300px;
   }
 `;

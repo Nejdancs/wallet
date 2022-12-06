@@ -14,6 +14,7 @@ const theme = {
     secondaryCircleColorBg: '#FFD8D0',
     primaryBg: '#E7EAF266',
     secondaryBg: '#ffffff',
+    authPageBg: '#E5E5E5',
   },
   doughnutColors: [
     '#FED057',
