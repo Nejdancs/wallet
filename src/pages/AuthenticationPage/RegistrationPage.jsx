@@ -6,7 +6,6 @@ import {
   ImgSection,
   Container,
   FormWrapper,
-  FormContainerRegister,
 } from './AuthenticationPage.styled';
 
 const RegisterPage = () => {
