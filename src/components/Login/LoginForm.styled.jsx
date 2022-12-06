@@ -9,7 +9,7 @@ export const FormContainer = styled.div`
   height: 100vh;
   padding: 0 20px;
   margin: 0 auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
   @media ${device.mobile} {
     width: 480px;
