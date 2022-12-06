@@ -1,219 +1,106 @@
+import React, { useMemo } from 'react';
 import Media from 'react-media';
-import { Card, Head, Item, List, Table } from './HomeTab.styled';
+import { useSortBy, useTable } from 'react-table';
+import { TAB_COLUMNS } from './TabColumns';
+import { nanoid } from 'nanoid';
+
+import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
+import { testData } from './testData';
+import MobileTab from './MobileTab/MobileTab';
+import NoTransactions from './NoTransactions/NoTransactions';
+
+import {
+  HomeTabContainer,
+  HomeTable,
+  HomeTabHeader,
+  ColumnHeader,
+  HomeTr,
+  HomeTabColumn,
+} from './HomeTab.styled';
 
 const HomeTab = () => {
+  const columns = useMemo(() => TAB_COLUMNS, []);
+  const data = testData;
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data }, useSortBy);
+
   return (
-    <Media
-      queries={{
-        max: '(max-width: 767px)',
-      }}
-    >
-      {matches =>
-        matches.max ? (
-          <List>
-            <Card>
-              <ul>
-                <Item>
-                  <Head>Date</Head>
-                  <p>04.01.19</p>
-                </Item>
-                <Item>
-                  <Head>Type</Head>
-                  <p>-</p>
-                </Item>
-                <Item>
-                  <Head>Category</Head>
-                  <p>Other</p>
-                </Item>
-                <Item>
-                  <Head>Comment</Head>
-                  <p>Gift for your wife</p>
-                </Item>
-                <Item>
-                  <Head>Sum</Head>
-                  <p>300.00</p>
-                </Item>
-                <Item>
-                  <Head>Balance</Head>
-                  <p>6 900.00</p>
-                </Item>
-              </ul>
-            </Card>
+    <>
+      {data.length > 0 ? (
+        <>
+          <Media
+            queries={{
+              mobile: '(min-width: 768px)',
+            }}
+          >
+            {({ mobile }) => (
+              <HomeTabContainer>
+                {!mobile ? (
+                  <MobileTab />
+                ) : (
+                  <HomeTable {...getTableProps()}>
+                    <HomeTabHeader>
+                      {headerGroups.map(headerGroup => (
+                        <tr
+                          key={() => {
+                            nanoid();
+                          }}
+                          {...headerGroup.getHeaderGroupProps()}
+                        >
+                          {headerGroup.headers.map(column => (
+                            <ColumnHeader
+                              key={() => {
+                                nanoid();
+                              }}
+                              {...column.getHeaderProps(
+                                column.getSortByToggleProps()
+                              )}
+                            >
+                              {column.render('Header')}
+                            </ColumnHeader>
+                          ))}
+                        </tr>
+                      ))}
+                    </HomeTabHeader>
 
-            <Card>
-              <ul>
-                <Item>
-                  <Head>Date</Head>
-                  <p>04.01.19</p>
-                </Item>
-                <Item>
-                  <Head>Type</Head>
-                  <p>-</p>
-                </Item>
-                <Item>
-                  <Head>Category</Head>
-                  <p>Other</p>
-                </Item>
-                <Item>
-                  <Head>Comment</Head>
-                  <p>Gift for your wife</p>
-                </Item>
-                <Item>
-                  <Head>Sum</Head>
-                  <p>300.00</p>
-                </Item>
-                <Item>
-                  <Head>Balance</Head>
-                  <p>6 900.00</p>
-                </Item>
-              </ul>
-            </Card>
-
-            <Card>
-              <ul>
-                <Item>
-                  <Head>Date</Head>
-                  <p>04.01.19</p>
-                </Item>
-                <Item>
-                  <Head>Type</Head>
-                  <p>-</p>
-                </Item>
-                <Item>
-                  <Head>Category</Head>
-                  <p>Other</p>
-                </Item>
-                <Item>
-                  <Head>Comment</Head>
-                  <p>Gift for your wife</p>
-                </Item>
-                <Item>
-                  <Head>Sum</Head>
-                  <p>300.00</p>
-                </Item>
-                <Item>
-                  <Head>Balance</Head>
-                  <p>6 900.00</p>
-                </Item>
-              </ul>
-            </Card>
-
-            <Card>
-              <ul>
-                <Item>
-                  <Head>Date</Head>
-                  <p>04.01.19</p>
-                </Item>
-                <Item>
-                  <Head>Type</Head>
-                  <p>-</p>
-                </Item>
-                <Item>
-                  <Head>Category</Head>
-                  <p>Other</p>
-                </Item>
-                <Item>
-                  <Head>Comment</Head>
-                  <p>Gift for your wife</p>
-                </Item>
-                <Item>
-                  <Head>Sum</Head>
-                  <p>300.00</p>
-                </Item>
-                <Item>
-                  <Head>Balance</Head>
-                  <p>6 900.00</p>
-                </Item>
-              </ul>
-            </Card>
-
-            <Card>
-              <ul>
-                <Item>
-                  <Head>Date</Head>
-                  <p>04.01.19</p>
-                </Item>
-                <Item>
-                  <Head>Type</Head>
-                  <p>-</p>
-                </Item>
-                <Item>
-                  <Head>Category</Head>
-                  <p>Other</p>
-                </Item>
-                <Item>
-                  <Head>Comment</Head>
-                  <p>Gift for your wife</p>
-                </Item>
-                <Item>
-                  <Head>Sum</Head>
-                  <p>300.00</p>
-                </Item>
-                <Item>
-                  <Head>Balance</Head>
-                  <p>6 900.00</p>
-                </Item>
-              </ul>
-            </Card>
-          </List>
-        ) : (
-          <Table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Comment</th>
-                <th>Sum</th>
-                <th>Balance</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>04.01.19</td>
-                <td>-</td>
-                <td>Other</td>
-                <td>Gift for your wife</td>
-                <td>300.00</td>
-                <td>6 900.00</td>
-              </tr>
-              <tr>
-                <td>04.01.19</td>
-                <td>-</td>
-                <td>Other</td>
-                <td>Gift for your wife</td>
-                <td>300.00</td>
-                <td>6 900.00</td>
-              </tr>
-              <tr>
-                <td>04.01.19</td>
-                <td>-</td>
-                <td>Other</td>
-                <td>Gift for your wife</td>
-                <td>300.00</td>
-                <td>6 900.00</td>
-              </tr>
-              <tr>
-                <td>04.01.19</td>
-                <td>-</td>
-                <td>Other</td>
-                <td>Gift for your wife</td>
-                <td>300.00</td>
-                <td>6 900.00</td>
-              </tr>
-              <tr>
-                <td>04.01.19</td>
-                <td>-</td>
-                <td>Other</td>
-                <td>Gift for your wife</td>
-                <td>300.00</td>
-                <td>6 900.00</td>
-              </tr>
-            </tbody>
-          </Table>
-        )
-      }
-    </Media>
+                    <tbody {...getTableBodyProps()}>
+                      {rows.map(row => {
+                        prepareRow(row);
+                        return (
+                          <HomeTr
+                            key={() => {
+                              nanoid();
+                            }}
+                            {...row.getRowProps()}
+                          >
+                            {row.cells.map(cell => {
+                              return (
+                                <HomeTabColumn
+                                  key={() => {
+                                    nanoid();
+                                  }}
+                                  {...cell.getCellProps()}
+                                >
+                                  {cell.render('Cell')}
+                                </HomeTabColumn>
+                              );
+                            })}
+                          </HomeTr>
+                        );
+                      })}
+                    </tbody>
+                  </HomeTable>
+                )}
+              </HomeTabContainer>
+            )}
+          </Media>
+        </>
+      ) : (
+        <NoTransactions />
+      )}
+      <BtnAddTransaction />
+    </>
   );
 };
 

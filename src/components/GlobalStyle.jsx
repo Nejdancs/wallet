@@ -9,14 +9,32 @@ export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
   }
-  body {
+  body { 
+    /* display: flex;
+    flex-direction: column;
+    height: 100vh; */
     font-family: 'Circe', sans-serif;
     background-color: #fff;
     color: #010101;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
   }
+
+  /* #root {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+} */
+
   img {
     display: block;
     max-width: 100%;
@@ -44,4 +62,10 @@ export const GlobalStyle = createGlobalStyle`
 address {
   font-style: normal;
 }
+
+
+::selection {
+    background-color: #5cebdf;
+}
+
 `;
