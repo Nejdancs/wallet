@@ -17,8 +17,8 @@ const MobileTab = () => {
             <MobileTable>
                 {rows.map((row, i) => {
                     return (
-                        <Table key={i} {...getTableProps()}>
-                            <TableBody key={row.id} {...getTableBodyProps()}>
+                        <Table key={i} {...getTableProps()} style={data[i].type === "+" ? { borderLeft: "5px solid #24cca7" } : { borderLeft: "5px solid #ff6596" }} >
+                            <TableBody key={row.id} {...getTableBodyProps()} >
                                 <TabRow>
                                     <ColHeaderDef>Date</ColHeaderDef>
                                     <ColumnDef>{data[i].date}</ColumnDef>
@@ -37,7 +37,7 @@ const MobileTab = () => {
                                 </TabRow>
                                 <TabRow>
                                     <ColHeader>Amount</ColHeader>
-                                    <Column>{data[i].amount}</Column>
+                                    <Column style={data[i].type === "+" ? { color: "#24cca7" } : { color: "#ff6596" }}>{data[i].amount}</Column>
                                 </TabRow>
                                 <TabRow>
                                     <ColHeader>Balance</ColHeader>

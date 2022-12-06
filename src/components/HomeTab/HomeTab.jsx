@@ -25,6 +25,7 @@ const HomeTab = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
 
+
   return (
     <>
       {data.length > 0 ? (
@@ -81,7 +82,7 @@ const HomeTab = () => {
                                     nanoid();
                                   }}
                                   {...cell.getCellProps()}
-                                >
+                                  >
                                   {cell.render('Cell')}
                                 </HomeTabColumn>
                               );

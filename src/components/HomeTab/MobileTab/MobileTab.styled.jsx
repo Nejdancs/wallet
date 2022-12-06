@@ -21,32 +21,6 @@ export const MobileTable = styled.div`
   }
 `;
 
-export const Table = styled.table`
-    background: #ffffff;
-    opacity: 0.8;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    width: 280px;
-`;
-
-export const GreenTable = styled.table`
-    background: #ffffff;
-    opacity: 0.8;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    width: 280px;
-    border-left: 5px solid #24cca7;
-`;
-
-export const RedTable = styled.table`
-    background: #ffffff;
-    opacity: 0.8;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    width: 280px;
-    border-left: 5px solid #ff6596;
-`;
-
 export const TableBody = styled.tbody`
     width: 280px;
     @media ${device.tablet} {
@@ -60,11 +34,6 @@ export const TableBody = styled.tbody`
         clip: rect(0 0 0 0);
         overflow: hidden;
   }
-`;
-
-export const TabRow = styled.tr`
-    width: 280px;
-    margin-top: 0px;
 `;
 
 export const ColHeader = styled.td`
@@ -115,4 +84,20 @@ export const ColumnDef = styled.td`
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+`;
+
+export const TabRow = styled.tr`
+    width: 280px;
+    margin-top: 0px;
+`;
+
+export const Table = styled.table`
+    background-color: #FFFFFF;
+    opacity: 0.8;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 280px;
+    td{
+        border-bottom: none;
+    }
 `;
