@@ -1,7 +1,6 @@
 import LoginForm from 'components/Login/LoginForm';
 import {
   ContainerPage,
-  FormContainer,
   ImageContainerLog,
   Text,
   ImageSection,
@@ -18,9 +17,7 @@ const LoginPage = () => {
           <Text>Finance App</Text>
         </ImageSection>
         <FormWrapper>
-          <FormContainer>
-            <LoginForm />
-          </FormContainer>
+          <LoginForm />
         </FormWrapper>
       </ContainerPage>
     </Container>

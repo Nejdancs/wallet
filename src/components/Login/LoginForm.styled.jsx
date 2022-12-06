@@ -6,7 +6,7 @@ import { ReactComponent as password } from '../../images/password.svg';
 
 export const FormContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  height: auto;
   padding: 0 20px;
   margin: 0 auto;
   /* border: 1px solid black; */

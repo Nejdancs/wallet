@@ -105,6 +105,7 @@ export const ImageContainerReg = styled.div`
   }
 `;
 export const Text = styled.p`
+  display: none;
   @media ${device.tablet} {
     color: var(--black);
     display: flex;
@@ -136,27 +137,27 @@ export const FormWrapper = styled.div`
   }
 `;
 
-export const FormContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* background: ${props => props.theme.colors.secondaryBg}; */
-  height: 354px;
-  width: 320px;
-  @media ${device.maxTablet} {
-    justify-content: center;
-  }
+// export const FormContainer = styled.div`
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   /* background: ${props => props.theme.colors.secondaryBg}; */
+//   height: 354px;
+//   width: 320px;
+//   @media ${device.maxTablet} {
+//     justify-content: center;
+//   }
 
-  @media ${device.tablet} {
-    width: 533px;
-    height: 468px;
-    padding: 40px 65px 60px;
-    border-radius: 20px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-`;
+//   @media ${device.tablet} {
+//     width: 533px;
+//     height: 468px;
+//     padding: 40px 65px 60px;
+//     border-radius: 20px;
+//     margin-right: auto;
+//     margin-left: auto;
+//   }
+// `;
 
 export const FormContainerRegsiter = styled.div`
   position: relative;
