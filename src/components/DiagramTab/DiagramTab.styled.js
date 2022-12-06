@@ -11,6 +11,8 @@ export const Section = styled.section`
     gap: 32px;
   }
   @media ${device.desktop} {
+    margin-top: 32px;
+    margin-left: 69px;
     flex-basis: 715px;
   }
 `;
