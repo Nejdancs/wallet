@@ -1,16 +1,17 @@
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import {
   FormContainer,
+  Form,
   FormField,
   FormLabel,
   LogoContainer,
   ErrorText,
   IconMail,
   IconPassword,
-} from './LoginForm.styled';
+} from 'components/AuthStyleForm/AutheticationForm.styled';
 import Button from 'components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import Logo from 'components/Logo/Logo';

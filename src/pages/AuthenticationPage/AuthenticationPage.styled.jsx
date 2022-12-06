@@ -24,9 +24,9 @@ export const PageContainer = styled.div`
   left: 0px;
   background-color: ${props => props.theme.colors.secondaryBg};
 
-  @media ${device.maxTablet} {
-    /* position: fixed; */
-  }
+  /* @media ${device.maxTablet} {
+    position: fixed;
+  } */
 
   @media ${device.tablet} {
     background-color: ${props => props.theme.colors.authPageBg};
@@ -34,7 +34,7 @@ export const PageContainer = styled.div`
     background-repeat: no-repeat, no-repeat;
     background-position: 0px 100%, right 0px top 0px;
 
-    padding: 1px 114px 135px;
+    padding: 60px 114px 48px;
     width: 100vw;
     min-height: 1024px;
     text-align: center;

@@ -14,7 +14,7 @@ import {
   IconMail,
   IconPassword,
   IconName,
-} from './RegistrationForm.styled';
+} from 'components/AuthStyleForm/AutheticationForm.styled';
 import Button from 'components/Button/Button';
 import Logo from 'components/Logo/Logo';
 import regEx from 'assets/regEx/regEx';

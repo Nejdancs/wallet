@@ -11,7 +11,7 @@ import {
 const LoginPage = () => {
   return (
     <Container>
-      <PageContainer>
+      <PageContainer style={{ 'min-height': '890px' }}>
         <ImgSection>
           <ImgContainerLogin />
           <NameApp>Finance App</NameApp>
