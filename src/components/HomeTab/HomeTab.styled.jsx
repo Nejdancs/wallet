@@ -36,11 +36,22 @@ export const HomeTable = styled.table`
     overflow: hidden;
     word-wrap: break-word;
     padding: 10px;
+    padding-top: 14px;
+    padding-bottom: 14px;
     text-align: center;
+  }
+
+  td:nth-child(1) {
+    color: #000!important;
+  }
+
+  td:nth-child(2) {
+    color: #000!important;
   }
 
   td:nth-child(3) {
     text-align: left;
+    color: #000!important;
   }
 
   th:nth-child(3) {
@@ -49,15 +60,18 @@ export const HomeTable = styled.table`
 
   td:nth-child(4) {
     text-align: left;
+    color: #000!important;
   }
 
   td:nth-child(5) {
     text-align: right;
+    color: inherit!important;
   }
 
   td:nth-child(6) {
     text-align: right;
     padding-right: 20px;
+    color: #000!important;
   }
 
   th:nth-child(5) {
