@@ -13,7 +13,7 @@ export const Container = styled.div`
   padding: 0;
 `;
 
-export const ContainerPage = styled.div`
+export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +25,7 @@ export const ContainerPage = styled.div`
   background-color: ${props => props.theme.colors.secondaryBg};
 
   @media ${device.maxTablet} {
-    position: fixed;
+    /* position: fixed; */
   }
 
   @media ${device.tablet} {
@@ -34,7 +34,7 @@ export const ContainerPage = styled.div`
     background-repeat: no-repeat, no-repeat;
     background-position: 0px 100%, right 0px top 0px;
 
-    padding: 60px 114px 48px;
+    padding: 1px 114px 135px;
     width: 100vw;
     min-height: 1024px;
     text-align: center;
@@ -48,7 +48,7 @@ export const ContainerPage = styled.div`
   }
 `;
 
-export const ImageSection = styled.div`
+export const ImgSection = styled.div`
   @media ${device.tablet} {
     display: flex;
     margin-bottom: 50px;
@@ -63,7 +63,7 @@ export const ImageSection = styled.div`
   }
 `;
 
-export const ImageContainerLog = styled.div`
+export const ImgContainerLogin = styled.div`
   @media ${device.tablet} {
     background-image: url(${Log_img_tablet});
     background-repeat: no-repeat;
@@ -84,30 +84,10 @@ export const ImageContainerLog = styled.div`
   }
 `;
 
-export const ImageContainerReg = styled.div`
-  @media ${device.tablet} {
-    background-image: url(${Reg_img_tablet});
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    margin-left: auto;
-    margin-right: auto;
-    height: 250px;
-    width: 274px;
-  }
-
-  @media ${device.desktop} {
-    background-image: url(${Reg_img_desctop});
-    width: 452px;
-    height: 412px;
-    margin-bottom: 32px;
-    margin-right: 32px;
-  }
-`;
-export const Text = styled.p`
+export const NameApp = styled.p`
   display: none;
   @media ${device.tablet} {
-    color: var(--black);
+    color: ${p => p.theme.colors.primaryTextColor};
     display: flex;
     margin-right: auto;
     font-family: 'Poppins';
@@ -132,53 +112,28 @@ export const FormWrapper = styled.div`
   @media ${device.desktop} {
     width: 57%;
     height: 100%;
-    background: hsla(0, 0%, 100%, 0.4);
-    backdrop-filter: blur(50px);
+    background: hsla(0, 0%, 100%, 0.3);
+    backdrop-filter: blur(15px);
   }
 `;
+//====================== Style for register form ==========================
+export const ImgContainerRegister = styled.div`
+  @media ${device.tablet} {
+    background-image: url(${Reg_img_tablet});
+    background-repeat: no-repeat;
+    background-size: cover;
 
-// export const FormContainer = styled.div`
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   /* background: ${props => props.theme.colors.secondaryBg}; */
-//   height: 354px;
-//   width: 320px;
-//   @media ${device.maxTablet} {
-//     justify-content: center;
-//   }
-
-//   @media ${device.tablet} {
-//     width: 533px;
-//     height: 468px;
-//     padding: 40px 65px 60px;
-//     border-radius: 20px;
-//     margin-right: auto;
-//     margin-left: auto;
-//   }
-// `;
-
-export const FormContainerRegsiter = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  height: 354px;
-  width: 320px;
-  background: ${props => props.theme.colors.secondaryBg};
-
-  @media ${device.maxTablet} {
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    width: 274px;
   }
 
-  @media ${device.tablet} {
-    width: 533px;
-    height: 616px;
-    padding: 40px 65px 60px;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 20px;
+  @media ${device.desktop} {
+    background-image: url(${Reg_img_desctop});
+    width: 452px;
+    height: 412px;
+    margin-bottom: 32px;
+    margin-right: 32px;
   }
 `;

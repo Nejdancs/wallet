@@ -1,9 +1,9 @@
 import LoginForm from 'components/Login/LoginForm';
 import {
-  ContainerPage,
-  ImageContainerLog,
-  Text,
-  ImageSection,
+  PageContainer,
+  ImgContainerLogin,
+  NameApp,
+  ImgSection,
   Container,
   FormWrapper,
 } from './AuthenticationPage.styled';
@@ -11,15 +11,15 @@ import {
 const LoginPage = () => {
   return (
     <Container>
-      <ContainerPage>
-        <ImageSection>
-          <ImageContainerLog />
-          <Text>Finance App</Text>
-        </ImageSection>
+      <PageContainer>
+        <ImgSection>
+          <ImgContainerLogin />
+          <NameApp>Finance App</NameApp>
+        </ImgSection>
         <FormWrapper>
           <LoginForm />
         </FormWrapper>
-      </ContainerPage>
+      </PageContainer>
     </Container>
   );
 };
