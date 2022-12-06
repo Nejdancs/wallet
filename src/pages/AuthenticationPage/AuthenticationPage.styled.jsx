@@ -72,14 +72,14 @@ export const ImgContainerLogin = styled.div`
     margin-left: auto;
     margin-right: auto;
     height: 250px;
-    width: 260px;
+    width: 274px;
   }
 
   @media ${device.desktop} {
     background-image: url(${Log_img_desctop});
-    width: 435px;
-    height: 419px;
-    margin-right: 38px;
+    width: 452px;
+    height: 412px;
+    margin-right: 32px;
     margin-bottom: 32px;
   }
 `;
