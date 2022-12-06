@@ -91,7 +91,7 @@ const LoginForm = () => {
               />
             </FormLabel>
             <Button main type="submit">
-              Register
+              Log In
             </Button>
             <Button
               type="button"
@@ -99,7 +99,7 @@ const LoginForm = () => {
                 navigate('/signup');
               }}
             >
-              Log In
+              Register
             </Button>
           </Form>
         )}
