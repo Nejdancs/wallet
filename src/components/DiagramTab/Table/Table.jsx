@@ -15,6 +15,7 @@ import { numberSpace } from 'helpers';
 import theme from 'theme/theme';
 
 const Table = ({ incomingData, totals }) => {
+  console.log(incomingData);
   const transactions = [];
   for (let i = 0; i < incomingData.length; i += 1) {
     transactions.push(
