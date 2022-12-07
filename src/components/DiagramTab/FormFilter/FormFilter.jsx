@@ -49,7 +49,7 @@ const FormFilter = ({ onFilterChange }) => {
               value={year}
               onChange={e => {
                 setYear(e.target.value);
-                onFilterChange({ year: e.target.value });
+                onFilterChange({ year: +e.target.value });
               }}
             >
               <option value="year" disabled={true}>

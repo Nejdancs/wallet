@@ -53,7 +53,7 @@ const DiagramTab = () => {
     <Section>
       <Column>
         <Title>Statistics</Title>
-        <Chart balance={balance} incomingData={statistics.expenses} />
+        <Chart balance={balance} expenses={statistics.expenses} />
       </Column>
       <Column>
         <FormFilter onFilterChange={onFilterChange} />
