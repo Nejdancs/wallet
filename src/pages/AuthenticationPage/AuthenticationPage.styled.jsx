@@ -16,7 +16,6 @@ export const Container = styled.div`
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
 
@@ -24,17 +23,13 @@ export const PageContainer = styled.div`
   left: 0px;
   background-color: ${props => props.theme.colors.secondaryBg};
 
-  /* @media ${device.maxTablet} {
-    position: fixed;
-  } */
-
   @media ${device.tablet} {
     background-color: ${props => props.theme.colors.authPageBg};
     background-image: url(${Viollet_semicircle}), url(${Pink_semicircle});
     background-repeat: no-repeat, no-repeat;
     background-position: 0px 100%, right 0px top 0px;
 
-    padding: 60px 114px 48px;
+    padding: 60px 114px 0;
     width: 100vw;
     min-height: 1024px;
     text-align: center;
