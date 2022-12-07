@@ -9,8 +9,11 @@ import { useState } from 'react';
 // import { useSelector } from 'react-redux';
 
 const DiagramTab = () => {
-  const [month, setMonth] = useState(new Date().getMonth() + 1);
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [filter, setFilter] = useState({
+    month: new Date().getMonth() + 1,
+    year: new Date().getFullYear(),
+  });
+
   const [statistics, setStatistics] = useState({
     expenses: [],
     totalExpenses: 0,
@@ -25,7 +28,7 @@ const DiagramTab = () => {
       try {
         const res = await axios.post(
           '/api/transactions/statistics',
-          { month, year },
+          filter,
           // temp
           {
             headers: {
@@ -40,7 +43,11 @@ const DiagramTab = () => {
         console.log(error);
       }
     })();
-  }, [month, year]);
+  }, [filter]);
+
+  const onFilterChange = value => {
+    setFilter(prevState => ({ ...prevState, ...value }));
+  };
 
   return (
     <Section>
@@ -49,7 +56,7 @@ const DiagramTab = () => {
         <Chart balance={balance} incomingData={statistics.expenses} />
       </Column>
       <Column>
-        <FormFilter />
+        <FormFilter onFilterChange={onFilterChange} />
         <Table
           incomingData={statistics.expenses}
           totals={{

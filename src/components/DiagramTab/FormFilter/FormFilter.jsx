@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import { FormEl, Select, InpWrapper } from './FormFilter.styled';
 
-const FormFilter = props => {
-  // const [month, setMonth] = useState('month');
-  // const [year, setYear] = useState('year');
+const FormFilter = ({ onFilterChange }) => {
+  const [month, setMonth] = useState('month');
+  const [year, setYear] = useState('year');
 
   return (
     <div>
@@ -13,11 +13,18 @@ const FormFilter = props => {
           month: 'month',
           year: 'year',
         }}
-        onSubmit={() => {}}
       >
         <FormEl>
           <InpWrapper>
-            <Field as={Select} name="month">
+            <Field
+              as={Select}
+              name="month"
+              onChange={e => {
+                setMonth(e.target.value);
+                onFilterChange({ month: +e.target.value });
+              }}
+              value={month}
+            >
               <option value="month" disabled={true}>
                 Month
               </option>
@@ -36,7 +43,15 @@ const FormFilter = props => {
             </Field>
           </InpWrapper>
           <InpWrapper>
-            <Field as={Select} name="year">
+            <Field
+              as={Select}
+              name="year"
+              value={year}
+              onChange={e => {
+                setYear(e.target.value);
+                onFilterChange({ year: e.target.value });
+              }}
+            >
               <option value="year" disabled={true}>
                 Year
               </option>
