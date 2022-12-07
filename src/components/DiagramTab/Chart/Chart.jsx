@@ -9,11 +9,11 @@ ChartJS.register(ArcElement, Tooltip);
 
 const Chart = ({ balance, incomingData }) => {
   const data = {
-    labels: incomingData.map(trans => trans.category),
+    labels: incomingData.map(trans => trans._id),
     datasets: [
       {
         // label: 'Doughnut Chart',
-        data: incomingData.map(trans => trans.amount),
+        data: incomingData.map(trans => trans.totalAmount),
         backgroundColor: theme.doughnutColors,
         borderColor: theme.doughnutColors,
         borderWidth: 1,

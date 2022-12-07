@@ -23,8 +23,8 @@ const Table = ({ incomingData, totals }) => {
         <IconCol
           color={theme.doughnutColors[i] ?? theme.doughnutColors[i - 38]}
         />
-        <ItemCategory>{incomingData[i].category}</ItemCategory>
-        <ItemAmount>{numberSpace(incomingData[i].amount)}</ItemAmount>
+        <ItemCategory>{incomingData[i]._id}</ItemCategory>
+        <ItemAmount>{numberSpace(incomingData[i].totalAmount)}</ItemAmount>
       </Transaction>
     );
   }
