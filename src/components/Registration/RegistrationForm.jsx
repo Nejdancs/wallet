@@ -1,9 +1,11 @@
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import RegBar from './RegBar';
 import { Formik, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import onValidate from 'assets/ValidateSchema/onValidate';
+import Button from 'components/Button/Button';
+import Logo from 'components/Logo/Logo';
+import RegBar from './RegBar';
 import {
   FormContainer,
   Form,
@@ -15,23 +17,6 @@ import {
   IconPassword,
   IconName,
 } from 'components/AuthStyleForm/AutheticationForm.styled';
-import Button from 'components/Button/Button';
-import Logo from 'components/Logo/Logo';
-import regEx from 'assets/regEx/regEx';
-
-const onValidate = yup.object().shape({
-  email: yup
-    .string()
-    .min(2)
-    .matches(regEx.email, 'type valid email')
-    .required(),
-  password: yup
-    .string()
-    .min(6, 'must min length 6')
-    .max(12, 'must max length 12')
-    .matches(regEx.password, 'bykBa i cufra')
-    .required(),
-});
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -49,7 +34,7 @@ const RegisterForm = () => {
           email: '',
           password: '',
           confirmPassword: '',
-          firstname: '',
+          name: '',
         }}
         validationSchema={onValidate}
         onSubmit={onSubmit}
@@ -107,7 +92,7 @@ const RegisterForm = () => {
             <FormLabel>
               <FormField
                 type="text"
-                name="firstname"
+                name="name"
                 value={values.username}
                 onChange={handleChange}
                 placeholder="First name"

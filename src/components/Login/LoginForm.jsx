@@ -1,7 +1,10 @@
 import { React, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as yup from 'yup';
 import { Formik, ErrorMessage } from 'formik';
+import Button from 'components/Button/Button';
+import Logo from 'components/Logo/Logo';
+import onValidate from 'assets/ValidateSchema/onValidate';
 import {
   FormContainer,
   Form,
@@ -12,25 +15,6 @@ import {
   IconMail,
   IconPassword,
 } from 'components/AuthStyleForm/AutheticationForm.styled';
-import Button from 'components/Button/Button';
-import { useNavigate } from 'react-router-dom';
-import Logo from 'components/Logo/Logo';
-import regEx from 'assets/regEx/regEx';
-
-const onValidate = yup.object().shape({
-  email: yup
-    .string()
-    .min(2)
-    .matches(regEx.email, 'type valid email')
-    .required(),
-  password: yup
-    .string()
-    .min(6, 'must min length 6')
-    .max(12, 'must max length 12')
-    .matches(regEx.password, 'bykBa i cufra')
-
-    .required(),
-});
 
 const LoginForm = () => {
   const dispatch = useDispatch();
