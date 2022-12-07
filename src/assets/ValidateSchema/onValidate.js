@@ -16,7 +16,7 @@ const onValidate = yup.object().shape({
     .required(),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password')], 'both passwords need to be the same')
+    .oneOf([yup.ref('password'), null], 'both passwords need to be the same')
     .required('is required field'),
   name: yup
     .string()

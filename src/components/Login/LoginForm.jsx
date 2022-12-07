@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Formik, ErrorMessage } from 'formik';
+import { motion } from 'framer-motion';
 import Button from 'components/Button/Button';
 import Logo from 'components/Logo/Logo';
 import onValidate from 'assets/ValidateSchema/onValidate';
@@ -75,17 +76,29 @@ const LoginForm = () => {
                 render={msg => <ErrorText>{msg}</ErrorText>}
               />
             </FormLabel>
-            <Button main type="submit">
-              Log In
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                navigate('/signup');
-              }}
+            <motion.div
+              initial={{ x: -340, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 1.2 }}
             >
-              Register
-            </Button>
+              <Button main type="submit">
+                Log In
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ x: 340, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 2 }}
+            >
+              <Button
+                type="button"
+                onClick={() => {
+                  navigate('/signup');
+                }}
+              >
+                Register
+              </Button>
+            </motion.div>
           </Form>
         )}
       </Formik>
