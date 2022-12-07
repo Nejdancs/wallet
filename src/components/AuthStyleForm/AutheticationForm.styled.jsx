@@ -7,9 +7,10 @@ import { ReactComponent as password } from '../../images/password.svg';
 
 export const FormContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   padding: 0 20px;
   margin: 0 auto;
+
   /* border: 1px solid black; */
 
   @media ${device.mobile} {
@@ -19,8 +20,10 @@ export const FormContainer = styled.div`
   }
 
   @media ${device.tablet} {
+    /* position: absolute;
+    top: 43%;
+    left: 15%; */
     width: 533px;
-
     padding: 40px 58.5px 62px 65px;
     background-color: ${props => props.theme.colors.secondaryBg};
   }
