@@ -77,13 +77,8 @@ const HomeTab = () => {
                           >
                             {row.cells.map(cell => {
                               return (
-                                <HomeTabColumn
-                                  key={() => {
-                                    nanoid();
-                                  }}
-                                  {...cell.getCellProps()}
-                                  >
-                                  {cell.render('Cell')}
+                                <HomeTabColumn key={() => {nanoid();}} style={row.values.type === "+" ? { color: "#24cca7" } : { color: "#ff6596" }} {...cell.getCellProps()}>
+                                  {cell.render("Cell")}
                                 </HomeTabColumn>
                               );
                             })}

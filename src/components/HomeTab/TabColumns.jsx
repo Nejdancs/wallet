@@ -21,7 +21,7 @@ export const TAB_COLUMNS = [
     accessor: "comment",
   },
   {
-    Header: "Amount",
+    Header: "Sum",
     accessor: "amount",
     sticky: "right",
   },

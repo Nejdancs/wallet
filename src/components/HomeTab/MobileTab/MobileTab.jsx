@@ -9,8 +9,6 @@ import {
   TabRow,
   ColHeader,
   Column,
-  ColHeaderDef,
-  ColumnDef,
 } from './MobileTab.styled';
 
 const MobileTab = () => {
@@ -49,7 +47,7 @@ const MobileTab = () => {
                   <Column>{data[i].comment}</Column>
                 </TabRow>
                 <TabRow>
-                  <ColHeader>Amount</ColHeader>
+                  <ColHeader>Sum</ColHeader>
                   <Column
                     style={
                       data[i].type === '+'

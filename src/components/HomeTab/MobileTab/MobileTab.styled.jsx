@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import device from 'assets/breakpoints/device';
 
 export const MobileTable = styled.div`
   position: relative;
