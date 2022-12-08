@@ -65,6 +65,7 @@ export const HomeTable = styled.table`
 
   td:nth-child(5) {
     text-align: right;
+    font-weight: 700;
   }
 
   td:nth-child(6) {

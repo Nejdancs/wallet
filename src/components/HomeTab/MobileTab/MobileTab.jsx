@@ -36,7 +36,7 @@ const MobileTab = () => {
                                     <Column>{data[i].comment}</Column>
                                 </TabRow>
                                 <TabRow>
-                                    <ColHeader>Amount</ColHeader>
+                                    <ColHeader>Sum</ColHeader>
                                     <Column style={data[i].type === "+" ? { color: "#24cca7" } : { color: "#ff6596" }}>{data[i].amount}</Column>
                                 </TabRow>
                                 <TabRow>

@@ -23,6 +23,7 @@ export const MobileTable = styled.div`
 
 export const TableBody = styled.tbody`
     width: 280px;
+    background-color: #fff;
     @media ${device.tablet} {
         position: absolute;
         width: 1px;
