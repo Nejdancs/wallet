@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import RegisterForm from 'components/Registration/RegistrationForm';
 import {
   PageContainer,
@@ -6,22 +7,27 @@ import {
   ImgSection,
   Container,
   FormWrapper,
-  FormContainerRegister,
 } from './AuthenticationPage.styled';
 
 const RegisterPage = () => {
   return (
-    <Container>
-      <PageContainer>
-        <ImgSection>
-          <ImgContainerRegister />
-          <NameApp>Finance App</NameApp>
-        </ImgSection>
-        <FormWrapper>
-          <RegisterForm />
-        </FormWrapper>
-      </PageContainer>
-    </Container>
+    <motion.div
+      initial={{ scale: 0.7, opacity: 0.5 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 1.2 }}
+    >
+      <Container>
+        <PageContainer>
+          <ImgSection>
+            <ImgContainerRegister />
+            <NameApp>Finance App</NameApp>
+          </ImgSection>
+          <FormWrapper>
+            <RegisterForm />
+          </FormWrapper>
+        </PageContainer>
+      </Container>
+    </motion.div>
   );
 };
 

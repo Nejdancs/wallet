@@ -16,7 +16,6 @@ export const Container = styled.div`
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
 
@@ -24,17 +23,13 @@ export const PageContainer = styled.div`
   left: 0px;
   background-color: ${props => props.theme.colors.secondaryBg};
 
-  @media ${device.maxTablet} {
-    /* position: fixed; */
-  }
-
   @media ${device.tablet} {
     background-color: ${props => props.theme.colors.authPageBg};
     background-image: url(${Viollet_semicircle}), url(${Pink_semicircle});
     background-repeat: no-repeat, no-repeat;
     background-position: 0px 100%, right 0px top 0px;
 
-    padding: 1px 114px 135px;
+    padding: 60px 114px 0;
     width: 100vw;
     min-height: 1024px;
     text-align: center;
@@ -72,14 +67,14 @@ export const ImgContainerLogin = styled.div`
     margin-left: auto;
     margin-right: auto;
     height: 250px;
-    width: 260px;
+    width: 274px;
   }
 
   @media ${device.desktop} {
     background-image: url(${Log_img_desctop});
-    width: 435px;
-    height: 419px;
-    margin-right: 38px;
+    width: 452px;
+    height: 412px;
+    margin-right: 32px;
     margin-bottom: 32px;
   }
 `;
