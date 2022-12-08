@@ -12,9 +12,9 @@ import {
 const RegisterPage = () => {
   return (
     <motion.div
-      initial={{ scale: 0.7, opacity: 0.5 }}
+      initial={{ scale: 0.9, opacity: 0.5 }}
       animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 1.2 }}
+      transition={{ duration: 1 }}
     >
       <Container>
         <PageContainer>

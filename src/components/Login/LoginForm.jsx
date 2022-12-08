@@ -7,6 +7,11 @@ import Button from 'components/Button/Button';
 import Logo from 'components/Logo/Logo';
 import onValidate from 'assets/ValidateSchema/onValidate';
 import {
+  BtnIcon,
+  ButtonShow,
+  ButtonHide,
+} from 'components/ButtonShowPassworg/ButtonShowPassworg.styled';
+import {
   FormContainer,
   Form,
   FormField,
@@ -21,6 +26,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (values, onSubmitProps) => {
     // dispatch(values);
@@ -64,13 +70,20 @@ const LoginForm = () => {
 
             <FormLabel>
               <FormField
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 value={values.password}
                 onChange={handleChange}
                 placeholder="Password"
                 onInput={evt => setPassword(evt.target.value)}
               />
+              <BtnIcon
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+              >
+                {showPassword ? <ButtonHide /> : <ButtonShow />}
+              </BtnIcon>
               <IconPassword />
               <ErrorMessage
                 name="password"

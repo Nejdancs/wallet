@@ -8,6 +8,11 @@ import Button from 'components/Button/Button';
 import Logo from 'components/Logo/Logo';
 import RegBar from './RegBar';
 import {
+  BtnIcon,
+  ButtonShow,
+  ButtonHide,
+} from 'components/ButtonShowPassworg/ButtonShowPassworg.styled';
+import {
   FormContainer,
   Form,
   FormField,
@@ -18,15 +23,13 @@ import {
   IconPassword,
   IconName,
 } from 'components/AuthStyleForm/AutheticationForm.styled';
-import styled from 'styled-components';
-import { ReactComponent as Eye } from 'images/EyesShow.svg';
-import { ReactComponent as EyeClose } from 'images/EyeClose.svg';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setConfirmShowPassword] = useState(false);
 
   const onSubmit = (values, onSubmitProps) => {};
 
@@ -88,13 +91,19 @@ const RegisterForm = () => {
 
             <FormLabel>
               <FormField
-                type="password"
+                type={showConfirmPassword ? 'text' : 'password'}
                 name="confirmPassword"
                 value={values.confirmPassword}
                 onChange={handleChange}
                 placeholder="Confirm password"
               />
-
+              <BtnIcon
+                onClick={() => {
+                  setConfirmShowPassword(!showConfirmPassword);
+                }}
+              >
+                {showConfirmPassword ? <ButtonHide /> : <ButtonShow />}
+              </BtnIcon>
               <IconPassword />
               <RegBar password={password} />
               <ErrorMessage
@@ -145,27 +154,5 @@ const RegisterForm = () => {
     </FormContainer>
   );
 };
-
-const BtnIcon = styled.button`
-  position: absolute;
-  padding: 7px 7px;
-  right: 0;
-  top: -3px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  @media screen and (min-width: 768px) {
-    right: 0;
-    top: 0;
-  }
-`;
-
-const ButtonShow = styled(Eye)`
-  fill: gray;
-`;
-
-const ButtonHide = styled(EyeClose)`
-  fill: gray;
-`;
 
 export default RegisterForm;
