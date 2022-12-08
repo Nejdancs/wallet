@@ -2,7 +2,18 @@ import styled from 'styled-components';
 import { ReactComponent as Eye } from 'images/EyesShow.svg';
 import { ReactComponent as EyeClose } from 'images/EyeClose.svg';
 
-export const BtnIcon = styled.button`
+const ButtonShowPassword = ({ setShowPassword, showPassword }) => {
+  return (
+    <BtnIcon
+      onClick={() => {
+        setShowPassword(!showPassword);
+      }}
+    >
+      {showPassword ? <ButtonHide /> : <ButtonShow />}
+    </BtnIcon>
+  );
+};
+const BtnIcon = styled.button`
   position: absolute;
   padding: 7px 7px;
   right: 0;
@@ -16,10 +27,12 @@ export const BtnIcon = styled.button`
   }
 `;
 
-export const ButtonShow = styled(Eye)`
+const ButtonShow = styled(Eye)`
   fill: #bdbdbd;
 `;
 
-export const ButtonHide = styled(EyeClose)`
+const ButtonHide = styled(EyeClose)`
   fill: #bdbdbd;
 `;
+
+export default ButtonShowPassword;

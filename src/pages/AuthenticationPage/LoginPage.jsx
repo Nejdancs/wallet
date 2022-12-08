@@ -11,23 +11,24 @@ import {
 
 const LoginPage = () => {
   return (
-    <motion.div
-      initial={{ scale: 0.9, opacity: 0.5 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <Container>
-        <PageContainer>
-          <ImgSection>
+    <Container>
+      <PageContainer>
+        <ImgSection>
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0.5 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <ImgContainerLogin />
-            <NameApp>Finance App</NameApp>
-          </ImgSection>
-          <FormWrapper>
-            <LoginForm />
-          </FormWrapper>
-        </PageContainer>
-      </Container>
-    </motion.div>
+          </motion.div>
+          <NameApp>Finance App</NameApp>
+        </ImgSection>
+
+        <FormWrapper>
+          <LoginForm />
+        </FormWrapper>
+      </PageContainer>
+    </Container>
   );
 };
 export default LoginPage;

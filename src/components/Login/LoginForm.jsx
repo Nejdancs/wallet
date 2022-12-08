@@ -6,11 +6,7 @@ import { motion } from 'framer-motion';
 import Button from 'components/Button/Button';
 import Logo from 'components/Logo/Logo';
 import onValidate from 'assets/ValidateSchema/onValidate';
-import {
-  BtnIcon,
-  ButtonShow,
-  ButtonHide,
-} from 'components/ButtonShowPassworg/ButtonShowPassworg.styled';
+import ButtonShowPassword from 'components/ButtonShowPassworg/ButtonShowPassworg';
 import {
   FormContainer,
   Form,
@@ -50,9 +46,15 @@ const LoginForm = () => {
       >
         {({ handleSubmit, handleChange, values }) => (
           <Form onSubmit={handleSubmit}>
-            <LogoContainer>
-              <Logo />
-            </LogoContainer>
+            <motion.div
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.2 }}
+            >
+              <LogoContainer>
+                <Logo />
+              </LogoContainer>
+            </motion.div>
             <FormLabel>
               <FormField
                 type="email"
@@ -77,13 +79,10 @@ const LoginForm = () => {
                 placeholder="Password"
                 onInput={evt => setPassword(evt.target.value)}
               />
-              <BtnIcon
-                onClick={() => {
-                  setShowPassword(!showPassword);
-                }}
-              >
-                {showPassword ? <ButtonHide /> : <ButtonShow />}
-              </BtnIcon>
+              <ButtonShowPassword
+                setShowPassword={setShowPassword}
+                showPassword={showPassword}
+              />
               <IconPassword />
               <ErrorMessage
                 name="password"
@@ -93,7 +92,7 @@ const LoginForm = () => {
             <motion.div
               initial={{ x: -340, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.9, delay: 1.2 }}
+              transition={{ duration: 0.9, delay: 0.8 }}
             >
               <Button main type="submit">
                 Log In
@@ -102,7 +101,7 @@ const LoginForm = () => {
             <motion.div
               initial={{ x: 340, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.9, delay: 2 }}
+              transition={{ duration: 0.9, delay: 1.3 }}
             >
               <Button
                 type="button"

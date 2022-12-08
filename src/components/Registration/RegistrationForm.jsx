@@ -7,11 +7,7 @@ import onValidate from 'assets/ValidateSchema/onValidate';
 import Button from 'components/Button/Button';
 import Logo from 'components/Logo/Logo';
 import RegBar from './RegBar';
-import {
-  BtnIcon,
-  ButtonShow,
-  ButtonHide,
-} from 'components/ButtonShowPassworg/ButtonShowPassworg.styled';
+import ButtonShowPassword from 'components/ButtonShowPassworg/ButtonShowPassworg';
 import {
   FormContainer,
   Form,
@@ -49,9 +45,16 @@ const RegisterForm = () => {
       >
         {({ handleSubmit, handleChange, values }) => (
           <Form onSubmit={handleSubmit}>
-            <LogoContainer>
-              <Logo />
-            </LogoContainer>
+            <motion.div
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.2 }}
+            >
+              <LogoContainer>
+                <Logo />
+              </LogoContainer>
+            </motion.div>
+
             <FormLabel>
               <FormField
                 type="email"
@@ -75,13 +78,11 @@ const RegisterForm = () => {
                 placeholder="Password"
                 onInput={evt => setPassword(evt.target.value)}
               />
-              <BtnIcon
-                onClick={() => {
-                  setShowPassword(!showPassword);
-                }}
-              >
-                {showPassword ? <ButtonHide /> : <ButtonShow />}
-              </BtnIcon>
+              <ButtonShowPassword
+                setShowPassword={setShowPassword}
+                showPassword={showPassword}
+              />
+
               <IconPassword />
               <ErrorMessage
                 name="password"
@@ -97,13 +98,10 @@ const RegisterForm = () => {
                 onChange={handleChange}
                 placeholder="Confirm password"
               />
-              <BtnIcon
-                onClick={() => {
-                  setConfirmShowPassword(!showConfirmPassword);
-                }}
-              >
-                {showConfirmPassword ? <ButtonHide /> : <ButtonShow />}
-              </BtnIcon>
+              <ButtonShowPassword
+                setShowPassword={setConfirmShowPassword}
+                showPassword={showConfirmPassword}
+              />
               <IconPassword />
               <RegBar password={password} />
               <ErrorMessage
@@ -128,7 +126,7 @@ const RegisterForm = () => {
             <motion.div
               initial={{ x: -340, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.9, delay: 1.2 }}
+              transition={{ duration: 0.9, delay: 0.8 }}
             >
               <Button main type="submit">
                 Register
@@ -137,7 +135,7 @@ const RegisterForm = () => {
             <motion.div
               initial={{ x: 340, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.9, delay: 2 }}
+              transition={{ duration: 0.9, delay: 1.3 }}
             >
               <Button
                 type="button"
