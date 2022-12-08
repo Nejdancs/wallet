@@ -65,7 +65,6 @@ export const HomeTable = styled.table`
 
   td:nth-child(5) {
     text-align: right;
-    color: inherit!important;
   }
 
   td:nth-child(6) {

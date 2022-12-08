@@ -1,0 +1,19 @@
+.GreenColumn {
+    font-family: Circe;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: right;
+    word-wrap: break-word;
+    color: #24cca7;
+};
+
+.RedColumn {
+    font-family: Circe;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: right;
+    word-wrap: break-word;
+    color: #ff6596;
+};

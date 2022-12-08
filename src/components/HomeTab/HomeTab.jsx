@@ -3,6 +3,7 @@ import Media from 'react-media';
 import { useSortBy, useTable } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
+import css from "./HomeTab.module.css"
 
 import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
 import { testData } from './testData';
@@ -77,14 +78,9 @@ const HomeTab = () => {
                           >
                             {row.cells.map(cell => {
                               return (
-                                <HomeTabColumn
-                                  key={() => {
-                                    nanoid();
-                                  }}
-                                  {...cell.getCellProps()}
-                                  >
-                                  {cell.render('Cell')}
-                                </HomeTabColumn>
+                                <td key={() => {nanoid();}} className={css.GreenColumn} style={row.values.type === "+" ? { color: "#24cca7" } : { color: "#ff6596" }} {...cell.getCellProps()}>
+                                  {cell.render("Cell")}
+                                </td>
                               );
                             })}
                           </HomeTr>
