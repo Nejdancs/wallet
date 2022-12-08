@@ -7,19 +7,34 @@ import { numberSpace } from 'helpers';
 
 ChartJS.register(ArcElement, Tooltip);
 
-const Chart = ({ balance, incomingData }) => {
-  const data = {
-    labels: incomingData.map(trans => trans.category),
-    datasets: [
-      {
-        // label: 'Doughnut Chart',
-        data: incomingData.map(trans => trans.amount),
-        backgroundColor: theme.doughnutColors,
-        borderColor: theme.doughnutColors,
-        borderWidth: 1,
-      },
-    ],
-  };
+const Chart = ({ balance, expenses }) => {
+  let data;
+  if (expenses.length > 0) {
+    data = {
+      labels: expenses.map(trans => trans.categoryName[0]),
+      datasets: [
+        {
+          // label: 'Doughnut Chart',
+          data: expenses.map(trans => trans.amount),
+          backgroundColor: theme.doughnutColors,
+          borderColor: theme.doughnutColors,
+          borderWidth: 1,
+        },
+      ],
+    };
+  } else {
+    data = {
+      labels: ['no data'],
+      datasets: [
+        {
+          data: [1],
+          backgroundColor: '#ababab',
+          borderColor: theme.colors.accentSecondary,
+          borderWidth: 1,
+        },
+      ],
+    };
+  }
 
   const options = { cutout: '70%' };
   return (
