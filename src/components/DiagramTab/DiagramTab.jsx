@@ -63,6 +63,7 @@ const DiagramTab = () => {
         <FormFilter
           onFilterChange={onFilterChange}
           actDates={statistics.actDates}
+          dates={filter}
         />
         <Table statistics={statistics} />
       </Column>
