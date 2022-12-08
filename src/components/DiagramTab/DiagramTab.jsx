@@ -28,20 +28,26 @@ const DiagramTab = () => {
     (async () => {
       try {
         // temp axios to localhost
-        const tempAxios = axios.create({
-          baseURL: 'http://localhost:3001',
+        // const tempAxios = axios.create({
+        //   baseURL: 'http://localhost:3001',
+        //   headers: {
+        //     authorization:
+        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTA1NDMxNzVmYWFmYmVkOWRkZjEwOCIsImVtYWlsIjoiYm9iQG1haWwuY29tIiwiaWF0IjoxNjcwNDk4MTk3LCJleHAiOjE2NzA1ODQ1OTd9.iGx__EHS7TuMuqtDsDF1N1FrbyW0CFL9lcQs8dUgWeA',
+        //   },
+        // });
+
+        // const res = await tempAxios.post(
+        //   '/api/transactions/statistics',
+        //   filter
+        // );
+
+        const res = await axios.post('/api/transactions/statistics', filter, {
           headers: {
             authorization:
               'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTA1NDMxNzVmYWFmYmVkOWRkZjEwOCIsImVtYWlsIjoiYm9iQG1haWwuY29tIiwiaWF0IjoxNjcwNDk4MTk3LCJleHAiOjE2NzA1ODQ1OTd9.iGx__EHS7TuMuqtDsDF1N1FrbyW0CFL9lcQs8dUgWeA',
           },
         });
 
-        const res = await tempAxios.post(
-          '/api/transactions/statistics',
-          filter
-        );
-
-        console.log(res.data.data);
         setStatistics(res.data.data);
       } catch (error) {
         console.log(error);
