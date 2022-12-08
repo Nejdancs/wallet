@@ -19,14 +19,12 @@ const Table = ({ statistics }) => {
   const transactions = [];
   for (let i = 0; i < statistics.expenses.length; i += 1) {
     transactions.push(
-      <Transaction key={statistics.expenses[i]._id[0]._id}>
+      <Transaction key={statistics.expenses[i].categoryId[0]}>
         <IconCol
           color={theme.doughnutColors[i] ?? theme.doughnutColors[i - 38]}
         />
-        <ItemCategory>{statistics.expenses[i]._id[0].name}</ItemCategory>
-        <ItemAmount>
-          {numberSpace(statistics.expenses[i].totalAmount)}
-        </ItemAmount>
+        <ItemCategory>{statistics.expenses[i].categoryName[0]}</ItemCategory>
+        <ItemAmount>{numberSpace(statistics.expenses[i].amount)}</ItemAmount>
       </Transaction>
     );
   }

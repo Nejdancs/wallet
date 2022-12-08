@@ -18,6 +18,7 @@ const DiagramTab = () => {
     expenses: [],
     totalExpenses: 0,
     totalIncome: 0,
+    actDates: [],
   });
   // const balance = useSelector(state=>state.user.balance)
   // переделать на редакс
@@ -26,17 +27,20 @@ const DiagramTab = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.post(
+        // temp axios to localhost
+        const tempAxios = axios.create({
+          baseURL: 'http://localhost:3001',
+          headers: {
+            authorization:
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTA1NDMxNzVmYWFmYmVkOWRkZjEwOCIsImVtYWlsIjoiYm9iQG1haWwuY29tIiwiaWF0IjoxNjcwNDk4MTk3LCJleHAiOjE2NzA1ODQ1OTd9.iGx__EHS7TuMuqtDsDF1N1FrbyW0CFL9lcQs8dUgWeA',
+          },
+        });
+
+        const res = await tempAxios.post(
           '/api/transactions/statistics',
-          filter,
-          // temp
-          {
-            headers: {
-              authorization:
-                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTA1NDMxNzVmYWFmYmVkOWRkZjEwOCIsImVtYWlsIjoiYm9iQG1haWwuY29tIiwiaWF0IjoxNjcwNDExMTk4LCJleHAiOjE2NzA0OTc1OTh9.f1XraoZa-aFbLUiaI5yI5RQFquB-e7AC2rvI50ov2qE',
-            },
-          }
+          filter
         );
+
         console.log(res.data.data);
         setStatistics(res.data.data);
       } catch (error) {
@@ -56,7 +60,10 @@ const DiagramTab = () => {
         <Chart balance={balance} expenses={statistics.expenses} />
       </Column>
       <Column>
-        <FormFilter onFilterChange={onFilterChange} />
+        <FormFilter
+          onFilterChange={onFilterChange}
+          actDates={statistics.actDates}
+        />
         <Table statistics={statistics} />
       </Column>
     </Section>

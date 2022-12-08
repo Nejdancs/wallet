@@ -11,11 +11,11 @@ const Chart = ({ balance, expenses }) => {
   let data;
   if (expenses.length > 0) {
     data = {
-      labels: expenses.map(trans => trans._id[0].name),
+      labels: expenses.map(trans => trans.categoryName[0]),
       datasets: [
         {
           // label: 'Doughnut Chart',
-          data: expenses.map(trans => trans.totalAmount),
+          data: expenses.map(trans => trans.amount),
           backgroundColor: theme.doughnutColors,
           borderColor: theme.doughnutColors,
           borderWidth: 1,

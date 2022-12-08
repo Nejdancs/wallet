@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import { FormEl, Select, InpWrapper } from './FormFilter.styled';
 
-const FormFilter = ({ onFilterChange }) => {
+const FormFilter = ({ onFilterChange, actDates }) => {
   const [month, setMonth] = useState('month');
   const [year, setYear] = useState('year');
+
+  const checkActMonth = month => {
+    return !!!actDates.find(
+      elem => elem.year === +year && elem.monthes.includes(+month)
+    );
+  };
 
   return (
     <div>
@@ -28,18 +34,42 @@ const FormFilter = ({ onFilterChange }) => {
               <option value="month" disabled={true}>
                 Month
               </option>
-              <option value="01">January</option>
-              <option value="02">February</option>
-              <option value="03">March</option>
-              <option value="04">April</option>
-              <option value="05">May</option>
-              <option value="06">June</option>
-              <option value="07">July</option>
-              <option value="08">August</option>
-              <option value="09">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
+              <option value="01" disabled={checkActMonth(1)}>
+                January
+              </option>
+              <option value="02" disabled={checkActMonth(2)}>
+                February
+              </option>
+              <option value="03" disabled={checkActMonth(3)}>
+                March
+              </option>
+              <option value="04" disabled={checkActMonth(4)}>
+                April
+              </option>
+              <option value="05" disabled={checkActMonth(5)}>
+                May
+              </option>
+              <option value="06" disabled={checkActMonth(6)}>
+                June
+              </option>
+              <option value="07" disabled={checkActMonth(7)}>
+                July
+              </option>
+              <option value="08" disabled={checkActMonth(8)}>
+                August
+              </option>
+              <option value="09" disabled={checkActMonth(9)}>
+                September
+              </option>
+              <option value="10" disabled={checkActMonth(10)}>
+                October
+              </option>
+              <option value="11" disabled={checkActMonth(11)}>
+                November
+              </option>
+              <option value="12" disabled={checkActMonth(12)}>
+                December
+              </option>
             </Field>
           </InpWrapper>
           <InpWrapper>
