@@ -1,4 +1,5 @@
 export const numberSpace = number => {
+  if (!number) return '0.00';
   const units = number.toFixed(2).toString().slice(-6);
   const thousands = number.toFixed(2).toString().slice(-9, -6);
   const millions = number.toFixed(2).toString().slice(-13, -9);
