@@ -14,17 +14,19 @@ import {
 import { numberSpace } from 'helpers';
 import theme from 'theme/theme';
 
-const Table = ({ incomingData, totals }) => {
-  console.log(incomingData);
+const Table = ({ statistics }) => {
+  console.log(statistics);
   const transactions = [];
-  for (let i = 0; i < incomingData.length; i += 1) {
+  for (let i = 0; i < statistics.expenses.length; i += 1) {
     transactions.push(
-      <Transaction key={incomingData[i]._id}>
+      <Transaction key={statistics.expenses[i]._id[0]._id}>
         <IconCol
           color={theme.doughnutColors[i] ?? theme.doughnutColors[i - 38]}
         />
-        <ItemCategory>{incomingData[i]._id}</ItemCategory>
-        <ItemAmount>{numberSpace(incomingData[i].totalAmount)}</ItemAmount>
+        <ItemCategory>{statistics.expenses[i]._id[0].name}</ItemCategory>
+        <ItemAmount>
+          {numberSpace(statistics.expenses[i].totalAmount)}
+        </ItemAmount>
       </Transaction>
     );
   }
@@ -38,11 +40,11 @@ const Table = ({ incomingData, totals }) => {
       {transactions}
       <Totals>
         <TotalCategory>Expenses:</TotalCategory>
-        <TotalAmountExp>{numberSpace(totals.expenses)}</TotalAmountExp>
+        <TotalAmountExp>{numberSpace(statistics.totalExpenses)}</TotalAmountExp>
       </Totals>
       <Totals>
         <TotalCategory>Income:</TotalCategory>
-        <TotalAmountInc>{numberSpace(totals.income)}</TotalAmountInc>
+        <TotalAmountInc>{numberSpace(statistics.totalIncome)}</TotalAmountInc>
       </Totals>
     </div>
   );

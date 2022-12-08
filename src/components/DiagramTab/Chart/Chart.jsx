@@ -11,7 +11,7 @@ const Chart = ({ balance, expenses }) => {
   let data;
   if (expenses.length > 0) {
     data = {
-      labels: expenses.map(trans => trans._id),
+      labels: expenses.map(trans => trans._id[0].name),
       datasets: [
         {
           // label: 'Doughnut Chart',

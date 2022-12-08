@@ -57,13 +57,7 @@ const DiagramTab = () => {
       </Column>
       <Column>
         <FormFilter onFilterChange={onFilterChange} />
-        <Table
-          incomingData={statistics.expenses}
-          totals={{
-            expenses: statistics.totalExpenses,
-            income: statistics.totalIncome,
-          }}
-        />
+        <Table statistics={statistics} />
       </Column>
     </Section>
   );
