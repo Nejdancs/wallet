@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
+import { ReactComponent as IconExit } from 'images/exit.svg';
 
 export const WrapperLogo = styled.div`
   margin-right: auto;
@@ -59,11 +60,22 @@ export const HeaderNavItem = styled.li`
   }
 `;
 
-export const NavImage = styled.img`
+// export const NavImage = styled.img`
+//   margin: 0px;
+//   width: 18px;
+//   height: 18px;
+//   margin-right: 8px;
+//   @media ${device.tablet} {
+//     margin-top: 3px;
+//   }
+// `;
+
+export const StyledIconExit = styled(IconExit)`
   margin: 0px;
   width: 18px;
   height: 18px;
   margin-right: 8px;
+  fill: currentColor;
   @media ${device.tablet} {
     margin-top: 3px;
   }
