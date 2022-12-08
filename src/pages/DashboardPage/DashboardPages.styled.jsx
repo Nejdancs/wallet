@@ -10,13 +10,7 @@ export const ContainerDashboard = styled.div`
 `;
 
 export const Section = styled.section`
-  @media ${device.mobile} {
-    background-color: ${p => p.theme.colors.primaryBg};
-  }
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.4)
-  );
+  background-color: ${p => p.theme.colors.primaryBg};
 
   @media ${device.tablet} {
     background-size: cover;

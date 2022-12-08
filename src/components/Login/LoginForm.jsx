@@ -1,35 +1,21 @@
 import { React, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as yup from 'yup';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
+import { motion } from 'framer-motion';
+import Button from 'components/Button/Button';
+import Logo from 'components/Logo/Logo';
+import onValidate from 'assets/ValidateSchema/onValidate';
 import {
   FormContainer,
+  Form,
   FormField,
   FormLabel,
   LogoContainer,
   ErrorText,
   IconMail,
   IconPassword,
-} from './LoginForm.styled';
-import Button from 'components/Button/Button';
-import { useNavigate } from 'react-router-dom';
-import Logo from 'components/Logo/Logo';
-import regEx from 'assets/regEx/regEx';
-
-const onValidate = yup.object().shape({
-  email: yup
-    .string()
-    .min(2)
-    .matches(regEx.email, 'type valid email')
-    .required(),
-  password: yup
-    .string()
-    .min(6, 'must min length 6')
-    .max(12, 'must max length 12')
-    .matches(regEx.password, 'bykBa i cufra')
-
-    .required(),
-});
+} from 'components/AuthStyleForm/AutheticationForm.styled';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -90,17 +76,29 @@ const LoginForm = () => {
                 render={msg => <ErrorText>{msg}</ErrorText>}
               />
             </FormLabel>
-            <Button main type="submit">
-              Register
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                navigate('/signup');
-              }}
+            <motion.div
+              initial={{ x: -340, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 1.2 }}
             >
-              Log In
-            </Button>
+              <Button main type="submit">
+                Log In
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ x: 340, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 2 }}
+            >
+              <Button
+                type="button"
+                onClick={() => {
+                  navigate('/signup');
+                }}
+              >
+                Register
+              </Button>
+            </motion.div>
           </Form>
         )}
       </Formik>
