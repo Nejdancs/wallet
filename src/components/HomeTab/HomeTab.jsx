@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import Media from 'react-media';
 import { useSortBy, useTable } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
+import ReactPaginate from 'react-paginate';
 
 import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
 import { testData } from './testData';
@@ -17,17 +18,53 @@ import {
   HomeTr,
   HomeTabColumn,
 } from './HomeTab.styled';
-// import API from 'services/api/api';
+import API from 'services/api/api';
 
-const HomeTab = () => {
-  const columns = useMemo(() => TAB_COLUMNS, []);
+function getTransactions() {
+    API.getTransaction(
+      'https://wallet-api-nnb3.onrender.com/api/transactions'
+    ).then(res => {
+      return res;
+    });
+};
+
+
+function PaginatedTab({ itemsPerPage }) {
   const data = testData;
+  console.log(data, 'data')
+  const [itemOffset, setItemOffset] = useState(0);
+  const [pageCount, setPage] = useState(0);
+  const [currentData, setCurrentData] = useState(data);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data }, useSortBy);
+  useEffect(() => {
+    const data = testData;
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(endOffset, 'end')
+    setCurrentData(data.slice(itemOffset, endOffset));
+    setPage(Math.ceil(data.length / itemsPerPage));
+    console.log("useEffect accepted")
+  }, [itemOffset, itemsPerPage]);
 
+  console.log(currentData, 'current');
+
+  const handlePageClick = (event) => {
+    const data = testData;
+    const newOffset = (event.selected * itemsPerPage) % data.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+  const columns = useMemo(() => TAB_COLUMNS, []);
+  const memoData = useMemo(() => currentData, [currentData]);
+  console.log(memoData, "memoData");
+  
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, memoData }, useSortBy);
+
+  console.log(currentData)
   return (
     <>
+      <>
       {data.length > 0 ? (
         <>
           <Media
@@ -107,7 +144,28 @@ const HomeTab = () => {
       )}
       <BtnAddTransaction />
     </>
+      <ReactPaginate
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
+      />
+    </>
   );
-};
+}
 
-export default HomeTab;
+export default PaginatedTab;
