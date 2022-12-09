@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
 import device from 'assets/breakpoints/device';
+import theme from 'theme/theme';
 
 export const Modal = styled.div`
   width: 100%;
@@ -43,13 +44,11 @@ export const Input = styled(Field)`
 
   border-bottom: 1px solid #e0e0e0;
 
-  /* font-family: 'Circe';
-  font-style: normal; */
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
 
-  color: #bdbdbd;
+  color: ${theme.colors.primaryTextColor};
 
   :hover,
   :focus {

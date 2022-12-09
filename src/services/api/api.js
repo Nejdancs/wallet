@@ -41,6 +41,11 @@ const getCategories = async () => {
   return data;
 };
 
+const addCategory = async body => {
+  const { data } = await axios.post('/api/transactions/categories', body);
+  return data;
+};
+
 const API = {
   signUp,
   logIn,
@@ -50,6 +55,7 @@ const API = {
   getTransaction,
   createTransaction,
   getCategories,
+  addCategory,
 };
 
 export default API;
