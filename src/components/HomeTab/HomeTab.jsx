@@ -20,6 +20,7 @@ import {
   HomeTabColumn,
 } from './HomeTab.styled';
 import API from 'services/api/api';
+import Table from './Table';
 
 function getTransactions() {
   API.getTransaction(
@@ -29,13 +30,12 @@ function getTransactions() {
   });
 }
 
-function PaginatedTab({ itemsPerPage }) {
+function HomeTab() {
   const [showModal, setShowModal] = useState(false);
-  const data = testData;
-  console.log(data, 'data');
   const [itemOffset, setItemOffset] = useState(0);
   const [pageCount, setPage] = useState(0);
-  const [currentData, setCurrentData] = useState(data);
+  const [currentData, setCurrentData] = useState([]);
+  const itemsPerPage = 4;
 
   useEffect(() => {
     const data = testData;
@@ -44,9 +44,15 @@ function PaginatedTab({ itemsPerPage }) {
     setCurrentData(data.slice(itemOffset, endOffset));
     setPage(Math.ceil(data.length / itemsPerPage));
     console.log('useEffect accepted');
-  }, [itemOffset, itemsPerPage]);
+  }, [itemOffset]);
 
-  console.log(currentData, 'current');
+  const handlePageClick = event => {
+    const data = testData;
+    const newOffset = (event.selected * itemsPerPage) % data.length;
+
+    setItemOffset(newOffset);
+  };
+
   const openModal = () => {
     setShowModal(true);
   };
@@ -55,106 +61,17 @@ function PaginatedTab({ itemsPerPage }) {
     setShowModal(false);
   };
 
-  const handlePageClick = event => {
-    const data = testData;
-    const newOffset = (event.selected * itemsPerPage) % data.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
-    setItemOffset(newOffset);
-  };
-  const columns = useMemo(() => TAB_COLUMNS, []);
-  const memoData = useMemo(() => currentData, [currentData]);
-  console.log(memoData, 'memoData');
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, memoData }, useSortBy);
-
-  console.log(currentData);
   return (
     <>
-      <>
-        {data.length > 0 ? (
-          <>
-            <Media
-              queries={{
-                mobile: '(min-width: 768px)',
-              }}
-            >
-              {({ mobile }) => (
-                <HomeTabContainer>
-                  {!mobile ? (
-                    <MobileTab />
-                  ) : (
-                    <HomeTable {...getTableProps()}>
-                      <HomeTabHeader>
-                        {headerGroups.map(headerGroup => (
-                          <tr
-                            key={() => {
-                              nanoid();
-                            }}
-                            {...headerGroup.getHeaderGroupProps()}
-                          >
-                            {headerGroup.headers.map(column => (
-                              <ColumnHeader
-                                key={() => {
-                                  nanoid();
-                                }}
-                                {...column.getHeaderProps(
-                                  column.getSortByToggleProps()
-                                )}
-                              >
-                                {column.render('Header')}
-                              </ColumnHeader>
-                            ))}
-                          </tr>
-                        ))}
-                      </HomeTabHeader>
+      {currentData.length > 0 ? (
+        <Table data={currentData} />
+      ) : (
+        <NoTransactions />
+      )}
+      <BtnAddTransaction onClick={openModal} />
 
-                      <tbody {...getTableBodyProps()}>
-                        {rows.map(row => {
-                          prepareRow(row);
-                          return (
-                            <HomeTr
-                              key={() => {
-                                nanoid();
-                              }}
-                              {...row.getRowProps()}
-                            >
-                              {row.cells.map(cell => {
-                                return (
-                                  <HomeTabColumn
-                                    key={() => {
-                                      nanoid();
-                                    }}
-                                    style={
-                                      row.values.type === '+'
-                                        ? { color: '#24cca7' }
-                                        : { color: '#ff6596' }
-                                    }
-                                    {...cell.getCellProps()}
-                                  >
-                                    {cell.render('Cell')}
-                                  </HomeTabColumn>
-                                );
-                              })}
-                            </HomeTr>
-                          );
-                        })}
-                      </tbody>
-                    </HomeTable>
-                  )}
-                </HomeTabContainer>
-              )}
-            </Media>
-          </>
-        ) : (
-          <NoTransactions />
-        )}
-        <BtnAddTransaction onClick={openModal} />
+      {showModal && <AddTransaction onClick={closeModal} />}
 
-        {showModal && <AddTransaction onClick={closeModal} />}
-      </>
       <ReactPaginate
         nextLabel="next >"
         onPageChange={handlePageClick}
@@ -179,4 +96,4 @@ function PaginatedTab({ itemsPerPage }) {
   );
 }
 
-export default PaginatedTab;
+export default HomeTab;

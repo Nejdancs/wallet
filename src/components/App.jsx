@@ -22,7 +22,7 @@ import PublicRoute from './PublicRoute/PublicRoute';
 
 const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 const DiagramTab = lazy(() => import('components/DiagramTab/DiagramTab'));
-const PaginatedTab = lazy(() => import('components/HomeTab/HomeTab'));
+const HomeTab = lazy(() => import('components/HomeTab/HomeTab'));
 const Currency = lazy(() => import('components/Currency/Currency'));
 const LoginPage = lazy(() => import('pages/AuthenticationPage/LoginPage'));
 const RegisterPage = lazy(() =>
@@ -49,7 +49,7 @@ export const App = () => {
             {/* <Route element={<PrivateRoute />}> */}
             <Route path="/" element={<DashboardPage />}>
               <Route index element={<Navigate to="/home" />} />
-              <Route path="home" element={<PaginatedTab itemsPerPage={4} />} />
+              <Route path="home" element={<HomeTab />} />
               <Route path="diagram" element={<DiagramTab />} />
               <Route
                 path="currency"
