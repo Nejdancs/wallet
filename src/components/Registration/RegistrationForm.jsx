@@ -19,12 +19,25 @@ import {
   IconName,
 } from 'components/AuthStyleForm/AutheticationForm.styled';
 
+import operations from 'redux/auth/auth-operations';
+
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
 
-  const onSubmit = (values, onSubmitProps) => {};
+  const onSubmit = async (values, { resetForm }) => {
+    const { email, password, confirmPassword, name } = values;
+    const res = await dispatch(operations.signUp({ email, password, name }));
+
+    if (res.error && res.payload === 400) {
+      return;
+    } else if (res.error) {
+      return;
+    }
+
+    resetForm();
+  };
 
   const onRegBtn = () => {};
 

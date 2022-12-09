@@ -6,6 +6,7 @@ import { Section, Title, Column } from './DiagramTab.styled';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+// import API from 'services/api/api'; Импорт API
 // import { useSelector } from 'react-redux';
 
 const DiagramTab = () => {
@@ -41,6 +42,7 @@ const DiagramTab = () => {
         //   filter
         // );
 
+        // const { data } = await API.getStatistics(filter); Использ API
         const res = await axios.post('/api/transactions/statistics', filter, {
           headers: {
             authorization:

@@ -17,6 +17,7 @@ import {
   HomeTr,
   HomeTabColumn,
 } from './HomeTab.styled';
+// import API from 'services/api/api';
 
 const HomeTab = () => {
   const columns = useMemo(() => TAB_COLUMNS, []);
@@ -24,7 +25,6 @@ const HomeTab = () => {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
-
 
   return (
     <>
@@ -77,8 +77,18 @@ const HomeTab = () => {
                           >
                             {row.cells.map(cell => {
                               return (
-                                <HomeTabColumn key={() => {nanoid();}} style={row.values.type === "+" ? { color: "#24cca7" } : { color: "#ff6596" }} {...cell.getCellProps()}>
-                                  {cell.render("Cell")}
+                                <HomeTabColumn
+                                  key={() => {
+                                    nanoid();
+                                  }}
+                                  style={
+                                    row.values.type === '+'
+                                      ? { color: '#24cca7' }
+                                      : { color: '#ff6596' }
+                                  }
+                                  {...cell.getCellProps()}
+                                >
+                                  {cell.render('Cell')}
                                 </HomeTabColumn>
                               );
                             })}

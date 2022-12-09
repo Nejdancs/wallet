@@ -17,15 +17,24 @@ import {
   IconPassword,
 } from 'components/AuthStyleForm/AutheticationForm.styled';
 
+import operations from 'redux/auth/auth-operations';
+
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
 
-  const onSubmit = (values, onSubmitProps) => {
-    // dispatch(values);
-    // onSubmitProps.setSubmitting(false);
-    // onSubmitProps.resetForm();
+  const onSubmit = async (values, { resetForm }) => {
+    console.log('first');
+    const res = await dispatch(operations.logIn(values));
+
+    if (res.error && res.payload === 400) {
+      return;
+    } else if (res.error) {
+      return;
+    }
+
+    resetForm();
   };
 
   const onRegBtn = () => {};
@@ -36,10 +45,8 @@ const LoginForm = () => {
         initialValues={{
           email: '',
           password: '',
-          confirmPassword: '',
-          firstname: '',
         }}
-        validationSchema={onValidate}
+        // validationSchema={onValidate}
         onSubmit={onSubmit}
       >
         {({ handleSubmit, handleChange, values }) => (
