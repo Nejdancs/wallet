@@ -3,33 +3,77 @@ import Chart from './Chart/Chart';
 import FormFilter from './FormFilter/FormFilter';
 import Table from './Table/Table';
 import { Section, Title, Column } from './DiagramTab.styled';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
+// import API from 'services/api/api'; Импорт API
+// import { useSelector } from 'react-redux';
 
 const DiagramTab = () => {
-  const incomingData = [
-    { _id: 1, category: 'Main expenses', amount: 11000.12 },
-    { _id: 2, category: 'Car', amount: 800 },
-    { _id: 3, category: 'Products', amount: 5600.56 },
-    { _id: 5, category: 'Self care', amount: 2513.32 },
-    { _id: 4, category: 'Child care', amount: 9645.0 },
-    { _id: 6, category: 'Household products', amount: 6561.0 },
-    { _id: 7, category: 'Education', amount: 455.56 },
-    { _id: 8, category: 'Leisure', amount: 1000.02 },
-    { _id: 9, category: 'Other expenses', amount: 4548.0 },
-    { _id: 9, category: 'Entertainment', amount: 2328.0 },
-  ];
+  const [filter, setFilter] = useState({
+    month: new Date().getMonth() + 1,
+    year: new Date().getFullYear(),
+  });
+
+  const [statistics, setStatistics] = useState({
+    expenses: [],
+    totalExpenses: 0,
+    totalIncome: 0,
+    actDates: [],
+  });
+  // const balance = useSelector(state=>state.user.balance)
+  // переделать на редакс
+  let balance = 0;
+
+  useEffect(() => {
+    (async () => {
+      try {
+        // temp axios to localhost
+        // const tempAxios = axios.create({
+        //   baseURL: 'http://localhost:3001',
+        //   headers: {
+        //     authorization:
+        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTA1NDMxNzVmYWFmYmVkOWRkZjEwOCIsImVtYWlsIjoiYm9iQG1haWwuY29tIiwiaWF0IjoxNjcwNDk4MTk3LCJleHAiOjE2NzA1ODQ1OTd9.iGx__EHS7TuMuqtDsDF1N1FrbyW0CFL9lcQs8dUgWeA',
+        //   },
+        // });
+
+        // const res = await tempAxios.post(
+        //   '/api/transactions/statistics',
+        //   filter
+        // );
+
+        // const { data } = await API.getStatistics(filter); Использ API
+        const res = await axios.post('/api/transactions/statistics', filter, {
+          headers: {
+            authorization:
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTA1NDMxNzVmYWFmYmVkOWRkZjEwOCIsImVtYWlsIjoiYm9iQG1haWwuY29tIiwiaWF0IjoxNjcwNDk4MTk3LCJleHAiOjE2NzA1ODQ1OTd9.iGx__EHS7TuMuqtDsDF1N1FrbyW0CFL9lcQs8dUgWeA',
+          },
+        });
+
+        setStatistics(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [filter]);
+
+  const onFilterChange = value => {
+    setFilter(prevState => ({ ...prevState, ...value }));
+  };
 
   return (
     <Section>
       <Column>
         <Title>Statistics</Title>
-        <Chart balance={26500} incomingData={incomingData} />
+        <Chart balance={balance} expenses={statistics.expenses} />
       </Column>
       <Column>
-        <FormFilter />
-        <Table
-          incomingData={incomingData}
-          totals={{ expenses: 22549.24, income: 27350.0 }}
+        <FormFilter
+          onFilterChange={onFilterChange}
+          actDates={statistics.actDates}
+          dates={filter}
         />
+        <Table statistics={statistics} />
       </Column>
     </Section>
   );

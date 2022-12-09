@@ -10,7 +10,7 @@ import { Dashboard } from 'components/Dashboard/Dashboard';
 import { Section, ContainerDashboard } from './DashboardPages.styled';
 import Container from 'components/Container/Container';
 
-export function DashboardPage() {
+const DashboardPage = () => {
   return (
     <>
       <Container>
@@ -21,7 +21,6 @@ export function DashboardPage() {
           <Container>
             <ContainerDashboard>
               <Dashboard />
-
               <Suspense fallback={null}>
                 <Outlet />
               </Suspense>
@@ -31,4 +30,6 @@ export function DashboardPage() {
       </main>
     </>
   );
-}
+};
+
+export default DashboardPage;

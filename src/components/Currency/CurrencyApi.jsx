@@ -5,7 +5,7 @@ const fetchCurrency = async () => {
     // const response = await fetch('https://api.monobank.ua/bank/currency');
     // const { data } = await axios.get('https://api.monobank.ua/bank/currency');
     const { data } = await axios.get(
-      'https://wallet-test.onrender.com/api/currency'
+      'https://wallet-api-nnb3.onrender.com/api/currency'
     );
     console.log('fetching datas');
     console.log(data.data.currency);
