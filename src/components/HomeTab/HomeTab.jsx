@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import Media from 'react-media';
 import { useSortBy, useTable } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
 
 import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
+import AddTransaction from 'components/AddTransaction/AddTransaction';
 import { testData } from './testData';
 import MobileTab from './MobileTab/MobileTab';
 import NoTransactions from './NoTransactions/NoTransactions';
@@ -20,8 +21,17 @@ import {
 // import API from 'services/api/api';
 
 const HomeTab = () => {
+  const [showModal, setShowModal] = useState(false);
   const columns = useMemo(() => TAB_COLUMNS, []);
   const data = testData;
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
@@ -105,7 +115,9 @@ const HomeTab = () => {
       ) : (
         <NoTransactions />
       )}
-      <BtnAddTransaction />
+      <BtnAddTransaction onClick={openModal} />
+
+      {showModal && <AddTransaction onClick={closeModal} />}
     </>
   );
 };
