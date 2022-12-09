@@ -4,6 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 import theme from '../../../theme/theme';
 import { ChartContainer, DoughnutBalance } from './Chart.styled';
 import { numberSpace } from 'helpers';
+import Media from 'react-media';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -38,12 +39,26 @@ const Chart = ({ balance, expenses }) => {
 
   const options = { cutout: '70%' };
   return (
-    <ChartContainer>
-      <Doughnut data={data} options={options} />
-      <DoughnutBalance>
-        {'\u20B4'} {numberSpace(balance)}
-      </DoughnutBalance>
-    </ChartContainer>
+    <Media
+      queries={{
+        small: '(max-width: 767px)',
+        medium: '(min-width: 768px) and (max-width: 1279px)',
+        large: '(min-width: 1280px)',
+      }}
+    >
+      {matches => (
+        <>
+          {(matches.small || matches.medium || matches.large) && (
+            <ChartContainer>
+              <Doughnut data={data} options={options} />
+              <DoughnutBalance>
+                {'\u20B4'} {numberSpace(balance)}
+              </DoughnutBalance>
+            </ChartContainer>
+          )}
+        </>
+      )}
+    </Media>
   );
 };
 export default Chart;
