@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-axios.defaults.baseURL = 'https://wallet-api-nnb3.onrender.com';
+import API from 'services/api/api';
 
 const token = {
   set(token) {
@@ -12,35 +12,52 @@ const token = {
   },
 };
 
-const signUp = createAsyncThunk('auth/register', async credentials => {
+const signUp = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await API.signUp(credentials);
+      token.set(data.token);
+      toast.success(
+        'Your registration has been successfully completed. You have just been sent an email containing membership activation instructions'
+      );
+      return data;
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong! Please, try again');
+      const {
+        response: { status },
+      } = error;
+      return thunkAPI.rejectWithValue(status);
+    }
+  }
+);
+
+const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
-    const { data } = await axios.post('api/auth/signup', credentials);
+    const { data } = await API.logIn(credentials);
+
     token.set(data.token);
-    toast.success(
-      'Your registration has been successfully completed. You have just been sent an email containing membership activation instructions'
-    );
     return data;
   } catch (error) {
     toast.error('Something went wrong! Please, try again');
+    const {
+      response: { status },
+    } = error;
+    return thunkAPI.rejectWithValue(status);
   }
 });
 
-const logIn = createAsyncThunk('auth/login', async credentials => {
+const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    const { data } = await axios.post('api/auth/login', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    toast.error('Something went wrong! Please, try again');
-  }
-});
-
-const logOut = createAsyncThunk('auth/logout', async () => {
-  try {
-    await axios.post('api/users/logout');
+    await API.logOut;
     token.unset();
   } catch (error) {
     toast.error('Something went wrong! Please, try again');
+    const {
+      response: { status },
+    } = error;
+    return thunkAPI.rejectWithValue(status);
   }
 });
 
@@ -55,8 +72,9 @@ const fetchCurrentUser = createAsyncThunk(
     }
 
     token.set(persistedToken);
+
     try {
-      const { data } = await axios.get('api/users/current');
+      const { data } = await API.fetchCurrentUser();
       return data;
     } catch (error) {}
   }

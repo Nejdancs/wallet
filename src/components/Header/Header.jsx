@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 // import Logo from 'components/Logo/Logo';
-import exit from 'images/exit.svg';
 import {
   AppHeader,
   LogoWrapper,
@@ -9,7 +8,7 @@ import {
   HeaderNav,
   HeaderNavItem,
   HeaderWrapper,
-  NavImage,
+  StyledIconExit,
   ExitText,
   ButtonLogout,
   WrapperLogo,
@@ -38,7 +37,7 @@ const Header = () => {
                 setModalOpen(true);
               }}
             >
-              <NavImage src={exit} />
+              <StyledIconExit />
               <ExitText>Exit</ExitText>
             </ButtonLogout>
           </HeaderNavItem>

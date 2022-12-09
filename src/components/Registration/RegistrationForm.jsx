@@ -1,9 +1,12 @@
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import RegBar from './RegBar';
 import { Formik, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import { motion } from 'framer-motion';
+import onValidate from 'assets/ValidateSchema/onValidate';
+import Button from 'components/Button/Button';
+import Logo from 'components/Logo/Logo';
+import RegBar from './RegBar';
 import {
   FormContainer,
   Form,
@@ -14,31 +17,27 @@ import {
   IconMail,
   IconPassword,
   IconName,
-} from './RegistrationForm.styled';
-import Button from 'components/Button/Button';
-import Logo from 'components/Logo/Logo';
-import regEx from 'assets/regEx/regEx';
+} from 'components/AuthStyleForm/AutheticationForm.styled';
 
-const onValidate = yup.object().shape({
-  email: yup
-    .string()
-    .min(2)
-    .matches(regEx.email, 'type valid email')
-    .required(),
-  password: yup
-    .string()
-    .min(6, 'must min length 6')
-    .max(12, 'must max length 12')
-    .matches(regEx.password, 'bykBa i cufra')
-    .required(),
-});
+import operations from 'redux/auth/auth-operations';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
 
-  const onSubmit = (values, onSubmitProps) => {};
+  const onSubmit = async (values, { resetForm }) => {
+    const { email, password, confirmPassword, name } = values;
+    const res = await dispatch(operations.signUp({ email, password, name }));
+
+    if (res.error && res.payload === 400) {
+      return;
+    } else if (res.error) {
+      return;
+    }
+
+    resetForm();
+  };
 
   const onRegBtn = () => {};
 
@@ -49,7 +48,7 @@ const RegisterForm = () => {
           email: '',
           password: '',
           confirmPassword: '',
-          firstname: '',
+          name: '',
         }}
         validationSchema={onValidate}
         onSubmit={onSubmit}
@@ -107,7 +106,7 @@ const RegisterForm = () => {
             <FormLabel>
               <FormField
                 type="text"
-                name="firstname"
+                name="name"
                 value={values.username}
                 onChange={handleChange}
                 placeholder="First name"
@@ -118,17 +117,29 @@ const RegisterForm = () => {
                 render={msg => <ErrorText>{msg}</ErrorText>}
               />
             </FormLabel>
-            <Button main type="submit">
-              Register
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                navigate('/login');
-              }}
+            <motion.div
+              initial={{ x: -340, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 1.2 }}
             >
-              Log In
-            </Button>
+              <Button main type="submit">
+                Register
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ x: 340, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 2 }}
+            >
+              <Button
+                type="button"
+                onClick={() => {
+                  navigate('/login');
+                }}
+              >
+                Log In
+              </Button>
+            </motion.div>
           </Form>
         )}
       </Formik>
