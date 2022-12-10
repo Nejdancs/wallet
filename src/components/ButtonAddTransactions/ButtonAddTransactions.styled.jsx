@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
-export const IconButton = styled.svg`
-  display: inline-flex;
+export const Icon = styled.img`
   width: 20px;
   height: 20px;
 
@@ -34,10 +33,6 @@ export const Button = styled.button`
   &:focus {
     background-color: rgb(7, 126, 100);
   }
-
-  /* &:hover ${IconButton}, &:focus ${IconButton} {
-    color: #ff6b08;
-  } */
 
   @media ${device.desktop} {
     right: 40px;

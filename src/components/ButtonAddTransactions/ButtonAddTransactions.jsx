@@ -1,17 +1,10 @@
-// import { useDispatch } from 'react-redux';
-// import { useState } from 'react';
-import sprite from 'images/sprite.svg';
-import { Button, IconButton } from './ButtonAddTransactions.styled';
+import IconPlus from '../../images/plus.svg';
+import { Button, Icon } from './ButtonAddTransactions.styled';
 
 const ButtonAddTransactions = ({ onClick }) => {
-  // const dispatch = useDispatch();
-
   return (
-    // <Button type="button" onClick={setModalOpen(true)}>
     <Button type="button" onClick={onClick}>
-      <IconButton>
-        <use href={sprite + '#buttonAddTransactions'} />
-      </IconButton>
+      <Icon src={IconPlus} alt="plus" />
     </Button>
   );
 };
