@@ -3,6 +3,8 @@ import Media from 'react-media';
 import { useSortBy, useTable, usePagination } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
+import arrowLeft from '../../images/arrow-left.svg';
+import arrowRight from '../../images/arrow-right.svg';
 
 import MobileTab from './MobileTab/MobileTab';
 
@@ -23,6 +25,8 @@ import {
   PageCounter,
   SizeSelector,
   SelectOption,
+  ButtonImgLeft,
+  ButtonImgRight,
 } from './Table.styled';
 
 const pageSizeOptions = [5, 10, 15, 20];
@@ -122,6 +126,7 @@ function Table({ data }) {
                       onClick={() => previousPage()}
                       disabled={!canPreviousPage}
                     >
+                      <ButtonImgLeft src={arrowLeft} />
                       Previous Page
                     </PaginationButton>
                     <PageCounterCont>
@@ -135,6 +140,7 @@ function Table({ data }) {
                       disabled={!canNextPage}
                     >
                       Next Page
+                      <ButtonImgRight src={arrowRight} />
                     </PaginationButton>
                   </PageContainer>
                   <SizeSelector

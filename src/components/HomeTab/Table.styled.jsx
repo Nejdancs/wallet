@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import device from "assets/breakpoints/device";
 
 export const PaginationContainer = styled.div`
@@ -19,19 +19,21 @@ export const PaginationButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 130px;
+    width: 150px;
     height: 40px;
     background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+
     &:hover {
         background-color: #e0e0e0;
     }
+
     &:disabled {
         background-color: #e0e0e0;
         cursor: not-allowed;
@@ -63,16 +65,18 @@ export const SizeSelector = styled.select`
     width: 130px;
     height: 40px;
     background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
+    border: none;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
     padding: 10px 20px;
+     outline: none;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     &:hover {
         background-color: #e0e0e0;
-    }     
+    }
 `;
 
 export const SelectOption = styled.option`
@@ -92,4 +96,16 @@ export const SelectOption = styled.option`
     &:hover {
         background-color: #e0e0e0;
     }
+`;
+
+export const ButtonImgLeft = styled.img`
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+`;
+
+export const ButtonImgRight = styled.img`
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
 `;
