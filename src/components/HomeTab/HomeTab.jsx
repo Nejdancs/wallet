@@ -3,7 +3,6 @@ import Media from 'react-media';
 import { useSortBy, useTable } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
-import ReactPaginate from 'react-paginate';
 
 import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
 import AddTransaction from 'components/AddTransaction/AddTransaction';
@@ -22,36 +21,21 @@ import {
 import API from 'services/api/api';
 import Table from './Table';
 
-function getTransactions() {
-  API.getTransaction(
-    'https://wallet-api-nnb3.onrender.com/api/transactions'
-  ).then(res => {
-    return res;
-  });
-}
-
 function HomeTab() {
   const [showModal, setShowModal] = useState(false);
-  const [itemOffset, setItemOffset] = useState(0);
-  const [pageCount, setPage] = useState(0);
   const [currentData, setCurrentData] = useState([]);
-  const itemsPerPage = 4;
 
   useEffect(() => {
-    const data = testData;
-    const endOffset = itemOffset + itemsPerPage;
-    console.log(endOffset, 'end');
-    setCurrentData(data.slice(itemOffset, endOffset));
-    setPage(Math.ceil(data.length / itemsPerPage));
-    console.log('useEffect accepted');
-  }, [itemOffset]);
+    const fetchTransaction = async () => {
+      // const { data } = await API.getTransaction(1, 1000);
 
-  const handlePageClick = event => {
-    const data = testData;
-    const newOffset = (event.selected * itemsPerPage) % data.length;
+      // setCurrentData(data.result);
 
-    setItemOffset(newOffset);
-  };
+      setCurrentData(testData);
+    };
+
+    fetchTransaction();
+  }, []);
 
   const openModal = () => {
     setShowModal(true);
@@ -71,27 +55,6 @@ function HomeTab() {
       <BtnAddTransaction onClick={openModal} />
 
       {showModal && <AddTransaction onClick={closeModal} />}
-
-      <ReactPaginate
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        pageClassName="page-item"
-        pageLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
-        breakLabel="..."
-        breakClassName="page-item"
-        breakLinkClassName="page-link"
-        containerClassName="pagination"
-        activeClassName="active"
-        renderOnZeroPageCount={null}
-      />
     </>
   );
 }
