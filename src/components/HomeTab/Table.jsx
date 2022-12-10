@@ -104,11 +104,7 @@ function Table({ data }) {
                                 key={() => {
                                   nanoid();
                                 }}
-                                style={
-                                  row.values.type === '+'
-                                    ? { color: '#24cca7' }
-                                    : { color: '#ff6596' }
-                                }
+                                fields={row.values}
                                 {...cell.getCellProps()}
                               >
                                 {cell.render('Cell')}
@@ -122,20 +118,23 @@ function Table({ data }) {
                 </HomeTable>
                 <PaginationContainer>
                   <PageContainer>
-                  <PaginationButton
-                    onClick={() => previousPage()}
-                    disabled={!canPreviousPage}
-                  >
-                    Previous Page
+                    <PaginationButton
+                      onClick={() => previousPage()}
+                      disabled={!canPreviousPage}
+                    >
+                      Previous Page
                     </PaginationButton>
                     <PageCounterCont>
-                    Page{' '}
-                    <PageCounter>
-                      {pageIndex + 1} of {pageOptions.length}
-                    </PageCounter>
-                  </PageCounterCont>
-                  <PaginationButton onClick={() => nextPage()} disabled={!canNextPage}>
-                    Next Page
+                      Page{' '}
+                      <PageCounter>
+                        {pageIndex + 1} of {pageOptions.length}
+                      </PageCounter>
+                    </PageCounterCont>
+                    <PaginationButton
+                      onClick={() => nextPage()}
+                      disabled={!canNextPage}
+                    >
+                      Next Page
                     </PaginationButton>
                   </PageContainer>
                   <SizeSelector
@@ -149,7 +148,7 @@ function Table({ data }) {
                         Show {pageSize}
                       </SelectOption>
                     ))}
-                      </SizeSelector>
+                  </SizeSelector>
                 </PaginationContainer>
               </>
             )}
