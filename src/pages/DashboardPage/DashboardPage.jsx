@@ -9,6 +9,8 @@ import bigImg from 'images/rectangleDesk.png';
 import { Dashboard } from 'components/Dashboard/Dashboard';
 import { Section, ContainerDashboard } from './DashboardPages.styled';
 import Container from 'components/Container/Container';
+import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
+import AddTransaction from 'components/AddTransaction/AddTransaction';
 
 const DashboardPage = () => {
   return (
@@ -18,7 +20,8 @@ const DashboardPage = () => {
       </Container>
       <main>
         <Section mediumImg={mediumImg} bigImg={bigImg}>
-          <Container>
+          <Container style={{ position: 'relative' }}>
+            <ModalAddCategory />
             <ContainerDashboard>
               <Dashboard />
               <Suspense fallback={null}>
