@@ -4,11 +4,7 @@ import { useSortBy, useTable, usePagination } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
 
-import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
-import AddTransaction from 'components/AddTransaction/AddTransaction';
-import { testData } from './testData';
 import MobileTab from './MobileTab/MobileTab';
-import NoTransactions from './NoTransactions/NoTransactions';
 
 import {
   HomeTabContainer,
@@ -18,6 +14,16 @@ import {
   HomeTr,
   HomeTabColumn,
 } from './HomeTab.styled';
+
+import {
+  PaginationContainer,
+  PageContainer,
+  PaginationButton,
+  PageCounterCont,
+  PageCounter,
+  SizeSelector,
+  SelectOption,
+} from './Table.styled';
 
 const pageSizeOptions = [5, 10, 15, 20];
 
@@ -114,46 +120,37 @@ function Table({ data }) {
                     })}
                   </tbody>
                 </HomeTable>
-                <div>
-                  <button
+                <PaginationContainer>
+                  <PageContainer>
+                  <PaginationButton
                     onClick={() => previousPage()}
                     disabled={!canPreviousPage}
                   >
                     Previous Page
-                  </button>
-                  <button onClick={() => nextPage()} disabled={!canNextPage}>
-                    Next Page
-                  </button>
-                  <div>
+                    </PaginationButton>
+                    <PageCounterCont>
                     Page{' '}
-                    <em>
+                    <PageCounter>
                       {pageIndex + 1} of {pageOptions.length}
-                    </em>
-                  </div>
-                  <div>Go to page:</div>
-                  <input
-                    type="number"
-                    defaultValue={pageIndex + 1 || 1}
-                    onChange={e => {
-                      const page = e.target.value
-                        ? Number(e.target.value) - 1
-                        : 0;
-                      gotoPage(page);
-                    }}
-                  />
-                  <select
+                    </PageCounter>
+                  </PageCounterCont>
+                  <PaginationButton onClick={() => nextPage()} disabled={!canNextPage}>
+                    Next Page
+                    </PaginationButton>
+                  </PageContainer>
+                  <SizeSelector
                     value={pageSize}
                     onChange={e => {
                       setPageSize(Number(e.target.value));
                     }}
                   >
                     {pageSizeOptions.map(pageSize => (
-                      <option key={pageSize} value={pageSize}>
+                      <SelectOption key={pageSize} value={pageSize}>
                         Show {pageSize}
-                      </option>
+                      </SelectOption>
                     ))}
-                  </select>
-                </div>
+                      </SizeSelector>
+                </PaginationContainer>
               </>
             )}
           </HomeTabContainer>
