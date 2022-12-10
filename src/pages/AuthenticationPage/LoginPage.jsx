@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import LoginForm from 'components/Login/LoginForm';
+import LoginForm from 'components/LoginForm/LoginForm';
 import {
   PageContainer,
   ImgContainerLogin,

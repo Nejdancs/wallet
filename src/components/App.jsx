@@ -5,17 +5,7 @@ import { GlobalStyle } from './GlobalStyle';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { lazy } from 'react';
-import Container from './Container/Container';
-import Balance from './Balance/Balance';
-// import Currency from './Currency/Currency';
-import Loader from './Loader/Loader';
-import Header from './Header/Header';
-// import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
-// import LoginPage from 'pages/AuthenticationPage/LoginPage';
-// import RegisterPage from 'pages/AuthenticationPage/RegistrationPage';
 import Media from 'react-media';
-// import HomeTab from './HomeTab/HomeTab';
-import ButtonAddTransactions from './ButtonAddTransactions/ButtonAddTransactions';
 import operations from 'redux/auth/auth-operations';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
@@ -46,36 +36,35 @@ export const App = () => {
       {!isFetchingCurrentUser && (
         <Suspense fallback={null}>
           <Routes>
-            {/* <Route element={<PrivateRoute />}> */}
-            <Route path="/" element={<DashboardPage />}>
-              <Route index element={<Navigate to="/home" />} />
-              <Route path="home" element={<HomeTab />} />
-              <Route path="diagram" element={<DiagramTab />} />
-              <Route
-                path="currency"
-                element={
-                  <Media
-                    queries={{
-                      small: '(max-width: 767px)',
-                    }}
-                  >
-                    {matches =>
-                      matches.small ? <Currency /> : <Navigate to="/home" />
-                    }
-                  </Media>
-                }
-              />
+            <Route element={<PrivateRoute />}>
+              <Route path="/" element={<DashboardPage />}>
+                <Route index element={<Navigate to="/home" />} />
+                <Route path="home" element={<HomeTab />} />
+                <Route path="diagram" element={<DiagramTab />} />
+                <Route
+                  path="currency"
+                  element={
+                    <Media
+                      queries={{
+                        small: '(max-width: 767px)',
+                      }}
+                    >
+                      {matches =>
+                        matches.small ? <Currency /> : <Navigate to="/home" />
+                      }
+                    </Media>
+                  }
+                />
+              </Route>
             </Route>
-            {/* </Route> */}
 
-            {/* <Route element={<PublicRoute />}> */}
-            <Route path="/signup" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            {/* </Route> */}
+            <Route element={<PublicRoute />}>
+              <Route path="/signup" element={<RegisterPage />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Route>
 
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
-          {/* <ButtonAddTransactions /> */}
         </Suspense>
       )}
     </>

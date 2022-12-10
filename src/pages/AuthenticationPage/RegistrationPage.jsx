@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import RegisterForm from 'components/Registration/RegistrationForm';
+import RegisterForm from 'components/RegistrationForm/RegistrationForm';
 import {
   PageContainer,
   ImgContainerRegister,

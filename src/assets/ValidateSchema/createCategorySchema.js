@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-import regEx from 'assets/regEx/regEx';
 
 const schema = yup.object().shape({
   name: yup
