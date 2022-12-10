@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import { ReactComponent as Eye } from 'images/EyesShow.svg';
 import { ReactComponent as EyeClose } from 'images/EyeClose.svg';
 
-const ButtonShowPassword = ({ setShowPassword, showPassword }) => {
+const ButtonShowPassword = ({ setShowPassword, showPassword, ...props }) => {
   return (
     <BtnIcon
+      {...props}
       onClick={() => {
         setShowPassword(!showPassword);
       }}

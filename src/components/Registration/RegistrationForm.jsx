@@ -30,10 +30,8 @@ const RegisterForm = () => {
   const [showConfirmPassword, setConfirmShowPassword] = useState(false);
 
   const onSubmit = async (values, { resetForm }) => {
-    const { email, password, confirmPassword, name } = values;
-    const res = await dispatch(
-      operations.signUp({ email, password, confirmPassword, name })
-    );
+    const { email, password, name } = values;
+    const res = await dispatch(operations.signUp({ email, password, name }));
 
     if (res.error && res.payload === 400) {
       return;
@@ -56,8 +54,8 @@ const RegisterForm = () => {
         validationSchema={onValidate}
         onSubmit={onSubmit}
       >
-        {({ handleChange, values }) => (
-          <Form>
+        {({ handleSubmit, handleChange, values }) => (
+          <Form onSubmit={handleSubmit}>
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -92,6 +90,7 @@ const RegisterForm = () => {
                 onInput={evt => setPassword(evt.target.value)}
               />
               <ButtonShowPassword
+                type="button"
                 setShowPassword={setShowPassword}
                 showPassword={showPassword}
               />
@@ -112,13 +111,14 @@ const RegisterForm = () => {
                 placeholder="Confirm password"
               />
               <ButtonShowPassword
+                type="button"
                 setShowPassword={setConfirmShowPassword}
                 showPassword={showConfirmPassword}
               />
               <IconPassword />
               <RegBar password={password} />
               <ErrorMessage
-                name="password"
+                name="confirmPassword"
                 render={msg => <ErrorText>{msg}</ErrorText>}
               />
             </FormLabel>
