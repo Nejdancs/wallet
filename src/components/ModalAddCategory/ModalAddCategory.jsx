@@ -10,7 +10,7 @@ import schema from 'assets/ValidateSchema/createCategorySchema';
 import API from 'services/api/api';
 import { toast } from 'react-toastify';
 
-export const ModalAddCategory = () => {
+export const ModalAddCategory = ({ closeModal }) => {
   const [type, setType] = useState('expense');
   const [categoryName, setCategoryName] = useState('');
 
@@ -22,8 +22,8 @@ export const ModalAddCategory = () => {
     e.preventDefault();
     try {
       const data = await API.addCategory({ name: categoryName, type });
-      //добавить логику закрытия модалки
       toast(`Category ${data.data.name} is created`);
+      closeModal();
     } catch (error) {
       toast(`${error.response.data.message}`);
     }
@@ -31,9 +31,8 @@ export const ModalAddCategory = () => {
   return (
     <Modal>
       <Title>Create new category</Title>
-      {/* //добавить логику закрытия модалки */}
       <CloseBtn>
-        <img src={CloseSvg} alt="close" onClick={() => {}} />
+        <img src={CloseSvg} alt="close" onClick={closeModal} />
       </CloseBtn>
       <SwitchToggle onChange={onTypeChange} />
       <Formik
@@ -53,8 +52,7 @@ export const ModalAddCategory = () => {
           <Button main type="submit">
             Create
           </Button>
-          {/* //добавить логику закрытия модалки */}
-          <Button onClick={() => {}}>Cancel</Button>
+          <Button onClick={closeModal}>Cancel</Button>
         </Form>
       </Formik>
     </Modal>

@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Formik, Form, Field } from 'formik';
 import Media from 'react-media';
 import * as yup from 'yup';
+import API from 'services/api/api';
 
 import CloseSvg from '../../images/close.svg';
 import SwitchToggle from '../AddTransaction/SwitchToggle/SwitchToggle';
@@ -26,6 +27,7 @@ import {
   SelectOption,
   InpSelector,
 } from './addTransaction.styled';
+import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -44,25 +46,41 @@ const schema = yup.object().shape({
 
 const AddTransaction = ({ onClick }) => {
   const [toggled, setToggled] = useState(false);
-  const [category, setCategory] = useState('');
+  const [categories, setCategories] = useState([]);
 
-  const optionsArr = [
-    'Main',
-    'Food',
-    'Auto',
-    'Development',
-    'Children',
-    'House',
-    'Education',
-    'Reset',
-  ];
+  const [showModalCategory, setShowModalCategory] = useState(false);
 
-  const options = optionsArr.map((el, index) => {
-    return <SelectOption key={index}>{el}</SelectOption>;
-  });
+  useEffect(() => {
+    (async () => {
+      const { data } = await API.getCategories();
+      console.log(data);
+
+      const categories = data.expenses.map(el => ({
+        value: el._id,
+        label: el.name,
+      }));
+
+      setCategories(categories);
+    })();
+  }, [showModalCategory]);
+
+  // const optionsArr = [
+  //   'Main',
+  //   'Food',
+  //   'Auto',
+  //   'Development',
+  //   'Children',
+  //   'House',
+  //   'Education',
+  //   'Reset',
+  // ];
+
+  // const options = optionsArr.map((el, index) => {
+  //   return <SelectOption key={index}>{el}</SelectOption>;
+  // });
 
   const changeSelect = e => {
-    setCategory(e.target.value);
+    setCategories(e.target.value);
   };
 
   const handleChange = toggled => {
@@ -74,8 +92,13 @@ const AddTransaction = ({ onClick }) => {
     resetForm();
   };
 
+  const closeModalCategory = () => setShowModalCategory(false);
+
   return createPortal(
     <Layout>
+      {showModalCategory && (
+        <ModalAddCategory closeModal={closeModalCategory} />
+      )}
       <Transaction>
         <ModalTitle>Add transaction</ModalTitle>
 
@@ -91,8 +114,8 @@ const AddTransaction = ({ onClick }) => {
           onSubmit={handleSubmit}
         >
           <Form autoComplete="off">
-            {!toggled && <Field as={Selektor} />}
-
+            {!toggled && <Field as={Selektor} options={categories} />}
+            <button onClick={() => setShowModalCategory(true)}>+</button>
             <InputContainer>
               <ModalInput
                 // style={{ textAlign: 'center' }}
