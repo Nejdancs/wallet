@@ -18,7 +18,8 @@ export const ModalAddCategory = () => {
     checked ? setType('income') : setType('expense');
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async e => {
+    e.preventDefault();
     try {
       const data = await API.addCategory({ name: categoryName, type });
       console.log(data);
