@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import IconPlus from '../../../images/plus.svg';
 import IconMinus from '../../../images/minus.svg';
 
@@ -13,19 +14,31 @@ import {
   IcMinus,
 } from './SwitchToggle.styled';
 
-const SwitchToggle = ({ onChange }) => {
+const SwitchToggle = ({ onLoad }) => {
   const [toggled, setToggled] = useState(false);
+  const [operationType, setOperationType] = useState('Expense');
 
   const handleChange = e => {
     setToggled(e.target.checked);
-    onChange(e.target.checked);
+
+    toggled ? setOperationType('Expense') : setOperationType('Income');
+  };
+
+  const loadSwitch = () => {
+    onLoad(operationType);
   };
 
   return (
-    <SwitchContainer>
-      <Income style={{ color: toggled ? '#24cca7' : '#e0e0e0' }}>Income</Income>
+    <SwitchContainer onLoad={loadSwitch} onChange={handleChange}>
+      <Income
+        type="text"
+        name="income"
+        style={{ color: toggled ? '#24cca7' : '#e0e0e0' }}
+      >
+        Income
+      </Income>
       <Switch>
-        <Checkbox type="checkbox" onChange={handleChange} />
+        <Checkbox type="checkbox" />
         <Slider>
           {toggled ? (
             <IcPlus src={IconPlus} alt="plus" />
@@ -34,7 +47,11 @@ const SwitchToggle = ({ onChange }) => {
           )}
         </Slider>
       </Switch>
-      <Expense style={{ color: toggled ? '#e0e0e0' : '#ff6596' }}>
+      <Expense
+        ype="text"
+        name="expense"
+        style={{ color: toggled ? '#e0e0e0' : '#ff6596' }}
+      >
         Expense
       </Expense>
     </SwitchContainer>

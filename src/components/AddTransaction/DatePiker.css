@@ -2,12 +2,6 @@
   width: 100%;
   margin-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
-    padding: 8px;
-    width: 180px;
-    height: 30px;
-  }
-
   border: none;
   outline: none;
   border-bottom: 1px solid #e0e0e0;
