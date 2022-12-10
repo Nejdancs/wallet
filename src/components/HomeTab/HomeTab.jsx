@@ -1,24 +1,12 @@
-import React, { useMemo, useState, useEffect } from 'react';
-import Media from 'react-media';
-import { useSortBy, useTable } from 'react-table';
-import { TAB_COLUMNS } from './TabColumns';
-import { nanoid } from 'nanoid';
+import React, {useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
 import AddTransaction from 'components/AddTransaction/AddTransaction';
 import { testData } from './testData';
-import MobileTab from './MobileTab/MobileTab';
 import NoTransactions from './NoTransactions/NoTransactions';
+import css from './Pagination.module.css';
 
-import {
-  HomeTabContainer,
-  HomeTable,
-  HomeTabHeader,
-  ColumnHeader,
-  HomeTr,
-  HomeTabColumn,
-} from './HomeTab.styled';
 import API from 'services/api/api';
 import Table from './Table';
 
@@ -38,12 +26,10 @@ function HomeTab() {
   const itemsPerPage = 4;
 
   useEffect(() => {
-    const data = testData;
+    const data = [...testData];
     const endOffset = itemOffset + itemsPerPage;
-    console.log(endOffset, 'end');
     setCurrentData(data.slice(itemOffset, endOffset));
     setPage(Math.ceil(data.length / itemsPerPage));
-    console.log('useEffect accepted');
   }, [itemOffset]);
 
   const handlePageClick = event => {
@@ -62,7 +48,7 @@ function HomeTab() {
   };
 
   return (
-    <>
+    <div className='HomeDiv'>
       {currentData.length > 0 ? (
         <Table data={currentData} />
       ) : (
@@ -73,26 +59,26 @@ function HomeTab() {
       {showModal && <AddTransaction onClick={closeModal} />}
 
       <ReactPaginate
-        nextLabel="next >"
+        nextLabel=">"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
         pageCount={pageCount}
-        previousLabel="< previous"
-        pageClassName="page-item"
-        pageLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
+        previousLabel="<"
+        pageClassName={css.pageItem}
+        pageLinkClassName={css.pageLink}
+        previousClassName={css.pageItem}
+        previousLinkClassName={css.pageLink}
+        nextClassName={css.pageItem}
+        nextLinkClassName={css.pageLink}
         breakLabel="..."
-        breakClassName="page-item"
-        breakLinkClassName="page-link"
-        containerClassName="pagination"
-        activeClassName="active"
+        breakClassName={css.pageItem}
+        breakLinkClassName={css.pageLink}
+        containerClassName={css.pagination}
+        activeClassName={css.active}
         renderOnZeroPageCount={null}
       />
-    </>
+    </div>
   );
 }
 

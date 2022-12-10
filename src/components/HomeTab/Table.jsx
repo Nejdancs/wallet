@@ -1,15 +1,9 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import Media from 'react-media';
 import { useSortBy, useTable } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
-import ReactPaginate from 'react-paginate';
-
-import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
-import AddTransaction from 'components/AddTransaction/AddTransaction';
-import { testData } from './testData';
 import MobileTab from './MobileTab/MobileTab';
-import NoTransactions from './NoTransactions/NoTransactions';
 
 import {
   HomeTabContainer,
@@ -27,7 +21,8 @@ function getTransactions() {
   ).then(res => {
     return res;
   });
-}
+};
+
 
 function Table({ data }) {
   const columns = useMemo(() => TAB_COLUMNS, []);
