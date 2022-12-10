@@ -21,88 +21,52 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 100%;
+  width: 100%;
 `;
 
-export const HeaderNav = styled.ul`
+export const HeaderNav = styled.div`
   display: flex;
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
   align-items: center;
+  gap: 8px;
+  @media ${device.tablet} {
+    gap: 12px;
+  }
 `;
 
-export const HeaderNavItem = styled.li`
-  display: flex;
-  margin: 0;
-  justify-content: center;
+export const UserName = styled.p`
   color: #bdbdbd;
-  text-align: center;
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  &:not(:last-child) {
-    margin-right: 8px;
-  }
+
   @media ${device.tablet} {
-    padding-top: 5px;
-    height: 30px;
-    &:not(:last-child) {
-      margin-right: 0px;
-      padding-right: 12px;
-      border-right: 1px solid #bdbdbd;
-    }
-    &:last-child {
-      margin-left: 12px;
-    }
+    padding-right: 12px;
+    border-right: 1px solid #bdbdbd;
   }
 `;
 
-// export const NavImage = styled.img`
-//   margin: 0px;
-//   width: 18px;
-//   height: 18px;
-//   margin-right: 8px;
-//   @media ${device.tablet} {
-//     margin-top: 3px;
-//   }
-// `;
-
 export const StyledIconExit = styled(IconExit)`
-  margin: 0px;
+  display: block;
   width: 18px;
   height: 18px;
   margin-right: 8px;
   fill: currentColor;
-  @media ${device.tablet} {
-    margin-top: 3px;
-  }
 `;
 
 export const ExitText = styled.p`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  color: currentColor;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+  display: none;
 
   @media ${device.tablet} {
-    margin-top: 3px;
-    position: static;
-    width: 34px;
-    height: 24px;
+    display: block;
+    font-size: 18px;
+    line-height: 1.5;
+    padding-top: 3px;
   }
 `;
 
 export const ButtonLogout = styled.button`
   padding: 0px;
   display: flex;
+  align-items: center;
   border: none;
   color: #bdbdbd;
   background-color: ${props => props.theme.colors.secondaryBg};

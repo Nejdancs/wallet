@@ -4,10 +4,10 @@ import FormFilter from './FormFilter/FormFilter';
 import Table from './Table/Table';
 import { Section, Title, Column } from './DiagramTab.styled';
 import { useEffect } from 'react';
-import axios from 'axios';
 import { useState } from 'react';
-// import API from 'services/api/api'; Импорт API
-// import { useSelector } from 'react-redux';
+import API from 'services/api/api';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const DiagramTab = () => {
   const [filter, setFilter] = useState({
@@ -21,38 +21,15 @@ const DiagramTab = () => {
     totalIncome: 0,
     actDates: [],
   });
-  // const balance = useSelector(state=>state.user.balance)
-  // переделать на редакс
-  let balance = 0;
+  const balance = useSelector(state => state.auth.user.balance);
 
   useEffect(() => {
     (async () => {
       try {
-        // temp axios to localhost
-        // const tempAxios = axios.create({
-        //   baseURL: 'http://localhost:3001',
-        //   headers: {
-        //     authorization:
-        //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTA1NDMxNzVmYWFmYmVkOWRkZjEwOCIsImVtYWlsIjoiYm9iQG1haWwuY29tIiwiaWF0IjoxNjcwNDk4MTk3LCJleHAiOjE2NzA1ODQ1OTd9.iGx__EHS7TuMuqtDsDF1N1FrbyW0CFL9lcQs8dUgWeA',
-        //   },
-        // });
-
-        // const res = await tempAxios.post(
-        //   '/api/transactions/statistics',
-        //   filter
-        // );
-
-        // const { data } = await API.getStatistics(filter); Использ API
-        const res = await axios.post('/api/transactions/statistics', filter, {
-          headers: {
-            authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTA1NDMxNzVmYWFmYmVkOWRkZjEwOCIsImVtYWlsIjoiYm9iQG1haWwuY29tIiwiaWF0IjoxNjcwNDk4MTk3LCJleHAiOjE2NzA1ODQ1OTd9.iGx__EHS7TuMuqtDsDF1N1FrbyW0CFL9lcQs8dUgWeA',
-          },
-        });
-
-        setStatistics(res.data.data);
+        const { data } = await API.getStatistics(filter);
+        setStatistics(data);
       } catch (error) {
-        console.log(error);
+        toast("can't connect");
       }
     })();
   }, [filter]);
