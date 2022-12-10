@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import { ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import operations from '../../redux/transactions/transactions-operations';
-
+import API from 'services/api/api';
 import Datetime from 'react-datetime';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,6 +33,7 @@ import {
   DateIcon,
   CloseIcon,
 } from './AddTransaction.styled';
+import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
 
 const modalRoot = document.querySelector('#modal-root');
 

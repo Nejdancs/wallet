@@ -101,8 +101,13 @@ export const NameApp = styled.p`
 export const FormWrapper = styled.div`
   align-items: center;
   display: flex;
-  @media ${device.maxTablet} {
+  width: 100%;
+  padding-top: 20px;
+  @media screen and (max-width: 768px) and (min-height: 570px) {
     height: 100vh;
+  }
+  @media ${device.tablet} {
+    padding-top: 0px;
   }
   @media ${device.desktop} {
     width: 57%;

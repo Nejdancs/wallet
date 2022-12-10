@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import RegisterForm from 'components/Registration/RegistrationForm';
+import RegisterForm from 'components/RegistrationForm/RegistrationForm';
 import {
   PageContainer,
   ImgContainerRegister,
@@ -11,23 +11,23 @@ import {
 
 const RegisterPage = () => {
   return (
-    <motion.div
-      initial={{ scale: 0.7, opacity: 0.5 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 1.2 }}
-    >
-      <Container>
-        <PageContainer>
-          <ImgSection>
-            <ImgContainerRegister />
-            <NameApp>Finance App</NameApp>
-          </ImgSection>
-          <FormWrapper>
-            <RegisterForm />
-          </FormWrapper>
-        </PageContainer>
-      </Container>
-    </motion.div>
+    <Container>
+      <PageContainer>
+        <ImgSection>
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0.5 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <ImgContainerRegister />{' '}
+          </motion.div>
+          <NameApp>Finance App</NameApp>
+        </ImgSection>
+        <FormWrapper>
+          <RegisterForm />
+        </FormWrapper>
+      </PageContainer>
+    </Container>
   );
 };
 

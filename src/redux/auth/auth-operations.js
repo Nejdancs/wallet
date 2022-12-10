@@ -18,13 +18,10 @@ const signUp = createAsyncThunk(
     try {
       const { data } = await API.signUp(credentials);
       token.set(data.token);
-      toast.success(
-        'Your registration has been successfully completed. You have just been sent an email containing membership activation instructions'
-      );
+
       return data;
     } catch (error) {
       console.log(error);
-      toast.error('Something went wrong! Please, try again');
       const {
         response: { status },
       } = error;
@@ -40,7 +37,7 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     token.set(data.token);
     return data;
   } catch (error) {
-    toast.error('Something went wrong! Please, try again');
+    console.log(error);
     const {
       response: { status },
     } = error;

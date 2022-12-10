@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-// import Logo from 'components/Logo/Logo';
 import {
   AppHeader,
-  LogoWrapper,
-  LogoImg,
-  LogoText,
   HeaderNav,
-  HeaderNavItem,
+  UserName,
   HeaderWrapper,
   StyledIconExit,
   ExitText,
@@ -15,12 +11,16 @@ import {
 } from './Header.styled';
 import ModalLogout from 'components/ModalLogout';
 import Logo from 'components/Logo/Logo';
+import { useDispatch, useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
 
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const TestClick = event => {
-    event.preventDefault();
-  };
+  const { name } = useSelector(authSelectors.getUser);
+
+  // Временно, пока не закрыты рауты
+  const userName = name ? name : 'Name';
+  // Временно, пока не закрыты рауты
 
   return (
     <AppHeader>
@@ -30,17 +30,15 @@ const Header = () => {
         </WrapperLogo>
 
         <HeaderNav>
-          <HeaderNavItem>Name</HeaderNavItem>
-          <HeaderNavItem>
-            <ButtonLogout
-              onClick={() => {
-                setModalOpen(true);
-              }}
-            >
-              <StyledIconExit />
-              <ExitText>Exit</ExitText>
-            </ButtonLogout>
-          </HeaderNavItem>
+          <UserName>{userName}</UserName>
+          <ButtonLogout
+            onClick={() => {
+              setModalOpen(true);
+            }}
+          >
+            <StyledIconExit />
+            <ExitText>Exit</ExitText>
+          </ButtonLogout>
           {modalOpen && <ModalLogout setModalOpen={setModalOpen} />}
         </HeaderNav>
       </HeaderWrapper>
