@@ -7,6 +7,7 @@ import onValidate from 'assets/ValidateSchema/onValidate';
 import Button from 'components/Button/Button';
 import Logo from 'components/Logo/Logo';
 import RegBar from './RegBar';
+import ButtonShowPassword from 'components/ButtonShowPassworg/ButtonShowPassworg';
 import {
   FormContainer,
   Form,
@@ -25,10 +26,14 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setConfirmShowPassword] = useState(false);
 
   const onSubmit = async (values, { resetForm }) => {
     const { email, password, confirmPassword, name } = values;
-    const res = await dispatch(operations.signUp({ email, password, name }));
+    const res = await dispatch(
+      operations.signUp({ email, password, confirmPassword, name })
+    );
 
     if (res.error && res.payload === 400) {
       return;
@@ -38,8 +43,6 @@ const RegisterForm = () => {
 
     resetForm();
   };
-
-  const onRegBtn = () => {};
 
   return (
     <FormContainer>
@@ -53,11 +56,18 @@ const RegisterForm = () => {
         validationSchema={onValidate}
         onSubmit={onSubmit}
       >
-        {({ handleSubmit, handleChange, values }) => (
-          <Form onSubmit={handleSubmit}>
-            <LogoContainer>
-              <Logo />
-            </LogoContainer>
+        {({ handleChange, values }) => (
+          <Form>
+            <motion.div
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.2 }}
+            >
+              <LogoContainer>
+                <Logo />
+              </LogoContainer>
+            </motion.div>
+
             <FormLabel>
               <FormField
                 type="email"
@@ -74,28 +84,37 @@ const RegisterForm = () => {
             </FormLabel>
             <FormLabel>
               <FormField
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 value={values.password}
                 onChange={handleChange}
                 placeholder="Password"
                 onInput={evt => setPassword(evt.target.value)}
               />
+              <ButtonShowPassword
+                setShowPassword={setShowPassword}
+                showPassword={showPassword}
+              />
+
               <IconPassword />
               <ErrorMessage
                 name="password"
                 render={msg => <ErrorText>{msg}</ErrorText>}
               />
             </FormLabel>
+
             <FormLabel>
               <FormField
-                type="password"
+                type={showConfirmPassword ? 'text' : 'password'}
                 name="confirmPassword"
                 value={values.confirmPassword}
                 onChange={handleChange}
                 placeholder="Confirm password"
               />
-
+              <ButtonShowPassword
+                setShowPassword={setConfirmShowPassword}
+                showPassword={showConfirmPassword}
+              />
               <IconPassword />
               <RegBar password={password} />
               <ErrorMessage
@@ -120,7 +139,7 @@ const RegisterForm = () => {
             <motion.div
               initial={{ x: -340, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.9, delay: 1.2 }}
+              transition={{ duration: 0.9, delay: 0.8 }}
             >
               <Button main type="submit">
                 Register
@@ -129,7 +148,7 @@ const RegisterForm = () => {
             <motion.div
               initial={{ x: 340, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.9, delay: 2 }}
+              transition={{ duration: 0.9, delay: 1.3 }}
             >
               <Button
                 type="button"

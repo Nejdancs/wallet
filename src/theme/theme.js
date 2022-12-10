@@ -16,6 +16,7 @@ const theme = {
     primaryBg: '#e7eaf2',
     secondaryBg: '#ffffff',
     authPageBg: '#E5E5E5',
+    fillIcons: '#e0e0e0',
   },
   doughnutColors: [
     '#FED057',

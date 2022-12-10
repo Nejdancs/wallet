@@ -7,11 +7,8 @@ import { ReactComponent as password } from '../../images/password.svg';
 
 export const FormContainer = styled.div`
   width: 100%;
-  /* height: 100vh; */
   padding: 0 20px;
   margin: 0 auto;
-
-  /* border: 1px solid black; */
 
   @media ${device.mobile} {
     width: 480px;
@@ -20,9 +17,6 @@ export const FormContainer = styled.div`
   }
 
   @media ${device.tablet} {
-    /* position: absolute;
-    top: 43%;
-    left: 15%; */
     width: 533px;
     padding: 40px 58.5px 62px 65px;
     background-color: ${props => props.theme.colors.secondaryBg};
@@ -46,26 +40,26 @@ export const IconPassword = styled(password)`
   position: absolute;
   left: 10px;
   top: 4px;
-  fill: #e0e0e0;
+  fill: ${p => p.theme.colors.fillIcons};
 `;
 
 export const IconMail = styled(email)`
   position: absolute;
   left: 10px;
   top: 4px;
-  fill: #e0e0e0;
+  fill: ${p => p.theme.colors.fillIcons};
 `;
 
 export const IconName = styled(name)`
   position: absolute;
   left: 10px;
   top: 4px;
-  fill: #e0e0e0;
+  fill: ${p => p.theme.colors.fillIcons};
 `;
 
 export const FormField = styled(Field)`
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${p => p.theme.colors.fillIcons};
   height: 32px;
   outline: none;
   padding-left: 54.5px;
@@ -81,7 +75,7 @@ export const FormField = styled(Field)`
     fill: ${p => p.theme.colors.accentPrimary};
   }
   ::placeholder {
-    color: #e0e0e0;
+    color: ${p => p.theme.colors.fillIcons};
   }
   @media ${device.desktop} {
     width: 410px;
