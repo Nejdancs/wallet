@@ -117,7 +117,9 @@ const HomeTab = () => {
       )}
       <BtnAddTransaction onClick={openModal} />
 
-      {showModal && <AddTransaction onClick={closeModal} />}
+      {showModal && (
+        <AddTransaction showModal={showModal} setShowModal={setShowModal} />
+      )}
     </>
   );
 };

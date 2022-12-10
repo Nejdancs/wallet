@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Select from 'react-select';
 import './Selektor.css';
 
@@ -13,11 +12,14 @@ const options = [
   { value: 'Reset', label: 'Reset' },
 ];
 
-const Selektor = () => {
-  const [category, setCategory] = useState('');
+const Selektor = ({ onChange }) => {
+  const onSelectorChange = e => {
+    onChange(e.value);
+  };
 
   return (
     <Select
+      onChange={onSelectorChange}
       unstyled={true}
       classNamePrefix="custom-select"
       options={options}

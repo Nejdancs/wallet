@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import {
   persistStore,
   FLUSH,
@@ -10,10 +11,12 @@ import {
 } from 'redux-persist';
 import { persistedAuthReducer } from './persist/persist-reducer';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import transactionsReducer from './transactions/transactions-slice';
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
+    transaction: transactionsReducer,
     //
   },
 
@@ -23,6 +26,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+
     // tApi.middleware,
   ],
 });

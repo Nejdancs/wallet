@@ -1,14 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
-import { Formik, Form, Field } from 'formik';
-import Media from 'react-media';
-import * as yup from 'yup';
+import { Formik, Form } from 'formik';
+import { ToastContainer } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import operations from '../../redux/transactions/transactions-operations';
+
+import Datetime from 'react-datetime';
+
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-datetime/css/react-datetime.css';
+import './DatePiker.css';
 
 import CloseSvg from '../../images/close.svg';
 import SwitchToggle from '../AddTransaction/SwitchToggle/SwitchToggle';
 import DateRange from '../../images/date-range.svg';
-import DatePiker from './DatePiker/DatePiker';
 import Selektor from './Selektor/Selektor';
+import MobileAddModal from './MobileAddModal/MobileAddModal';
+import useMediaQuery from 'hooks/useMediaQuery';
+import Notification from './Notification/Notification';
 
 import {
   Layout,
@@ -22,102 +31,139 @@ import {
   CommentInput,
   Calendar,
   DateIcon,
-  Selector,
-  SelectOption,
-  InpSelector,
-} from './addTransaction.styled';
+  CloseIcon,
+} from './AddTransaction.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const initialValues = {
-  category: '',
-  total: '',
-  date: '',
-  comment: '',
-};
-
-const schema = yup.object().shape({
-  category: yup.string().required(),
-  total: yup.string().required(),
-  date: yup.string().required(),
-});
-
-const AddTransaction = ({ onClick }) => {
+const AddTransaction = ({ showModal, setShowModal }) => {
   const [toggled, setToggled] = useState(false);
   const [category, setCategory] = useState('');
+  const [date, setDate] = useState(new Date());
+  const [typeOfOperation, setTypeOfOperation] = useState('Expense');
+  const dispatch = useDispatch();
 
-  const optionsArr = [
-    'Main',
-    'Food',
-    'Auto',
-    'Development',
-    'Children',
-    'House',
-    'Education',
-    'Reset',
-  ];
+  let inputProps = { className: 'dateInput' };
 
-  const options = optionsArr.map((el, index) => {
-    return <SelectOption key={index}>{el}</SelectOption>;
-  });
-
-  const changeSelect = e => {
-    setCategory(e.target.value);
+  const initialValues = {
+    total: 0.0,
+    comment: '',
   };
 
-  const handleChange = toggled => {
-    setToggled(toggled);
+  const matches = useMediaQuery('(max-width: 767px)');
+
+  const onSelectorChange = value => {
+    setCategory(value);
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const changeTypeOfOperationt = value => {
+    setTypeOfOperation(value);
+  };
+
+  const onSubmit = (e, { resetForm }) => {
+    const value = {
+      type: typeOfOperation,
+      category: category,
+      total: e.total,
+      date: date.toLocaleDateString(),
+      comment: e.comment,
+    };
+
+    if (value.total === '') {
+      Notification('total');
+      return;
+    }
+    if (value.category === '') {
+      Notification('category');
+      return;
+    } else {
+      console.log(value);
+      dispatch(operations.createTransaction(value));
+    }
+
     resetForm();
+    setShowModal(false);
   };
+
+  const onKeyDown = useCallback(
+    e => {
+      if (e.code === 'Escape' ?? e.target === e.currentTarget) {
+        setShowModal(false);
+      }
+    },
+    [setShowModal]
+  );
+
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [setShowModal, onKeyDown]);
 
   return createPortal(
-    <Layout>
-      <Transaction>
-        <ModalTitle>Add transaction</ModalTitle>
-
-        <CloseBtn type="button" onClick={onClick}>
-          <img src={CloseSvg} alt="close" />
-        </CloseBtn>
-
-        <SwitchToggle onChange={handleChange} />
-
-        <Formik
-          initialValues={initialValues}
-          validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
-          <Form autoComplete="off">
-            {!toggled && <Field as={Selektor} />}
-
-            <InputContainer>
-              <ModalInput
-                // style={{ textAlign: 'center' }}
-                type="text"
-                name="total"
-                placeholder="0.00"
+    <Layout onClick={onKeyDown}>
+      {matches ? (
+        <MobileAddModal showModal={showModal} setShowModal={setShowModal} />
+      ) : (
+        <Transaction>
+          <ModalTitle>Add transaction</ModalTitle>
+          <CloseBtn
+            type="button"
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
+            <CloseIcon src={CloseSvg} alt="close" />
+          </CloseBtn>
+          <SwitchToggle onLoad={changeTypeOfOperationt} />
+          <Formik initialValues={initialValues} onSubmit={onSubmit}>
+            <Form autoComplete="off">
+              <Selektor
+                onChange={onSelectorChange}
+                style={{ color: '#000000' }}
               />
-              <Calendar>
-                <ModalInput type="date" name="date" as={DatePiker} />
-                <DateIcon src={DateRange} alt="calendar" />
-              </Calendar>
-            </InputContainer>
 
-            <CommentInput type="text" name="comment" placeholder="Comment" />
-            <BtnList>
-              <li>
+              <InputContainer>
+                <ModalInput
+                  style={{ textAlign: 'center' }}
+                  type="text"
+                  name="total"
+                  placeholder={0.0}
+                />
+
+                <Calendar>
+                  <Datetime
+                    timeFormat={false}
+                    initialValue={date}
+                    closeOnSelect={true}
+                    dateFormat="DD.MM.YYYY"
+                    inputProps={inputProps}
+                    onChange={e => setDate(e._d)}
+                  />
+
+                  <DateIcon src={DateRange} alt="calendar" />
+                </Calendar>
+              </InputContainer>
+
+              <CommentInput type="text" name="comment" placeholder="Comment" />
+              <BtnList>
                 <ActionBtn type="submit">Add</ActionBtn>
-              </li>
-              <li>
-                <ActionBtn type="button">Cancel</ActionBtn>
-              </li>
-            </BtnList>
-          </Form>
-        </Formik>
-      </Transaction>
+                <ActionBtn
+                  type="button"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  Cancel
+                </ActionBtn>
+              </BtnList>
+            </Form>
+          </Formik>
+        </Transaction>
+      )}
+      <ToastContainer />
     </Layout>,
     modalRoot
   );

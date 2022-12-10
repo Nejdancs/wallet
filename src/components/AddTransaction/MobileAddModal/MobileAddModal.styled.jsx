@@ -22,22 +22,19 @@ export const Layout = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 `;
 
 export const Transaction = styled.div`
   position: absolute;
-
+  top: 60px;
   width: 320px;
 
   padding: 20px;
 
   background-color: #ffffff;
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    width: 540px;
-    padding: 40px 60px;
-    border-radius: 20px;
-  }
+
+  z-index: 2;
 `;
 
 export const ModalTitle = styled.h2`
@@ -47,11 +44,6 @@ export const ModalTitle = styled.h2`
   line-height: 45px;
   text-align: center;
   margin-bottom: 40px;
-`;
-
-export const CloseIcon = styled.img`
-  width: 18px;
-  height: 18px;
 `;
 
 export const CloseBtn = styled.button`
@@ -69,18 +61,6 @@ export const CloseBtn = styled.button`
   border-radius: 50%;
   background-color: #ffffff;
   cursor: pointer;
-
-  &:focus > ${CloseIcon} {
-    fill: #24cca7;
-  }
-`;
-
-export const InputContainer = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 `;
 
 export const ModalInput = styled(Field)`
@@ -90,10 +70,8 @@ export const ModalInput = styled(Field)`
 
   margin-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
-    width: 180px;
-    height: 30px;
-  }
+  /* width: 180px;
+  height: 30px; */
 
   border-bottom: 1px solid #e0e0e0;
 
@@ -169,7 +147,7 @@ export const CommentInput = styled(Field)`
   }
 `;
 
-export const BtnList = styled.div`
+export const BtnList = styled.ul`
   display: grid;
 
   justify-content: center;

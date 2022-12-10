@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SwitchContainer = styled.div`
+export const SwitchContainer = styled.form`
   padding: 0;
   margin: 0;
 
