@@ -39,8 +39,6 @@ const LoginForm = () => {
     resetForm();
   };
 
-  const onRegBtn = () => {};
-
   return (
     <FormContainer>
       <Formik
@@ -48,11 +46,11 @@ const LoginForm = () => {
           email: '',
           password: '',
         }}
-        // validationSchema={onValidate}
+        validationSchema={onValidate}
         onSubmit={onSubmit}
       >
-        {({ handleSubmit, handleChange, values }) => (
-          <Form onSubmit={handleSubmit}>
+        {({ handleChange, values }) => (
+          <Form>
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

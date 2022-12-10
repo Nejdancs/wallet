@@ -31,7 +31,9 @@ const RegisterForm = () => {
 
   const onSubmit = async (values, { resetForm }) => {
     const { email, password, confirmPassword, name } = values;
-    const res = await dispatch(operations.signUp({ email, password, name }));
+    const res = await dispatch(
+      operations.signUp({ email, password, confirmPassword, name })
+    );
 
     if (res.error && res.payload === 400) {
       return;
@@ -41,8 +43,6 @@ const RegisterForm = () => {
 
     resetForm();
   };
-
-  const onRegBtn = () => {};
 
   return (
     <FormContainer>
@@ -56,8 +56,8 @@ const RegisterForm = () => {
         validationSchema={onValidate}
         onSubmit={onSubmit}
       >
-        {({ handleSubmit, handleChange, values }) => (
-          <Form onSubmit={handleSubmit}>
+        {({ handleChange, values }) => (
+          <Form>
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
