@@ -4,7 +4,7 @@ import { NoTrContainer, NoTrMessage } from "./NoTransactions.styled"
 const NoTransactions = () => {
   return (
     <NoTrContainer>
-      <NoTrMessage>Транзакций не найдено</NoTrMessage>
+      <NoTrMessage>No Transactions</NoTrMessage>
     </NoTrContainer>
   );
 };

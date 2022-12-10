@@ -3,6 +3,8 @@ import Media from 'react-media';
 import { useSortBy, useTable, usePagination } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
+import arrowLeft from '../../images/arrow-left.svg';
+import arrowRight from '../../images/arrow-right.svg';
 
 import MobileTab from './MobileTab/MobileTab';
 
@@ -23,6 +25,8 @@ import {
   PageCounter,
   SizeSelector,
   SelectOption,
+  ButtonImgLeft,
+  ButtonImgRight,
 } from './Table.styled';
 
 const pageSizeOptions = [5, 10, 15, 20];
@@ -104,11 +108,7 @@ function Table({ data }) {
                                 key={() => {
                                   nanoid();
                                 }}
-                                style={
-                                  row.values.type === '+'
-                                    ? { color: '#24cca7' }
-                                    : { color: '#ff6596' }
-                                }
+                                fields={row.values}
                                 {...cell.getCellProps()}
                               >
                                 {cell.render('Cell')}
@@ -122,20 +122,25 @@ function Table({ data }) {
                 </HomeTable>
                 <PaginationContainer>
                   <PageContainer>
-                  <PaginationButton
-                    onClick={() => previousPage()}
-                    disabled={!canPreviousPage}
-                  >
-                    Previous Page
+                    <PaginationButton
+                      onClick={() => previousPage()}
+                      disabled={!canPreviousPage}
+                    >
+                      <ButtonImgLeft src={arrowLeft} />
+                      Previous Page
                     </PaginationButton>
                     <PageCounterCont>
-                    Page{' '}
-                    <PageCounter>
-                      {pageIndex + 1} of {pageOptions.length}
-                    </PageCounter>
-                  </PageCounterCont>
-                  <PaginationButton onClick={() => nextPage()} disabled={!canNextPage}>
-                    Next Page
+                      Page{' '}
+                      <PageCounter>
+                        {pageIndex + 1} of {pageOptions.length}
+                      </PageCounter>
+                    </PageCounterCont>
+                    <PaginationButton
+                      onClick={() => nextPage()}
+                      disabled={!canNextPage}
+                    >
+                      Next Page
+                      <ButtonImgRight src={arrowRight} />
                     </PaginationButton>
                   </PageContainer>
                   <SizeSelector
@@ -149,7 +154,7 @@ function Table({ data }) {
                         Show {pageSize}
                       </SelectOption>
                     ))}
-                      </SizeSelector>
+                  </SizeSelector>
                 </PaginationContainer>
               </>
             )}

@@ -26,10 +26,8 @@ const getStatistics = async body => {
   return data;
 };
 
-const getTransaction = async (page = 1, limit = 5) => {
-  const { data } = await axios.get(`/api/transactions/`, {
-    params: { page, limit },
-  });
+const getTransaction = async () => {
+  const { data } = await axios.get(`/api/transactions/`);
   return data;
 };
 
