@@ -22,10 +22,11 @@ export const ModalAddCategory = () => {
     e.preventDefault();
     try {
       const data = await API.addCategory({ name: categoryName, type });
-      console.log(data);
       //добавить логику закрытия модалки
-      toast('creates!');
-    } catch (error) {}
+      toast(`Category ${data.data.name} is created`);
+    } catch (error) {
+      toast(`${error.response.data.message}`);
+    }
   };
   return (
     <Modal>
