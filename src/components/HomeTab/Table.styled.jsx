@@ -69,6 +69,7 @@ export const SizeSelector = styled.select`
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     padding: 10px 20px;
+     outline: none;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
