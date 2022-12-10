@@ -15,6 +15,7 @@ import {
   ColumnHeader,
   HomeTr,
   HomeTabColumn,
+  SortArrow,
 } from './HomeTab.styled';
 
 import {
@@ -76,18 +77,31 @@ function Table({ data }) {
                         }}
                         {...headerGroup.getHeaderGroupProps()}
                       >
-                        {headerGroup.headers.map(column => (
-                          <ColumnHeader
-                            key={() => {
-                              nanoid();
-                            }}
-                            {...column.getHeaderProps(
-                              column.getSortByToggleProps()
-                            )}
-                          >
-                            {column.render('Header')}
-                          </ColumnHeader>
-                        ))}
+                        {headerGroup.headers.map(column => {
+                          console.log(column.isSorted);
+                          console.log(column.isSortedDesc);
+                          return (
+                            <ColumnHeader
+                              key={() => {
+                                nanoid();
+                              }}
+                              {...column.getHeaderProps(
+                                column.getSortByToggleProps()
+                              )}
+                            >
+                              <span style={{ position: 'relative' }}>
+                                {column.render('Header')}
+                                <SortArrow>
+                                  {!column.isSorted
+                                    ? null
+                                    : column.isSortedDesc
+                                    ? '▼'
+                                    : '▲'}
+                                </SortArrow>
+                              </span>
+                            </ColumnHeader>
+                          );
+                        })}
                       </tr>
                     ))}
                   </HomeTabHeader>

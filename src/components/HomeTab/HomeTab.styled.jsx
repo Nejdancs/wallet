@@ -17,6 +17,14 @@ export const HomeTable = styled.table`
     height: auto;
     table-layout: fixed;
   }
+
+  & .-sort-desc {
+    box-shadow: none !important;
+  }
+  .-sort-desc:before {
+    content: '▼';
+    float: right;
+  }
 `;
 
 export const HomeTabHeader = styled.thead``;
@@ -105,4 +113,12 @@ export const HomeTabColumn = styled.td`
   :last-child {
     padding-right: 20px;
   }
+`;
+
+export const SortArrow = styled.span`
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  font-size: 12px;
 `;

@@ -1,9 +1,9 @@
 export const TAB_COLUMNS = [
   {
-    Header: "Date",
-    accessor: "date",
+    Header: 'Date',
+    accessor: 'date',
     disableFilters: true,
-    sticky: "centre",
+    sticky: 'centre',
     sortType: (rowA, rowB, id) => {
       const arrA = rowA.values[id].split('.');
       const arrB = rowB.values[id].split('.');
@@ -19,27 +19,27 @@ export const TAB_COLUMNS = [
     },
   },
   {
-    Header: "Type",
-    accessor: "type",
-    sticky: "centre",
+    Header: 'Type',
+    accessor: 'type',
+    sticky: 'centre',
   },
   {
-    Header: "Category",
-    accessor: "category",
-    sticky: "centre",
+    Header: 'Category',
+    accessor: 'category',
+    sticky: 'centre',
   },
   {
-    Header: "Comment",
+    Header: 'Comment',
 
-    accessor: "comment",
+    accessor: 'comment',
   },
   {
-    Header: "Sum",
-    accessor: "amount",
-    sticky: "right",
+    Header: 'Sum',
+    accessor: 'amount',
+    sticky: 'right',
   },
   {
-    Header: "Balance",
-    accessor: "balance",
+    Header: 'Balance',
+    accessor: 'balance',
   },
 ];
