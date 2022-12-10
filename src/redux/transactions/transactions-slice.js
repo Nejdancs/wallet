@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import transactionOperations from './transactions-operations';
+import options from './transactions-operations';
 
 const initialState = {
   transaction: {
@@ -10,7 +10,6 @@ const initialState = {
     comment: '',
   },
   category: [],
-  token: null,
   loading: false,
 };
 
@@ -18,22 +17,20 @@ const transactionSlice = createSlice({
   name: 'transaction',
   initialState,
   extraReducers: {
-    [transactionOperations.getCategory.pending](state) {
+    [options.getCategory.pending]: state => {
       state.loading = true;
     },
-    [transactionOperations.getCategory.fulfilled](state, action) {
+    [options.getCategory.fulfilled]: (state, { action }) => {
       state.category = action.payload.category;
-      state.token = action.payload.token;
       state.loading = false;
     },
-    [transactionOperations.getCategory.rejected](state) {
+    [options.getCategory.rejected]: state => {
       state.loading = false;
     },
-    [transactionOperations.createTransaction.pending](state, action) {
-      state.token = action.payload.token;
+    [options.createTransaction.pending]: (state, { action }) => {
       state.isLoggedIn = true;
     },
-    [transactionOperations.createTransaction.fulfilled](state, action) {
+    [options.createTransaction.fulfilled]: (state, { action }) => {
       state.transaction = {
         type: '',
         category: '',
@@ -41,10 +38,9 @@ const transactionSlice = createSlice({
         date: '',
         comment: '',
       };
-      state.token = action.payload.token;
       state.loading = false;
     },
-    [transactionOperations.createTransaction.rejected](state) {
+    [options.createTransaction.rejected]: state => {
       state.loading = false;
     },
   },
