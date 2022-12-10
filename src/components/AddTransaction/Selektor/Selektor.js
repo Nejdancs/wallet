@@ -2,18 +2,18 @@ import { useState } from 'react';
 import Select from 'react-select';
 import './Selektor.css';
 
-const options = [
-  { value: 'Main', label: 'Main' },
-  { value: 'Food', label: 'Food' },
-  { value: 'Auto', label: 'Auto' },
-  { value: 'Development', label: 'Development' },
-  { value: 'Children', label: 'Children' },
-  { value: 'House', label: 'House' },
-  { value: 'Education', label: 'Education' },
-  { value: 'Reset', label: 'Reset' },
-];
+// const options = [
+//   { value: 'Main', label: 'Main' },
+//   { value: 'Food', label: 'Food' },
+//   { value: 'Auto', label: 'Auto' },
+//   { value: 'Development', label: 'Development' },
+//   { value: 'Children', label: 'Children' },
+//   { value: 'House', label: 'House' },
+//   { value: 'Education', label: 'Education' },
+//   { value: 'Reset', label: 'Reset' },
+// ];
 
-const Selektor = () => {
+const Selektor = ({ options }) => {
   const [category, setCategory] = useState('');
 
   return (
