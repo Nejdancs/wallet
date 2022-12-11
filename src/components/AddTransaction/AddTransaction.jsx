@@ -115,8 +115,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   const onKeyDown = useCallback(
     e => {
-      if (e.code === 'Escape' ?? e.target === e.currentTarget) {
+      if (e.code === 'Escape') {
         setShowModal(false);
+        console.log(e);
       }
     },
     [setShowModal]
@@ -132,12 +133,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   return createPortal(
     <Layout
-      onClick={
-        (onKeyDown,
-        () => {
-          setShowModal(false);
-        })
-      }
+      onClick={e => {
+        if (e.target === e.currentTarget) setShowModal(false);
+      }}
     >
       {showModalCat && (
         <ModalAddCategory closeModal={() => setShowModalCat(false)} />

@@ -34,7 +34,7 @@ export const ModalAddCategory = ({ closeModal }) => {
       <CloseBtn>
         <img src={CloseSvg} alt="close" onClick={closeModal} />
       </CloseBtn>
-      <SwitchToggle onChange={onTypeChange} />
+      <SwitchToggle onChange={onTypeChange} onLoad={() => {}} />
       <Formik
         initialValues={{ categoryName: 'expense' }}
         validationSchema={schema}
