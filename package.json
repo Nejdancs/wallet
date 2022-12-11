@@ -13,6 +13,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^7.6.19",
     "modern-normalize": "^1.1.0",
+    "moment": "^2.29.4",
     "nanoid": "^3.3.4",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",

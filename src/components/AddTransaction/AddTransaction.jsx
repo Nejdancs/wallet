@@ -1,24 +1,27 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { createPortal } from 'react-dom';
-import { Formik, Form } from 'formik';
-import { ToastContainer } from 'react-toastify';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { toast } from 'react-toastify';
+import moment from 'moment/moment';
 
-import operations from '../../redux/transactions/transactions-operations';
+import * as yup from 'yup';
 
 import Datetime from 'react-datetime';
 
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-datetime/css/react-datetime.css';
 import './DatePiker.css';
+import './InputNumber.css';
 
 import CloseSvg from '../../images/close.svg';
 import SwitchToggle from '../AddTransaction/SwitchToggle/SwitchToggle';
 import DateRange from '../../images/date-range.svg';
 import Selektor from './Selektor/Selektor';
 import MobileAddModal from './MobileAddModal/MobileAddModal';
-import Notification from './Notification/Notification';
 import useMediaQuery from 'hooks/useMediaQuery';
+import Button from 'components/Button/Button';
+import operations from '../../redux/transactions/transactions-operations';
 
 import {
   Layout,
@@ -26,19 +29,27 @@ import {
   ModalTitle,
   CloseBtn,
   ModalInput,
-  ActionBtn,
   InputContainer,
   BtnList,
   CommentInput,
   Calendar,
   DateIcon,
   CloseIcon,
+  Label,
 } from './AddTransaction.styled';
+
+let Schema = yup.object().shape({
+  amount: yup
+    .number()
+    .required('It`s a required field')
+    .moreThan(0, 'Enter a number greater than 0')
+    .positive('Must be a positiv number'),
+  comment: yup.string().max(100, 'No more than 100 characters'),
+});
 
 const modalRoot = document.querySelector('#modal-root');
 
 const AddTransaction = ({ showModal, setShowModal }) => {
-  const [toggled, setToggled] = useState(false);
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(new Date());
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
@@ -48,11 +59,13 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   let inputProps = { className: 'dateInput' };
 
   const initialValues = {
-    total: 0.0,
+    amount: '',
     comment: '',
   };
 
   const matches = useMediaQuery('(max-width: 767px)');
+
+  const yesterday = moment().subtract(10, 'years');
 
   const onSelectorChange = value => {
     setCategory(value);
@@ -62,24 +75,32 @@ const AddTransaction = ({ showModal, setShowModal }) => {
     setTypeOfOperation(value);
   };
 
-  const onSubmit = (e, { resetForm }) => {
+  const onSubmit = async (e, { resetForm }) => {
     const value = {
       type: typeOfOperation.toLocaleLowerCase(),
       category: category,
-      amount: Number(e.total),
-      date: date.toLocaleDateString(),
+      amount: Number(e.amount),
+      date,
       comment: e.comment,
     };
 
-    if (value.total === null) {
-      Notification('total');
+    if (value.amount === 0) {
+      toast.error('Please enter the transaction amount!!');
       return;
     }
     if (value.category === '') {
-      Notification('category');
+      toast.error('Please select a category !!');
       return;
     } else {
-      dispatch(operations.createTransaction(value));
+      const res = await dispatch(operations.createTransaction(value));
+
+      if (res.error && res.payload.status === 400) {
+        toast.error(res.payload.message);
+        return;
+      } else if (res.error) {
+        toast.error('Something went wrong! Please, try again');
+        return;
+      }
     }
 
     resetForm();
@@ -104,11 +125,18 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   }, [setShowModal, onKeyDown]);
 
   return createPortal(
-    <Layout onClick={onKeyDown}>
+    <Layout
+      onClick={
+        (onKeyDown,
+        () => {
+          setShowModal(false);
+        })
+      }
+    >
       {matches ? (
         <MobileAddModal showModal={showModal} setShowModal={setShowModal} />
       ) : (
-        <Transaction>
+        <Transaction onClick={e => e.stopPropagation()}>
           <ModalTitle>Add transaction</ModalTitle>
           <CloseBtn
             type="button"
@@ -119,7 +147,11 @@ const AddTransaction = ({ showModal, setShowModal }) => {
             <CloseIcon src={CloseSvg} alt="close" />
           </CloseBtn>
           <SwitchToggle onLoad={changeTypeOfOperationt} />
-          <Formik initialValues={initialValues} onSubmit={onSubmit}>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={Schema}
+          >
             <Form autoComplete="off">
               <Selektor
                 typeOfOperation={typeOfOperation}
@@ -128,15 +160,26 @@ const AddTransaction = ({ showModal, setShowModal }) => {
               />
 
               <InputContainer>
-                <ModalInput
-                  style={{ textAlign: 'center' }}
-                  type="number"
-                  name="total"
-                  placeholder="0.00"
-                />
-
+                <Label htmlFor="amount">
+                  <ModalInput
+                    style={{ textAlign: 'center' }}
+                    type="number"
+                    name="amount"
+                    placeholder="0.00"
+                  />
+                  <ErrorMessage
+                    style={{
+                      color: 'red',
+                      position: 'absolute',
+                      top: '30px',
+                    }}
+                    component="div"
+                    name="amount"
+                  />
+                </Label>
                 <Calendar>
                   <Datetime
+                    isValidDate={current => current.isAfter(yesterday)}
                     timeFormat={false}
                     initialValue={date}
                     closeOnSelect={true}
@@ -148,24 +191,34 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                   <DateIcon src={DateRange} alt="calendar" />
                 </Calendar>
               </InputContainer>
+              <Label htmlFor="comment">
+                <CommentInput
+                  type="text"
+                  name="comment"
+                  placeholder="Comment"
+                />
+                <ErrorMessage
+                  style={{ color: 'red', position: 'absolute', top: '30px' }}
+                  component="div"
+                  name="comment"
+                />
+              </Label>
 
-              <CommentInput type="text" name="comment" placeholder="Comment" />
               <BtnList>
-                <ActionBtn type="submit">Add</ActionBtn>
-                <ActionBtn
+                <Button type="submit">Add</Button>
+                <Button
                   type="button"
                   onClick={() => {
                     setShowModal(false);
                   }}
                 >
                   Cancel
-                </ActionBtn>
+                </Button>
               </BtnList>
             </Form>
           </Formik>
         </Transaction>
       )}
-      <ToastContainer />
     </Layout>,
     modalRoot
   );

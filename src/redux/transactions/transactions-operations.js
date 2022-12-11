@@ -1,46 +1,26 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 import API from 'services/api/api';
-import { authOperations } from 'redux/auth';
-
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
 
 const createTransaction = createAsyncThunk(
   'transaction/add',
-  async (credentials, thunkAPI) => {
+  async (transaction, thunkAPI) => {
     try {
-      const { data } = await API.createTransaction(credentials);
-      token.set(data.token);
-      thunkAPI.dispatch(authOperations.fetchCurrentUser());
+      const { data } = await API.createTransaction(transaction);
       return data;
     } catch (error) {
-      toast.error('Something went wrong! Please, try again');
       const {
-        response: { status },
+        response: {
+          status,
+          data: { message },
+        },
       } = error;
-      return thunkAPI.rejectWithValue(status);
+
+      return thunkAPI.rejectWithValue({ status, message });
     }
   }
 );
 
 const getCategory = createAsyncThunk('category/get', async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const persistedToken = state.auth.token;
-
-  if (persistedToken === null) {
-    return thunkAPI.rejectWithValue();
-  }
-
-  token.set(persistedToken);
-
   try {
     const { data } = await API.getCategories();
     return data;
