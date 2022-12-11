@@ -63,19 +63,20 @@ export const ImgContainerLogin = styled.div`
     background-image: url(${Log_img_tablet});
     background-repeat: no-repeat;
     background-size: cover;
+    background-clip: padding-box;
 
     margin-left: auto;
     margin-right: auto;
     height: 250px;
-    width: 274px;
+    width: 260px;
   }
 
   @media ${device.desktop} {
     background-image: url(${Log_img_desctop});
-    width: 452px;
-    height: 412px;
+    width: 435px;
+    height: 420px;
     margin-right: 32px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 `;
 
