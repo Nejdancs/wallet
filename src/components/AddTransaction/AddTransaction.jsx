@@ -75,7 +75,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
     setTypeOfOperation(value);
   };
 
-  const onSubmit = (e, { resetForm }) => {
+  const onSubmit = async (e, { resetForm }) => {
     const value = {
       type: typeOfOperation.toLocaleLowerCase(),
       category: category,
@@ -92,7 +92,15 @@ const AddTransaction = ({ showModal, setShowModal }) => {
       toast.error('Please select a category !!');
       return;
     } else {
-      dispatch(operations.createTransaction(value));
+      const res = await dispatch(operations.createTransaction(value));
+
+      if (res.error && res.payload.status === 400) {
+        toast.error(res.payload.message);
+        return;
+      } else if (res.error) {
+        toast.error('Something went wrong! Please, try again');
+        return;
+      }
     }
 
     resetForm();

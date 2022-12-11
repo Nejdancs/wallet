@@ -10,11 +10,14 @@ const createTransaction = createAsyncThunk(
 
       return data;
     } catch (error) {
-      toast.error('Something went wrong! Please, try again');
       const {
-        response: { status },
+        response: {
+          status,
+          data: { message },
+        },
       } = error;
-      return thunkAPI.rejectWithValue(status);
+
+      return thunkAPI.rejectWithValue({ status, message });
     }
   }
 );
