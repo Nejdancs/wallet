@@ -19,6 +19,7 @@ import Selektor from './Selektor/Selektor';
 import MobileAddModal from './MobileAddModal/MobileAddModal';
 import useMediaQuery from 'hooks/useMediaQuery';
 import Notification from './Notification/Notification';
+import Button from 'components/Button/Button';
 
 import {
   Layout,
@@ -26,7 +27,6 @@ import {
   ModalTitle,
   CloseBtn,
   ModalInput,
-  ActionBtn,
   InputContainer,
   BtnList,
   CommentInput,
@@ -151,15 +151,15 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
               <CommentInput type="text" name="comment" placeholder="Comment" />
               <BtnList>
-                <ActionBtn type="submit">Add</ActionBtn>
-                <ActionBtn
+                <Button type="submit">Add</Button>
+                <Button
                   type="button"
                   onClick={() => {
                     setShowModal(false);
                   }}
                 >
                   Cancel
-                </ActionBtn>
+                </Button>
               </BtnList>
             </Form>
           </Formik>

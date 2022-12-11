@@ -153,34 +153,3 @@ export const BtnList = styled.ul`
   justify-content: center;
   gap: 20px;
 `;
-
-export const ActionBtn = styled.button`
-  width: 300px;
-  height: 50px;
-
-  padding: 0;
-
-  background: #ffffff;
-  border: 1px solid #4a56e2;
-  border-radius: 20px;
-
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  color: #4a56e2;
-
-  cursor: pointer;
-
-  :hover,
-  :focus {
-    border: none;
-    background-color: #24cca7;
-    color: #ffffff;
-  }
-`;

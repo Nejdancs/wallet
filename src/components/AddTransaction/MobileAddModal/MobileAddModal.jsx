@@ -16,6 +16,7 @@ import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import DateRange from '../../../images/date-range.svg';
 import Selektor from '../Selektor/Selektor';
 import Notification from '../Notification/Notification';
+import Button from 'components/Button/Button';
 
 import {
   Layout,
@@ -23,7 +24,6 @@ import {
   ModalTitle,
   CloseBtn,
   ModalInput,
-  ActionBtn,
   BtnList,
   CommentInput,
   Calendar,
@@ -134,17 +134,17 @@ const MobileAddModal = ({ showModal, setShowModal }) => {
             <CommentInput type="text" name="comment" placeholder="Comment" />
             <BtnList>
               <li>
-                <ActionBtn type="submit">Add</ActionBtn>
+                <Button type="submit">Add</Button>
               </li>
               <li>
-                <ActionBtn
+                <Button
                   type="button"
                   onClick={() => {
                     setShowModal(false);
                   }}
                 >
                   Cancel
-                </ActionBtn>
+                </Button>
               </li>
             </BtnList>
           </Form>
