@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 import API from 'services/api/api';
 import { store } from '../store';
 
@@ -31,8 +30,6 @@ const getTransactions = createAsyncThunk(
 );
 
 const getCategory = createAsyncThunk('category/get', async (_, thunkAPI) => {
-  // const state = thunkAPI.getState();
-
   try {
     const { data } = await API.getCategories();
     return data;
