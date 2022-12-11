@@ -43,6 +43,11 @@ const Selektor = ({ onChange, typeOfOperation }) => {
           color: state.isFocused ? '#ff6596' : 'black',
           background: state.isFocused ? '#ffffff' : '',
         }),
+        control: (baseStyles, state) => ({
+          ...baseStyles,
+          width: '345px',
+          marginRight: '5px',
+        }),
       }}
     />
   );

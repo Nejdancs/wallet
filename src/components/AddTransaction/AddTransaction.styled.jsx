@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Field, ErrorMessage } from 'formik';
+import Button from 'components/Button/Button';
+import device from 'assets/breakpoints/device';
 
 export const Calendar = styled.div`
   position: relative;
@@ -36,6 +38,7 @@ export const Transaction = styled.div`
   @media screen and (min-width: 768px) {
     position: absolute;
     width: 540px;
+    height: 623px;
     padding: 40px 60px;
     border-radius: 20px;
   }
@@ -117,6 +120,49 @@ export const ModalInput = styled(Field)`
   :focus {
     outline: none;
     border-bottom: 1px solid #e0e0e0;
+  }
+`;
+
+export const FieldContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+export const ButtonSmall = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin: 0;
+  padding: 3px 10px;
+  border: 1px solid
+    ${({ main, theme }) =>
+      main ? theme.colors.accentPrimary : theme.colors.accentSecondary};
+  background-color: ${({ main, theme }) =>
+    main ? theme.colors.accentPrimary : theme.colors.secondaryBg};
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  /* max-width: 60px; */
+  height: 40px;
+  color: ${({ main, theme }) =>
+    main ? theme.colors.secondaryTextColor : theme.colors.accentSecondary};
+  cursor: pointer;
+
+  font-family: inherit;
+  text-decoration: none;
+  font-size: 18px;
+  /* line-height: 27px; */
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+
+  :hover,
+  :focus {
+    transform: scale(1.03);
+  }
+  @media ${device.mobile} {
+    padding: 13px 65px;
+    width: 300px;
   }
 `;
 

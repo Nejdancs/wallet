@@ -36,7 +36,10 @@ import {
   DateIcon,
   CloseIcon,
   Label,
+  FieldContainer,
+  ButtonSmall,
 } from './AddTransaction.styled';
+import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
 
 let Schema = yup.object().shape({
   amount: yup
@@ -53,6 +56,8 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(new Date());
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
+
+  const [showModalCat, setShowModalCat] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -134,6 +139,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
         })
       }
     >
+      {showModalCat && (
+        <ModalAddCategory closeModal={() => setShowModalCat(false)} />
+      )}
       {matches ? (
         <MobileAddModal showModal={showModal} setShowModal={setShowModal} />
       ) : (
@@ -154,11 +162,22 @@ const AddTransaction = ({ showModal, setShowModal }) => {
             validationSchema={Schema}
           >
             <Form autoComplete="off">
-              <Selektor
-                typeOfOperation={typeOfOperation}
-                onChange={onSelectorChange}
-                style={{ color: '#000000' }}
-              />
+              <FieldContainer>
+                <Selektor
+                  typeOfOperation={typeOfOperation}
+                  onChange={onSelectorChange}
+                  style={{ color: '#000000' }}
+                />
+                <ButtonSmall
+                  type="button"
+                  onClick={() => {
+                    setShowModalCat(true);
+                  }}
+                  style={{ width: '70px', padding: '3px 10px' }}
+                >
+                  New
+                </ButtonSmall>
+              </FieldContainer>
 
               <InputContainer>
                 <Label htmlFor="amount">
@@ -206,7 +225,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
               </Label>
 
               <BtnList>
-                <Button type="submit">Add</Button>
+                <Button type="submit" main>
+                  Add
+                </Button>
                 <Button
                   type="button"
                   onClick={() => {
