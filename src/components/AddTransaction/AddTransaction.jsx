@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { createPortal } from 'react-dom';
 import { Formik, Form } from 'formik';
 import { ToastContainer } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+
 import operations from '../../redux/transactions/transactions-operations';
 
 import Datetime from 'react-datetime';
@@ -32,7 +33,7 @@ import {
   Calendar,
   DateIcon,
   CloseIcon,
-} from './AddTransaction.styled';
+} from './addTransaction.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -41,6 +42,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(new Date());
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
+
   const dispatch = useDispatch();
 
   let inputProps = { className: 'dateInput' };
@@ -62,14 +64,14 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   const onSubmit = (e, { resetForm }) => {
     const value = {
-      type: typeOfOperation,
+      type: typeOfOperation.toLocaleLowerCase(),
       category: category,
-      total: e.total,
+      amount: Number(e.total),
       date: date.toLocaleDateString(),
       comment: e.comment,
     };
 
-    if (value.total === '') {
+    if (value.total === null) {
       Notification('total');
       return;
     }
@@ -77,7 +79,6 @@ const AddTransaction = ({ showModal, setShowModal }) => {
       Notification('category');
       return;
     } else {
-      console.log(value);
       dispatch(operations.createTransaction(value));
     }
 
@@ -121,6 +122,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
           <Formik initialValues={initialValues} onSubmit={onSubmit}>
             <Form autoComplete="off">
               <Selektor
+                typeOfOperation={typeOfOperation}
                 onChange={onSelectorChange}
                 style={{ color: '#000000' }}
               />
@@ -128,9 +130,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
               <InputContainer>
                 <ModalInput
                   style={{ textAlign: 'center' }}
-                  type="text"
+                  type="number"
                   name="total"
-                  placeholder={0.0}
+                  placeholder="0.00"
                 />
 
                 <Calendar>
