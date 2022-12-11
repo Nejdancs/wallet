@@ -57,9 +57,9 @@ const MobileAddModal = ({ showModal, setShowModal }) => {
 
   const onSubmit = (e, { resetForm }) => {
     const value = {
-      type: typeOfOperation,
+      type: typeOfOperation.toLocaleLowerCase(),
       category: category,
-      total: e.total,
+      amount: Number(e.total),
       date: date.toLocaleDateString(),
       comment: e.comment,
     };
