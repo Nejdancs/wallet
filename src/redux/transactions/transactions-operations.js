@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import API from 'services/api/api';
+import { authOperations } from 'redux/auth';
 
 const token = {
   set(token) {
@@ -18,6 +19,7 @@ const createTransaction = createAsyncThunk(
     try {
       const { data } = await API.createTransaction(credentials);
       token.set(data.token);
+      thunkAPI.dispatch(authOperations.fetchCurrentUser());
       return data;
     } catch (error) {
       toast.error('Something went wrong! Please, try again');
