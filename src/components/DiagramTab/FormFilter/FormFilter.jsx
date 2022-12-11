@@ -3,8 +3,8 @@ import { Field, Form, Formik } from 'formik';
 import { FormEl, Select, InpWrapper } from './FormFilter.styled';
 
 const FormFilter = ({ onFilterChange, actDates, dates }) => {
-  const [month, setMonth] = useState('month');
-  const [year, setYear] = useState('year');
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const [year, setYear] = useState(new Date().getFullYear());
 
   const checkActMonth = month => {
     return !!!actDates.find(
@@ -35,9 +35,6 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
               }}
               value={month}
             >
-              <option value="month" disabled={true}>
-                Month
-              </option>
               <option value="01" disabled={checkActMonth(1)}>
                 January
               </option>
@@ -86,9 +83,6 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
                 onFilterChange({ year: +e.target.value });
               }}
             >
-              <option value="year" disabled={true}>
-                Year
-              </option>
               <option value="2021" disabled={checkActYear(2021)}>
                 2021
               </option>
