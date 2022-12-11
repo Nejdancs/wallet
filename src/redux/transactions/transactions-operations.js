@@ -9,9 +9,14 @@ const createTransaction = createAsyncThunk(
       const { data } = await API.createTransaction(transaction);
       return data;
     } catch (error) {
-      toast.error(`${error.response.message}`);
+      const {
+        response: {
+          status,
+          data: { message },
+        },
+      } = error;
 
-      return thunkAPI.rejectWithValue(error.response.status);
+      return thunkAPI.rejectWithValue({ status, message });
     }
   }
 );
