@@ -9,19 +9,20 @@ import SwitchToggle from 'components/AddTransaction/SwitchToggle/SwitchToggle';
 import schema from 'assets/ValidateSchema/createCategorySchema';
 import API from 'services/api/api';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import operations from 'redux/transactions/transactions-operations';
 
 export const ModalAddCategory = ({ closeModal }) => {
   const [type, setType] = useState('expense');
   const [categoryName, setCategoryName] = useState('');
 
-  const onTypeChange = checked => {
-    checked ? setType('income') : setType('expense');
-  };
+  const dispatch = useDispatch();
 
   const onSubmit = async e => {
     e.preventDefault();
     try {
       const data = await API.addCategory({ name: categoryName, type });
+      dispatch(operations.getCategory());
       toast(`Category ${data.data.name} is created`);
       closeModal();
     } catch (error) {
@@ -34,7 +35,11 @@ export const ModalAddCategory = ({ closeModal }) => {
       <CloseBtn>
         <img src={CloseSvg} alt="close" onClick={closeModal} />
       </CloseBtn>
-      <SwitchToggle onChange={onTypeChange} onLoad={() => {}} />
+      <SwitchToggle
+        onLoad={type => {
+          setType(type.toLowerCase());
+        }}
+      />
       <Formik
         initialValues={{ categoryName: 'expense' }}
         validationSchema={schema}

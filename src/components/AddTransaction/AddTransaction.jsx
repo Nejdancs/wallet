@@ -61,6 +61,10 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(operations.getCategory());
+  }, [dispatch, showModalCat]);
+
   let inputProps = { className: 'dateInput' };
 
   const initialValues = {

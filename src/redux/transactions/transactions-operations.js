@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from 'services/api/api';
-import { store } from '../store';
 import { toast } from 'react-toastify';
 
 const createTransaction = createAsyncThunk(
@@ -8,7 +7,6 @@ const createTransaction = createAsyncThunk(
   async (transaction, thunkAPI) => {
     try {
       const { data } = await API.createTransaction(transaction);
-      store.dispatch(getCategory());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.message);
