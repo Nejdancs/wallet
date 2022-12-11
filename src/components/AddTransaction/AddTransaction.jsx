@@ -16,8 +16,8 @@ import SwitchToggle from '../AddTransaction/SwitchToggle/SwitchToggle';
 import DateRange from '../../images/date-range.svg';
 import Selektor from './Selektor/Selektor';
 import MobileAddModal from './MobileAddModal/MobileAddModal';
-import useMediaQuery from 'hooks/useMediaQuery';
 import Notification from './Notification/Notification';
+import useMediaQuery from 'hooks/useMediaQuery';
 
 import {
   Layout,
