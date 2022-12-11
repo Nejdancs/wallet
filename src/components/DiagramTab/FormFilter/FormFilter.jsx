@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import { FormEl, Select, InpWrapper } from './FormFilter.styled';
+import { useEffect } from 'react';
 
 const FormFilter = ({ onFilterChange, actDates, dates }) => {
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [year, setYear] = useState(new Date().getFullYear());
+  const [actYears, setActYears] = useState([]);
+
+  useEffect(() => {
+    const actYears = actDates.map(el => el.year) ?? [];
+    setActYears(actYears);
+  }, [actDates]);
 
   const checkActMonth = month => {
     return !!!actDates.find(
@@ -12,9 +19,9 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
     );
   };
 
-  const checkActYear = year => {
-    return !!!actDates.find(elem => elem.year === year);
-  };
+  // const checkActYear = year => {
+  //   return !!!actDates.find(elem => elem.year === year);
+  // };
 
   return (
     <div>
@@ -83,7 +90,12 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
                 onFilterChange({ year: +e.target.value });
               }}
             >
-              <option value="2021" disabled={checkActYear(2021)}>
+              {actYears.map(year => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+              {/* <option value="2021" disabled={checkActYear(2021)}>
                 2021
               </option>
               <option value="2022" disabled={checkActYear(2022)}>
@@ -112,7 +124,7 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
               </option>
               <option value="2030" disabled={checkActYear(2030)}>
                 2030
-              </option>
+              </option> */}
             </Field>
           </InpWrapper>
         </FormEl>
