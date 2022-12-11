@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+import transOperations from '../transactions/transactions-operations';
 
 const initialState = {
   user: { name: null, email: null, balance: 0 },
@@ -37,6 +38,9 @@ const authSlice = createSlice({
     },
     [authOperations.fetchCurrentUser.rejected](state) {
       state.isRefreshingUser = false;
+    },
+    [transOperations.createTransaction.fulfilled](state, { payload }) {
+      state.user.balance = +payload.balance;
     },
   },
 });

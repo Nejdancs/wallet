@@ -67,7 +67,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
       type: typeOfOperation.toLocaleLowerCase(),
       category: category,
       amount: Number(e.total),
-      date: date.toLocaleDateString(),
+      date: date.toDateString(),
       comment: e.comment,
     };
 
