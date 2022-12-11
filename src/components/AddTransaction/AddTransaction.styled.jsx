@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 
 export const Calendar = styled.div`
   position: relative;
@@ -51,28 +51,35 @@ export const ModalTitle = styled.h2`
 `;
 
 export const CloseIcon = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 60%;
+  height: 60%;
+  stroke: currentColor;
 `;
 
 export const CloseBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
   padding: 0;
-  top: 20px;
-  right: 20px;
-
-  width: 18px;
-  height: 18px;
-
-  border: none;
-  outline: none;
-
+  color: ${p => p.theme.colors.primaryTextColor};
+  background-color: ${p => p.theme.colors.inActiveIconColor};
+  border: 1px solid ${p => p.theme.colors.accentSecondary};
   border-radius: 50%;
-  background-color: #ffffff;
   cursor: pointer;
-
-  &:focus > ${CloseIcon} {
-    fill: #24cca7;
+  transition: transform 2500ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    animation 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus-within {
+    transform: scale(1.1) rotate(360deg);
+    color: ${p => p.theme.colors.accentSecondary};
+    background-color: ${p => p.theme.colors.accentSecondary};
   }
 `;
 
@@ -177,33 +184,7 @@ export const BtnList = styled.div`
   gap: 20px;
 `;
 
-export const ActionBtn = styled.button`
-  width: 300px;
-  height: 50px;
-
-  padding: 0;
-
-  background: #ffffff;
-  border: 1px solid #4a56e2;
-  border-radius: 20px;
-
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  color: #4a56e2;
-
-  cursor: pointer;
-
-  :hover,
-  :focus {
-    border: none;
-    background-color: #24cca7;
-    color: #ffffff;
-  }
+export const Label = styled.label`
+  display: block;
+  position: relative;
 `;
