@@ -6,7 +6,7 @@ import BtnAddCategory from 'components/BtnAddCategory/BtnAddCategory';
 import getCategory from 'redux/transactions/transactions-selectors';
 import operations from 'redux/transactions/transactions-operations';
 
-import Select from 'react-select/creatable';
+import Select from 'react-select';
 
 import './Selektor.css';
 
