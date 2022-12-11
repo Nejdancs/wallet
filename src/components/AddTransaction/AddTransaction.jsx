@@ -96,6 +96,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
       if (res.error && res.payload.status === 400) {
         toast.error(res.payload.message);
+
         return;
       } else if (res.error) {
         toast.error('Something went wrong! Please, try again');

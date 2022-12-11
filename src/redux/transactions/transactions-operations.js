@@ -11,7 +11,13 @@ const createTransaction = createAsyncThunk(
       store.dispatch(getCategory());
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.message);
+      console.log(error);
+
+      const {
+        status,
+        data: { message },
+      } = error.response;
+      return thunkAPI.rejectWithValue({ status, message });
     }
   }
 );
