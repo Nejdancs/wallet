@@ -75,9 +75,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
     setTypeOfOperation(value);
   };
 
-  const createCategoy = () => {};
-
-  const onSubmit = (e, { resetForm }) => {
+  const createCategoy = () => { };
+  
+  const onSubmit = async (e, { resetForm }) => {
     const value = {
       type: typeOfOperation.toLocaleLowerCase(),
       category: category,
@@ -94,7 +94,17 @@ const AddTransaction = ({ showModal, setShowModal }) => {
       toast.error('Please select a category !!');
       return;
     } else {
-      dispatch(operations.createTransaction(value));
+      const res = await dispatch(operations.createTransaction(value));
+
+      if (res.error && res.payload.status === 400) {
+        toast.error(res.payload.message);
+
+        return;
+      } else if (res.error) {
+        toast.error('Something went wrong! Please, try again');
+        return;
+      }
+      toast.success('Transaction created successfully');
     }
 
     resetForm();
@@ -157,7 +167,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
               <InputContainer>
                 <Label htmlFor="amount">
                   <ModalInput
-                    style={{ textAlign: 'center' }}
+                    style={{ textAlign: 'left' }}
                     type="number"
                     name="amount"
                     placeholder="0.00"

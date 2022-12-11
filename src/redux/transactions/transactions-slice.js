@@ -2,16 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import options from './transactions-operations';
 
 const initialState = {
-  transaction: {
-    type: '',
-    category: '',
-    amount: 0,
-    date: '',
-    comment: '',
-  },
+  transactions: [],
   category: [],
-
-  loading: false,
+  loadingTrans: false,
+  loadingCat: false,
 };
 
 const transactionSlice = createSlice({
@@ -19,30 +13,34 @@ const transactionSlice = createSlice({
   initialState,
   extraReducers: {
     [options.getCategory.pending]: state => {
-      state.loading = true;
+      state.loadingCat = true;
     },
     [options.getCategory.fulfilled]: (state, { payload }) => {
       state.category = payload;
-      state.loading = false;
+      state.loadingCat = false;
     },
     [options.getCategory.rejected]: state => {
-      state.loading = false;
+      state.loadingCat = false;
     },
     [options.createTransaction.pending]: state => {
-      state.isLoggedIn = true;
+      state.loadingTrans = true;
     },
-    [options.createTransaction.fulfilled]: state => {
-      state.transaction = {
-        type: '',
-        category: '',
-        amount: 0,
-        date: '',
-        comment: '',
-      };
-      state.loading = false;
+    [options.createTransaction.fulfilled]: (state, { payload }) => {
+      state.transactions.unshift(payload);
+      state.loadingTrans = false;
     },
     [options.createTransaction.rejected]: state => {
-      state.loading = false;
+      state.loadingTrans = false;
+    },
+    [options.getTransactions.pending]: state => {
+      state.loadingTrans = true;
+    },
+    [options.getTransactions.fulfilled]: (state, { payload }) => {
+      state.transactions = payload.reverse();
+      state.loadingTrans = false;
+    },
+    [options.getTransactions.rejected]: state => {
+      state.loadingTrans = false;
     },
   },
 });
