@@ -60,7 +60,7 @@ const MobileAddModal = ({ showModal, setShowModal }) => {
       type: typeOfOperation,
       category: category,
       total: e.total,
-      date: date.toLocaleDateString(),
+      date,
       comment: e.comment,
     };
 
