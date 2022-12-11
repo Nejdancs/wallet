@@ -5,11 +5,12 @@ const initialState = {
   transaction: {
     type: '',
     category: '',
-    total: 0,
+    amount: 0,
     date: '',
     comment: '',
   },
   category: [],
+
   loading: false,
 };
 
@@ -20,21 +21,21 @@ const transactionSlice = createSlice({
     [options.getCategory.pending]: state => {
       state.loading = true;
     },
-    [options.getCategory.fulfilled]: (state, { action }) => {
-      state.category = action.payload.category;
+    [options.getCategory.fulfilled]: (state, { payload }) => {
+      state.category = payload;
       state.loading = false;
     },
     [options.getCategory.rejected]: state => {
       state.loading = false;
     },
-    [options.createTransaction.pending]: (state, { action }) => {
+    [options.createTransaction.pending]: state => {
       state.isLoggedIn = true;
     },
-    [options.createTransaction.fulfilled]: (state, { action }) => {
+    [options.createTransaction.fulfilled]: state => {
       state.transaction = {
         type: '',
         category: '',
-        total: 0,
+        amount: 0,
         date: '',
         comment: '',
       };

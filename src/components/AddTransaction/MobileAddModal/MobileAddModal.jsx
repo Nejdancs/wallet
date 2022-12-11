@@ -1,13 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
+
+import { useDispatch } from 'react-redux';
 
 import Datetime from 'react-datetime';
 
+import operations from 'redux/transactions/transactions-operations';
+
 import 'react-datetime/css/react-datetime.css';
 import '../DatePiker.css';
-
-import * as yup from 'yup';
 
 import CloseSvg from '../../../images/close.svg';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
@@ -35,6 +37,8 @@ const MobileAddModal = ({ showModal, setShowModal }) => {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(new Date());
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
+
+  const dispatch = useDispatch();
 
   let inputProps = { className: 'dateInput' };
 
@@ -68,6 +72,7 @@ const MobileAddModal = ({ showModal, setShowModal }) => {
       Notification('category');
       return;
     } else {
+      dispatch(operations.createTransaction(value));
     }
 
     resetForm();

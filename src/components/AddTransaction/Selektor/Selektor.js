@@ -1,28 +1,40 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import getCategory from 'redux/transactions/transactions-selectors';
+import operations from 'redux/transactions/transactions-operations';
+
 import Select from 'react-select';
+
 import './Selektor.css';
 
-const options = [
-  { value: 'Main', label: 'Main' },
-  { value: 'Food', label: 'Food' },
-  { value: 'Auto', label: 'Auto' },
-  { value: 'Development', label: 'Development' },
-  { value: 'Children', label: 'Children' },
-  { value: 'House', label: 'House' },
-  { value: 'Education', label: 'Education' },
-  { value: 'Reset', label: 'Reset' },
-];
+const Selektor = ({ onChange, typeOfOperation }) => {
+  const { expenses = [], income = [] } = useSelector(getCategory);
 
-const Selektor = ({ onChange }) => {
+  let expen = expenses.map(({ _id, name }) => ({
+    value: _id,
+    label: name,
+  }));
+  let inc = income.map(({ _id, name }) => ({
+    value: _id,
+    label: name,
+  }));
+
+  const dispatch = useDispatch();
+
   const onSelectorChange = e => {
     onChange(e.value);
   };
+  useEffect(() => {
+    dispatch(operations.getCategory());
+  }, [dispatch]);
 
   return (
     <Select
+      options={typeOfOperation === 'Expense' ? expen : inc}
+      typeOfOperation={typeOfOperation}
       onChange={onSelectorChange}
       unstyled={true}
       classNamePrefix="custom-select"
-      options={options}
       placeholder="Select a category"
       styles={{
         option: (baseStyle, state) => ({
