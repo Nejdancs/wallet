@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+import operations from 'redux/transactions/transactions-operations';
 
 const initialState = {
   user: { name: null, email: null, balance: 0 },
@@ -36,6 +37,11 @@ const authSlice = createSlice({
       state.isRefreshingUser = false;
     },
     [authOperations.fetchCurrentUser.rejected](state) {
+      state.isRefreshingUser = false;
+    },
+    [operations.createTransaction.fulfilled](state, { payload }) {
+      state.user.balance = +payload.balance;
+      state.isLoggedIn = true;
       state.isRefreshingUser = false;
     },
   },
