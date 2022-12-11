@@ -145,7 +145,11 @@ const AddTransaction = ({ showModal, setShowModal }) => {
         <ModalAddCategory closeModal={() => setShowModalCat(false)} />
       )}
       {matches ? (
-        <MobileAddModal showModal={showModal} setShowModal={setShowModal} />
+        <MobileAddModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          openModalCat={() => setShowModalCat(true)}
+        />
       ) : (
         <Transaction onClick={e => e.stopPropagation()}>
           <ModalTitle>Add transaction</ModalTitle>

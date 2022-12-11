@@ -21,6 +21,7 @@ export const Layout = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 0;
 
   display: flex;
   align-items: center;
@@ -33,7 +34,7 @@ export const Transaction = styled.div`
   width: 320px;
 
   padding: 20px;
-
+  z-index: 2;
   background-color: #ffffff;
   @media screen and (min-width: 768px) {
     position: absolute;

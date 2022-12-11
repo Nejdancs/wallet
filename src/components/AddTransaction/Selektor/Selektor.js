@@ -45,7 +45,6 @@ const Selektor = ({ onChange, typeOfOperation }) => {
         }),
         control: (baseStyles, state) => ({
           ...baseStyles,
-          width: '345px',
           marginRight: '5px',
         }),
       }}

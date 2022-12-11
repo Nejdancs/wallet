@@ -33,6 +33,7 @@ import {
   DateIcon,
   Label,
 } from './MobileAddModal.styled';
+import { FieldContainer, ButtonSmall } from '../AddTransaction.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -45,7 +46,7 @@ let Schema = yup.object().shape({
   comment: yup.string().max(100, 'No more than 100 characters'),
 });
 
-const MobileAddModal = ({ showModal, setShowModal }) => {
+const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(new Date());
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
@@ -139,11 +140,21 @@ const MobileAddModal = ({ showModal, setShowModal }) => {
           onSubmit={onSubmit}
         >
           <Form autoComplete="off">
-            <Selektor
-              typeOfOperation={typeOfOperation}
-              onChange={onSelectorChange}
-            />
-
+            <FieldContainer>
+              <Selektor
+                typeOfOperation={typeOfOperation}
+                onChange={onSelectorChange}
+              />
+              <ButtonSmall
+                type="button"
+                onClick={() => {
+                  openModalCat();
+                }}
+                style={{ width: '70px', padding: '3px 10px' }}
+              >
+                New
+              </ButtonSmall>
+            </FieldContainer>
             <div>
               <Label htmlFor="amount">
                 <ModalInput

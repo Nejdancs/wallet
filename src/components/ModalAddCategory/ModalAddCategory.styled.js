@@ -12,7 +12,7 @@ export const Modal = styled.div`
   right: 0;
   padding: 20px 10px 40px;
   text-align: center;
-  z-index: 2;
+  z-index: 100;
   background-color: #fff;
 
   @media ${device.tablet} {

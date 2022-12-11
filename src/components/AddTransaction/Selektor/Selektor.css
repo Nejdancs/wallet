@@ -15,6 +15,16 @@
   line-height: 27px;
 }
 
+@media (min-width: 768px) {
+  .custom-select__value-container {
+    width: 345px;
+  }
+}
+
+.custom-select__value-container {
+  width: 190px;
+}
+
 .custom-select__control {
   padding: 0 8px;
   margin-bottom: 40px;
