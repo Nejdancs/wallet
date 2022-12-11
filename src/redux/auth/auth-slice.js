@@ -41,8 +41,6 @@ const authSlice = createSlice({
     },
     [operations.createTransaction.fulfilled](state, { payload }) {
       state.user.balance = +payload.balance;
-      state.isLoggedIn = true;
-      state.isRefreshingUser = false;
     },
   },
 });

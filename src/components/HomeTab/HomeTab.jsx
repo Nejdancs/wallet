@@ -12,7 +12,9 @@ import operations from 'redux/transactions/transactions-operations';
 function HomeTab() {
   const [showModal, setShowModal] = useState(false);
   // const [currentData, setCurrentData] = useState([]);
-  const currentData = useSelector(state => state.transaction.transactions);
+  const currentData = useSelector(
+    state => state.transaction.transactions.trans
+  );
 
   const dispatch = useDispatch();
 
