@@ -21,6 +21,7 @@ const getTransactions = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await API.getTransaction();
+
       return data;
     } catch (error) {
       toast.error('Cant connect to server');
