@@ -8,6 +8,7 @@ const initialState = {
     amount: 0,
     date: '',
     comment: '',
+    balance: 0,
   },
   category: [],
 
@@ -31,14 +32,8 @@ const transactionSlice = createSlice({
     [options.createTransaction.pending]: state => {
       state.isLoggedIn = true;
     },
-    [options.createTransaction.fulfilled]: state => {
-      state.transaction = {
-        type: '',
-        category: '',
-        amount: 0,
-        date: '',
-        comment: '',
-      };
+    [options.createTransaction.fulfilled]: (state, { payload }) => {
+      state.transaction = payload;
       state.loading = false;
     },
     [options.createTransaction.rejected]: state => {

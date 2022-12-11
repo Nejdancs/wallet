@@ -4,10 +4,9 @@ import API from 'services/api/api';
 
 const createTransaction = createAsyncThunk(
   'transaction/add',
-  async (credentials, thunkAPI) => {
+  async (transaction, thunkAPI) => {
     try {
-      const { data } = await API.createTransaction(credentials);
-
+      const { data } = await API.createTransaction(transaction);
       return data;
     } catch (error) {
       const {
@@ -23,12 +22,7 @@ const createTransaction = createAsyncThunk(
 );
 
 const getCategory = createAsyncThunk('category/get', async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const persistedToken = state.auth.token;
-
-  if (persistedToken === null) {
-    return thunkAPI.rejectWithValue();
-  }
+  // const state = thunkAPI.getState();
 
   try {
     const { data } = await API.getCategories();
