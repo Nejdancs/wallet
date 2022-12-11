@@ -10,8 +10,7 @@ const createTransaction = createAsyncThunk(
 
       return data;
     } catch (error) {
-      toast.error('Something went wrong! Please, try again');
-      return thunkAPI.rejectWithValue(error.response.status);
+      return thunkAPI.rejectWithValue(error.response.message);
     }
   }
 );
@@ -25,7 +24,8 @@ const getTransactions = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error('Cant connect to server');
-      return thunkAPI.rejectWithValue(error.response.status);
+
+      return thunkAPI.rejectWithValue(error.response.message);
     }
   }
 );
