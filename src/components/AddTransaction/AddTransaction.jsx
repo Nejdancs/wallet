@@ -33,7 +33,7 @@ import {
   Calendar,
   DateIcon,
   CloseIcon,
-} from './Transaction.styled';
+} from './AddTransaction.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 

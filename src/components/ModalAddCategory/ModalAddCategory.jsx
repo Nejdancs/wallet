@@ -1,7 +1,7 @@
 import Button from 'components/Button/Button';
 import React from 'react';
 import { Modal, Title, Input } from './ModalAddCategory.styled';
-import { CloseBtn } from '../AddTransaction/Transaction.styled';
+import { CloseBtn } from '../AddTransaction/AddTransaction.styled';
 import CloseSvg from '../../images/close.svg';
 import { Formik, Form } from 'formik';
 import { useState } from 'react';
