@@ -4,17 +4,28 @@ import API from 'services/api/api';
 
 const createTransaction = createAsyncThunk(
   'transaction/add',
-  async (credentials, thunkAPI) => {
+  async (transaction, thunkAPI) => {
     try {
-      const { data } = await API.createTransaction(credentials);
+      const { data } = await API.createTransaction(transaction);
 
       return data;
     } catch (error) {
       toast.error('Something went wrong! Please, try again');
-      const {
-        response: { status },
-      } = error;
-      return thunkAPI.rejectWithValue(status);
+      return thunkAPI.rejectWithValue(error.response.status);
+    }
+  }
+);
+
+const getTransactions = createAsyncThunk(
+  'transaction/get',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await API.getTransaction();
+      console.log(data);
+      return data;
+    } catch (error) {
+      toast.error('Cant connect to server');
+      return thunkAPI.rejectWithValue(error.response.status);
     }
   }
 );
@@ -36,6 +47,7 @@ const getCategory = createAsyncThunk('category/get', async (_, thunkAPI) => {
 const operations = {
   getCategory,
   createTransaction,
+  getTransactions,
 };
 
 export default operations;

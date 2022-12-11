@@ -6,19 +6,19 @@ import NoTransactions from './NoTransactions/NoTransactions';
 
 import API from 'services/api/api';
 import Table from './Table';
+import { useDispatch, useSelector } from 'react-redux';
+import operations from 'redux/transactions/transactions-operations';
 
 function HomeTab() {
   const [showModal, setShowModal] = useState(false);
-  const [currentData, setCurrentData] = useState([]);
+  // const [currentData, setCurrentData] = useState([]);
+  const currentData = useSelector(state => state.transaction.transactions);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchTransaction = async () => {
-      const { data } = await API.getTransaction();
-      setCurrentData(data);
-    };
-
-    fetchTransaction();
-  }, []);
+    dispatch(operations.getTransactions());
+  }, [dispatch]);
 
   const openModal = () => {
     setShowModal(true);

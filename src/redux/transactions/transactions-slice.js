@@ -2,13 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import options from './transactions-operations';
 
 const initialState = {
-  transaction: {
-    type: '',
-    category: '',
-    amount: 0,
-    date: '',
-    comment: '',
-  },
+  transactions: [],
   category: [],
 
   loading: false,
@@ -29,19 +23,23 @@ const transactionSlice = createSlice({
       state.loading = false;
     },
     [options.createTransaction.pending]: state => {
-      state.isLoggedIn = true;
+      state.loading = true;
     },
-    [options.createTransaction.fulfilled]: state => {
-      state.transaction = {
-        type: '',
-        category: '',
-        amount: 0,
-        date: '',
-        comment: '',
-      };
+    [options.createTransaction.fulfilled]: (state, { payload }) => {
+      state.transactions.unshift(payload);
       state.loading = false;
     },
     [options.createTransaction.rejected]: state => {
+      state.loading = false;
+    },
+    [options.getTransactions.pending]: state => {
+      state.loading = true;
+    },
+    [options.getTransactions.fulfilled]: (state, { payload }) => {
+      state.transactions = payload;
+      state.loading = false;
+    },
+    [options.getTransactions.rejected]: state => {
       state.loading = false;
     },
   },
