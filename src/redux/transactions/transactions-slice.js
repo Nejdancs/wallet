@@ -2,14 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import options from './transactions-operations';
 
 const initialState = {
-  transactions: {
-    trans: [],
-    loading: false,
-  },
-  category: {
-    categories: [],
-    loading: false,
-  },
+  transactions: [],
+  category: [],
+  loadingTrans: false,
+  loadingCat: false,
 };
 
 const transactionSlice = createSlice({
@@ -17,34 +13,34 @@ const transactionSlice = createSlice({
   initialState,
   extraReducers: {
     [options.getCategory.pending]: state => {
-      state.category.loading = true;
+      state.loadingCat = true;
     },
     [options.getCategory.fulfilled]: (state, { payload }) => {
-      state.category.categories = payload;
-      state.category.loading = false;
+      state.category = payload;
+      state.loadingCat = false;
     },
     [options.getCategory.rejected]: state => {
-      state.category.loading = false;
+      state.loadingCat = false;
     },
     [options.createTransaction.pending]: state => {
-      state.transactions.loading = true;
+      state.loadingTrans = true;
     },
     [options.createTransaction.fulfilled]: (state, { payload }) => {
-      state.transactions.trans.unshift(payload);
-      state.transactions.loading = false;
+      state.transactions.unshift(payload);
+      state.loadingTrans = false;
     },
     [options.createTransaction.rejected]: state => {
-      state.transactions.loading = false;
+      state.loadingTrans = false;
     },
     [options.getTransactions.pending]: state => {
-      state.transactions.loading = true;
+      state.loadingTrans = true;
     },
     [options.getTransactions.fulfilled]: (state, { payload }) => {
-      state.transactions.trans = payload;
-      state.transactions.loading = false;
+      state.transactions = payload;
+      state.loadingTrans = false;
     },
     [options.getTransactions.rejected]: state => {
-      state.transactions.loading = false;
+      state.loadingTrans = false;
     },
   },
 });

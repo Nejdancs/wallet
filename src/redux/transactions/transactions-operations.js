@@ -31,17 +31,20 @@ const getTransactions = createAsyncThunk(
 );
 
 const getCategory = createAsyncThunk('category/get', async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const persistedToken = state.auth.token;
+  // const state = thunkAPI.getState();
+  // const persistedToken = state.auth.token;
 
-  if (persistedToken === null) {
-    return thunkAPI.rejectWithValue();
-  }
+  // if (persistedToken === null) {
+  //   return thunkAPI.rejectWithValue();
+  // }
 
   try {
     const { data } = await API.getCategories();
     return data;
-  } catch (error) {}
+  } catch (error) {
+    toast.error('Cant connect to server');
+    return thunkAPI.rejectWithValue(error.response.message);
+  }
 });
 
 const operations = {

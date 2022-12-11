@@ -1,3 +1,3 @@
-const getCategory = state => state.transaction.category.categories;
+const getCategory = state => state.transaction.category;
 
 export default getCategory;
