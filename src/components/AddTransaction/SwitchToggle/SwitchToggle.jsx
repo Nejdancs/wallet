@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import IconPlus from '../../../images/plus.svg';
 import IconMinus from '../../../images/minus.svg';
@@ -59,3 +60,7 @@ const SwitchToggle = ({ onLoad }) => {
 };
 
 export default SwitchToggle;
+
+SwitchToggle.propTypes = {
+  onLoad: PropTypes.func,
+};

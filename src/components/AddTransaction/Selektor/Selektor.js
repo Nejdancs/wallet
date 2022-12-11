@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import getCategory from 'redux/transactions/transactions-selectors';
 import operations from 'redux/transactions/transactions-operations';
 
@@ -48,3 +49,8 @@ const Selektor = ({ onChange, typeOfOperation }) => {
 };
 
 export default Selektor;
+
+Selektor.propTypes = {
+  onChange: PropTypes.func,
+  typeOfOperation: PropTypes.string,
+};
