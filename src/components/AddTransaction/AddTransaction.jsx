@@ -75,6 +75,8 @@ const AddTransaction = ({ showModal, setShowModal }) => {
     setTypeOfOperation(value);
   };
 
+  const createCategoy = () => { };
+  
   const onSubmit = async (e, { resetForm }) => {
     const value = {
       type: typeOfOperation.toLocaleLowerCase(),
@@ -159,6 +161,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                 typeOfOperation={typeOfOperation}
                 onChange={onSelectorChange}
                 style={{ color: '#000000' }}
+                onInputChange={createCategoy}
               />
 
               <InputContainer>

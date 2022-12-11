@@ -16,7 +16,8 @@
 }
 
 .custom-select__control {
-  padding: 0 8px;
+  padding-left: 50px;
+  padding-right: 8px;
   margin-bottom: 40px;
   border-bottom: 1px solid #e0e0e0;
 
@@ -34,4 +35,8 @@
 
   width: 18px;
   height: 9px;
+}
+
+.select-container {
+  position: relative;
 }

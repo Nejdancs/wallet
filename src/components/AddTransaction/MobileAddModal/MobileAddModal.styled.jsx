@@ -56,20 +56,16 @@ export const CloseBtn = styled.button`
   width: 30px;
   height: 30px;
   padding: 0;
-  color: ${p => p.theme.colors.primaryTextColor};
-  background-color: ${p => p.theme.colors.inActiveIconColor};
-  border: 1px solid ${p => p.theme.colors.accentSecondary};
+  background-color: #24cca7;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 2500ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    animation 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus-within {
-    transform: scale(1.1) rotate(360deg);
-    color: ${p => p.theme.colors.accentSecondary};
-    background-color: ${p => p.theme.colors.accentSecondary};
+    background-color: rgb(7, 126, 100);
   }
 `;
 
