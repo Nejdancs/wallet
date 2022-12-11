@@ -101,6 +101,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
         toast.error('Something went wrong! Please, try again');
         return;
       }
+      toast.success('Transaction created successfully');
     }
 
     resetForm();
@@ -162,7 +163,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
               <InputContainer>
                 <Label htmlFor="amount">
                   <ModalInput
-                    style={{ textAlign: 'center' }}
+                    style={{ textAlign: 'left' }}
                     type="number"
                     name="amount"
                     placeholder="0.00"
