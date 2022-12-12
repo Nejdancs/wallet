@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/wallet/static/css/main.5d7033b1.css",
-    "main.js": "/wallet/static/js/main.06ab61ca.js",
+    "main.js": "/wallet/static/js/main.b2d72e03.js",
     "static/js/341.aec79ff8.chunk.js": "/wallet/static/js/341.aec79ff8.chunk.js",
     "static/js/660.f2ef94b2.chunk.js": "/wallet/static/js/660.f2ef94b2.chunk.js",
-    "static/css/697.144452f8.chunk.css": "/wallet/static/css/697.144452f8.chunk.css",
-    "static/js/697.e22524e0.chunk.js": "/wallet/static/js/697.e22524e0.chunk.js",
+    "static/css/862.0a89c9fb.chunk.css": "/wallet/static/css/862.0a89c9fb.chunk.css",
+    "static/js/862.257e63d7.chunk.js": "/wallet/static/js/862.257e63d7.chunk.js",
     "static/js/866.f8b3d3a8.chunk.js": "/wallet/static/js/866.f8b3d3a8.chunk.js",
     "static/js/578.86ac0631.chunk.js": "/wallet/static/js/578.86ac0631.chunk.js",
     "static/js/546.fbedc5ce.chunk.js": "/wallet/static/js/546.fbedc5ce.chunk.js",
@@ -54,11 +54,11 @@
     "static/media/plus.svg": "/wallet/static/media/plus.6148b25880e82f256d591624f4e24e8f.svg",
     "static/media/minus.svg": "/wallet/static/media/minus.726dc1e8b582e729172a0e66a2cc0dd3.svg",
     "main.5d7033b1.css.map": "/wallet/static/css/main.5d7033b1.css.map",
-    "main.06ab61ca.js.map": "/wallet/static/js/main.06ab61ca.js.map",
+    "main.b2d72e03.js.map": "/wallet/static/js/main.b2d72e03.js.map",
     "341.aec79ff8.chunk.js.map": "/wallet/static/js/341.aec79ff8.chunk.js.map",
     "660.f2ef94b2.chunk.js.map": "/wallet/static/js/660.f2ef94b2.chunk.js.map",
-    "697.144452f8.chunk.css.map": "/wallet/static/css/697.144452f8.chunk.css.map",
-    "697.e22524e0.chunk.js.map": "/wallet/static/js/697.e22524e0.chunk.js.map",
+    "862.0a89c9fb.chunk.css.map": "/wallet/static/css/862.0a89c9fb.chunk.css.map",
+    "862.257e63d7.chunk.js.map": "/wallet/static/js/862.257e63d7.chunk.js.map",
     "866.f8b3d3a8.chunk.js.map": "/wallet/static/js/866.f8b3d3a8.chunk.js.map",
     "578.86ac0631.chunk.js.map": "/wallet/static/js/578.86ac0631.chunk.js.map",
     "546.fbedc5ce.chunk.js.map": "/wallet/static/js/546.fbedc5ce.chunk.js.map",
@@ -72,6 +72,6 @@
   },
   "entrypoints": [
     "static/css/main.5d7033b1.css",
-    "static/js/main.06ab61ca.js"
+    "static/js/main.b2d72e03.js"
   ]
 }
