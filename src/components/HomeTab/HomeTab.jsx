@@ -8,6 +8,7 @@ import API from 'services/api/api';
 import Table from './Table';
 import { useDispatch, useSelector } from 'react-redux';
 import operations from 'redux/transactions/transactions-operations';
+import LoaderComponent from 'components/Loader/LoaderComponent';
 
 function HomeTab() {
   const [showModal, setShowModal] = useState(false);
@@ -31,8 +32,9 @@ function HomeTab() {
   return (
     <>
       {isLoading ? (
-        <>loading...</>
-      ) : currentData.length > 0 ? (
+        <LoaderComponent />
+      ) : // <>loading...</>
+      currentData.length > 0 ? (
         <Table data={currentData} />
       ) : (
         <NoTransactions />
