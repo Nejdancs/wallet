@@ -29,7 +29,7 @@ const DiagramTab = () => {
         const { data } = await API.getStatistics(filter);
         setStatistics(data);
       } catch (error) {
-        toast("can't connect");
+        toast.error("can't connect");
       }
     })();
   }, [filter]);

@@ -25,10 +25,10 @@ export const ModalAddCategory = ({ closeModal }) => {
     e.preventDefault();
     try {
       const data = await API.addCategory({ name: categoryName, type });
-      toast(`Category ${data.data.name} is created`);
+      toast.success(`Category ${data.data.name} is created`);
       closeModal();
     } catch (error) {
-      toast(`${error.response.data.message}`);
+      toast.error(`${error.response.data.message}`);
     }
   };
   return createPortal(
