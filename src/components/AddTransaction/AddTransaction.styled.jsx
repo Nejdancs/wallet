@@ -7,6 +7,7 @@ export const Calendar = styled.div`
 
 export const DateIcon = styled.img`
   position: absolute;
+  pointer-events: none;
 
   right: 0;
   top: 0;
@@ -185,4 +186,13 @@ export const BtnList = styled.div`
 export const Label = styled.label`
   display: block;
   position: relative;
+`;
+
+export const ErrorText = styled.p`
+  position: absolute;
+  top: 32px;
+  left: 5px;
+  font-size: 12px;
+  line-height: 1.14;
+  color: rgb(240, 0, 0);
 `;

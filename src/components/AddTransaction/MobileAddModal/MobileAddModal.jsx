@@ -32,6 +32,7 @@ import {
   Calendar,
   DateIcon,
   Label,
+  ErrorText,
 } from './MobileAddModal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -160,20 +161,15 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
           <div>
             <Label htmlFor="amount">
               <ModalInput
-                style={{ textAlign: 'center' }}
+                style={{ textAlign: 'left' }}
                 type="number"
                 name="amount"
                 placeholder="0.00"
               />
               <ErrorMessage
-                style={{
-                  color: 'red',
-                  position: 'absolute',
-                  top: '45px',
-                }}
-                component="div"
-                name="amount"
-              />
+                    render={msg => <ErrorText>{msg}</ErrorText>}
+                    name="amount"
+                  />
             </Label>
             <Calendar>
               <Datetime
@@ -192,10 +188,9 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
           <Label htmlFor="comment">
             <CommentInput type="text" name="comment" placeholder="Comment" />
             <ErrorMessage
-              style={{ color: 'red', position: 'absolute', top: '45px' }}
-              component="div"
-              name="comment"
-            />
+                    render={msg => <ErrorText style={{ top: '36px' }}>{msg}</ErrorText>}
+                    name="comment"
+                  />
           </Label>
           <BtnList>
             <li>

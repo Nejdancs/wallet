@@ -69,3 +69,16 @@ export const BtnContainer = styled.div`
     margin-top: 107px;
   }
 `;
+export const FormLabel = styled.label`
+  display: block;
+  position: relative;
+`;
+
+export const ErrorText = styled.p`
+  position: absolute;
+  top: 32px;
+  left: 5px;
+  font-size: 12px;
+  line-height: 1.14;
+  color: rgb(240, 0, 0);
+`;
