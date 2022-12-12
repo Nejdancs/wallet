@@ -14,32 +14,36 @@ function Currency() {
   const [currency, setCurrency] = useState([]);
 
   async function readFromLocalStorage() {
-    const data = JSON.parse(localStorage.getItem('currencyData'));
-    if (data && data.length === 3) {
-      console.log('data is already in the Local Storage');
-      setCurrency(data);
-      // setTimeout(() => {
-      localStorage.removeItem('currencyData');
-      // }, 120000);
-    } else {
-      const interval = setInterval(() => {
-        const data = JSON.parse(localStorage.getItem('currencyData'));
-        if (data && data.length > 0) {
-          setCurrency(data);
-          console.log('this is console after data has been got');
-          clearInterval(interval);
-          // setTimeout(() => {
-          localStorage.removeItem('currencyData');
-          // }, 120000);
-        } else {
-          console.log('data has not been found. calling fetch function');
-          fetchCurrency();
-        }
-      }, 3000);
-    }
+    // const data = JSON.parse(localStorage.getItem('currencyData'));
+    // if (data && data.length === 3) {
+    //   console.log('data is already in the Local Storage');
+    //   setCurrency(data);
+    //   // setTimeout(() => {
+    //   localStorage.removeItem('currencyData');
+    //   // }, 120000);
+    // } else {
+    const interval = setInterval(() => {
+      const data = JSON.parse(localStorage.getItem('currencyData'));
+      if (data && data.length > 0) {
+        setCurrency(data);
+        console.log('this is console after data has been got');
+        clearInterval(interval);
+        // setTimeout(() => {
+        localStorage.removeItem('currencyData');
+        // }, 120000);
+      } else {
+        console.log('data has not been found. calling fetch function');
+        fetchCurrency();
+      }
+    }, 3000);
+    // }
   }
 
   useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('currencyData'));
+    if (data) {
+      localStorage.removeItem('currencyData');
+    }
     readFromLocalStorage();
     const interval = setInterval(() => {
       readFromLocalStorage();
