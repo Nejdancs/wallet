@@ -38,10 +38,10 @@ const authSlice = createSlice({
     },
     [authOperations.fetchCurrentUser.rejected](state) {
       state.isRefreshingUser = false;
+      state.token = null;
     },
     [transOperations.createTransaction.fulfilled](state, { payload }) {
       state.user.balance = +payload.balance;
-      state.token = null;
     },
   },
 });
