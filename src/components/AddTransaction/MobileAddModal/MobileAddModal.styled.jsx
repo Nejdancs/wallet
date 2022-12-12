@@ -7,6 +7,7 @@ export const Calendar = styled.div`
 
 export const DateIcon = styled.img`
   position: absolute;
+  pointer-events: none;
   right: 0;
   top: 0;
 `;
