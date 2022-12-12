@@ -36,6 +36,7 @@ import {
   DateIcon,
   CloseIcon,
   Label,
+  ErrorText,
 } from './AddTransaction.styled';
 import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
 
@@ -182,12 +183,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                     placeholder="0.00"
                   />
                   <ErrorMessage
-                    style={{
-                      color: 'red',
-                      position: 'absolute',
-                      top: '30px',
-                    }}
-                    component="div"
+                    render={msg => <ErrorText>{msg}</ErrorText>}
                     name="amount"
                   />
                 </Label>
@@ -201,7 +197,6 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                     inputProps={inputProps}
                     onChange={e => setDate(e._d)}
                   />
-
                   <DateIcon src={DateRange} alt="calendar" />
                 </Calendar>
               </InputContainer>
@@ -212,10 +207,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                   placeholder="Comment"
                 />
                 <ErrorMessage
-                  style={{ color: 'red', position: 'absolute', top: '30px' }}
-                  component="div"
-                  name="comment"
-                />
+                    render={msg => <ErrorText>{msg}</ErrorText>}
+                    name="comment"
+                  />
               </Label>
 
               <BtnList>

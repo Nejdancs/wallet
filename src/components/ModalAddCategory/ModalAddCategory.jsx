@@ -1,9 +1,9 @@
 import Button from 'components/Button/Button';
 import React from 'react';
-import { Modal, Title, Input, BtnContainer } from './ModalAddCategory.styled';
+import { Modal, Title, Input, BtnContainer, ErrorText, FormLabel } from './ModalAddCategory.styled';
 import { CloseBtn } from '../AddTransaction/AddTransaction.styled';
 import CloseSvg from '../../images/close.svg';
-import { Formik, Form } from 'formik';
+import { Formik, Form,ErrorMessage } from 'formik';
 import { useState } from 'react';
 import SwitchToggle from 'components/AddTransaction/SwitchToggle/SwitchToggle';
 import schema from 'assets/ValidateSchema/createCategorySchema';
@@ -15,14 +15,12 @@ const modalRoot2 = document.querySelector('#modal-root-2');
 
 export const ModalAddCategory = ({ closeModal }) => {
   const [type, setType] = useState('expense');
-  const [categoryName, setCategoryName] = useState('');
 
   const onTypeChange = checked => {
     checked ? setType('income') : setType('expense');
   };
 
-  const onSubmit = async e => {
-    e.preventDefault();
+  const onSubmit = async ({categoryName}) => {
     try {
       const data = await API.addCategory({ name: categoryName, type });
       toast.success(`Category ${data.data.name} is created`);
@@ -42,25 +40,32 @@ export const ModalAddCategory = ({ closeModal }) => {
         onLoad={type => setType(type.toLowerCase())}
       />
       <Formik
-        initialValues={{ categoryName: 'expense' }}
+        initialValues={{ categoryName: '' }}
         validationSchema={schema}
         onSubmit={onSubmit}
       >
-        <Form onSubmit={onSubmit}>
-          <Input
+        {({ handleSubmit, handleChange,values }) => (
+          <Form onSubmit={handleSubmit}>
+            <FormLabel>
+              <Input
             type="text"
             name="categoryName"
             placeholder="Category name"
-            onChange={e => setCategoryName(e.target.value)}
-            value={categoryName}
+              onChange={handleChange}
+            value={values.categoryName}
           />
+          <ErrorMessage
+                    render={msg => <ErrorText>{msg}</ErrorText>}
+                    name="categoryName"
+                  />
+          </FormLabel>
           <BtnContainer>
             <Button main type="submit">
               Create
             </Button>
             <Button onClick={closeModal}>Cancel</Button>
           </BtnContainer>
-        </Form>
+        </Form>)}
       </Formik>
     </Modal>,
     modalRoot2

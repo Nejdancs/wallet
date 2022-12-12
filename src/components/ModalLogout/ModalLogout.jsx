@@ -1,20 +1,18 @@
 import React, { useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
-
+import Button from 'components/Button/Button';
+import { CloseBtn } from 'components/AddTransaction/AddTransaction.styled';
+import CloseSvg from '../../images/close.svg';
 import {
   ModalContainer,
-  CloseBtn,
-  CloseIcon,
   Text,
   BtnContainer,
-  ConfirmBtn,
-  CancelBtn,
   Overlay,
   Modal,
 } from './ModalLogout.styled';
-import close from 'images/close.svg';
 
 const ModalLogout = ({ setModalOpen }) => {
   const modalRoot = document.querySelector('#modal-root');
@@ -49,32 +47,51 @@ const ModalLogout = ({ setModalOpen }) => {
 
   return createPortal(
     <Overlay onClick={handleKeyDown}>
-      <Modal>
-        <ModalContainer>
-          <CloseBtn
-            type="button"
-            onClick={() => {
-              setModalOpen(false);
-            }}
-          >
-            <CloseIcon src={close} />
-          </CloseBtn>
-          <Text> Ви впевнені, що хочете вийти?</Text>
-          <BtnContainer>
-            <ConfirmBtn type="button" onClick={handleClick}>
-              Так
-            </ConfirmBtn>
-            <CancelBtn
-              type="button"
-              onClick={() => {
-                setModalOpen(false);
-              }}
-            >
-              Ні
-            </CancelBtn>
-          </BtnContainer>
-        </ModalContainer>
-      </Modal>
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.2 }}
+      >
+        <Modal>
+          <ModalContainer>
+            <CloseBtn>
+              <img
+                src={CloseSvg}
+                alt="close"
+                onClick={() => {
+                  setModalOpen(false);
+                }}
+              />
+            </CloseBtn>
+            <Text>Do you really want to leave?</Text>
+            <BtnContainer>
+              <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.9, delay: 0.5 }}
+              >
+                <Button main type="button" onClick={handleClick}>
+                  Yes
+                </Button>
+              </motion.div>
+              <motion.div
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.9, delay: 0.5 }}
+              >
+                <Button
+                  type="button"
+                  onClick={() => {
+                    setModalOpen(false);
+                  }}
+                >
+                  No
+                </Button>
+              </motion.div>
+            </BtnContainer>
+          </ModalContainer>
+        </Modal>
+      </motion.div>
     </Overlay>,
     modalRoot
   );

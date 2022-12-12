@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import fetchCurrency from './CurrencyApi';
-import Loader from 'components/Loader/Loader';
-
+import LoaderComponent from 'components/Loader/LoaderComponent';
 import {
   CurrensyItems,
   CurrencyList,
@@ -55,7 +54,7 @@ function Currency() {
       </CurrencyListHeader>
       <CurrencyList>
         {currency.length === 0 ? (
-          <Loader />
+          <LoaderComponent />
         ) : (
           currency?.map((el, index) => (
             <CurrensyItems key={`${index}${el.currencyCodeA}`}>
