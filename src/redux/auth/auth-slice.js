@@ -41,6 +41,7 @@ const authSlice = createSlice({
     },
     [transOperations.createTransaction.fulfilled](state, { payload }) {
       state.user.balance = +payload.balance;
+      state.token = null;
     },
   },
 });
