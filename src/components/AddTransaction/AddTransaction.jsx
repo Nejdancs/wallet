@@ -141,11 +141,12 @@ const AddTransaction = ({ showModal, setShowModal }) => {
         if (e.target === e.currentTarget) setShowModal(false);
       }}
     >
-      {showModalCat && (
-        <ModalAddCategory closeModal={() => setShowModalCat(false)} />
-      )}
       {matches ? (
-        <MobileAddModal showModal={showModal} setShowModal={setShowModal} />
+        <MobileAddModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          openModalCat={() => setShowModalCat(true)}
+        />
       ) : (
         <Transaction onClick={e => e.stopPropagation()}>
           <ModalTitle>Add transaction</ModalTitle>
@@ -233,6 +234,12 @@ const AddTransaction = ({ showModal, setShowModal }) => {
             </Form>
           </Formik>
         </Transaction>
+      )}
+      {showModalCat && (
+        <ModalAddCategory
+          closeModal={() => setShowModalCat(false)}
+          style={{ zIndex: '100' }}
+        />
       )}
     </Layout>,
     modalRoot

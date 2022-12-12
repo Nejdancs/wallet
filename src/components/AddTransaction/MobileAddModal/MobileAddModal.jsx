@@ -45,7 +45,7 @@ let Schema = yup.object().shape({
   comment: yup.string().max(100, 'No more than 100 characters'),
 });
 
-const MobileAddModal = ({ showModal, setShowModal }) => {
+const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(new Date());
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
@@ -123,98 +123,101 @@ const MobileAddModal = ({ showModal, setShowModal }) => {
   }, [setShowModal, onKeyDown]);
 
   return createPortal(
-    <Layout
-      onClick={
-        (onKeyDown,
-        () => {
+    // <Layout
+    //   onClick={
+    //     (onKeyDown,
+    //     () => {
+    //       setShowModal(false);
+    //     })
+    //   }
+    // >
+    <Transaction onClick={e => e.stopPropagation()}>
+      <ModalTitle>Add transaction</ModalTitle>
+
+      <CloseBtn
+        type="button"
+        onClick={() => {
           setShowModal(false);
-        })
-      }
-    >
-      <Transaction onClick={e => e.stopPropagation()}>
-        <ModalTitle>Add transaction</ModalTitle>
+        }}
+      >
+        <img src={CloseSvg} alt="close" />
+      </CloseBtn>
 
-        <CloseBtn
-          type="button"
-          onClick={() => {
-            setShowModal(false);
-          }}
-        >
-          <img src={CloseSvg} alt="close" />
-        </CloseBtn>
+      <SwitchToggle onLoad={changeTypeOfOperationt} />
 
-        <SwitchToggle onLoad={changeTypeOfOperationt} />
+      <Formik
+        validationSchema={Schema}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+      >
+        <Form autoComplete="off">
+          <Selektor
+            openModalCat={openModalCat}
+            typeOfOperation={typeOfOperation}
+            onChange={onSelectorChange}
+          />
 
-        <Formik
-          validationSchema={Schema}
-          initialValues={initialValues}
-          onSubmit={onSubmit}
-        >
-          <Form autoComplete="off">
-            <Selektor
-              typeOfOperation={typeOfOperation}
-              onChange={onSelectorChange}
-            />
-
-            <div>
-              <Label htmlFor="amount">
-                <ModalInput
-                  style={{ textAlign: 'center' }}
-                  type="number"
-                  name="amount"
-                  placeholder="0.00"
-                />
-                <ErrorMessage
-                  style={{
-                    color: 'red',
-                    position: 'absolute',
-                    top: '45px',
-                  }}
-                  component="div"
-                  name="amount"
-                />
-              </Label>
-              <Calendar>
-                <Datetime
-                  isValidDate={current => current.isAfter(yesterday)}
-                  timeFormat={false}
-                  initialValue={date}
-                  closeOnSelect={true}
-                  dateFormat="DD.MM.YYYY"
-                  inputProps={inputProps}
-                  onChange={e => setDate(e._d)}
-                />
-                <DateIcon src={DateRange} alt="calendar" />
-              </Calendar>
-            </div>
-
-            <Label htmlFor="comment">
-              <CommentInput type="text" name="comment" placeholder="Comment" />
+          <div>
+            <Label htmlFor="amount">
+              <ModalInput
+                style={{ textAlign: 'center' }}
+                type="number"
+                name="amount"
+                placeholder="0.00"
+              />
               <ErrorMessage
-                style={{ color: 'red', position: 'absolute', top: '45px' }}
+                style={{
+                  color: 'red',
+                  position: 'absolute',
+                  top: '45px',
+                }}
                 component="div"
-                name="comment"
+                name="amount"
               />
             </Label>
-            <BtnList>
-              <li>
-                <Button type="submit">Add</Button>
-              </li>
-              <li>
-                <Button
-                  type="button"
-                  onClick={() => {
-                    setShowModal(false);
-                  }}
-                >
-                  Cancel
-                </Button>
-              </li>
-            </BtnList>
-          </Form>
-        </Formik>
-      </Transaction>
-    </Layout>,
+            <Calendar>
+              <Datetime
+                isValidDate={current => current.isAfter(yesterday)}
+                timeFormat={false}
+                initialValue={date}
+                closeOnSelect={true}
+                dateFormat="DD.MM.YYYY"
+                inputProps={inputProps}
+                onChange={e => setDate(e._d)}
+              />
+              <DateIcon src={DateRange} alt="calendar" />
+            </Calendar>
+          </div>
+
+          <Label htmlFor="comment">
+            <CommentInput type="text" name="comment" placeholder="Comment" />
+            <ErrorMessage
+              style={{ color: 'red', position: 'absolute', top: '45px' }}
+              component="div"
+              name="comment"
+            />
+          </Label>
+          <BtnList>
+            <li>
+              <Button type="submit" main>
+                Add
+              </Button>
+            </li>
+            <li>
+              <Button
+                type="button"
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                Cancel
+              </Button>
+            </li>
+          </BtnList>
+        </Form>
+      </Formik>
+    </Transaction>,
+    // </Layout>,
     modalRoot
   );
 };

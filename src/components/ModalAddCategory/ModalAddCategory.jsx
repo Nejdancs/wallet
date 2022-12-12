@@ -9,6 +9,9 @@ import SwitchToggle from 'components/AddTransaction/SwitchToggle/SwitchToggle';
 import schema from 'assets/ValidateSchema/createCategorySchema';
 import API from 'services/api/api';
 import { toast } from 'react-toastify';
+import { createPortal } from 'react-dom';
+
+const modalRoot2 = document.querySelector('#modal-root-2');
 
 export const ModalAddCategory = ({ closeModal }) => {
   const [type, setType] = useState('expense');
@@ -28,7 +31,7 @@ export const ModalAddCategory = ({ closeModal }) => {
       toast(`${error.response.data.message}`);
     }
   };
-  return (
+  return createPortal(
     <Modal>
       <Title>Create new category</Title>
       <CloseBtn>
@@ -59,6 +62,7 @@ export const ModalAddCategory = ({ closeModal }) => {
           </BtnContainer>
         </Form>
       </Formik>
-    </Modal>
+    </Modal>,
+    modalRoot2
   );
 };

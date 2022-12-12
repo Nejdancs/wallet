@@ -8,11 +8,12 @@ export const Modal = styled.div`
   height: 100%;
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px 10px 40px;
+  padding: 20px 20px 40px;
   text-align: center;
-  z-index: 2;
+  z-index: 3;
   background-color: #fff;
 
   @media ${device.tablet} {
@@ -61,6 +62,10 @@ export const BtnContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 107px;
+  margin-top: 191px;
   height: 160px;
+
+  @media ${device.tablet} {
+    margin-top: 107px;
+  }
 `;
