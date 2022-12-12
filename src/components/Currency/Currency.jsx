@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import fetchCurrency from './CurrencyApi';
+import LoaderComponent from 'components/Loader/LoaderComponent';
 import {
   CurrensyItems,
   CurrencyList,
@@ -57,27 +58,29 @@ function Currency() {
         <HeaderText>Sale</HeaderText>
       </CurrencyListHeader>
       <CurrencyList>
-        {currency.length === 0
-          ? 'waiting for rates.......  some spinner'
-          : currency?.map((el, index) => (
-              <CurrensyItems key={`${index}${el.currencyCodeA}`}>
-                <CurrencyInfoText>
-                  {index === 0 && 'USD'}
-                  {index === 1 && 'EUR'}
-                  {index === 2 && 'Є/$'}
-                </CurrencyInfoText>
-                <CurrencyInfoText>
-                  {index === 0 || index === 1
-                    ? Number(el.rateBuy).toFixed(2)
-                    : Number(el.rateBuy).toFixed(3)}
-                </CurrencyInfoText>
-                <CurrencyInfoText>
-                  {index === 0 || index === 1
-                    ? Number(el.rateSell).toFixed(2)
-                    : Number(el.rateSell).toFixed(3)}
-                </CurrencyInfoText>
-              </CurrensyItems>
-            ))}
+        {currency.length === 0 ? (
+          <LoaderComponent />
+        ) : (
+          currency?.map((el, index) => (
+            <CurrensyItems key={`${index}${el.currencyCodeA}`}>
+              <CurrencyInfoText>
+                {index === 0 && 'USD'}
+                {index === 1 && 'EUR'}
+                {index === 2 && 'Є/$'}
+              </CurrencyInfoText>
+              <CurrencyInfoText>
+                {index === 0 || index === 1
+                  ? Number(el.rateBuy).toFixed(2)
+                  : Number(el.rateBuy).toFixed(3)}
+              </CurrencyInfoText>
+              <CurrencyInfoText>
+                {index === 0 || index === 1
+                  ? Number(el.rateSell).toFixed(2)
+                  : Number(el.rateSell).toFixed(3)}
+              </CurrencyInfoText>
+            </CurrensyItems>
+          ))
+        )}
       </CurrencyList>
     </CurrencyWrapper>
   );
