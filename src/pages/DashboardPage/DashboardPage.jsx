@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from 'components/Header/Header';
 
 import { Suspense } from 'react';
-import mediumImg from 'images/Rectangle.png.png';
+import mediumImg from 'images/rectangle.png.png';
 import bigImg from 'images/rectangleDesk.png';
 
 import { Dashboard } from 'components/Dashboard/Dashboard';
