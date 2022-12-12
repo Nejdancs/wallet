@@ -1,6 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSortBy, useTable } from 'react-table';
 
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+
 import {
   MobileTable,
   Table,
@@ -8,8 +11,9 @@ import {
   TabRow,
   ColHeader,
   Column,
+  CommentContainer,
+  CommentColumn,
 } from './MobileTab.styled';
-
 
 const MobileTab = ({data,columns}) => {
 
@@ -43,7 +47,11 @@ const MobileTab = ({data,columns}) => {
                 </TabRow>
                 <TabRow>
                   <ColHeader>Comment</ColHeader>
-                  <Column>{data[i].comment}</Column>
+                  <CommentColumn>
+                    <Tippy content={data[i].comment} theme="light" maxWidth="100%" >
+                      <CommentContainer id="tippy">{data[i].comment}</CommentContainer>
+                    </Tippy>
+                  </CommentColumn>
                 </TabRow>
                 <TabRow>
                   <ColHeader>Sum</ColHeader>

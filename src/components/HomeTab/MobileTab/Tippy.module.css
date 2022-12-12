@@ -1,0 +1,6 @@
+.tippy{
+    background-color: purple;
+    /*разместить по середине страницы*/
+    position: absolute;
+    right: 0%;
+}
