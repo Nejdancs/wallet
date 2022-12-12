@@ -7,19 +7,21 @@ export const Calendar = styled.div`
 
 export const DateIcon = styled.img`
   position: absolute;
+  pointer-events: none;
 
   right: 0;
   top: 0;
 `;
 
 export const Layout = styled.div`
+  position: relative;
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.25);
   position: fixed;
   top: 0;
   left: 0;
-
+  /* z-index: 0; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +31,7 @@ export const Transaction = styled.div`
   position: absolute;
 
   width: 320px;
-
+  z-index: 2;
   padding: 20px;
 
   background-color: #ffffff;
@@ -184,4 +186,13 @@ export const BtnList = styled.div`
 export const Label = styled.label`
   display: block;
   position: relative;
+`;
+
+export const ErrorText = styled.p`
+  position: absolute;
+  top: 32px;
+  left: 5px;
+  font-size: 12px;
+  line-height: 1.14;
+  color: rgb(240, 0, 0);
 `;

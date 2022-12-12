@@ -13,6 +13,7 @@ function HomeTab() {
   const [showModal, setShowModal] = useState(false);
   // const [currentData, setCurrentData] = useState([]);
   const currentData = useSelector(state => state.transaction.transactions);
+  const isLoading = useSelector(state => state.transaction.loadingTrans);
 
   const dispatch = useDispatch();
 
@@ -27,10 +28,11 @@ function HomeTab() {
   const closeModal = () => {
     setShowModal(false);
   };
-
   return (
     <>
-      {currentData.length > 0 ? (
+      {isLoading ? (
+        <>loading...</>
+      ) : currentData.length > 0 ? (
         <Table data={currentData} />
       ) : (
         <NoTransactions />

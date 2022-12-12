@@ -21,7 +21,7 @@ const signUp = yup.object().shape({
   name: yup
     .string()
     .min(1)
-    .max(12, 'must be less than 14 characters')
+    .max(12, 'must be less than 12 characters')
     .matches(
       regEx.name,
       'the name can contain letters and numbers without spaces'

@@ -116,9 +116,12 @@ export const HomeTabColumn = styled.td`
 `;
 
 export const SortArrow = styled.span`
+  display: flex;
+  align-items: center;
   position: absolute;
   top: 50%;
-  right: -12px;
+  right: -14px;
+  font-size: 14px;
+  color: ${p => !p.isSorted ? "#a8a7a7": p.theme.colors.primaryTextColor};
   transform: translateY(-50%);
-  font-size: 12px;
 `;

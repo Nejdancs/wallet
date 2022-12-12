@@ -4,17 +4,14 @@ import { FormEl, Select, InpWrapper } from './FormFilter.styled';
 import { useEffect } from 'react';
 
 const FormFilter = ({ onFilterChange, actDates, dates }) => {
-  const [month, setMonth] = useState(
-    actDates.length === 0 ? 'month' : new Date().getMonth() + 1
-  );
-  const [year, setYear] = useState(
-    actDates.length === 0 ? 'year' : new Date().getFullYear()
-  );
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const [year, setYear] = useState(new Date().getFullYear());
   const [actYears, setActYears] = useState([]);
 
   useEffect(() => {
     const actYears = actDates.map(el => el.year) ?? [];
     setActYears(actYears);
+    
   }, [actDates]);
 
   const checkActMonth = month => {
@@ -22,10 +19,6 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
       elem => elem.year === +dates.year && elem.monthes.includes(+month)
     );
   };
-
-  // const checkActYear = year => {
-  //   return !!!actDates.find(elem => elem.year === year);
-  // };
 
   return (
     <div>
@@ -46,12 +39,7 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
               }}
               value={month}
             >
-              {actDates.length === 0 ? (
-                <option value="month" disabled>
-                  Month
-                </option>
-              ) : (
-                <>
+              
                   <option value="01" disabled={checkActMonth(1)}>
                     January
                   </option>
@@ -88,8 +76,7 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
                   <option value="12" disabled={checkActMonth(12)}>
                     December
                   </option>
-                </>
-              )}
+                
             </Field>
           </InpWrapper>
           <InpWrapper>
@@ -102,17 +89,13 @@ const FormFilter = ({ onFilterChange, actDates, dates }) => {
                 onFilterChange({ year: +e.target.value });
               }}
             >
-              {actDates.length === 0 ? (
-                <option value="year" disabled>
-                  Year
+              
+              {actYears.map(year => (
+                <option key={year} value={year}>
+                  {year}
                 </option>
-              ) : (
-                actYears.map(year => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))
-              )}
+              ))}
+              
               {/* <option value="2021" disabled={checkActYear(2021)}>
                 2021
               </option>

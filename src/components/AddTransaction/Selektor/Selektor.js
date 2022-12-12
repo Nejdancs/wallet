@@ -10,7 +10,12 @@ import Select from 'react-select';
 
 import './Selektor.css';
 
-const Selektor = ({ onChange, typeOfOperation, onInputChange }) => {
+const Selektor = ({
+  onChange,
+  typeOfOperation,
+  onInputChange,
+  openModalCat,
+}) => {
   const { expenses = [], income = [] } = useSelector(getCategory);
 
   let expen = expenses.map(({ _id, name }) => ({
@@ -49,7 +54,7 @@ const Selektor = ({ onChange, typeOfOperation, onInputChange }) => {
           }),
         }}
       />
-      <BtnAddCategory />
+      <BtnAddCategory onClick={openModalCat} />
     </div>
   );
 };

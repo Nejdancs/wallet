@@ -4,8 +4,7 @@ import { useSortBy, useTable, usePagination } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx';
-// import arrowLeft from '../../images/arrow-left.svg';
-// import arrowRight from '../../images/arrow-right.svg';
+import { BiSortAlt2,BiSortDown,BiSortUp } from 'react-icons/bi';
 
 import MobileTab from './MobileTab/MobileTab';
 
@@ -66,7 +65,7 @@ function Table({ data }) {
         {({ mobile }) => (
           <HomeTabContainer>
             {!mobile ? (
-              <MobileTab />
+              <MobileTab data={data} columns={columns} />
             ) : (
               <>
                 <HomeTable {...getTableProps()}>
@@ -89,12 +88,14 @@ function Table({ data }) {
                           >
                             <span style={{ position: 'relative' }}>
                               {column.render('Header')}
-                              <SortArrow>
-                                {!column.isSorted
-                                  ? null
-                                  : column.isSortedDesc
-                                  ? '▼'
-                                  : '▲'}
+                              <SortArrow isSorted={column.isSorted}>
+                                {!column.isSorted ? (
+                                  <BiSortAlt2 />
+                                ) : column.isSortedDesc ? (
+                                  <BiSortDown/>
+                                ) : (
+                                  <BiSortUp/>
+                                )}
                               </SortArrow>
                             </span>
                           </ColumnHeader>
