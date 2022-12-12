@@ -9,39 +9,6 @@ export const ModalContainer = styled.div`
   max-width: 450px;
 `;
 
-// export const CloseBtn = styled.button`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   position: absolute;
-//   top: 8px;
-//   right: 8px;
-//   width: 30px;
-//   height: 30px;
-//   padding: 0;
-//   color: ${p => p.theme.colors.primaryTextColor};
-//   background-color: ${p => p.theme.colors.inActiveIconColor};
-//   border: 1px solid ${p => p.theme.colors.accentSecondary};
-//   border-radius: 50%;
-//   cursor: pointer;
-//   transition: transform 2500ms cubic-bezier(0.4, 0, 0.2, 1),
-//     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-//     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-//     animation 250ms cubic-bezier(0.4, 0, 0.2, 1);
-//   &:hover,
-//   &:focus-within {
-//     transform: scale(1.1) rotate(360deg);
-//     color: ${p => p.theme.colors.accentSecondary};
-//     background-color: ${p => p.theme.colors.accentSecondary};
-//   }
-// `;
-
-// export const CloseIcon = styled.img`
-//   width: 60%;
-//   height: 60%;
-//   stroke: currentColor;
-// `;
-
 export const Text = styled.div`
   margin-top: 20px;
   margin-bottom: 30px;
@@ -49,9 +16,7 @@ export const Text = styled.div`
   font-size: 17px;
   font-weight: 700;
   text-align: center;
-  /* @media ${device.mobile} {
-    font-size: 20px;
-  } */
+
   @media ${device.desktop} {
     font-size: 23px;
   }
@@ -65,61 +30,8 @@ export const BtnContainer = styled.div`
   @media ${device.tablet} {
     flex-direction: column;
   }
-  /* margin-top: -30px; */
-  /* margin-left: -30px; */
 `;
 
-// export const ConfirmBtn = styled.button`
-//   width: 150px;
-//   height: 50px;
-//   margin-left: 30px;
-//   margin-top: 30px;
-//   background: ${p => p.theme.colors.accentPrimary};
-//   border-radius: 20px;
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 18px;
-//   line-height: 1.5;
-//   text-align: center;
-//   letter-spacing: 0.1em;
-//   text-transform: uppercase;
-//   border: transparent;
-//   color: ${p => p.theme.colors.secondaryTextColor};
-//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-//     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-//     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-//   cursor: pointer;
-//   &:hover {
-//     background-color: ${p => p.theme.colors.accentPrimary};
-//     transform: scale(1.1);
-//   }
-// `;
-
-// export const CancelBtn = styled.button`
-//   width: 150px;
-//   height: 50px;
-//   margin-left: 30px;
-//   margin-top: 30px;
-//   background: ${p => p.theme.colors.firstCircleColorBg};
-//   border: 1px solid ${p => p.theme.colors.accentSecondary};
-//   border-radius: 20px;
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 18px;
-//   line-height: 1.5;
-//   letter-spacing: 0.1em;
-//   text-transform: uppercase;
-//   color: ${p => p.theme.colors.accentSecondary};
-//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-//     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-//     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-//   cursor: pointer;
-//   &:hover {
-//     background: ${p => p.theme.colors.accentSecondary};
-//     color: ${p => p.theme.colors.secondaryTextColor};
-//     transform: scale(1.1);
-//   }
-// `;
 export const Overlay = styled.div`
   position: fixed;
   top: 0;

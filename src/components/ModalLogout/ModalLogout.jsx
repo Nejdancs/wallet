@@ -4,20 +4,15 @@ import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import Button from 'components/Button/Button';
+import { CloseBtn } from 'components/AddTransaction/AddTransaction.styled';
+import CloseSvg from '../../images/close.svg';
 import {
   ModalContainer,
-  // CloseBtn,
-  CloseIcon,
   Text,
   BtnContainer,
-  ConfirmBtn,
-  CancelBtn,
   Overlay,
   Modal,
 } from './ModalLogout.styled';
-// import close from 'images/close.svg';
-import { CloseBtn } from 'components/AddTransaction/AddTransaction.styled';
-import CloseSvg from '../../images/close.svg';
 
 const ModalLogout = ({ setModalOpen }) => {
   const modalRoot = document.querySelector('#modal-root');
@@ -59,14 +54,6 @@ const ModalLogout = ({ setModalOpen }) => {
       >
         <Modal>
           <ModalContainer>
-            {/* <CloseBtn
-            type="button"
-            onClick={() => {
-              setModalOpen(false);
-            }}
-          >
-            <CloseIcon src={close} />
-          </CloseBtn> */}
             <CloseBtn>
               <img
                 src={CloseSvg}
@@ -102,19 +89,6 @@ const ModalLogout = ({ setModalOpen }) => {
                 </Button>
               </motion.div>
             </BtnContainer>
-            {/* <BtnContainer>
-            <ConfirmBtn type="button" onClick={handleClick}>
-              Так
-            </ConfirmBtn>
-            <CancelBtn
-              type="button"
-              onClick={() => {
-                setModalOpen(false);
-              }}
-            >
-              Ні
-            </CancelBtn>
-          </BtnContainer> */}
           </ModalContainer>
         </Modal>
       </motion.div>
