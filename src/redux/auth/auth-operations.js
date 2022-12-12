@@ -73,7 +73,11 @@ const fetchCurrentUser = createAsyncThunk(
     try {
       const { data } = await API.fetchCurrentUser();
       return data;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+
+      return thunkAPI.rejectWithValue();
+    }
   }
 );
 
