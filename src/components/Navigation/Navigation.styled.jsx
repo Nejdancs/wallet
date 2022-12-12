@@ -11,7 +11,7 @@ export const Nav = styled.nav`
 export const List = styled.ul`
   display: flex;
   justify-content: space-evenly;
-  /* gap: 38px; */
+  /* gap: 18px; */
 
   list-style-type: none;
 
@@ -53,6 +53,7 @@ export const StyledIconCurrency = styled(IconCurrency)`
     height: 38px;
     border-radius: 6px;
   }
+
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -69,7 +70,9 @@ export const StyledNavLink = styled(NavLink)`
   &.active {
     font-weight: 700;
   }
-
+  &:hover {
+    color: #24cca7;
+  }
   &.active ${StyledIconHome} {
     fill: ${({ theme }) => theme.colors.accentSecondary};
     box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
@@ -81,6 +84,12 @@ export const StyledNavLink = styled(NavLink)`
   &.active ${StyledIconCurrency} {
     fill: ${({ theme }) => theme.colors.accentSecondary};
     box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
+  }
+    &:hover ${StyledStatistic}{
+    fill: #24cca7;
+  }
+    &:hover ${StyledIconHome}{
+    fill: #24cca7;
   }
 `;
 
