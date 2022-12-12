@@ -1,6 +1,6 @@
 import Button from 'components/Button/Button';
 import React from 'react';
-import { Modal, Title, Input } from './ModalAddCategory.styled';
+import { Modal, Title, Input, BtnContainer } from './ModalAddCategory.styled';
 import { CloseBtn } from '../AddTransaction/AddTransaction.styled';
 import CloseSvg from '../../images/close.svg';
 import { Formik, Form } from 'formik';
@@ -9,6 +9,9 @@ import SwitchToggle from 'components/AddTransaction/SwitchToggle/SwitchToggle';
 import schema from 'assets/ValidateSchema/createCategorySchema';
 import API from 'services/api/api';
 import { toast } from 'react-toastify';
+import { createPortal } from 'react-dom';
+
+const modalRoot2 = document.querySelector('#modal-root-2');
 
 export const ModalAddCategory = ({ closeModal }) => {
   const [type, setType] = useState('expense');
@@ -28,13 +31,16 @@ export const ModalAddCategory = ({ closeModal }) => {
       toast(`${error.response.data.message}`);
     }
   };
-  return (
+  return createPortal(
     <Modal>
       <Title>Create new category</Title>
       <CloseBtn>
         <img src={CloseSvg} alt="close" onClick={closeModal} />
       </CloseBtn>
-      <SwitchToggle onChange={onTypeChange} />
+      <SwitchToggle
+        onChange={onTypeChange}
+        onLoad={type => setType(type.toLowerCase())}
+      />
       <Formik
         initialValues={{ categoryName: 'expense' }}
         validationSchema={schema}
@@ -48,13 +54,15 @@ export const ModalAddCategory = ({ closeModal }) => {
             onChange={e => setCategoryName(e.target.value)}
             value={categoryName}
           />
-
-          <Button main type="submit">
-            Create
-          </Button>
-          <Button onClick={closeModal}>Cancel</Button>
+          <BtnContainer>
+            <Button main type="submit">
+              Create
+            </Button>
+            <Button onClick={closeModal}>Cancel</Button>
+          </BtnContainer>
         </Form>
       </Formik>
-    </Modal>
+    </Modal>,
+    modalRoot2
   );
 };

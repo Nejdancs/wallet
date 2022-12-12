@@ -37,6 +37,7 @@ import {
   CloseIcon,
   Label,
 } from './AddTransaction.styled';
+import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
 
 let Schema = yup.object().shape({
   amount: yup
@@ -54,7 +55,13 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   const [date, setDate] = useState(new Date());
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
 
+  const [showModalCat, setShowModalCat] = useState(false);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(operations.getCategory());
+  }, [dispatch, showModalCat]);
 
   let inputProps = { className: 'dateInput' };
 
@@ -75,8 +82,8 @@ const AddTransaction = ({ showModal, setShowModal }) => {
     setTypeOfOperation(value);
   };
 
-  const createCategoy = () => { };
-  
+  const createCategoy = () => {};
+
   const onSubmit = async (e, { resetForm }) => {
     const value = {
       type: typeOfOperation.toLocaleLowerCase(),
@@ -113,7 +120,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   const onKeyDown = useCallback(
     e => {
-      if (e.code === 'Escape' ?? e.target === e.currentTarget) {
+      if (e.code === 'Escape') {
         setShowModal(false);
       }
     },
@@ -130,15 +137,16 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   return createPortal(
     <Layout
-      onClick={
-        (onKeyDown,
-        () => {
-          setShowModal(false);
-        })
-      }
+      onClick={e => {
+        if (e.target === e.currentTarget) setShowModal(false);
+      }}
     >
       {matches ? (
-        <MobileAddModal showModal={showModal} setShowModal={setShowModal} />
+        <MobileAddModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          openModalCat={() => setShowModalCat(true)}
+        />
       ) : (
         <Transaction onClick={e => e.stopPropagation()}>
           <ModalTitle>Add transaction</ModalTitle>
@@ -158,6 +166,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
           >
             <Form autoComplete="off">
               <Selektor
+                openModalCat={() => setShowModalCat(true)}
                 typeOfOperation={typeOfOperation}
                 onChange={onSelectorChange}
                 style={{ color: '#000000' }}
@@ -210,7 +219,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
               </Label>
 
               <BtnList>
-                <Button type="submit">Add</Button>
+                <Button type="submit" main>
+                  Add
+                </Button>
                 <Button
                   type="button"
                   onClick={() => {
@@ -223,6 +234,12 @@ const AddTransaction = ({ showModal, setShowModal }) => {
             </Form>
           </Formik>
         </Transaction>
+      )}
+      {showModalCat && (
+        <ModalAddCategory
+          closeModal={() => setShowModalCat(false)}
+          style={{ zIndex: '100' }}
+        />
       )}
     </Layout>,
     modalRoot

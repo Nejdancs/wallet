@@ -13,13 +13,14 @@ export const DateIcon = styled.img`
 `;
 
 export const Layout = styled.div`
+  position: relative;
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.25);
   position: fixed;
   top: 0;
   left: 0;
-
+  /* z-index: 0; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +30,7 @@ export const Transaction = styled.div`
   position: absolute;
 
   width: 320px;
-
+  z-index: 2;
   padding: 20px;
 
   background-color: #ffffff;
