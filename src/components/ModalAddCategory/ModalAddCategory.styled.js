@@ -6,7 +6,7 @@ import theme from 'theme/theme';
 export const Modal = styled.div`
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
