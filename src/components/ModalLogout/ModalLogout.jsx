@@ -1,11 +1,12 @@
 import React, { useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
-
+import Button from 'components/Button/Button';
 import {
   ModalContainer,
-  CloseBtn,
+  // CloseBtn,
   CloseIcon,
   Text,
   BtnContainer,
@@ -14,7 +15,9 @@ import {
   Overlay,
   Modal,
 } from './ModalLogout.styled';
-import close from 'images/close.svg';
+// import close from 'images/close.svg';
+import { CloseBtn } from 'components/AddTransaction/AddTransaction.styled';
+import CloseSvg from '../../images/close.svg';
 
 const ModalLogout = ({ setModalOpen }) => {
   const modalRoot = document.querySelector('#modal-root');
@@ -49,18 +52,57 @@ const ModalLogout = ({ setModalOpen }) => {
 
   return createPortal(
     <Overlay onClick={handleKeyDown}>
-      <Modal>
-        <ModalContainer>
-          <CloseBtn
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.2 }}
+      >
+        <Modal>
+          <ModalContainer>
+            {/* <CloseBtn
             type="button"
             onClick={() => {
               setModalOpen(false);
             }}
           >
             <CloseIcon src={close} />
-          </CloseBtn>
-          <Text> Ви впевнені, що хочете вийти?</Text>
-          <BtnContainer>
+          </CloseBtn> */}
+            <CloseBtn>
+              <img
+                src={CloseSvg}
+                alt="close"
+                onClick={() => {
+                  setModalOpen(false);
+                }}
+              />
+            </CloseBtn>
+            <Text>Do you really want to leave?</Text>
+            <BtnContainer>
+              <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.9, delay: 0.5 }}
+              >
+                <Button main type="button" onClick={handleClick}>
+                  Yes
+                </Button>
+              </motion.div>
+              <motion.div
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.9, delay: 0.5 }}
+              >
+                <Button
+                  type="button"
+                  onClick={() => {
+                    setModalOpen(false);
+                  }}
+                >
+                  No
+                </Button>
+              </motion.div>
+            </BtnContainer>
+            {/* <BtnContainer>
             <ConfirmBtn type="button" onClick={handleClick}>
               Так
             </ConfirmBtn>
@@ -72,9 +114,10 @@ const ModalLogout = ({ setModalOpen }) => {
             >
               Ні
             </CancelBtn>
-          </BtnContainer>
-        </ModalContainer>
-      </Modal>
+          </BtnContainer> */}
+          </ModalContainer>
+        </Modal>
+      </motion.div>
     </Overlay>,
     modalRoot
   );
