@@ -23,8 +23,7 @@ export const Wrapper = styled.div`
   }
   @media ${device.desktop} {
     display: block;
-    padding: 40px 69px 0 0;
-    /* height: 100vh; */
+    padding: 40px 69px 63px 0;
 
     &::after {
       content: '';
