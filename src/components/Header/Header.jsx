@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import {
   AppHeader,
   HeaderNav,
@@ -39,7 +40,9 @@ const Header = () => {
             <StyledIconExit />
             <ExitText>Exit</ExitText>
           </ButtonLogout>
-          {modalOpen && <ModalLogout setModalOpen={setModalOpen} />}
+          <AnimatePresence>
+            {modalOpen && <ModalLogout setModalOpen={setModalOpen} />}
+          </AnimatePresence>
         </HeaderNav>
       </HeaderWrapper>
     </AppHeader>
