@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import moment from 'moment/moment';
 
@@ -22,7 +23,6 @@ import Selektor from '../Selektor/Selektor';
 import Button from 'components/Button/Button';
 
 import {
-  Layout,
   Transaction,
   ModalTitle,
   CloseBtn,
@@ -124,95 +124,95 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
   }, [setShowModal, onKeyDown]);
 
   return createPortal(
-    // <Layout
-    //   onClick={
-    //     (onKeyDown,
-    //     () => {
-    //       setShowModal(false);
-    //     })
-    //   }
-    // >
-    <Transaction onClick={e => e.stopPropagation()}>
-      <ModalTitle>Add transaction</ModalTitle>
+    <motion.div
+      initial={{ y: -200, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -200, opacity: 0 }}
+      transition={{ duration: 1.2 }}
+    >
+      <Transaction onClick={e => e.stopPropagation()}>
+        <ModalTitle>Add transaction</ModalTitle>
 
-      <CloseBtn
-        type="button"
-        onClick={() => {
-          setShowModal(false);
-        }}
-      >
-        <img src={CloseSvg} alt="close" />
-      </CloseBtn>
+        <CloseBtn
+          type="button"
+          onClick={() => {
+            setShowModal(false);
+          }}
+        >
+          <img src={CloseSvg} alt="close" />
+        </CloseBtn>
 
-      <SwitchToggle onLoad={changeTypeOfOperationt} />
+        <SwitchToggle onLoad={changeTypeOfOperationt} />
 
-      <Formik
-        validationSchema={Schema}
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-      >
-        <Form autoComplete="off">
-          <Selektor
-            openModalCat={openModalCat}
-            typeOfOperation={typeOfOperation}
-            onChange={onSelectorChange}
-          />
+        <Formik
+          validationSchema={Schema}
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+        >
+          <Form autoComplete="off">
+            <Selektor
+              openModalCat={openModalCat}
+              typeOfOperation={typeOfOperation}
+              onChange={onSelectorChange}
+            />
 
-          <div>
-            <Label htmlFor="amount">
-              <ModalInput
-                style={{ textAlign: 'left' }}
-                type="number"
-                name="amount"
-                placeholder="0.00"
-              />
+            <div>
+              <Label htmlFor="amount">
+                <ModalInput
+                  style={{ textAlign: 'left' }}
+                  type="number"
+                  name="amount"
+                  placeholder="0.00"
+                />
+                <ErrorMessage
+                  render={msg => <ErrorText>{msg}</ErrorText>}
+                  name="amount"
+                />
+              </Label>
+              <Calendar>
+                <Datetime
+                  isValidDate={current => current.isAfter(yesterday)}
+                  timeFormat={false}
+                  initialValue={date}
+                  closeOnSelect={true}
+                  dateFormat="DD.MM.YYYY"
+                  inputProps={inputProps}
+                  onChange={e => setDate(e._d)}
+                />
+                <DateIcon src={DateRange} alt="calendar" />
+              </Calendar>
+            </div>
+
+            <Label htmlFor="comment">
+              <CommentInput type="text" name="comment" placeholder="Comment" />
               <ErrorMessage
-                    render={msg => <ErrorText>{msg}</ErrorText>}
-                    name="amount"
-                  />
-            </Label>
-            <Calendar>
-              <Datetime
-                isValidDate={current => current.isAfter(yesterday)}
-                timeFormat={false}
-                initialValue={date}
-                closeOnSelect={true}
-                dateFormat="DD.MM.YYYY"
-                inputProps={inputProps}
-                onChange={e => setDate(e._d)}
+                render={msg => (
+                  <ErrorText style={{ top: '36px' }}>{msg}</ErrorText>
+                )}
+                name="comment"
               />
-              <DateIcon src={DateRange} alt="calendar" />
-            </Calendar>
-          </div>
-
-          <Label htmlFor="comment">
-            <CommentInput type="text" name="comment" placeholder="Comment" />
-            <ErrorMessage
-                    render={msg => <ErrorText style={{ top: '36px' }}>{msg}</ErrorText>}
-                    name="comment"
-                  />
-          </Label>
-          <BtnList>
-            <li>
-              <Button type="submit" main>
-                Add
-              </Button>
-            </li>
-            <li>
-              <Button
-                type="button"
-                onClick={() => {
-                  setShowModal(false);
-                }}
-              >
-                Cancel
-              </Button>
-            </li>
-          </BtnList>
-        </Form>
-      </Formik>
-    </Transaction>,
-    // </Layout>,
+            </Label>
+            <BtnList>
+              <li>
+                <Button type="submit" main>
+                  Add
+                </Button>
+              </li>
+              <li>
+                <Button
+                  type="button"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  Cancel
+                </Button>
+              </li>
+            </BtnList>
+          </Form>
+        </Formik>
+      </Transaction>
+    </motion.div>,
     modalRoot
   );
 };

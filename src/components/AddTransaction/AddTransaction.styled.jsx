@@ -13,22 +13,8 @@ export const DateIcon = styled.img`
   top: 0;
 `;
 
-export const Layout = styled.div`
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
-  position: fixed;
-  top: 0;
-  left: 0;
-  /* z-index: 0; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const Transaction = styled.div`
-  position: absolute;
+  position: relative;
 
   width: 320px;
   z-index: 2;
@@ -36,7 +22,7 @@ export const Transaction = styled.div`
 
   background-color: #ffffff;
   @media screen and (min-width: 768px) {
-    position: absolute;
+    position: relative;
     width: 540px;
     padding: 40px 60px;
     border-radius: 20px;
@@ -176,13 +162,6 @@ export const CommentInput = styled(Field)`
   }
 `;
 
-export const BtnList = styled.div`
-  display: grid;
-
-  justify-content: center;
-  gap: 20px;
-`;
-
 export const Label = styled.label`
   display: block;
   position: relative;
@@ -196,3 +175,24 @@ export const ErrorText = styled.p`
   line-height: 1.14;
   color: rgb(240, 0, 0);
 `;
+
+// export const BtnList = styled.div`
+//   display: grid;
+
+//   justify-content: center;
+//   gap: 20px;
+// `;
+
+// export const Layout = styled.div`
+//   position: relative;
+//   height: 100%;
+//   width: 100%;
+//   background-color: rgba(0, 0, 0, 0.25);
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   /* z-index: 0; */
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createPortal } from 'react-dom';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 import moment from 'moment/moment';
 
 import * as yup from 'yup';
@@ -16,6 +17,7 @@ import './InputNumber.css';
 
 import CloseSvg from '../../images/close.svg';
 import SwitchToggle from '../AddTransaction/SwitchToggle/SwitchToggle';
+import { Overlay } from 'components/ModalLogout/ModalLogout.styled';
 import DateRange from '../../images/date-range.svg';
 import Selektor from './Selektor/Selektor';
 import MobileAddModal from './MobileAddModal/MobileAddModal';
@@ -24,13 +26,11 @@ import Button from 'components/Button/Button';
 import operations from '../../redux/transactions/transactions-operations';
 
 import {
-  Layout,
   Transaction,
   ModalTitle,
   CloseBtn,
   ModalInput,
   InputContainer,
-  BtnList,
   CommentInput,
   Calendar,
   DateIcon,
@@ -137,7 +137,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   }, [setShowModal, onKeyDown]);
 
   return createPortal(
-    <Layout
+    <Overlay
       onClick={e => {
         if (e.target === e.currentTarget) setShowModal(false);
       }}
@@ -149,70 +149,76 @@ const AddTransaction = ({ showModal, setShowModal }) => {
           openModalCat={() => setShowModalCat(true)}
         />
       ) : (
-        <Transaction onClick={e => e.stopPropagation()}>
-          <ModalTitle>Add transaction</ModalTitle>
-          <CloseBtn
-            type="button"
-            onClick={() => {
-              setShowModal(false);
-            }}
-          >
-            <CloseIcon src={CloseSvg} alt="close" />
-          </CloseBtn>
-          <SwitchToggle onLoad={changeTypeOfOperationt} />
-          <Formik
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            validationSchema={Schema}
-          >
-            <Form autoComplete="off">
-              <Selektor
-                openModalCat={() => setShowModalCat(true)}
-                typeOfOperation={typeOfOperation}
-                onChange={onSelectorChange}
-                style={{ color: '#000000' }}
-                onInputChange={createCategoy}
-              />
+        <motion.div
+          initial={{ y: -200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -200, opacity: 0 }}
+          transition={{ duration: 1.2 }}
+        >
+          <Transaction onClick={e => e.stopPropagation()}>
+            <ModalTitle>Add transaction</ModalTitle>
+            <CloseBtn
+              type="button"
+              onClick={() => {
+                setShowModal(false);
+              }}
+            >
+              <CloseIcon src={CloseSvg} alt="close" />
+            </CloseBtn>
+            <SwitchToggle onLoad={changeTypeOfOperationt} />
+            <Formik
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              validationSchema={Schema}
+            >
+              <Form autoComplete="off">
+                <Selektor
+                  openModalCat={() => setShowModalCat(true)}
+                  typeOfOperation={typeOfOperation}
+                  onChange={onSelectorChange}
+                  style={{ color: '#000000' }}
+                  onInputChange={createCategoy}
+                />
 
-              <InputContainer>
-                <Label htmlFor="amount">
-                  <ModalInput
-                    style={{ textAlign: 'left' }}
-                    type="number"
-                    name="amount"
-                    placeholder="0.00"
+                <InputContainer>
+                  <Label htmlFor="amount">
+                    <ModalInput
+                      style={{ textAlign: 'left' }}
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                    />
+                    <ErrorMessage
+                      render={msg => <ErrorText>{msg}</ErrorText>}
+                      name="amount"
+                    />
+                  </Label>
+                  <Calendar>
+                    <Datetime
+                      isValidDate={current => current.isAfter(yesterday)}
+                      timeFormat={false}
+                      initialValue={date}
+                      closeOnSelect={true}
+                      dateFormat="DD.MM.YYYY"
+                      inputProps={inputProps}
+                      onChange={e => setDate(e._d)}
+                    />
+                    <DateIcon src={DateRange} alt="calendar" />
+                  </Calendar>
+                </InputContainer>
+                <Label htmlFor="comment">
+                  <CommentInput
+                    type="text"
+                    name="comment"
+                    placeholder="Comment"
                   />
                   <ErrorMessage
                     render={msg => <ErrorText>{msg}</ErrorText>}
-                    name="amount"
-                  />
-                </Label>
-                <Calendar>
-                  <Datetime
-                    isValidDate={current => current.isAfter(yesterday)}
-                    timeFormat={false}
-                    initialValue={date}
-                    closeOnSelect={true}
-                    dateFormat="DD.MM.YYYY"
-                    inputProps={inputProps}
-                    onChange={e => setDate(e._d)}
-                  />
-                  <DateIcon src={DateRange} alt="calendar" />
-                </Calendar>
-              </InputContainer>
-              <Label htmlFor="comment">
-                <CommentInput
-                  type="text"
-                  name="comment"
-                  placeholder="Comment"
-                />
-                <ErrorMessage
-                    render={msg => <ErrorText>{msg}</ErrorText>}
                     name="comment"
                   />
-              </Label>
+                </Label>
 
-              <BtnList>
+                {/* <BtnList> */}
                 <Button type="submit" main>
                   Add
                 </Button>
@@ -224,10 +230,11 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                 >
                   Cancel
                 </Button>
-              </BtnList>
-            </Form>
-          </Formik>
-        </Transaction>
+                {/* </BtnList> */}
+              </Form>
+            </Formik>
+          </Transaction>
+        </motion.div>
       )}
       {showModalCat && (
         <ModalAddCategory
@@ -235,7 +242,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
           style={{ zIndex: '100' }}
         />
       )}
-    </Layout>,
+    </Overlay>,
     modalRoot
   );
 };

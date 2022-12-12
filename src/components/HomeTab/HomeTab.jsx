@@ -1,4 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
 
 import BtnAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
 import AddTransaction from 'components/AddTransaction/AddTransaction';
@@ -6,7 +8,6 @@ import NoTransactions from './NoTransactions/NoTransactions';
 
 import API from 'services/api/api';
 import Table from './Table';
-import { useDispatch, useSelector } from 'react-redux';
 import operations from 'redux/transactions/transactions-operations';
 
 function HomeTab() {
@@ -38,10 +39,11 @@ function HomeTab() {
         <NoTransactions />
       )}
       <BtnAddTransaction onClick={openModal} />
-
-      {showModal && (
-        <AddTransaction showModal={showModal} setShowModal={setShowModal} />
-      )}
+      <AnimatePresence>
+        {showModal && (
+          <AddTransaction showModal={showModal} setShowModal={setShowModal} />
+        )}
+      </AnimatePresence>
     </>
   );
 }
