@@ -1,6 +1,6 @@
 import Button from 'components/Button/Button';
 import React from 'react';
-import { Modal, Title, Input } from './ModalAddCategory.styled';
+import { Modal, Title, Input, BtnContainer } from './ModalAddCategory.styled';
 import { CloseBtn } from '../AddTransaction/AddTransaction.styled';
 import CloseSvg from '../../images/close.svg';
 import { Formik, Form } from 'formik';
@@ -34,7 +34,10 @@ export const ModalAddCategory = ({ closeModal }) => {
       <CloseBtn>
         <img src={CloseSvg} alt="close" onClick={closeModal} />
       </CloseBtn>
-      <SwitchToggle onChange={onTypeChange} />
+      <SwitchToggle
+        onChange={onTypeChange}
+        onLoad={type => setType(type.toLowerCase())}
+      />
       <Formik
         initialValues={{ categoryName: 'expense' }}
         validationSchema={schema}
@@ -48,11 +51,12 @@ export const ModalAddCategory = ({ closeModal }) => {
             onChange={e => setCategoryName(e.target.value)}
             value={categoryName}
           />
-
-          <Button main type="submit">
-            Create
-          </Button>
-          <Button onClick={closeModal}>Cancel</Button>
+          <BtnContainer>
+            <Button main type="submit">
+              Create
+            </Button>
+            <Button onClick={closeModal}>Cancel</Button>
+          </BtnContainer>
         </Form>
       </Formik>
     </Modal>
