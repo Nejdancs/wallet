@@ -4,7 +4,7 @@ import { useSortBy, useTable, usePagination } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
 import { nanoid } from 'nanoid';
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx';
-import { BiSortAlt2,BiSortDown,BiSortUp } from 'react-icons/bi';
+import { BiSortAlt2, BiSortDown, BiSortUp } from 'react-icons/bi';
 
 import MobileTab from './MobileTab/MobileTab';
 
@@ -32,7 +32,9 @@ import {
 
 const pageSizeOptions = [5, 10, 15, 20];
 
+
 function Table({ data }) {
+  
   const columns = useMemo(() => TAB_COLUMNS, []);
   const {
     getTableProps,
@@ -124,7 +126,7 @@ function Table({ data }) {
                                 {...cell.getCellProps()}
                               >
                                 {cell.render('Cell')}
-                              </HomeTabColumn>
+                                </HomeTabColumn>
                             );
                           })}
                         </HomeTr>
