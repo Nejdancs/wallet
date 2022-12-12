@@ -9,6 +9,7 @@ import Media from 'react-media';
 import operations from 'redux/auth/auth-operations';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
+import Loader from './Loader/Loader';
 
 const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 const DiagramTab = lazy(() => import('components/DiagramTab/DiagramTab'));
@@ -33,8 +34,8 @@ export const App = () => {
     <>
       <GlobalStyle />
       <ToastContainer autoClose={5000} pauseOnHover theme="colored" />
-      {!isFetchingCurrentUser && (
-        <Suspense fallback={null}>
+      {!isFetchingCurrentUser ? (
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route element={<PrivateRoute />}>
               <Route path="/" element={<DashboardPage />}>
@@ -66,6 +67,8 @@ export const App = () => {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Suspense>
+      ) : (
+        <Loader />
       )}
     </>
   );
