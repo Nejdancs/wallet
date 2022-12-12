@@ -65,7 +65,7 @@ function Table({ data }) {
         {({ mobile }) => (
           <HomeTabContainer>
             {!mobile ? (
-              <MobileTab />
+              <MobileTab data={data} columns={columns} />
             ) : (
               <>
                 <HomeTable {...getTableProps()}>
