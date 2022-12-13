@@ -106,6 +106,18 @@ export const HomeTabColumn = styled.td`
     text-align: right;
   }
 
+  :nth-child(4) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+     &:hover {
+      overflow: visible;
+      white-space: normal;
+      word-wrap: break-word;
+      text-overflow: unset;
+    }
+  } 
+
   :first-child {
     padding-left: 20px;
   }

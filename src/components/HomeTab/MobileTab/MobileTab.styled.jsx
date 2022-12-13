@@ -35,6 +35,30 @@ export const Column = styled.td`
   padding: 10px 20px 10px 0;
 `;
 
+export const CommentColumn = styled.td`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  display: flex;
+  justify-content: right;
+  text-align: left;
+  word-wrap: break-word;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 10px 20px 10px 0;
+`;
+
+export const CommentContainer = styled.div`
+  width: 110px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin: 0;
+  overflow: hidden;
+`;
+
 export const TabRow = styled.tr`
   &:not(:last-child) {
     border-bottom: 1px solid #dcdcdf;
