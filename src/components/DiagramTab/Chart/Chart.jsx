@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useElementWidth } from 'hooks/useElementWidth';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import theme from '../../../theme/theme';
@@ -9,7 +10,10 @@ import Media from 'react-media';
 ChartJS.register(ArcElement, Tooltip);
 
 const Chart = ({ balance, expenses }) => {
+  const [ref, width] = useElementWidth();
+
   let data;
+
   if (expenses.length > 0) {
     data = {
       labels: expenses.map(trans => trans.categoryName[0]),
@@ -36,8 +40,8 @@ const Chart = ({ balance, expenses }) => {
       ],
     };
   }
-
   const options = { cutout: '70%' };
+
   return (
     <Media
       queries={{
@@ -49,8 +53,13 @@ const Chart = ({ balance, expenses }) => {
       {matches => (
         <>
           {(matches.small || matches.medium || matches.large) && (
-            <ChartContainer>
-              <Doughnut data={data} options={options} />
+            <ChartContainer ref={ref}>
+              <Doughnut
+                data={data}
+                options={options}
+                updateMode="resize"
+                redraw={true}
+              />
               <DoughnutBalance>
                 {'\u20B4'} {numberSpace(balance)}
               </DoughnutBalance>
