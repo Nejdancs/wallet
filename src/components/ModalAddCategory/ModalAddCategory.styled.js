@@ -18,7 +18,7 @@ export const Modal = styled.div`
 
   @media ${device.tablet} {
     width: 540px;
-    height: 623px;
+    height: 600px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -62,8 +62,8 @@ export const BtnContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 191px;
-  height: 160px;
+  margin-top: 161px;
+  /* height: 160px; */
 
   @media ${device.tablet} {
     margin-top: 107px;
