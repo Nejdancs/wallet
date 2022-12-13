@@ -39,6 +39,7 @@ import {
   ErrorText,
 } from './AddTransaction.styled';
 import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
+import useLockBodyScroll from 'hooks/useBodyLock';
 
 let Schema = yup.object().shape({
   amount: yup
@@ -57,7 +58,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
 
   const [showModalCat, setShowModalCat] = useState(false);
-
+  useLockBodyScroll();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -130,11 +131,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown);
-    document.body.style.overflow = 'hidden';
 
     return () => {
       window.removeEventListener('keydown', onKeyDown);
-      document.body.style.overflow = '';
     };
   }, [setShowModal, onKeyDown]);
 

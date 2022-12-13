@@ -40,7 +40,11 @@ function HomeTab() {
       ) : (
         <NoTransactions />
       )}
-      <BtnAddTransaction onClick={openModal} />
+
+      {!showModal && (
+        <BtnAddTransaction showModal={showModal} onClick={openModal} />
+      )}
+
       <AnimatePresence>
         {showModal && (
           <AddTransaction showModal={showModal} setShowModal={setShowModal} />

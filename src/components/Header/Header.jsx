@@ -19,10 +19,6 @@ const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const { name } = useSelector(authSelectors.getUser);
 
-  // Временно, пока не закрыты рауты
-  const userName = name ? name : 'Name';
-  // Временно, пока не закрыты рауты
-
   return (
     <AppHeader>
       <HeaderWrapper>
@@ -31,7 +27,7 @@ const Header = () => {
         </WrapperLogo>
 
         <HeaderNav>
-          <UserName>{userName}</UserName>
+          <UserName>{name}</UserName>
           <ButtonLogout
             onClick={() => {
               setModalOpen(true);

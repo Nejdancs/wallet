@@ -13,11 +13,12 @@ import {
   Overlay,
   Modal,
 } from './ModalLogout.styled';
+import useLockBodyScroll from 'hooks/useBodyLock';
 
 const ModalLogout = ({ setModalOpen }) => {
   const modalRoot = document.querySelector('#modal-root');
   const dispatch = useDispatch();
-
+  useLockBodyScroll();
   const handleClick = () => {
     dispatch(authOperations.logOut());
     setModalOpen(false);
@@ -37,11 +38,9 @@ const ModalLogout = ({ setModalOpen }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = 'hidden';
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
     };
   }, [handleKeyDown, setModalOpen]);
 

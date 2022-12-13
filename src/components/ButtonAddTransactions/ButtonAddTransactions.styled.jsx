@@ -37,5 +37,9 @@ export const Button = styled.button`
   @media ${device.desktop} {
     right: 40px;
     bottom: 40px;
+
+    [data-scroll-lock] & {
+      right: 57px;
+    }
   }
 `;

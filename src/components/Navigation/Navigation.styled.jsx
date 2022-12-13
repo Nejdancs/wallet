@@ -53,7 +53,6 @@ export const StyledIconCurrency = styled(IconCurrency)`
     height: 38px;
     border-radius: 6px;
   }
-
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -69,8 +68,9 @@ export const StyledNavLink = styled(NavLink)`
 
   &.active {
     font-weight: 700;
+    cursor: default;
   }
-  &:hover {
+  &:not(.active):hover {
     color: #24cca7;
   }
   &.active ${StyledIconHome} {
@@ -85,10 +85,10 @@ export const StyledNavLink = styled(NavLink)`
     fill: ${({ theme }) => theme.colors.accentSecondary};
     box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
   }
-    &:hover ${StyledStatistic}{
+  &:not(.active):hover ${StyledStatistic} {
     fill: #24cca7;
   }
-    &:hover ${StyledIconHome}{
+  &:not(.active):hover ${StyledIconHome} {
     fill: #24cca7;
   }
 `;
