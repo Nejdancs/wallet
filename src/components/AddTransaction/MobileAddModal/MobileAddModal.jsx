@@ -192,23 +192,21 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
                 name="comment"
               />
             </Label>
-            <BtnList>
-              <li>
-                <Button type="submit" main>
-                  Add
-                </Button>
-              </li>
-              <li>
-                <Button
-                  type="button"
-                  onClick={() => {
-                    setShowModal(false);
-                  }}
-                >
-                  Cancel
-                </Button>
-              </li>
-            </BtnList>
+            {/* <BtnList> */}
+
+            <Button type="submit" main>
+              Add
+            </Button>
+            <Button
+              type="button"
+              onClick={() => {
+                setShowModal(false);
+              }}
+            >
+              Cancel
+            </Button>
+
+            {/* </BtnList> */}
           </Form>
         </Formik>
       </Transaction>
