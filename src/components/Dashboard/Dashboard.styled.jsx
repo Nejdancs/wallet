@@ -30,6 +30,7 @@ export const Wrapper = styled.div`
       display: block;
       position: absolute;
       width: 0px;
+      min-height: calc(100vh - 80px);
       left: 463px;
       top: 0;
       bottom: 0;

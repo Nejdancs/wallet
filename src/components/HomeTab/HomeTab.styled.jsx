@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
 export const HomeTabContainer = styled.div`
+  padding-bottom: 15px;
   @media ${device.desktop} {
     padding-top: 46px;
     padding-left: 69px;
@@ -122,6 +123,6 @@ export const SortArrow = styled.span`
   top: 50%;
   right: -14px;
   font-size: 14px;
-  color: ${p => !p.isSorted ? "#a8a7a7": p.theme.colors.primaryTextColor};
+  color: ${p => (!p.isSorted ? '#a8a7a7' : p.theme.colors.primaryTextColor)};
   transform: translateY(-50%);
 `;
