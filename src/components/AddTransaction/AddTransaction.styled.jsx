@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, ErrorMessage } from 'formik';
+import { motion } from 'framer-motion';
 
 export const Calendar = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ export const DateIcon = styled.img`
   top: 0;
 `;
 
-export const Transaction = styled.div`
+export const Transaction = styled(motion.div)`
   position: relative;
 
   width: 320px;
@@ -26,6 +27,10 @@ export const Transaction = styled.div`
     width: 540px;
     padding: 40px 60px;
     border-radius: 20px;
+  }
+
+  @media screen and (min-width: 768px) and (max-height: 605px) {
+    align-self: flex-start;
   }
 `;
 
@@ -65,6 +70,10 @@ export const CloseBtn = styled.button`
   &:hover,
   &:focus-within {
     background-color: rgb(7, 126, 100);
+  }
+
+  @media screen and (max-width: 767px) {
+    display: none;
   }
 `;
 

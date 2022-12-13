@@ -28,16 +28,16 @@ export const DateIcon = styled.img`
 
 export const Transaction = styled.div`
   width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
+  height: calc(100vh - 60px);
+  position: relative;
+  top: 59px;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 20px;
 
   background-color: #ffffff;
-
+  overflow-y: auto;
   z-index: 1;
 `;
 

@@ -130,9 +130,11 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = 'hidden';
 
     return () => {
       window.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = '';
     };
   }, [setShowModal, onKeyDown]);
 
@@ -149,92 +151,92 @@ const AddTransaction = ({ showModal, setShowModal }) => {
           openModalCat={() => setShowModalCat(true)}
         />
       ) : (
-        <motion.div
+        <Transaction
+          as={motion.div}
           initial={{ y: -200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -200, opacity: 0 }}
           transition={{ duration: 1.2 }}
+          onClick={e => e.stopPropagation()}
         >
-          <Transaction onClick={e => e.stopPropagation()}>
-            <ModalTitle>Add transaction</ModalTitle>
-            <CloseBtn
-              type="button"
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              <CloseIcon src={CloseSvg} alt="close" />
-            </CloseBtn>
-            <SwitchToggle onLoad={changeTypeOfOperationt} />
-            <Formik
-              initialValues={initialValues}
-              onSubmit={onSubmit}
-              validationSchema={Schema}
-            >
-              <Form autoComplete="off">
-                <Selektor
-                  openModalCat={() => setShowModalCat(true)}
-                  typeOfOperation={typeOfOperation}
-                  onChange={onSelectorChange}
-                  style={{ color: '#000000' }}
-                  onInputChange={createCategoy}
-                />
+          <ModalTitle>Add transaction</ModalTitle>
+          <CloseBtn
+            type="button"
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
+            <CloseIcon src={CloseSvg} alt="close" />
+          </CloseBtn>
+          <SwitchToggle onLoad={changeTypeOfOperationt} />
+          <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={Schema}
+          >
+            <Form autoComplete="off">
+              <Selektor
+                openModalCat={() => setShowModalCat(true)}
+                typeOfOperation={typeOfOperation}
+                onChange={onSelectorChange}
+                style={{ color: '#000000' }}
+                onInputChange={createCategoy}
+              />
 
-                <InputContainer>
-                  <Label htmlFor="amount">
-                    <ModalInput
-                      style={{ textAlign: 'left' }}
-                      type="number"
-                      name="amount"
-                      placeholder="0.00"
-                    />
-                    <ErrorMessage
-                      render={msg => <ErrorText>{msg}</ErrorText>}
-                      name="amount"
-                    />
-                  </Label>
-                  <Calendar>
-                    <Datetime
-                      isValidDate={current => current.isAfter(yesterday)}
-                      timeFormat={false}
-                      initialValue={date}
-                      closeOnSelect={true}
-                      dateFormat="DD.MM.YYYY"
-                      inputProps={inputProps}
-                      onChange={e => setDate(e._d)}
-                    />
-                    <DateIcon src={DateRange} alt="calendar" />
-                  </Calendar>
-                </InputContainer>
-                <Label htmlFor="comment">
-                  <CommentInput
-                    type="text"
-                    name="comment"
-                    placeholder="Comment"
+              <InputContainer>
+                <Label htmlFor="amount">
+                  <ModalInput
+                    style={{ textAlign: 'left' }}
+                    type="number"
+                    name="amount"
+                    placeholder="0.00"
                   />
                   <ErrorMessage
                     render={msg => <ErrorText>{msg}</ErrorText>}
-                    name="comment"
+                    name="amount"
                   />
                 </Label>
+                <Calendar>
+                  <Datetime
+                    isValidDate={current => current.isAfter(yesterday)}
+                    timeFormat={false}
+                    initialValue={date}
+                    closeOnSelect={true}
+                    dateFormat="DD.MM.YYYY"
+                    inputProps={inputProps}
+                    onChange={e => setDate(e._d)}
+                  />
+                  <DateIcon src={DateRange} alt="calendar" />
+                </Calendar>
+              </InputContainer>
+              <Label htmlFor="comment">
+                <CommentInput
+                  type="text"
+                  name="comment"
+                  placeholder="Comment"
+                />
+                <ErrorMessage
+                  render={msg => <ErrorText>{msg}</ErrorText>}
+                  name="comment"
+                />
+              </Label>
 
-                {/* <BtnList> */}
-                <Button type="submit" main>
-                  Add
-                </Button>
-                <Button
-                  type="button"
-                  onClick={() => {
-                    setShowModal(false);
-                  }}
-                >
-                  Cancel
-                </Button>
-                {/* </BtnList> */}
-              </Form>
-            </Formik>
-          </Transaction>
-        </motion.div>
+              {/* <BtnList> */}
+              <Button type="submit" main>
+                Add
+              </Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                Cancel
+              </Button>
+              {/* </BtnList> */}
+            </Form>
+          </Formik>
+        </Transaction>
       )}
       {showModalCat && (
         <ModalAddCategory

@@ -34,6 +34,7 @@ import {
   Label,
   ErrorText,
 } from './MobileAddModal.styled';
+import Container from 'components/Container/Container';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -123,95 +124,100 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
     };
   }, [setShowModal, onKeyDown]);
 
-  return createPortal(
+  return (
     <motion.div
-      initial={{ y: -200, opacity: 0 }}
+      initial={{ y: 200, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -200, opacity: 0 }}
+      exit={{ y: 200, opacity: 0 }}
       transition={{ duration: 1.2 }}
     >
       <Transaction onClick={e => e.stopPropagation()}>
-        <ModalTitle>Add transaction</ModalTitle>
+        <Container>
+          <ModalTitle>Add transaction</ModalTitle>
 
-        <CloseBtn
+          {/* <CloseBtn
           type="button"
           onClick={() => {
             setShowModal(false);
           }}
         >
           <img src={CloseSvg} alt="close" />
-        </CloseBtn>
+        </CloseBtn> */}
 
-        <SwitchToggle onLoad={changeTypeOfOperationt} />
+          <SwitchToggle onLoad={changeTypeOfOperationt} />
 
-        <Formik
-          validationSchema={Schema}
-          initialValues={initialValues}
-          onSubmit={onSubmit}
-        >
-          <Form autoComplete="off">
-            <Selektor
-              openModalCat={openModalCat}
-              typeOfOperation={typeOfOperation}
-              onChange={onSelectorChange}
-            />
+          <Formik
+            validationSchema={Schema}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+          >
+            <Form autoComplete="off">
+              <Selektor
+                openModalCat={openModalCat}
+                typeOfOperation={typeOfOperation}
+                onChange={onSelectorChange}
+              />
 
-            <div>
-              <Label htmlFor="amount">
-                <ModalInput
-                  style={{ textAlign: 'left' }}
-                  type="number"
-                  name="amount"
-                  placeholder="0.00"
+              <div>
+                <Label htmlFor="amount">
+                  <ModalInput
+                    style={{ textAlign: 'left' }}
+                    type="number"
+                    name="amount"
+                    placeholder="0.00"
+                  />
+                  <ErrorMessage
+                    render={msg => <ErrorText>{msg}</ErrorText>}
+                    name="amount"
+                  />
+                </Label>
+                <Calendar>
+                  <Datetime
+                    isValidDate={current => current.isAfter(yesterday)}
+                    timeFormat={false}
+                    initialValue={date}
+                    closeOnSelect={true}
+                    dateFormat="DD.MM.YYYY"
+                    inputProps={inputProps}
+                    onChange={e => setDate(e._d)}
+                  />
+                  <DateIcon src={DateRange} alt="calendar" />
+                </Calendar>
+              </div>
+
+              <Label htmlFor="comment">
+                <CommentInput
+                  type="text"
+                  name="comment"
+                  placeholder="Comment"
                 />
                 <ErrorMessage
-                  render={msg => <ErrorText>{msg}</ErrorText>}
-                  name="amount"
+                  render={msg => (
+                    <ErrorText style={{ top: '36px' }}>{msg}</ErrorText>
+                  )}
+                  name="comment"
                 />
               </Label>
-              <Calendar>
-                <Datetime
-                  isValidDate={current => current.isAfter(yesterday)}
-                  timeFormat={false}
-                  initialValue={date}
-                  closeOnSelect={true}
-                  dateFormat="DD.MM.YYYY"
-                  inputProps={inputProps}
-                  onChange={e => setDate(e._d)}
-                />
-                <DateIcon src={DateRange} alt="calendar" />
-              </Calendar>
-            </div>
+              {/* <BtnList> */}
 
-            <Label htmlFor="comment">
-              <CommentInput type="text" name="comment" placeholder="Comment" />
-              <ErrorMessage
-                render={msg => (
-                  <ErrorText style={{ top: '36px' }}>{msg}</ErrorText>
-                )}
-                name="comment"
-              />
-            </Label>
-            {/* <BtnList> */}
+              <Button type="submit" main>
+                Add
+              </Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                Cancel
+              </Button>
 
-            <Button type="submit" main>
-              Add
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              Cancel
-            </Button>
-
-            {/* </BtnList> */}
-          </Form>
-        </Formik>
+              {/* </BtnList> */}
+            </Form>
+          </Formik>
+        </Container>
       </Transaction>
-    </motion.div>,
-    modalRoot
+    </motion.div>
   );
 };
 
