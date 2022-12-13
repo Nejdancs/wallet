@@ -14,6 +14,12 @@ const Chart = ({ balance, expenses }) => {
 
   let data;
 
+  useEffect(() => {
+    for (let id in ChartJS.instances) {
+      ChartJS.instances[id].resize(width, width);
+    }
+  }, [ref, width]);
+
   if (expenses.length > 0) {
     data = {
       labels: expenses.map(trans => trans.categoryName[0]),
