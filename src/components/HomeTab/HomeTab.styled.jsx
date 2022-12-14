@@ -3,6 +3,8 @@ import device from 'assets/breakpoints/device';
 
 export const HomeTabContainer = styled.div`
   padding-bottom: 32px;
+  overflow-y: hidden;
+  height: calc(100vh - 254px);
   @media ${device.desktop} {
     padding-top: 46px;
     padding-bottom: 46px;
