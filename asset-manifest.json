@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/wallet/static/css/main.5d7033b1.css",
-    "main.js": "/wallet/static/js/main.2df43e9d.js",
+    "main.js": "/wallet/static/js/main.c367a718.js",
     "static/js/831.d5e8eb6d.chunk.js": "/wallet/static/js/831.d5e8eb6d.chunk.js",
     "static/js/227.c36389ba.chunk.js": "/wallet/static/js/227.c36389ba.chunk.js",
     "static/css/66.fc3a5ea2.chunk.css": "/wallet/static/css/66.fc3a5ea2.chunk.css",
-    "static/js/66.8e51e593.chunk.js": "/wallet/static/js/66.8e51e593.chunk.js",
+    "static/js/66.823a8c79.chunk.js": "/wallet/static/js/66.823a8c79.chunk.js",
     "static/js/866.9df1f2f4.chunk.js": "/wallet/static/js/866.9df1f2f4.chunk.js",
     "static/js/578.1ffe673f.chunk.js": "/wallet/static/js/578.1ffe673f.chunk.js",
     "static/js/546.1c2bc22f.chunk.js": "/wallet/static/js/546.1c2bc22f.chunk.js",
@@ -54,11 +54,11 @@
     "static/media/plus.svg": "/wallet/static/media/plus.6148b25880e82f256d591624f4e24e8f.svg",
     "static/media/minus.svg": "/wallet/static/media/minus.726dc1e8b582e729172a0e66a2cc0dd3.svg",
     "main.5d7033b1.css.map": "/wallet/static/css/main.5d7033b1.css.map",
-    "main.2df43e9d.js.map": "/wallet/static/js/main.2df43e9d.js.map",
+    "main.c367a718.js.map": "/wallet/static/js/main.c367a718.js.map",
     "831.d5e8eb6d.chunk.js.map": "/wallet/static/js/831.d5e8eb6d.chunk.js.map",
     "227.c36389ba.chunk.js.map": "/wallet/static/js/227.c36389ba.chunk.js.map",
     "66.fc3a5ea2.chunk.css.map": "/wallet/static/css/66.fc3a5ea2.chunk.css.map",
-    "66.8e51e593.chunk.js.map": "/wallet/static/js/66.8e51e593.chunk.js.map",
+    "66.823a8c79.chunk.js.map": "/wallet/static/js/66.823a8c79.chunk.js.map",
     "866.9df1f2f4.chunk.js.map": "/wallet/static/js/866.9df1f2f4.chunk.js.map",
     "578.1ffe673f.chunk.js.map": "/wallet/static/js/578.1ffe673f.chunk.js.map",
     "546.1c2bc22f.chunk.js.map": "/wallet/static/js/546.1c2bc22f.chunk.js.map",
@@ -72,6 +72,6 @@
   },
   "entrypoints": [
     "static/css/main.5d7033b1.css",
-    "static/js/main.2df43e9d.js"
+    "static/js/main.c367a718.js"
   ]
 }
