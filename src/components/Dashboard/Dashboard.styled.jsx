@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
 export const DashboardContainer = styled.div`
-  margin-bottom: 32px;
   padding-top: 15px;
 
   @media ${device.tablet} {
@@ -10,20 +9,23 @@ export const DashboardContainer = styled.div`
   }
   @media ${device.desktop} {
     padding-top: 0;
+    margin-bottom: 32px;
   }
 `;
 
 export const Wrapper = styled.div`
   position: relative;
-
+  margin-bottom: 32px;
   @media ${device.tablet} {
     display: flex;
     gap: 32px;
-    padding: 32px 0 20px;
+    padding-top: 32px;
+    margin-bottom: 20px;
   }
   @media ${device.desktop} {
     display: block;
-    padding: 40px 69px 63px 0;
+    padding: 40px 69px 40px 0;
+    margin-bottom: 0;
 
     &::after {
       content: '';

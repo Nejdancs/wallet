@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
 export const HomeTabContainer = styled.div`
-  padding-bottom: 15px;
+  padding-bottom: 32px;
   @media ${device.desktop} {
     padding-top: 46px;
+    padding-bottom: 46px;
     padding-left: 69px;
   }
 `;
@@ -17,14 +18,6 @@ export const HomeTable = styled.table`
     border-spacing: 0px;
     height: auto;
     table-layout: fixed;
-  }
-
-  & .-sort-desc {
-    box-shadow: none !important;
-  }
-  .-sort-desc:before {
-    content: '▼';
-    float: right;
   }
 `;
 
@@ -111,13 +104,13 @@ export const HomeTabColumn = styled.td`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-     &:hover {
+    &:hover {
       overflow: visible;
       white-space: normal;
       word-wrap: break-word;
       text-overflow: unset;
     }
-  } 
+  }
 
   :first-child {
     padding-left: 20px;
