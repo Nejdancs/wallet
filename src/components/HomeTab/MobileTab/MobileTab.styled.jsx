@@ -40,23 +40,23 @@ export const CommentColumn = styled.td`
   font-weight: 400;
   line-height: 1.5;
   display: flex;
-  justify-content: right;
-  text-align: left;
+  justify-content: flex-end;
+  text-align: start;
   word-wrap: break-word;
   color: #000;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   padding: 10px 20px 10px 0;
 `;
 
 export const CommentContainer = styled.div`
-  width: 110px;
+  max-width: 110px;
   height: 28px;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: flex-start;
   margin: 0;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const TabRow = styled.tr`
