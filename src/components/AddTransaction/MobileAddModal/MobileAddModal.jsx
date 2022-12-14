@@ -126,9 +126,9 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
 
   return (
     <motion.div
-      initial={{ y: 200, opacity: 0 }}
+      initial={{ y: -200, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      exit={{ y: 200, opacity: 0 }}
+      exit={{ y: -200, opacity: 0 }}
       transition={{ duration: 1.2 }}
     >
       <Transaction onClick={e => e.stopPropagation()}>
