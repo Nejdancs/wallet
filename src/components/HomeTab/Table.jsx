@@ -32,9 +32,7 @@ import {
 
 const pageSizeOptions = [5, 10, 15, 20];
 
-
 function Table({ data }) {
-  
   const columns = useMemo(() => TAB_COLUMNS, []);
   const {
     getTableProps,
@@ -94,9 +92,9 @@ function Table({ data }) {
                                 {!column.isSorted ? (
                                   <BiSortAlt2 />
                                 ) : column.isSortedDesc ? (
-                                  <BiSortDown/>
+                                  <BiSortDown />
                                 ) : (
-                                  <BiSortUp/>
+                                  <BiSortUp />
                                 )}
                               </SortArrow>
                             </span>
@@ -126,7 +124,7 @@ function Table({ data }) {
                                 {...cell.getCellProps()}
                               >
                                 {cell.render('Cell')}
-                                </HomeTabColumn>
+                              </HomeTabColumn>
                             );
                           })}
                         </HomeTr>

@@ -4,9 +4,12 @@ export const MobileTable = styled.div`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  display: table;
+  /* display: table; */
   table-layout: fixed;
   width: 100%;
+  overflow-y: auto;
+  height: 100%;
+  /* max-height: 100%; */
 `;
 
 export const TableBody = styled.tbody`

@@ -22,24 +22,24 @@ export const PaginationButton = styled.button`
   width: 100px;
   height: 40px;
 
-  background-color: #fff;
-  border-radius: 30px;
-  border: 1px solid #a8a8ac;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
-
-  font-size: 14px;
-  font-weight: 500;
+  background-color: ${props => props.theme.colors.accentPrimary};
+  border-radius: 20px;
+  border: none;
+  color: ${props => props.theme.colors.secondaryTextColor};
+  box-shadow: 0 8px 10px 0 rgba(0, 165, 36, 0.2);
+  font-size: 18px;
   cursor: pointer;
 
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #4a56e2;
+    background-color: rgb(7, 126, 100);
     color: #ffffff;
   }
 
   &:disabled {
-    background-color: #e0e0e0;
+    background-color: #ffffff;
+    color: ${props => props.theme.colors.accentPrimary};
     cursor: not-allowed;
   }
 `;
@@ -67,12 +67,12 @@ export const SizeSelector = styled.select`
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
-  width: 120px;
+  width: 115px;
   height: 40px;
 
-  border: 1px solid #a8a8ac;
-  border-radius: 30px;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 8px 10px 0 rgba(0, 165, 36, 0.2);
 
   background-color: #fff;
 
@@ -83,9 +83,9 @@ export const SizeSelector = styled.select`
 
   transition: all 0.3s ease;
 
-  &:hover {
-    border: 1px solid #4a56e2;
-  }
+  /* &:hover {
+    border: 1px solid rgb(7, 126, 100);
+  } */
 `;
 
 export const SelectOption = styled.option`
@@ -105,6 +105,6 @@ export const SelectOption = styled.option`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #e0e0e0;
+    background-color: #861515;
   }
 `;
