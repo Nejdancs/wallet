@@ -26,7 +26,7 @@ const transactionSlice = createSlice({
       state.loadingTrans = true;
     },
     [options.createTransaction.fulfilled]: (state, { payload }) => {
-      state.transactions.unshift(payload);
+      state.transactions = payload.result.reverse();
       state.loadingTrans = false;
     },
     [options.createTransaction.rejected]: state => {

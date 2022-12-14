@@ -4,7 +4,7 @@ export const TAB_COLUMNS = [
     accessor: 'date',
     disableFilters: true,
     sticky: 'centre',
-    sortType: (rowA, rowB, id) => {
+    sortType: (rowA, rowB, id, desc) => {
       const arrA = rowA.values[id].split('.');
       const arrB = rowB.values[id].split('.');
       arrA.splice(0, 2, arrA[1], arrA[0]);
@@ -15,6 +15,9 @@ export const TAB_COLUMNS = [
 
       if (new Date(valueA) > new Date(valueB)) return 1;
       if (new Date(valueB) > new Date(valueA)) return -1;
+      if (rowA.original.createdAt > rowB.original.createdAt) return 1;
+      if (rowB.original.createdAt > rowA.original.createdAt) return -1;
+
       return 0;
     },
   },
