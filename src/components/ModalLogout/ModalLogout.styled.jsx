@@ -24,12 +24,8 @@ export const Text = styled.div`
 
 export const BtnContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  @media ${device.tablet} {
-    flex-direction: column;
-  }
 `;
 
 export const Overlay = styled.div`

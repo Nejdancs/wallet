@@ -34,7 +34,7 @@ export const Transaction = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px;
+  padding: 20px 0;
 
   background-color: #ffffff;
   overflow-y: auto;

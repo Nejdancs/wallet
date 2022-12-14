@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
+export const MobileTableWrapper = styled.div`
+  overflow-y: hidden;
+  height: calc(100vh - 285px);
+`;
+
 export const MobileTable = styled.div`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  /* display: table; */
   table-layout: fixed;
   width: 100%;
   overflow-y: auto;
   height: 100%;
-  /* max-height: 100%; */
 `;
 
 export const TableBody = styled.tbody`

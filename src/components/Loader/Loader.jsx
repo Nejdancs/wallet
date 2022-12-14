@@ -5,7 +5,7 @@ const Loader = () => {
   return (
     <LoaderWrapper>
       <RotatingLines
-        strokeColor="#24CCA7"
+        strokeColor="#8a8a8a"
         strokeWidth="5"
         animationDuration="0.75"
         width="96"
@@ -16,13 +16,3 @@ const Loader = () => {
 };
 
 export default Loader;
-
-/* <ColorRing
-        visible={true}
-        height="150"
-        width="150"
-        ariaLabel="blocks-loading"
-        wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
-        colors={['#4A56E2', '#24CCA7', '#FF6596', '#FED057', '#4A56E2']}
-      /> */

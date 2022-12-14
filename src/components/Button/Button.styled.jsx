@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   display: block;
-  width: 280px;
+  min-width: 280px;
   height: 50px;
   color: ${({ main, theme }) =>
     main ? theme.colors.secondaryTextColor : theme.colors.accentSecondary};
@@ -31,8 +31,13 @@ export const StyledButton = styled.button`
   :focus {
     transform: scale(1.03);
   }
+
+  @media screen and (max-width: 380px) {
+    min-width: 100%;
+  }
+
   @media ${device.mobile} {
     padding: 13px 65px;
-    width: 300px;
+    min-width: 300px;
   }
 `;
