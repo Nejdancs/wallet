@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import moment from 'moment/moment';
 
 import * as yup from 'yup';
+import addTransSchema from 'assets/ValidateSchema/addTransSchema';
 
 import Datetime from 'react-datetime';
 
@@ -41,15 +42,6 @@ import {
 import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
 import useLockBodyScroll from 'hooks/useBodyLock';
 
-let Schema = yup.object().shape({
-  amount: yup
-    .number()
-    .required('It`s a required field')
-    .moreThan(0, 'Enter a number greater than 0')
-    .positive('Must be a positiv number'),
-  comment: yup.string().max(100, 'No more than 100 characters'),
-});
-
 const modalRoot = document.querySelector('#modal-root');
 
 const AddTransaction = ({ showModal, setShowModal }) => {
@@ -73,8 +65,6 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   };
 
   const matches = useMediaQuery('(max-width: 767px)');
-
-  const yesterday = moment().subtract(10, 'years');
 
   const onSelectorChange = value => {
     setCategory(value);
@@ -171,7 +161,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
           <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}
-            validationSchema={Schema}
+            validationSchema={addTransSchema}
           >
             <Form autoComplete="off">
               <Selektor

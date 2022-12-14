@@ -45,6 +45,7 @@ export const Slider = styled.div`
     box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
 
     border-radius: 50%;
+    transition: all 250ms linear;
   }
 `;
 
