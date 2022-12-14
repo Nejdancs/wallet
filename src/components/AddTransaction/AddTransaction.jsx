@@ -17,7 +17,6 @@ import './InputNumber.css';
 
 import CloseSvg from '../../images/close.svg';
 import SwitchToggle from '../AddTransaction/SwitchToggle/SwitchToggle';
-import { Overlay } from 'components/ModalLogout/ModalLogout.styled';
 import DateRange from '../../images/date-range.svg';
 import Selektor from './Selektor/Selektor';
 import MobileAddModal from './MobileAddModal/MobileAddModal';
@@ -37,6 +36,7 @@ import {
   CloseIcon,
   Label,
   ErrorText,
+  Overlay,
 } from './AddTransaction.styled';
 import { ModalAddCategory } from 'components/ModalAddCategory/ModalAddCategory';
 import useLockBodyScroll from 'hooks/useBodyLock';

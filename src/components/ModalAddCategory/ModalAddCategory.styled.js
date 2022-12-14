@@ -7,7 +7,7 @@ export const Modal = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 59px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -15,15 +15,17 @@ export const Modal = styled.div`
   text-align: center;
   z-index: 3;
   background-color: #fff;
+  overflow-y: auto;
 
   @media ${device.tablet} {
     width: 540px;
-    height: 600px;
+    height: 604px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 40px 60px;
     border-radius: 20px;
+    overflow-y: hidden;
   }
 
   @media screen and (min-width: 768px) and (max-height: 605px) {

@@ -2,6 +2,23 @@ import styled from 'styled-components';
 import { Field, ErrorMessage } from 'formik';
 import { motion } from 'framer-motion';
 
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  /* z-index: 99; */
+`;
+
 export const Calendar = styled.div`
   position: relative;
 `;

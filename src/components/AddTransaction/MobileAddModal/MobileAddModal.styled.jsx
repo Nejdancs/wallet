@@ -28,9 +28,9 @@ export const DateIcon = styled.img`
 
 export const Transaction = styled.div`
   width: 100%;
-  height: calc(100vh - 60px);
+  height: 100vh;
   position: relative;
-  top: 59px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;

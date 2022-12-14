@@ -48,15 +48,19 @@ export const CommentColumn = styled.td`
 `;
 
 export const CommentContainer = styled.div`
-  max-width: 110px;
-  height: 28px;
-  display: flex;
+  max-width: calc(23vw * 2);
+  /* height: 28px; */
+  /* display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; */
   margin: 0;
   overflow: hidden;
   white-space: nowrap;
+  word-wrap: break-word;
   text-overflow: ellipsis;
+  @media screen and (min-width: 480px) {
+    max-width: 220px;
+  }
 `;
 
 export const TabRow = styled.tr`
