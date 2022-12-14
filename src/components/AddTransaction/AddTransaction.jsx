@@ -54,7 +54,7 @@ const modalRoot = document.querySelector('#modal-root');
 
 const AddTransaction = ({ showModal, setShowModal }) => {
   const [category, setCategory] = useState('');
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(moment(0, 'HH'));
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
 
   const [showModalCat, setShowModalCat] = useState(false);
@@ -197,7 +197,9 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                 </Label>
                 <Calendar>
                   <Datetime
-                    isValidDate={current => current.isAfter(yesterday)}
+                    isValidDate={current =>
+                      moment(current).isBetween('2010-01-01', '2033-01-01')
+                    }
                     timeFormat={false}
                     initialValue={date}
                     closeOnSelect={true}
