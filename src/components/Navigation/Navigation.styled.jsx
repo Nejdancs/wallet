@@ -14,7 +14,7 @@ export const List = styled.ul`
   justify-content: space-evenly;
   list-style-type: none;
 
-  @media ${device.maxTablet} {
+  @media ${device.tablet} {
     flex-direction: column;
     gap: 12px;
   }
