@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import device from 'assets/breakpoints/device';
 
 export const LogoWrapper = styled(Link)`
   width: 120px;
   height: 30px;
   display: flex;
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 181px;
     height: 40px;
   }
@@ -15,7 +16,7 @@ export const LogoImg = styled.img`
   width: 30px;
   height: 30px;
   margin-right: 15px;
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     margin-right: 20px;
     width: 40px;
     height: 40px;
@@ -31,7 +32,7 @@ export const LogoText = styled.p`
   display: flex;
   align-items: center;
   margin: 0px;
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 121px;
     font-size: 30px;
   }

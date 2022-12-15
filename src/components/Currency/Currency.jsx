@@ -37,17 +37,12 @@ function Currency() {
   }
 
   useEffect(() => {
-    // const data = JSON.parse(localStorage.getItem('currencyData'));
-    // if (data) {
-    //   localStorage.removeItem('currencyData');
-    // }
     readFromLocalStorage();
     const interval = setInterval(() => {
       readFromLocalStorage();
     }, 1200000);
 
     window.onunload = () => {
-      // Clear the local storage on window closed
       window.localStorage.removeItem('currencyData');
     };
 

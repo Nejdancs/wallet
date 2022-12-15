@@ -1,13 +1,13 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
+import API from 'services/api/api';
 import Chart from './Chart/Chart';
 import FormFilter from './FormFilter/FormFilter';
 import Table from './Table/Table';
 import { Section, Title, Column } from './DiagramTab.styled';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import API from 'services/api/api';
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 
 const DiagramTab = () => {
   const [filter, setFilter] = useState({

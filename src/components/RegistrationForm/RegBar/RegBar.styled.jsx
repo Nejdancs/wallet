@@ -15,7 +15,6 @@ export const ProgressBar = styled.div`
   @media ${device.tablet} {
     margin-left: auto;
     margin-right: auto;
-    /* margin-top: -23px; */
   }
 `;
 

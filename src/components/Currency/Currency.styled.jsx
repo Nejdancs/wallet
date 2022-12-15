@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import BackgroundPicture from '../../images/CurrencyBackground.png';
+import device from 'assets/breakpoints/device';
 
 export const CurrencyListHeader = styled.div`
   display: flex;
@@ -14,10 +15,10 @@ export const CurrencyListHeader = styled.div`
     padding: 12px 40px;
   }
 
-  @media (min-width: 768px) {
+  @media ${device.tablet} {
     padding: 12px 12px 12px 20px;
   }
-  @media (min-width: 1280px) {
+  @media ${device.desktop} {
     height: 60px;
     padding: 16px 64px 16px 44px;
   }
@@ -39,11 +40,11 @@ export const CurrencyList = styled.ul`
     padding: 16px 40px 20px;
   }
 
-  @media (min-width: 768px) {
+  @media ${device.tablet} {
     height: 132px;
     padding: 16px 20px 20px;
   }
-  @media (min-width: 1280px) {
+  @media ${device.desktop} {
     height: 287px;
     padding: 20px 61px 20px 58px;
   }
@@ -57,7 +58,7 @@ export const CurrensyItems = styled.li`
     margin-bottom: 12px;
   }
 
-  @media (min-width: 1280px) {
+  @media ${device.desktop} {
     &:not(:last-child) {
       margin-bottom: 24px;
     }
@@ -68,14 +69,10 @@ export const CurrencyWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
 
-  /* @media (min-width: 480px) {
-    width: 280px;
-  } */
-
-  @media (min-width: 768px) {
+  @media ${device.tablet} {
     width: 336px;
   }
-  @media (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 393px;
   }
 `;
@@ -96,10 +93,4 @@ export const CurrencyInfoText = styled.p`
   line-height: 24px;
 
   color: #ffffff;
-
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 1280px) {
-  }
 `;

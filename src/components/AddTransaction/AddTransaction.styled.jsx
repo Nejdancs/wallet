@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { Field, ErrorMessage } from 'formik';
+import { Field } from 'formik';
 import { motion } from 'framer-motion';
+import device from 'assets/breakpoints/device';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -10,13 +11,12 @@ export const Overlay = styled.div`
   bottom: 0;
   overflow-y: auto;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.25);
   }
-  /* z-index: 99; */
 `;
 
 export const Calendar = styled.div`
@@ -26,20 +26,18 @@ export const Calendar = styled.div`
 export const DateIcon = styled.img`
   position: absolute;
   pointer-events: none;
-
   right: 0;
   top: 0;
 `;
 
 export const Transaction = styled(motion.div)`
   position: relative;
-
   width: 320px;
   z-index: 2;
   padding: 20px;
 
   background-color: #ffffff;
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     position: relative;
     width: 540px;
     padding: 40px 60px;
@@ -61,7 +59,7 @@ export const ModalTitle = styled.h2`
 `;
 
 export const InputContainer = styled.div`
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -75,7 +73,7 @@ export const ModalInput = styled(Field)`
 
   margin-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 180px;
     height: 30px;
   }
@@ -103,9 +101,7 @@ export const Selector = styled(Field)`
 
   height: 30px;
   width: 100%;
-
   margin-bottom: 40px;
-
   border-bottom: 1px solid #e0e0e0;
 
   font-family: 'Circe';
@@ -133,10 +129,8 @@ export const CommentInput = styled(Field)`
   border: none;
   padding: 8px;
   margin-bottom: 40px;
-
   height: 30px;
   width: 100%;
-
   border-bottom: 1px solid #e0e0e0;
 
   font-family: 'Circe';
@@ -167,24 +161,3 @@ export const ErrorText = styled.p`
   line-height: 1.14;
   color: rgb(240, 0, 0);
 `;
-
-// export const BtnList = styled.div`
-//   display: grid;
-
-//   justify-content: center;
-//   gap: 20px;
-// `;
-
-// export const Layout = styled.div`
-//   position: relative;
-//   height: 100%;
-//   width: 100%;
-//   background-color: rgba(0, 0, 0, 0.25);
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   /* z-index: 0; */
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;

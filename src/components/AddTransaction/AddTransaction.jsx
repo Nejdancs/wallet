@@ -4,17 +4,15 @@ import { createPortal } from 'react-dom';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
-import moment from 'moment/moment';
-
-import addTransSchema from 'assets/ValidateSchema/addTransSchema';
-
 import Datetime from 'react-datetime';
+import moment from 'moment/moment';
 
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-datetime/css/react-datetime.css';
 import './DatePiker.css';
 import './InputNumber.css';
 
+import addTransSchema from 'assets/ValidateSchema/addTransSchema';
 import SwitchToggle from '../AddTransaction/SwitchToggle/SwitchToggle';
 import DateRange from '../../images/date-range.svg';
 import Selektor from './Selektor/Selektor';
@@ -146,7 +144,6 @@ const AddTransaction = ({ showModal, setShowModal }) => {
           onClick={e => e.stopPropagation()}
         >
           <ModalTitle>Add transaction</ModalTitle>
-
           <SwitchToggle onLoad={changeTypeOfOperationt} />
           <Formik
             initialValues={initialValues}
@@ -161,7 +158,6 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                 style={{ color: '#000000' }}
                 onInputChange={createCategoy}
               />
-
               <InputContainer>
                 <Label htmlFor="amount">
                   <ModalInput
@@ -201,8 +197,6 @@ const AddTransaction = ({ showModal, setShowModal }) => {
                   name="comment"
                 />
               </Label>
-
-              {/* <BtnList> */}
               <Button disabled={isLoading} type="submit" main>
                 {isLoading ? 'Loading...' : 'Add'}
               </Button>
@@ -214,7 +208,6 @@ const AddTransaction = ({ showModal, setShowModal }) => {
               >
                 Cancel
               </Button>
-              {/* </BtnList> */}
             </Form>
           </Formik>
         </Transaction>

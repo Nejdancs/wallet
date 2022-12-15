@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import Media from 'react-media';
 import { useSortBy, useTable, usePagination } from 'react-table';
 import { TAB_COLUMNS } from './TabColumns';
@@ -9,7 +9,6 @@ import { BiSortAlt2, BiSortDown, BiSortUp } from 'react-icons/bi';
 import MobileTab from './MobileTab/MobileTab';
 
 import {
-  HomeTabContainer,
   HomeTable,
   HomeTabHeader,
   ColumnHeader,
@@ -26,8 +25,6 @@ import {
   PageCounter,
   SizeSelector,
   SelectOption,
-  ButtonImgLeft,
-  ButtonImgRight,
 } from './Table.styled';
 
 const pageSizeOptions = [5, 10, 15, 20];

@@ -1,5 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-import device from 'assets/breakpoints/device';
+import styled from 'styled-components';
 
 export const PaginationContainer = styled.div`
   display: flex;
@@ -73,19 +72,13 @@ export const SizeSelector = styled.select`
   border: none;
   border-radius: 20px;
   box-shadow: 0 8px 10px 0 rgba(0, 165, 36, 0.2);
-
   background-color: #fff;
 
   outline: none;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-
   transition: all 0.3s ease;
-
-  /* &:hover {
-    border: 1px solid rgb(7, 126, 100);
-  } */
 `;
 
 export const SelectOption = styled.option`
