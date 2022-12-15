@@ -75,11 +75,9 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
 
       if (res.error && res.payload.status === 400) {
         toast.error(res.payload.message);
-       
+
         return;
       } else if (res.error) {
-        
-
         toast.error('Something went wrong! Please, try again');
         return;
       }
@@ -144,7 +142,9 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
                 </Label>
                 <Calendar>
                   <Datetime
-                    isValidDate={current => current.isAfter(yesterday)}
+                    isValidDate={current =>
+                      moment(current).isBetween('2010-01-01', '2033-01-01')
+                    }
                     timeFormat={false}
                     initialValue={date}
                     closeOnSelect={true}
