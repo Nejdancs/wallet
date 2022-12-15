@@ -72,13 +72,13 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
       return;
     } else {
       const res = await dispatch(operations.createTransaction(value));
-      console.log(res.payload);
+
       if (res.error && res.payload.status === 400) {
         toast.error(res.payload.message);
-        console.log('two');
+       
         return;
       } else if (res.error) {
-        console.log('first');
+        
 
         toast.error('Something went wrong! Please, try again');
         return;
