@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import device from 'assets/breakpoints/device';
 import { ReactComponent as IconHome } from 'images/icon-home.svg';
 import { ReactComponent as Statistic } from 'images/icon-statistics.svg';
 import { ReactComponent as IconCurrency } from 'images/icon-currency.svg';
@@ -11,11 +12,9 @@ export const Nav = styled.nav`
 export const List = styled.ul`
   display: flex;
   justify-content: space-evenly;
-  /* gap: 18px; */
-
   list-style-type: none;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.maxTablet} {
     flex-direction: column;
     gap: 12px;
   }
@@ -28,7 +27,7 @@ export const Item = styled.li`
 export const StyledIconHome = styled(IconHome)`
   fill: ${({ theme }) => theme.colors.inActiveIconColor};
   border-radius: 2px;
-  @media screen and (max-width: 767px) {
+  @media ${device.maxTablet} {
     width: 38px;
     height: 38px;
     border-radius: 6px;
@@ -38,7 +37,7 @@ export const StyledIconHome = styled(IconHome)`
 export const StyledStatistic = styled(Statistic)`
   fill: ${({ theme }) => theme.colors.inActiveIconColor};
   border-radius: 2px;
-  @media screen and (max-width: 767px) {
+  @media ${device.maxTablet} {
     width: 38px;
     height: 38px;
     border-radius: 6px;
@@ -48,7 +47,7 @@ export const StyledStatistic = styled(Statistic)`
 export const StyledIconCurrency = styled(IconCurrency)`
   fill: ${({ theme }) => theme.colors.inActiveIconColor};
   border-radius: 2px;
-  @media screen and (max-width: 767px) {
+  @media ${device.maxTablet} {
     width: 38px;
     height: 38px;
     border-radius: 6px;
@@ -94,7 +93,7 @@ export const StyledNavLink = styled(NavLink)`
 `;
 
 export const Text = styled.span`
-  @media screen and (max-width: 767px) {
+  @media ${device.maxTablet} {
     display: none;
   }
 `;

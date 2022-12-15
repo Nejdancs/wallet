@@ -9,17 +9,15 @@ import moment from 'moment/moment';
 import Datetime from 'react-datetime';
 import operations from 'redux/transactions/transactions-operations';
 
-import * as yup from 'yup';
-
 import 'react-datetime/css/react-datetime.css';
 import '../DatePiker.css';
 import '../InputNumber.css';
-
+import Container from 'components/Container/Container';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import DateRange from '../../../images/date-range.svg';
 import Selektor from '../Selektor/Selektor';
 import Button from 'components/Button/Button';
-
+import addTransSchema from 'assets/ValidateSchema/addTransSchema';
 import {
   Transaction,
   ModalTitle,
@@ -30,18 +28,6 @@ import {
   Label,
   ErrorText,
 } from './MobileAddModal.styled';
-import Container from 'components/Container/Container';
-
-const modalRoot = document.querySelector('#modal-root');
-
-let Schema = yup.object().shape({
-  amount: yup
-    .number()
-    .required('It`s a required field')
-    .moreThan(0, 'Enter a number greater than 0')
-    .positive('Must be a positiv number'),
-  comment: yup.string().max(100, 'No more than 100 characters'),
-});
 
 const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
   const [category, setCategory] = useState('');
@@ -131,11 +117,9 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
       <Transaction onClick={e => e.stopPropagation()}>
         <Container>
           <ModalTitle>Add transaction</ModalTitle>
-
           <SwitchToggle onLoad={changeTypeOfOperationt} />
-
           <Formik
-            validationSchema={Schema}
+            validationSchema={addTransSchema}
             initialValues={initialValues}
             onSubmit={onSubmit}
           >
@@ -145,7 +129,6 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
                 typeOfOperation={typeOfOperation}
                 onChange={onSelectorChange}
               />
-
               <div>
                 <Label htmlFor="amount">
                   <ModalInput
@@ -172,7 +155,6 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
                   <DateIcon src={DateRange} alt="calendar" />
                 </Calendar>
               </div>
-
               <Label htmlFor="comment">
                 <CommentInput
                   type="text"
@@ -186,8 +168,6 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
                   name="comment"
                 />
               </Label>
-              {/* <BtnList> */}
-
               <Button disabled={isLoading} type="submit" main>
                 {isLoading ? 'Loading...' : 'Add'}
               </Button>
@@ -199,8 +179,6 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
               >
                 Cancel
               </Button>
-
-              {/* </BtnList> */}
             </Form>
           </Formik>
         </Container>

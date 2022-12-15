@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import IconPlus from '../../../images/plus.svg';
 import IconMinus from '../../../images/minus.svg';
-
 import {
   Switch,
   Checkbox,

@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useElementWidth } from 'hooks/useElementWidth';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import theme from '../../../theme/theme';
 import { ChartContainer, DoughnutBalance } from './Chart.styled';
@@ -26,7 +26,6 @@ const Chart = ({ balance, expenses, isLoading }) => {
       labels: expenses.map(trans => trans.categoryName[0]),
       datasets: [
         {
-          // label: 'Doughnut Chart',
           data: expenses.map(trans => trans.amount),
           backgroundColor: theme.doughnutColors,
           borderColor: theme.doughnutColors,

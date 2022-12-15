@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-
 import {
   persistStore,
   FLUSH,
@@ -26,8 +25,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-
-    // tApi.middleware,
   ],
 });
 

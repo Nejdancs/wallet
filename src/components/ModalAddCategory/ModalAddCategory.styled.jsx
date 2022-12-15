@@ -16,7 +16,6 @@ export const Backdrop = styled.div`
     justify-content: center;
     align-items: center;
   }
-  /* z-index: 99; */
 `;
 
 export const Modal = styled.div`
@@ -74,7 +73,6 @@ export const BtnContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-top: 161px;
-  /* height: 160px; */
 
   @media ${device.tablet} {
     margin-top: 107px;

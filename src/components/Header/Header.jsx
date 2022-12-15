@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
+
+import ModalLogout from 'components/ModalLogout/ModalLogout';
+import Logo from 'components/Logo/Logo';
 import {
   AppHeader,
   HeaderNav,
@@ -10,10 +15,6 @@ import {
   ButtonLogout,
   WrapperLogo,
 } from './Header.styled';
-import ModalLogout from 'components/ModalLogout';
-import Logo from 'components/Logo/Logo';
-import { useDispatch, useSelector } from 'react-redux';
-import { authSelectors } from 'redux/auth';
 
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);

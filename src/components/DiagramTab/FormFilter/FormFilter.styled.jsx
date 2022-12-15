@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field, Form } from 'formik';
+import { Form } from 'formik';
 import theme from 'theme/theme';
 import arrowDown from '../../../images/arrow-down.png';
 import device from 'assets/breakpoints/device';
@@ -32,7 +32,7 @@ export const InpWrapper = styled.div`
     right: 21px;
     width: 18px;
     height: 9px;
-    /* background-color: blue; */
+
     background: url(${arrowDown});
     background-repeat: no-repeat;
     background-position: center;
@@ -48,7 +48,7 @@ export const Select = styled.select`
   border: 1px solid ${theme.colors.primaryTextColor};
   border-radius: 30px;
   background-color: transparent;
-  /* gap: 20px; */
+
   -moz-appearance: none;
   -webkit-appearance: none;
   display: block;

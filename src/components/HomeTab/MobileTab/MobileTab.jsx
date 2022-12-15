@@ -1,6 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
 import { useSortBy, useTable } from 'react-table';
-
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 

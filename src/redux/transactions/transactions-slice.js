@@ -47,35 +47,3 @@ const transactionSlice = createSlice({
 });
 
 export default transactionSlice.reducer;
-
-// ---------------------------------------------------------
-
-// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-// export const transactionApi = createApi({
-//   reducerPath: 'transactionApi',
-//   baseQuery: fetchBaseQuery({
-//     baseUrl: 'https://wallet-api-nnb3.onrender.com',
-//   }),
-//   tagTypes: ['Transactions'],
-//   endpoints: builder => ({
-//     getCategory: builder.query({
-//       query: () => '/api/transactions/categories',
-//       providesTags: result =>
-//         result
-//           ? [...result.map(({ id }) => ({ type: 'Category', id })), 'Category']
-//           : ['Category'],
-//     }),
-//     createTransaction: builder.mutation({
-//       query: Transaction => ({
-//         url: '/api/transactions',
-//         method: 'POST',
-//         body: Transaction,
-//       }),
-//       invalidatesTags: ['Category'],
-//     }),
-//   }),
-// });
-
-// export const { useGetCategoryQuery, useCreateTransactionMutation } =
-//   transactionApi;

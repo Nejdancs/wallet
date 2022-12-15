@@ -1,6 +1,5 @@
-import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import authSelectors from 'redux/auth/auth-selectors';
 
 export default function PrivateRoute() {

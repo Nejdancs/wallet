@@ -12,7 +12,6 @@ export const DateIcon = styled.img`
   top: 0;
 `;
 
-
 export const Transaction = styled.div`
   width: 100%;
   height: 100vh;
@@ -37,23 +36,19 @@ export const ModalTitle = styled.h2`
   margin-bottom: 40px;
 `;
 
-
 export const ModalInput = styled(Field)`
   border: none;
   padding: 8px;
   width: 100%;
-
   margin-bottom: 40px;
-
   border-bottom: 1px solid #e0e0e0;
+  color: #000000;
 
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-
-  color: #000000;
 
   :hover,
   :focus {
@@ -65,21 +60,17 @@ export const ModalInput = styled(Field)`
 export const Selector = styled(Field)`
   border: none;
   outline: none;
-
   height: 30px;
   width: 100%;
-
   margin-bottom: 40px;
-
   border-bottom: 1px solid #e0e0e0;
+  color: #bdbdbd;
 
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-
-  color: #bdbdbd;
 `;
 
 export const SelectOption = styled.option`
@@ -90,7 +81,6 @@ export const SelectOption = styled.option`
   line-height: 27px;
   display: flex;
   align-items: center;
-
   color: #000000;
 `;
 
@@ -98,11 +88,10 @@ export const CommentInput = styled(Field)`
   border: none;
   padding: 8px;
   margin-bottom: 40px;
-
+  border-bottom: 1px solid #e0e0e0;
   height: 30px;
   width: 100%;
-
-  border-bottom: 1px solid #e0e0e0;
+  color: #000000;
 
   font-family: 'Circe';
   font-style: normal;
@@ -110,20 +99,11 @@ export const CommentInput = styled(Field)`
   font-size: 18px;
   line-height: 27px;
 
-  color: #000000;
-
   :hover,
   :focus {
     outline: none;
     border-bottom: 1px solid #e0e0e0;
   }
-`;
-
-export const BtnList = styled.ul`
-  display: grid;
-
-  justify-content: center;
-  gap: 20px;
 `;
 
 export const Label = styled.label`

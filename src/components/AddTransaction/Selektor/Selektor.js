@@ -1,22 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Select from 'react-select';
 import PropTypes from 'prop-types';
 import BtnAddCategory from 'components/BtnAddCategory/BtnAddCategory';
-
 import getCategory from 'redux/transactions/transactions-selectors';
 import operations from 'redux/transactions/transactions-operations';
-
-import Select from 'react-select';
-
 import './Selektor.css';
-import { useState } from 'react';
 
-const Selektor = ({
-  onChange,
-  typeOfOperation,
-  onInputChange,
-  openModalCat,
-}) => {
+const Selektor = ({ onChange, typeOfOperation, openModalCat }) => {
   const { expenses = [], income = [] } = useSelector(getCategory);
   const isLoadingCategory = useSelector(state => state.transaction.loadingCat);
   const selectInputRef = useRef();
@@ -34,7 +25,6 @@ const Selektor = ({
 
   const onSelectorChange = e => {
     onChange(e.value);
-    // selectInputRef.current.setValue(null);
   };
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Field, Form, Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import { FormEl, Select, InpWrapper } from './FormFilter.styled';
 import { useEffect } from 'react';
 

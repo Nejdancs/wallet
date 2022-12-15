@@ -10,9 +10,6 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body { 
-    /* display: flex;
-    flex-direction: column;
-    height: 100vh; */
     font-family: 'Circe', sans-serif;
     background-color: #fff;
     color: #010101;
@@ -22,18 +19,6 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* #root {
-    height: 100%;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-} */
 
   img {
     display: block;

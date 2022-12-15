@@ -13,8 +13,6 @@ export const TableHeaderItem = styled.div`
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
-  /* display: flex;
-  justify-content: space-between; */
 `;
 export const Transaction = styled.div`
   height: 54px;

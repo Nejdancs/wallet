@@ -40,7 +40,6 @@ export const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.25);
-  /* z-index: 99; */
 `;
 
 export const Modal = styled.div`

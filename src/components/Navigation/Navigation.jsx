@@ -1,5 +1,4 @@
 import Media from 'react-media';
-
 import {
   List,
   Nav,
@@ -10,8 +9,6 @@ import {
   StyledIconCurrency,
   Text,
 } from './Navigation.styled';
-// import IconHome from '../../images/IconHome.svg';
-// import statistic from '../../images/Statistic.svg';
 
 const Navigation = () => {
   return (
@@ -23,14 +20,12 @@ const Navigation = () => {
             <Text>Home</Text>
           </StyledNavLink>
         </Item>
-
         <Item>
           <StyledNavLink to="/diagram">
             <StyledStatistic />
             <Text>Statistics</Text>
           </StyledNavLink>
         </Item>
-
         <Media
           queries={{
             small: '(max-width: 767px)',
