@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import device from 'assets/breakpoints/device';
 
 export const HomeTabContainer = styled.div`
+  flex-grow: 1;
   padding-bottom: 32px;
   @media ${device.desktop} {
     padding-top: 46px;

@@ -6,10 +6,11 @@ import theme from '../../../theme/theme';
 import { ChartContainer, DoughnutBalance } from './Chart.styled';
 import { numberSpace } from 'helpers';
 import Media from 'react-media';
+import SkeletonStatChart from 'components/Loader/SkeletonStatChart';
 
 ChartJS.register(ArcElement, Tooltip);
 
-const Chart = ({ balance, expenses }) => {
+const Chart = ({ balance, expenses, isLoading }) => {
   const [ref, width] = useElementWidth();
 
   let data;
@@ -60,15 +61,21 @@ const Chart = ({ balance, expenses }) => {
         <>
           {(matches.small || matches.medium || matches.large) && (
             <ChartContainer ref={ref}>
-              <Doughnut
-                data={data}
-                options={options}
-                updateMode="resize"
-                redraw={true}
-              />
-              <DoughnutBalance>
-                {'\u20B4'} {numberSpace(balance)}
-              </DoughnutBalance>
+              {isLoading ? (
+                <SkeletonStatChart width={width} />
+              ) : (
+                <>
+                  <Doughnut
+                    data={data}
+                    options={options}
+                    updateMode="resize"
+                    redraw={true}
+                  />
+                  <DoughnutBalance>
+                    {'\u20B4'} {numberSpace(balance)}
+                  </DoughnutBalance>
+                </>
+              )}
             </ChartContainer>
           )}
         </>

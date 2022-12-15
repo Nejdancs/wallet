@@ -10,6 +10,10 @@ export const CurrencyListHeader = styled.div`
   padding: 12px 20px;
   height: 50px;
 
+  @media (min-width: 400px) {
+    padding: 12px 40px;
+  }
+
   @media (min-width: 768px) {
     padding: 12px 12px 12px 20px;
   }
@@ -21,8 +25,8 @@ export const CurrencyListHeader = styled.div`
 
 export const CurrencyList = styled.ul`
   margin: 0;
-  height: 124px;
-  padding: 12px 20px 16px 20px;
+  height: 220px;
+  padding: 12px 20px 16px;
   border-radius: 0px 0px 30px 30px;
 
   background-color: #4a56e2;
@@ -31,9 +35,13 @@ export const CurrencyList = styled.ul`
   background-position: bottom;
   background-size: 100%;
 
+  @media (min-width: 400px) {
+    padding: 16px 40px 20px;
+  }
+
   @media (min-width: 768px) {
     height: 132px;
-    padding: 16px 20px 20px 20px;
+    padding: 16px 20px 20px;
   }
   @media (min-width: 1280px) {
     height: 287px;

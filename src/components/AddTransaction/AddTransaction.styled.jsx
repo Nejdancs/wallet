@@ -60,40 +60,6 @@ export const ModalTitle = styled.h2`
   margin-bottom: 40px;
 `;
 
-export const CloseIcon = styled.img`
-  width: 60%;
-  height: 60%;
-  stroke: currentColor;
-`;
-
-export const CloseBtn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  border: none;
-  outline: none;
-  background-color: #24cca7;
-  border-radius: 50%;
-  cursor: pointer;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus-within {
-    background-color: rgb(7, 126, 100);
-  }
-
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-`;
-
 export const InputContainer = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;

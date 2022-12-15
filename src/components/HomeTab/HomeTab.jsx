@@ -10,6 +10,10 @@ import API from 'services/api/api';
 import Table from './Table';
 import operations from 'redux/transactions/transactions-operations';
 import LoaderComponent from 'components/Loader/LoaderComponent';
+import { HomeTabContainer } from './HomeTab.styled';
+import SkeletonTab from 'components/Loader/SkeletonTab';
+import SkeletonTabMobile from 'components/Loader/SkeletonTabMobile';
+import Media from 'react-media';
 
 function HomeTab() {
   const [showModal, setShowModal] = useState(false);
@@ -32,24 +36,33 @@ function HomeTab() {
   };
   return (
     <>
-      {isLoading ? (
-        <LoaderComponent />
-      ) : // <>loading...</>
-      currentData.length > 0 ? (
-        <Table data={currentData} />
-      ) : (
-        <NoTransactions />
-      )}
-
-      {!showModal && (
-        <BtnAddTransaction showModal={showModal} onClick={openModal} />
-      )}
-
-      <AnimatePresence>
-        {showModal && (
-          <AddTransaction showModal={showModal} setShowModal={setShowModal} />
+      <HomeTabContainer>
+        {isLoading ? (
+          <Media
+            queries={{
+              small: '(max-width: 767px)',
+            }}
+          >
+            {matches =>
+              matches.small ? <SkeletonTabMobile /> : <SkeletonTab />
+            }
+          </Media>
+        ) : currentData.length > 0 ? (
+          <Table data={currentData} />
+        ) : (
+          <NoTransactions />
         )}
-      </AnimatePresence>
+
+        {!showModal && (
+          <BtnAddTransaction showModal={showModal} onClick={openModal} />
+        )}
+
+        <AnimatePresence>
+          {showModal && (
+            <AddTransaction showModal={showModal} setShowModal={setShowModal} />
+          )}
+        </AnimatePresence>
+      </HomeTabContainer>
     </>
   );
 }

@@ -10,6 +10,7 @@ import operations from 'redux/auth/auth-operations';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import Loader from './Loader/Loader';
+import Scrollbar from 'react-scrollbars-custom';
 
 const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 const DiagramTab = lazy(() => import('components/DiagramTab/DiagramTab'));

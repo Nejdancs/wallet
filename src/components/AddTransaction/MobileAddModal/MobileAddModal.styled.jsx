@@ -12,19 +12,6 @@ export const DateIcon = styled.img`
   top: 0;
 `;
 
-// export const Layout = styled.div`
-//   height: 100%;
-//   width: 100%;
-//   background-color: rgba(0, 0, 0, 0.25);
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   z-index: 1;
-// `;
 
 export const Transaction = styled.div`
   width: 100%;
@@ -50,28 +37,6 @@ export const ModalTitle = styled.h2`
   margin-bottom: 40px;
 `;
 
-export const CloseBtn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  background-color: #24cca7;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus-within {
-    background-color: rgb(7, 126, 100);
-  }
-`;
 
 export const ModalInput = styled(Field)`
   border: none;

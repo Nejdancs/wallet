@@ -5,6 +5,7 @@ const initialState = {
   transactions: [],
   category: [],
   loadingTrans: false,
+  loadingAddTrans: false,
   loadingCat: false,
 };
 
@@ -23,14 +24,14 @@ const transactionSlice = createSlice({
       state.loadingCat = false;
     },
     [options.createTransaction.pending]: state => {
-      state.loadingTrans = true;
+      state.loadingAddTrans = true;
     },
     [options.createTransaction.fulfilled]: (state, { payload }) => {
       state.transactions = payload.result.reverse();
-      state.loadingTrans = false;
+      state.loadingAddTrans = false;
     },
     [options.createTransaction.rejected]: state => {
-      state.loadingTrans = false;
+      state.loadingAddTrans = false;
     },
     [options.getTransactions.pending]: state => {
       state.loadingTrans = true;

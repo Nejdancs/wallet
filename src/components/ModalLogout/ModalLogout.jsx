@@ -4,8 +4,7 @@ import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import Button from 'components/Button/Button';
-import { CloseBtn } from 'components/AddTransaction/AddTransaction.styled';
-import CloseSvg from '../../images/close.svg';
+
 import {
   ModalContainer,
   Text,
@@ -54,15 +53,6 @@ const ModalLogout = ({ setModalOpen }) => {
       >
         <Modal>
           <ModalContainer>
-            <CloseBtn>
-              <img
-                src={CloseSvg}
-                alt="close"
-                onClick={() => {
-                  setModalOpen(false);
-                }}
-              />
-            </CloseBtn>
             <Text>Do you really want to leave?</Text>
             <BtnContainer>
               <motion.div

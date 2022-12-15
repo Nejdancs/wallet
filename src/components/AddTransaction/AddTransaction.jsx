@@ -1,12 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import moment from 'moment/moment';
 
-import * as yup from 'yup';
 import addTransSchema from 'assets/ValidateSchema/addTransSchema';
 
 import Datetime from 'react-datetime';
@@ -16,7 +15,6 @@ import 'react-datetime/css/react-datetime.css';
 import './DatePiker.css';
 import './InputNumber.css';
 
-import CloseSvg from '../../images/close.svg';
 import SwitchToggle from '../AddTransaction/SwitchToggle/SwitchToggle';
 import DateRange from '../../images/date-range.svg';
 import Selektor from './Selektor/Selektor';
@@ -28,13 +26,11 @@ import operations from '../../redux/transactions/transactions-operations';
 import {
   Transaction,
   ModalTitle,
-  CloseBtn,
   ModalInput,
   InputContainer,
   CommentInput,
   Calendar,
   DateIcon,
-  CloseIcon,
   Label,
   ErrorText,
   Overlay,
@@ -48,6 +44,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(moment(0, 'HH'));
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
+  const isLoading = useSelector(state => state.transaction.loadingAddTrans);
 
   const [showModalCat, setShowModalCat] = useState(false);
   useLockBodyScroll();
@@ -112,11 +109,11 @@ const AddTransaction = ({ showModal, setShowModal }) => {
 
   const onKeyDown = useCallback(
     e => {
-      if (e.code === 'Escape') {
-        setShowModal(false);
-      }
+      if (e.code !== 'Escape') return;
+      if (showModalCat) return setShowModalCat(false);
+      setShowModal(false);
     },
-    [setShowModal]
+    [setShowModal, showModalCat]
   );
 
   useEffect(() => {
@@ -149,14 +146,7 @@ const AddTransaction = ({ showModal, setShowModal }) => {
           onClick={e => e.stopPropagation()}
         >
           <ModalTitle>Add transaction</ModalTitle>
-          <CloseBtn
-            type="button"
-            onClick={() => {
-              setShowModal(false);
-            }}
-          >
-            <CloseIcon src={CloseSvg} alt="close" />
-          </CloseBtn>
+
           <SwitchToggle onLoad={changeTypeOfOperationt} />
           <Formik
             initialValues={initialValues}
@@ -213,8 +203,8 @@ const AddTransaction = ({ showModal, setShowModal }) => {
               </Label>
 
               {/* <BtnList> */}
-              <Button type="submit" main>
-                Add
+              <Button disabled={isLoading} type="submit" main>
+                {isLoading ? 'Loading...' : 'Add'}
               </Button>
               <Button
                 type="button"

@@ -16,7 +16,6 @@ function Currency() {
   async function readFromLocalStorage() {
     const data = JSON.parse(localStorage.getItem('currencyData'));
     if (data && data.length === 3) {
-      console.log('data is already in the Local Storage');
       setCurrency(data);
       setTimeout(() => {
         localStorage.removeItem('currencyData');
@@ -26,16 +25,14 @@ function Currency() {
         const data = JSON.parse(localStorage.getItem('currencyData'));
         if (data && data.length > 0) {
           setCurrency(data);
-          console.log('this is console after data has been got');
           clearInterval(interval);
           setTimeout(() => {
             localStorage.removeItem('currencyData');
           }, 600000);
         } else {
-          console.log('data has not been found. calling fetch function');
           fetchCurrency();
         }
-      }, 3000);
+      }, 1000);
     }
   }
 

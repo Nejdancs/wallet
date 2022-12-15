@@ -14,6 +14,7 @@ const DiagramTab = () => {
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear(),
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   const [statistics, setStatistics] = useState({
     expenses: [],
@@ -25,12 +26,14 @@ const DiagramTab = () => {
 
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       try {
         const { data } = await API.getStatistics(filter);
         setStatistics(data);
       } catch (error) {
         toast.error("can't connect");
       }
+      setIsLoading(false);
     })();
   }, [filter]);
 
@@ -42,7 +45,12 @@ const DiagramTab = () => {
     <Section>
       <Column>
         <Title>Statistics</Title>
-        <Chart balance={balance} expenses={statistics.expenses} />
+
+        <Chart
+          isLoading={isLoading}
+          balance={balance}
+          expenses={statistics.expenses}
+        />
       </Column>
       <Column>
         <FormFilter

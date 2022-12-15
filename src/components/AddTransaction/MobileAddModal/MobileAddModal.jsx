@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { createPortal } from 'react-dom';
 import { Formik, Form, ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
@@ -16,7 +15,6 @@ import 'react-datetime/css/react-datetime.css';
 import '../DatePiker.css';
 import '../InputNumber.css';
 
-import CloseSvg from '../../../images/close.svg';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import DateRange from '../../../images/date-range.svg';
 import Selektor from '../Selektor/Selektor';
@@ -25,9 +23,7 @@ import Button from 'components/Button/Button';
 import {
   Transaction,
   ModalTitle,
-  CloseBtn,
   ModalInput,
-  BtnList,
   CommentInput,
   Calendar,
   DateIcon,
@@ -51,6 +47,7 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(new Date());
   const [typeOfOperation, setTypeOfOperation] = useState('Expense');
+  const isLoading = useSelector(state => state.transaction.loadingAddTrans);
 
   const dispatch = useDispatch();
 
@@ -135,15 +132,6 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
         <Container>
           <ModalTitle>Add transaction</ModalTitle>
 
-          {/* <CloseBtn
-          type="button"
-          onClick={() => {
-            setShowModal(false);
-          }}
-        >
-          <img src={CloseSvg} alt="close" />
-        </CloseBtn> */}
-
           <SwitchToggle onLoad={changeTypeOfOperationt} />
 
           <Formik
@@ -200,8 +188,8 @@ const MobileAddModal = ({ showModal, setShowModal, openModalCat }) => {
               </Label>
               {/* <BtnList> */}
 
-              <Button type="submit" main>
-                Add
+              <Button disabled={isLoading} type="submit" main>
+                {isLoading ? 'Loading...' : 'Add'}
               </Button>
               <Button
                 type="button"

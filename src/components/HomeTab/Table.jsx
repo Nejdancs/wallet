@@ -63,7 +63,7 @@ function Table({ data }) {
         }}
       >
         {({ mobile }) => (
-          <HomeTabContainer>
+          <>
             {!mobile ? (
               <MobileTab data={data} columns={columns} />
             ) : (
@@ -77,29 +77,32 @@ function Table({ data }) {
                         }}
                         {...headerGroup.getHeaderGroupProps()}
                       >
-                        {headerGroup.headers.map(column => (
-                          <ColumnHeader
-                            key={() => {
-                              nanoid();
-                            }}
-                            {...column.getHeaderProps(
-                              column.getSortByToggleProps()
-                            )}
-                          >
-                            <span style={{ position: 'relative' }}>
-                              {column.render('Header')}
-                              <SortArrow isSorted={column.isSorted}>
-                                {!column.isSorted ? (
-                                  <BiSortAlt2 />
-                                ) : column.isSortedDesc ? (
-                                  <BiSortDown />
-                                ) : (
-                                  <BiSortUp />
-                                )}
-                              </SortArrow>
-                            </span>
-                          </ColumnHeader>
-                        ))}
+                        {headerGroup.headers.map(column => {
+                          console.log(column);
+                          return (
+                            <ColumnHeader
+                              key={() => {
+                                nanoid();
+                              }}
+                              {...column.getHeaderProps(
+                                column.getSortByToggleProps()
+                              )}
+                            >
+                              <span style={{ position: 'relative' }}>
+                                {column.render('Header')}
+                                <SortArrow isSorted={column.isSorted}>
+                                  {!column.isSorted ? (
+                                    <BiSortAlt2 />
+                                  ) : column.isSortedDesc ? (
+                                    <BiSortDown />
+                                  ) : (
+                                    <BiSortUp />
+                                  )}
+                                </SortArrow>
+                              </span>
+                            </ColumnHeader>
+                          );
+                        })}
                       </tr>
                     ))}
                   </HomeTabHeader>
@@ -168,7 +171,7 @@ function Table({ data }) {
                 </PaginationContainer>
               </>
             )}
-          </HomeTabContainer>
+          </>
         )}
       </Media>
     </>

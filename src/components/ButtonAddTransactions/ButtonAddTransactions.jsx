@@ -3,7 +3,7 @@ import { Button, Icon } from './ButtonAddTransactions.styled';
 
 const ButtonAddTransactions = ({ onClick }) => {
   return (
-    <Button type="button" onClick={onClick}>
+    <Button aria-label="add transaction" type="button" onClick={onClick}>
       <Icon src={IconPlus} alt="plus" />
     </Button>
   );
